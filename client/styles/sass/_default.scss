@@ -1,0 +1,66 @@
+@import "variables";
+
+body {
+  font-size: $font-size;
+  min-width: $app-min-width;
+}
+
+#react-app {
+  position: relative;
+  min-height: 90vh;
+}
+
+nav#header {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: $nav-height;
+  border-bottom: 3px solid #e4e43f;
+  padding-bottom: 0.1em;
+  background: white;
+
+  #inner-nav-div {
+    border-bottom: 3px solid blue;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row nowrap;
+    height: 100%;
+    align-items: center;
+    font-size: 1.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+}
+
+nav#footer { 
+  min-height: $footer-height;
+  position: absolute;
+  bottom: -($footer-height + 1);
+  width: 100%;
+  border-top: 4px solid lightgrey;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+
+  #footer-divider {
+    width: 99%;
+    border-bottom: 2px solid lightgrey;
+    margin: auto;
+  }
+
+  #nav-options {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 0.7em;
+    height: $footer-height;
+  }
+}
+
+#content-container {
+  padding-top: $nav-height + 10px;
+}
+
+
+@import "landing";

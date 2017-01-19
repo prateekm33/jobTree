@@ -1,0 +1,227 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 5, ../../../../../../../../usr/local/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../../usr/local/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../../usr/local/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../../usr/local/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../../usr/local/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../../usr/local/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../../usr/local/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../../usr/local/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../../usr/local/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 3, ../sass/_default.scss */
+body {
+  font-size: 20px;
+  min-width: 450px;
+}
+
+/* line 8, ../sass/_default.scss */
+#react-app {
+  position: relative;
+  min-height: 90vh;
+}
+
+/* line 13, ../sass/_default.scss */
+nav#header {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: 50px;
+  border-bottom: 3px solid #e4e43f;
+  padding-bottom: 0.1em;
+  background: white;
+}
+/* line 22, ../sass/_default.scss */
+nav#header #inner-nav-div {
+  border-bottom: 3px solid blue;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+  height: 100%;
+  align-items: center;
+  font-size: 1.5em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+/* line 36, ../sass/_default.scss */
+nav#footer {
+  min-height: 3.5em;
+  position: absolute;
+  bottom: -4.5em;
+  width: 100%;
+  border-top: 4px solid lightgrey;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+}
+/* line 45, ../sass/_default.scss */
+nav#footer #footer-divider {
+  width: 99%;
+  border-bottom: 2px solid lightgrey;
+  margin: auto;
+}
+/* line 51, ../sass/_default.scss */
+nav#footer #nav-options {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 0.7em;
+  height: 3.5em;
+}
+
+/* line 61, ../sass/_default.scss */
+#content-container {
+  padding-top: 60px;
+}
+
+/* line 4, ../sass/_landing.scss */
+#landing-page-container .section {
+  min-height: 80vh;
+  display: flex;
+  border-bottom: 2px solid black;
+  padding: 1em;
+  margin: 0 2em 2em;
+}
+/* line 11, ../sass/_landing.scss */
+#landing-page-container .section .ldg-blurb-container {
+  display: flex;
+  max-width: 35%;
+  padding: 0.5em;
+  font-size: 2em;
+  justify-content: space-between;
+}
+/* line 19, ../sass/_landing.scss */
+#landing-page-container .section .ldg-blurb {
+  overflow: auto;
+}
+/* line 23, ../sass/_landing.scss */
+#landing-page-container .section .ldg-imgs-container {
+  max-height: 80%;
+  max-width: 60%;
+  padding: 0.5em;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+/* line 31, ../sass/_landing.scss */
+#landing-page-container .section .ldg-imgs-container * {
+  margin-bottom: 0.4em;
+}
+/* line 36, ../sass/_landing.scss */
+#landing-page-container .section .ldg-img {
+  min-height: 75%;
+  min-width: 100%;
+}
+/* line 40, ../sass/_landing.scss */
+#landing-page-container .section .ldg-img img {
+  width: 100%;
+}
+/* line 46, ../sass/_landing.scss */
+#landing-page-container .section#first {
+  justify-content: center;
+}
+/* line 49, ../sass/_landing.scss */
+#landing-page-container .section#first .ldg-blurb-container {
+  flex-flow: column nowrap;
+  border: 3px solid;
+  align-self: center;
+  min-width: 45%;
+  min-height: 50vh;
+}
+/* line 57, ../sass/_landing.scss */
+#landing-page-container .section#first .ldg-blurb {
+  margin-bottom: 1em;
+  text-align: center;
+  align-self: center;
+}
+/* line 63, ../sass/_landing.scss */
+#landing-page-container .section#first button.sign-up {
+  height: 3.5em;
+}
+/* line 68, ../sass/_landing.scss */
+#landing-page-container .section#second {
+  justify-content: space-between;
+}
+/* line 71, ../sass/_landing.scss */
+#landing-page-container .section#second #img-nav {
+  width: 60%;
+  text-align: center;
+}
+/* line 77, ../sass/_landing.scss */
+#landing-page-container .section#third {
+  justify-content: space-between;
+}
+/* line 83, ../sass/_landing.scss */
+#landing-page-container #scroll-top {
+  position: fixed;
+  right: 1em;
+  bottom: 5.9em;
+  background: white;
+  border: 1px solid black;
+  border-radius: 100px;
+  width: 3em;
+  height: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

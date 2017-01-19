@@ -1,0 +1,96 @@
+$divider-color: black;
+
+#landing-page-container {
+  .section {
+    min-height: 80vh;
+    display: flex;
+    border-bottom: 2px solid $divider-color;
+    padding: 1em;
+    margin: 0 2em 2em;
+  
+    .ldg-blurb-container {
+      display: flex;
+      max-width: 35%;
+      padding: 0.5em;
+      font-size: 2em;
+      justify-content: space-between;
+    }
+
+    .ldg-blurb {
+      overflow: auto;
+    }
+  
+    .ldg-imgs-container {
+      max-height: 80%;
+      max-width: 60%;
+      padding: 0.5em;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+
+      * {
+        margin-bottom: 0.4em;
+      }
+    }
+  
+    .ldg-img {
+      min-height: 75%;
+      min-width: 100%;
+
+      img {
+        width: 100%;
+      }
+    }
+  
+
+    &#first {
+      justify-content: center;
+
+      .ldg-blurb-container {
+        flex-flow: column nowrap;
+        border: 3px solid;
+        align-self: center;
+        min-width: 45%;
+        min-height: 50vh;
+      }
+
+      .ldg-blurb {
+        margin-bottom: 1em;
+        text-align: center;
+        align-self: center;
+      }
+
+      button.sign-up {
+        height: 3.5em;
+      }
+    }
+
+    &#second {
+      justify-content: space-between;
+  
+      #img-nav {
+        width: 60%;
+        text-align: center;
+      }
+    }
+
+    &#third {
+      justify-content: space-between;
+    }
+  }
+
+
+  #scroll-top {
+    position: fixed;
+    right: 1em;
+    bottom: 5.9em;
+    background: white;
+    border: 1px solid black;
+    border-radius: 100px;
+    width: 3em;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
