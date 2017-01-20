@@ -32,6 +32,25 @@
       display: none;
     }
 
+    .company-name-container {
+      display: flex;
+      flex-flow: row nowrap;
+      
+      .company-summary {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        font-size: 0.6em;
+        align-items: center;
+        font-style: italic;
+        color: #afadad;
+
+        & > div {
+          margin-left: 2em;
+        }
+      }
+    }
+
     @media (min-device-width: $max-device-width + 1), (min-width: $max-width + 1) {
       .company-name {
         border-bottom: 3px solid;

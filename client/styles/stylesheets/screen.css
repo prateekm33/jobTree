@@ -463,19 +463,38 @@ nav#footer #nav-options {
   border-spacing: 0 2em;
   display: none;
 }
+/* line 35, ../sass/_home.scss */
+#home-container #large-jobs-view-container .company-name-container {
+  display: flex;
+  flex-flow: row nowrap;
+}
+/* line 39, ../sass/_home.scss */
+#home-container #large-jobs-view-container .company-name-container .company-summary {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  font-size: 0.6em;
+  align-items: center;
+  font-style: italic;
+  color: #afadad;
+}
+/* line 48, ../sass/_home.scss */
+#home-container #large-jobs-view-container .company-name-container .company-summary > div {
+  margin-left: 2em;
+}
 @media (min-device-width: 651px), (min-width: 651px) {
-  /* line 36, ../sass/_home.scss */
+  /* line 55, ../sass/_home.scss */
   #home-container #large-jobs-view-container .company-name {
     border-bottom: 3px solid;
     padding: 1em;
     border-color: #1d7117;
   }
-  /* line 41, ../sass/_home.scss */
+  /* line 60, ../sass/_home.scss */
   #home-container #large-jobs-view-container .company-name:focus {
     outline: none;
     background: white;
   }
-  /* line 45, ../sass/_home.scss */
+  /* line 64, ../sass/_home.scss */
   #home-container #large-jobs-view-container .company-name:hover, #home-container #large-jobs-view-container .company-name.active {
     cursor: pointer;
     border-color: #72cc6c;
@@ -483,11 +502,11 @@ nav#footer #nav-options {
     background: #96e891;
   }
 }
-/* line 56, ../sass/_home.scss */
+/* line 75, ../sass/_home.scss */
 #home-container #large-jobs-view-container .glyphicon-share-alt {
   transform: scaleY(-1) translateY(50%) translateX(100%);
 }
-/* line 60, ../sass/_home.scss */
+/* line 79, ../sass/_home.scss */
 #home-container #large-jobs-view-container .job-component td:first-child {
   border-bottom: 2px solid;
   width: 1.5em;
@@ -496,14 +515,14 @@ nav#footer #nav-options {
   transform: translateY(-45%);
   border-color: lightgrey;
 }
-/* line 69, ../sass/_home.scss */
+/* line 88, ../sass/_home.scss */
 #home-container #large-jobs-view-container .job-component td {
   position: relative;
   text-align: center;
   border-bottom: 1px dotted lightgrey;
   padding: 0.5em;
 }
-/* line 75, ../sass/_home.scss */
+/* line 94, ../sass/_home.scss */
 #home-container #large-jobs-view-container .job-component td .td-dividers {
   border: 1px solid lightcoral;
   width: 0;
@@ -512,7 +531,7 @@ nav#footer #nav-options {
   top: 0;
   right: 2%;
 }
-/* line 87, ../sass/_home.scss */
+/* line 106, ../sass/_home.scss */
 #home-container #small-jobs-view-container {
   display: flex;
   flex-flow: column nowrap;
@@ -522,12 +541,12 @@ nav#footer #nav-options {
   max-width: 80%;
 }
 @media (min-width: 650px) and (min-device-width: 650px) {
-  /* line 87, ../sass/_home.scss */
+  /* line 106, ../sass/_home.scss */
   #home-container #small-jobs-view-container {
     display: none;
   }
 }
-/* line 99, ../sass/_home.scss */
+/* line 118, ../sass/_home.scss */
 #home-container #small-jobs-view-container .company-name {
   width: 100%;
   background-color: white;
@@ -538,20 +557,20 @@ nav#footer #nav-options {
   color: black;
   border: 2px solid #483030;
 }
-/* line 109, ../sass/_home.scss */
+/* line 128, ../sass/_home.scss */
 #home-container #small-jobs-view-container .company-name:hover {
   background-color: rgba(179, 162, 162, 0.6);
 }
-/* line 113, ../sass/_home.scss */
+/* line 132, ../sass/_home.scss */
 #home-container #small-jobs-view-container .company-name:focus {
   outline: 3px solid #483030;
 }
-/* line 117, ../sass/_home.scss */
+/* line 136, ../sass/_home.scss */
 #home-container #small-jobs-view-container .company-name div {
   font-size: 0.6em;
   color: #5d5959;
 }
-/* line 123, ../sass/_home.scss */
+/* line 142, ../sass/_home.scss */
 #home-container #small-jobs-view-container .jobs-container {
   display: none;
 }

@@ -20,40 +20,14 @@ export default class LargeView extends React.Component {
   }
 
   render() {
-    // return (
-    //   <div className="company-container">
-    //     <div className="company-name-container">
-    //       <button onClick={this.showJobs} className="company-name btn btn-default">
-    //         {this.props.company.toUpperCase()}
-    //       </button>
-    //       <Summary jobs={this.props.jobs}/>
-    //     </div>
-    //     <table ref={el => this.table = el} className="company-jobs">
-    //       <tbody>
-    //         {
-    //           this.props.jobs.map((job,idx) => (
-    //             <Job key={idx} job={job} type={'table'}/>
-    //           ))
-    //         }
-    //       </tbody>
-    //     </table>
-    //   </div>
-    // )
-
     return (
       <div className="company-container">
-        <table className="company-name-container">
-          <tbody>
-            <tr>
-              <td>
-                <button onClick={this.showJobs} className="company-name btn btn-default">
-                  {this.props.company.toUpperCase()}
-                </button>
-              </td>
-              <Summary jobs={this.props.jobs}/>
-            </tr>
-          </tbody>
-        </table>
+        <div className="company-name-container">
+          <button onClick={this.showJobs} className="company-name btn btn-default">
+            {this.props.company.toUpperCase()}
+          </button>
+          <Summary jobs={this.props.jobs}/>
+        </div>
         <table ref={el => this.table = el} className="company-jobs">
           <tbody>
             {
@@ -74,12 +48,12 @@ function Summary(props) {
   ];
   const jobs = props.jobs;
   return (
-    <td className="company-summary">
+    <div className="company-summary">
       <div className="jobs-count"></div>
       {
         displayStats(statusCount(jobs))
       }
-    </td>
+    </div>
   )
 }
 
