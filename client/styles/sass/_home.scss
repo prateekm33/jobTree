@@ -34,15 +34,22 @@
 
     @media (min-device-width: $max-device-width + 1), (min-width: $max-width + 1) {
       .company-name {
-        font-size: 1.1em;
-        border-bottom: 2px solid;
+        border-bottom: 3px solid;
         padding: 1em;
-        border-color: #c7f3c7;// #ccb7b7
+        border-color:  #1d7117;
 
-        &:hover {
-          border-color: #72cc6c; // 
-          cursor: pointer;
+        &:focus {
+          outline: none;
+          background: white;
         }
+        &:hover, &.active {
+          cursor: pointer;
+          border-color: #72cc6c;
+          border-bottom: 3px solid #1d7117; // 
+          background: #96e891;
+        }
+        
+
       }
     }
 
