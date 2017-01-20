@@ -22,7 +22,7 @@ export default class Home extends React.Component {
   renderLargeView() {
     const arr = [];
     for (let company in jobs) {
-      arr.push(<LargeView key={company} jobs={jobs[company]} company={company}/>);
+      arr.push(<LargeView key={company} company={company} data={jobs[company]}/>);
     }
 
     return arr;

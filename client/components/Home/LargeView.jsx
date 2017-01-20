@@ -26,12 +26,12 @@ export default class LargeView extends React.Component {
           <button onClick={this.showJobs} className="company-name btn btn-default">
             {this.props.company.toUpperCase()}
           </button>
-          <Summary jobs={this.props.jobs}/>
+          <Summary data={this.props.data}/>
         </div>
         <table ref={el => this.table = el} className="company-jobs">
           <tbody>
             {
-              this.props.jobs.map((job,idx) => (
+              this.props.data.jobs.map((job,idx) => (
                 <Job key={idx} job={job} type={'table'}/>
               ))
             }
@@ -46,13 +46,14 @@ function Summary(props) {
   const statuses = [
     'APPLIED', 'PHONE SCREEN', 'ON SITE', 'REJECTED', 'OFFER'
   ];
-  const jobs = props.jobs;
+  const jobs = props.data.jobs;
   return (
     <div className="company-summary">
-      <div className="jobs-count"></div>
+      <div className="jobs-count"># of Jobs: {jobs.length}</div>
       {
         displayStats(statusCount(jobs))
       }
+      <div className="recruiter-info">P.O.C: {props.data.recruiter}</div>
     </div>
   )
 }
