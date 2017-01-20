@@ -1,6 +1,124 @@
 #home-container {
-  #jobs-view-container {
+  min-width: 85%;
+  background: white;
+
+  #home-title {
+    text-align: center;
+    margin-top: 1em;
+    font-size: 2em;
+  }
+
+  #large-jobs-view-container {
     min-height: 80vh;
-    background: white;
+    padding: 1em;
+    margin: 0 auto;
+    max-width: 80%;
+
+    @media (max-width: $max-width), (max-device-width: $max-device-width) {
+      display: none;
+    }
+
+    .company-container {
+      display: flex;
+      flex-flow: column nowrap;
+      margin-bottom: 1.5em;
+    }
+
+    .company-jobs {
+      margin-left: 2.5em;
+      font-size: 0.75em;
+      width: 90%;
+      border-collapse: initial;
+      border-spacing: 0 2em;
+      display: none;
+    }
+
+    @media (min-device-width: $max-device-width + 1), (min-width: $max-width + 1) {
+      .company-name {
+        font-size: 14px;
+        border-bottom: 2px solid;
+        max-width: 120px;
+        padding: 1em;
+        border-color: #c7f3c7;// #ccb7b7
+
+        &:hover {
+          border-color: #72cc6c; // 
+          cursor: pointer;
+        }
+      }
+    }
+
+    .glyphicon-share-alt {
+      transform: scaleY(-1) translateY(50%) translateX(100%);
+    }
+
+    .job-component td:first-child {
+      border-bottom: 2px solid;
+      width: 1.5em;
+      border-left: 2px solid;
+      height: 1.5em;
+      transform: translateY(-45%);
+      border-color: lightgrey;
+    }
+
+    .job-component td {
+      position: relative;
+      text-align: center;
+      border-bottom: 1px dotted lightgrey;
+      padding: 0.5em;
+      
+      .td-dividers {
+        border: 1px solid lightcoral;
+        width: 0;
+        height: 90%;
+        position: absolute;
+        top: 0;
+        right: 2%;
+      }
+    }
+
+  }
+
+  #small-jobs-view-container {
+    @media (min-width: $max-width) and (min-device-width: $max-device-width) {
+      display: none;
+    }
+
+    display: flex;
+    flex-flow: column nowrap;
+    min-height: 80vh;
+    padding: 1em;
+    margin: 0 auto;
+    max-width: 80%;
+
+    .company-name {
+      width: 100%;
+      background-color: rgb(255, 255, 255); //rgba(179, 162, 162, 0.6)
+      margin-bottom: 3em;
+      padding: 1em;
+      font-size: 1em;
+      font-weight: bold;
+      color: black;
+      border-color: #483030;
+      border: 2px solid;
+
+      &:hover {
+        background-color: rgba(179, 162, 162, 0.6);
+      }
+
+      &:focus {
+        outline: 3px solid #483030;
+      }
+
+      div {
+        font-size: 0.6em;
+        color: #5d5959;
+      }
+    }
+
+    .jobs-container {
+      display: none;
+    }
+    
   }
 }

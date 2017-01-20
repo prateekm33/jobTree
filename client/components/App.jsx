@@ -5,7 +5,31 @@ import Footer from './Footer';
 
 export default class App extends React.Component {
   constructor() {
-    super()
+    super();
+    this.displayMenuOptions = this.displayMenuOptions.bind(this);
+
+    this.state = {
+      menuOptions: [
+        <Link key={1} to='/about'><div className="menu-highlight"></div>About</Link>,
+        <Link key={2} to='/careers'><div className="menu-highlight"></div>Careers</Link>,
+        <Link key={3} to='/home'><div className="menu-highlight"></div>temp for Home</Link>,
+        <Link key={4} to='/careers'><div className="menu-highlight"></div>Another Pg</Link>,
+        <Link key={5} to='/careers'><div className="menu-highlight"></div>Yet Another</Link>
+      ]
+    }
+  }
+
+  displayMenuOptions(evt) {
+
+    const hamburger = this.hamburger;
+    if (evt.target !== hamburger && evt.target.tagName !== 'A') return;
+
+    const menu = hamburger.querySelector('#menu-options');  
+
+    const currDisplay = window.getComputedStyle(menu).display;
+    if (currDisplay === 'none') menu.style.display = 'flex';
+    else menu.style.display = 'none';
+
   }
 
   render() {
@@ -16,18 +40,18 @@ export default class App extends React.Component {
             <Link to="/" id="app-logo">JobTree</Link>
 
             <div id='main-nav-options'>
-              <Link to='/about'><div className="menu-highlight"></div>About</Link>
-              <Link to='/careers'><div className="menu-highlight"></div>Careers</Link>
-              <Link to='/home'><div className="menu-highlight"></div>temp for Home</Link>
-              <Link to='/careers'><div className="menu-highlight"></div>Another Pg</Link>
-              <Link to='/careers'><div className="menu-highlight"></div>Yet Another</Link>
+              { this.state.menuOptions }
             </div>
 
             <div id='auth-buttons'>
               <Link to="/signup"><button className='sign-up btn btn-primary'>Sign Up</button></Link>
               <Link to="/login" id="login-link"><button className='log-in btn btn-default'>Log In</button></Link>
             </div>
-            <div id='hamburger' className="glyphicon glyphicon-menu-hamburger"></div>
+            <div id='hamburger' ref={el => this.hamburger = el} onClick={this.displayMenuOptions} className="glyphicon glyphicon-menu-hamburger">
+              <div id="menu-options">
+                { this.state.menuOptions }
+              </div>
+            </div>
           </div>
         </nav>
 

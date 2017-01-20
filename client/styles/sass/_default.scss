@@ -52,7 +52,7 @@ nav#header {
     font-size: 0.45em;
     display: flex;
     align-self: flex-end;
-    padding-bottom: 0.4em;
+    padding-bottom: 0.8em;
     justify-content: space-around;
     height: 100%;
   
@@ -113,10 +113,45 @@ nav#header {
 
   #hamburger {
     display: none;
-    color: white;
-    margin-left: 0.5em;
+
+    #menu-options {
+      display: none;
+    }
+
     @media (max-width: $max-width), (max-device-width: $max-device-width) {
       display: flex;
+      color: white;
+      margin-left: 0.5em;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      #menu-options {
+        position: absolute;
+        font-size: 0.5em;
+        flex-flow: column nowrap;
+        top: 35px;
+        right: -1em;
+        border: 4px solid cadetblue;
+        padding: 1em;
+        min-width: 12em;
+        background: white;
+
+        a {
+          margin-bottom: 0.5em;
+          border-bottom: 2px solid lightblue;
+          padding: 0.7em;
+          
+          &:hover {
+            background: rgba(173, 216, 230, 0.3);
+          }
+
+          &:hover, &:active, &:hover:active, &:focus {
+            text-decoration: none;
+          }
+        }
+      }
     }
   }
 }

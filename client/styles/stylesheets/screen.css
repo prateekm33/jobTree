@@ -126,11 +126,11 @@ nav#header #main-nav-options {
   font-size: 0.45em;
   display: flex;
   align-self: flex-end;
-  padding-bottom: 0.4em;
+  padding-bottom: 0.8em;
   justify-content: space-around;
   height: 100%;
 }
-@media (max-width: 650px), (max-device-width: 500px) {
+@media (max-width: 650px), (max-device-width: 650px) {
   /* line 50, ../sass/_default.scss */
   nav#header #main-nav-options {
     display: none;
@@ -179,7 +179,7 @@ nav#header #auth-buttons {
 nav#header #auth-buttons a {
   margin-left: 0.5em;
 }
-@media (max-width: 650px), (max-device-width: 500px) {
+@media (max-width: 650px), (max-device-width: 650px) {
   /* line 103, ../sass/_default.scss */
   nav#header #auth-buttons #login-link {
     display: none;
@@ -193,17 +193,51 @@ nav#header #app-logo:hover, nav#header #app-logo:hover:active, nav#header #app-l
 /* line 114, ../sass/_default.scss */
 nav#header #hamburger {
   display: none;
-  color: white;
-  margin-left: 0.5em;
 }
-@media (max-width: 650px), (max-device-width: 500px) {
+/* line 117, ../sass/_default.scss */
+nav#header #hamburger #menu-options {
+  display: none;
+}
+@media (max-width: 650px), (max-device-width: 650px) {
   /* line 114, ../sass/_default.scss */
   nav#header #hamburger {
     display: flex;
+    color: white;
+    margin-left: 0.5em;
+  }
+  /* line 126, ../sass/_default.scss */
+  nav#header #hamburger:hover {
+    cursor: pointer;
+  }
+  /* line 130, ../sass/_default.scss */
+  nav#header #hamburger #menu-options {
+    position: absolute;
+    font-size: 0.5em;
+    flex-flow: column nowrap;
+    top: 35px;
+    right: -1em;
+    border: 4px solid cadetblue;
+    padding: 1em;
+    min-width: 12em;
+    background: white;
+  }
+  /* line 141, ../sass/_default.scss */
+  nav#header #hamburger #menu-options a {
+    margin-bottom: 0.5em;
+    border-bottom: 2px solid lightblue;
+    padding: 0.7em;
+  }
+  /* line 146, ../sass/_default.scss */
+  nav#header #hamburger #menu-options a:hover {
+    background: rgba(173, 216, 230, 0.3);
+  }
+  /* line 150, ../sass/_default.scss */
+  nav#header #hamburger #menu-options a:hover, nav#header #hamburger #menu-options a:active, nav#header #hamburger #menu-options a:hover:active, nav#header #hamburger #menu-options a:focus {
+    text-decoration: none;
   }
 }
 
-/* line 124, ../sass/_default.scss */
+/* line 159, ../sass/_default.scss */
 nav#footer {
   min-height: 3.5em;
   position: absolute;
@@ -214,7 +248,7 @@ nav#footer {
   border-top-right-radius: 40px;
   background-color: white;
 }
-/* line 134, ../sass/_default.scss */
+/* line 169, ../sass/_default.scss */
 nav#footer #nav-options {
   display: flex;
   flex-flow: row nowrap;
@@ -224,7 +258,7 @@ nav#footer #nav-options {
   height: 3.5em;
 }
 
-/* line 144, ../sass/_default.scss */
+/* line 179, ../sass/_default.scss */
 #content-container {
   padding-top: 60px;
   display: flex;
@@ -276,7 +310,7 @@ nav#footer #nav-options {
   align-self: center;
   min-height: 50vh;
 }
-@media (min-width: 651px) and (min-device-width: 501px) {
+@media (min-width: 651px) and (min-device-width: 651px) {
   /* line 43, ../sass/_landing.scss */
   #landing-page-container .section#first .ldg-blurb-container {
     max-width: 60%;
@@ -302,7 +336,7 @@ nav#footer #nav-options {
   width: 60%;
   text-align: center;
 }
-@media (max-width: 650px), (500px: 500px) {
+@media (max-width: 650px), (650px: 650px) {
   /* line 67, ../sass/_landing.scss */
   #landing-page-container .section#second {
     flex-flow: column nowrap;
@@ -312,7 +346,7 @@ nav#footer #nav-options {
 #landing-page-container .section#third {
   justify-content: space-between;
 }
-@media (max-width: 650px), (500px: 500px) {
+@media (max-width: 650px), (650px: 650px) {
   /* line 80, ../sass/_landing.scss */
   #landing-page-container .section#third {
     flex-flow: column nowrap;
@@ -352,7 +386,7 @@ nav#footer #nav-options {
   cursor: pointer;
 }
 
-@media (max-width: 650px), (max-device-width: 500px) {
+@media (max-width: 650px), (max-device-width: 650px) {
   /* line 124, ../sass/_landing.scss */
   #landing-page-container .section {
     justify-content: column nowrap;
@@ -391,8 +425,130 @@ nav#footer #nav-options {
   width: 100%;
 }
 
-/* line 2, ../sass/_home.scss */
-#home-container #jobs-view-container {
-  min-height: 80vh;
+/* line 1, ../sass/_home.scss */
+#home-container {
+  min-width: 85%;
   background: white;
+}
+/* line 5, ../sass/_home.scss */
+#home-container #home-title {
+  text-align: center;
+  margin-top: 1em;
+  font-size: 2em;
+}
+/* line 11, ../sass/_home.scss */
+#home-container #large-jobs-view-container {
+  min-height: 80vh;
+  padding: 1em;
+  margin: 0 auto;
+  max-width: 80%;
+}
+@media (max-width: 650px), (max-device-width: 650px) {
+  /* line 11, ../sass/_home.scss */
+  #home-container #large-jobs-view-container {
+    display: none;
+  }
+}
+/* line 21, ../sass/_home.scss */
+#home-container #large-jobs-view-container .company-container {
+  display: flex;
+  flex-flow: column nowrap;
+  margin-bottom: 1.5em;
+}
+/* line 27, ../sass/_home.scss */
+#home-container #large-jobs-view-container .company-jobs {
+  margin-left: 2.5em;
+  font-size: 0.75em;
+  width: 90%;
+  border-collapse: initial;
+  border-spacing: 0 2em;
+  display: none;
+}
+@media (min-device-width: 651px), (min-width: 651px) {
+  /* line 37, ../sass/_home.scss */
+  #home-container #large-jobs-view-container .company-name {
+    font-size: 14px;
+    border-bottom: 2px solid;
+    max-width: 120px;
+    padding: 1em;
+    border-color: #c7f3c7;
+  }
+  /* line 44, ../sass/_home.scss */
+  #home-container #large-jobs-view-container .company-name:hover {
+    border-color: #72cc6c;
+    cursor: pointer;
+  }
+}
+/* line 51, ../sass/_home.scss */
+#home-container #large-jobs-view-container .glyphicon-share-alt {
+  transform: scaleY(-1) translateY(50%) translateX(100%);
+}
+/* line 55, ../sass/_home.scss */
+#home-container #large-jobs-view-container .job-component td:first-child {
+  border-bottom: 2px solid;
+  width: 1.5em;
+  border-left: 2px solid;
+  height: 1.5em;
+  transform: translateY(-45%);
+  border-color: lightgrey;
+}
+/* line 64, ../sass/_home.scss */
+#home-container #large-jobs-view-container .job-component td {
+  position: relative;
+  text-align: center;
+  border-bottom: 1px dotted lightgrey;
+  padding: 0.5em;
+}
+/* line 70, ../sass/_home.scss */
+#home-container #large-jobs-view-container .job-component td .td-dividers {
+  border: 1px solid lightcoral;
+  width: 0;
+  height: 90%;
+  position: absolute;
+  top: 0;
+  right: 2%;
+}
+/* line 82, ../sass/_home.scss */
+#home-container #small-jobs-view-container {
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 80vh;
+  padding: 1em;
+  margin: 0 auto;
+  max-width: 80%;
+}
+@media (min-width: 650px) and (min-device-width: 650px) {
+  /* line 82, ../sass/_home.scss */
+  #home-container #small-jobs-view-container {
+    display: none;
+  }
+}
+/* line 94, ../sass/_home.scss */
+#home-container #small-jobs-view-container .company-name {
+  width: 100%;
+  background-color: white;
+  margin-bottom: 3em;
+  padding: 1em;
+  font-size: 1em;
+  font-weight: bold;
+  color: black;
+  border-color: #483030;
+  border: 2px solid;
+}
+/* line 105, ../sass/_home.scss */
+#home-container #small-jobs-view-container .company-name:hover {
+  background-color: rgba(179, 162, 162, 0.6);
+}
+/* line 109, ../sass/_home.scss */
+#home-container #small-jobs-view-container .company-name:focus {
+  outline: 3px solid #483030;
+}
+/* line 113, ../sass/_home.scss */
+#home-container #small-jobs-view-container .company-name div {
+  font-size: 0.6em;
+  color: #5d5959;
+}
+/* line 119, ../sass/_home.scss */
+#home-container #small-jobs-view-container .jobs-container {
+  display: none;
 }

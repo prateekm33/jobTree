@@ -15,7 +15,7 @@ export default class LandingPage extends React.Component {
     window.addEventListener('scroll', this.displayScrollTop)
   }
 
-  componentWillUnMount() {
+  componentWillUnmount() {
     window.removeEventListener('scroll', this.displayScrollTop)
   }
 
