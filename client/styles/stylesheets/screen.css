@@ -70,7 +70,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* line 3, ../sass/_default.scss */
 body {
   font-size: 20px;
-  min-width: 450px;
+  min-width: 300px;
   background-color: rgba(201, 243, 199, 0.3);
 }
 
@@ -123,26 +123,42 @@ nav#header #app-logo {
 /* line 50, ../sass/_default.scss */
 nav#header #main-nav-options {
   flex-grow: 2;
-  font-size: 0.6em;
+  font-size: 0.45em;
   display: flex;
   align-self: flex-end;
   padding-bottom: 0.4em;
   justify-content: space-around;
+  height: 100%;
 }
-/* line 58, ../sass/_default.scss */
+@media (max-width: 650px), (max-device-width: 500px) {
+  /* line 50, ../sass/_default.scss */
+  nav#header #main-nav-options {
+    display: none;
+  }
+}
+/* line 62, ../sass/_default.scss */
 nav#header #main-nav-options a {
   color: white;
+  margin-right: 0.45em;
+  margin-left: 0.45em;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
 }
-/* line 60, ../sass/_default.scss */
+/* line 69, ../sass/_default.scss */
 nav#header #main-nav-options a:hover {
   text-decoration: none;
 }
-/* line 62, ../sass/_default.scss */
+/* line 71, ../sass/_default.scss */
 nav#header #main-nav-options a:hover .menu-highlight {
   visibility: visible;
   opacity: 1;
 }
-/* line 68, ../sass/_default.scss */
+/* line 77, ../sass/_default.scss */
+nav#header #main-nav-options a:hover, nav#header #main-nav-options a:active, nav#header #main-nav-options a:hover:active, nav#header #main-nav-options a:focus {
+  text-decoration: none;
+}
+/* line 81, ../sass/_default.scss */
 nav#header #main-nav-options a .menu-highlight {
   width: 100%;
   border: 3px solid white;
@@ -150,20 +166,44 @@ nav#header #main-nav-options a .menu-highlight {
   visibility: hidden;
   opacity: 0;
   transition: all 0.2s ease-in-out;
+  position: absolute;
+  top: 0;
 }
-/* line 79, ../sass/_default.scss */
+/* line 94, ../sass/_default.scss */
 nav#header #auth-buttons {
   flex-grow: 2;
   justify-content: flex-end;
   display: flex;
 }
-/* line 85, ../sass/_default.scss */
+/* line 98, ../sass/_default.scss */
+nav#header #auth-buttons a {
+  margin-left: 0.5em;
+}
+@media (max-width: 650px), (max-device-width: 500px) {
+  /* line 103, ../sass/_default.scss */
+  nav#header #auth-buttons #login-link {
+    display: none;
+  }
+}
+/* line 109, ../sass/_default.scss */
 nav#header #app-logo:hover, nav#header #app-logo:hover:active, nav#header #app-logo:active {
   text-decoration: none;
   color: #3da945;
 }
+/* line 114, ../sass/_default.scss */
+nav#header #hamburger {
+  display: none;
+  color: white;
+  margin-left: 0.5em;
+}
+@media (max-width: 650px), (max-device-width: 500px) {
+  /* line 114, ../sass/_default.scss */
+  nav#header #hamburger {
+    display: flex;
+  }
+}
 
-/* line 91, ../sass/_default.scss */
+/* line 124, ../sass/_default.scss */
 nav#footer {
   min-height: 3.5em;
   position: absolute;
@@ -174,7 +214,7 @@ nav#footer {
   border-top-right-radius: 40px;
   background-color: white;
 }
-/* line 101, ../sass/_default.scss */
+/* line 134, ../sass/_default.scss */
 nav#footer #nav-options {
   display: flex;
   flex-flow: row nowrap;
@@ -184,9 +224,11 @@ nav#footer #nav-options {
   height: 3.5em;
 }
 
-/* line 111, ../sass/_default.scss */
+/* line 144, ../sass/_default.scss */
 #content-container {
   padding-top: 60px;
+  display: flex;
+  justify-content: center;
 }
 
 /* line 4, ../sass/_landing.scss */
@@ -322,9 +364,10 @@ nav#footer #nav-options {
   justify-content: center;
   align-items: center;
   min-height: 60vh;
+  min-width: 100%;
 }
 
-/* line 8, ../sass/_authForms.scss */
+/* line 9, ../sass/_authForms.scss */
 #signup-form, #login-form {
   min-width: 60%;
   display: flex;
@@ -335,7 +378,7 @@ nav#footer #nav-options {
   background: white;
 }
 
-/* line 18, ../sass/_authForms.scss */
+/* line 19, ../sass/_authForms.scss */
 .form-element {
   margin: 0.8em;
   min-width: 70%;
@@ -343,7 +386,13 @@ nav#footer #nav-options {
   flex-flow: row nowrap;
   justify-content: space-between;
 }
-/* line 25, ../sass/_authForms.scss */
+/* line 26, ../sass/_authForms.scss */
 .form-element input {
   width: 100%;
+}
+
+/* line 2, ../sass/_home.scss */
+#home-container #jobs-view-container {
+  min-height: 80vh;
+  background: white;
 }

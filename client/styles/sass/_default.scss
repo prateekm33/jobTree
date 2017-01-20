@@ -49,20 +49,33 @@ nav#header {
   }
   #main-nav-options {
     flex-grow: 2;
-    font-size: 0.6em;
+    font-size: 0.45em;
     display: flex;
     align-self: flex-end;
     padding-bottom: 0.4em;
     justify-content: space-around;
-
+    height: 100%;
+  
+    @media (max-width: $max-width), (max-device-width: $max-device-width) {
+      display: none;
+    }
     a {
       color: white;
+      margin-right: 0.45em;
+      margin-left: 0.45em;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
       &:hover {
         text-decoration: none;
         & .menu-highlight {
           visibility: visible;
           opacity: 1;
         }
+      }
+
+      &:hover, &:active, &:hover:active, &:focus {
+        text-decoration: none;
       }
 
       .menu-highlight {
@@ -72,6 +85,8 @@ nav#header {
         visibility: hidden;
         opacity: 0;
         transition: all 0.2s ease-in-out;
+        position: absolute;
+        top: 0;
       }
     }
   }
@@ -80,11 +95,29 @@ nav#header {
     flex-grow: 2;
     justify-content: flex-end;
     display: flex;
+    a {
+      margin-left: 0.5em;
+    }
+  
+      @media (max-width: $max-width), (max-device-width: $max-device-width) {
+        #login-link {
+          display: none;
+        }
+      }
   }
   
   #app-logo:hover, #app-logo:hover:active, #app-logo:active {
     text-decoration: none;
     color: #3da945;
+  }
+
+  #hamburger {
+    display: none;
+    color: white;
+    margin-left: 0.5em;
+    @media (max-width: $max-width), (max-device-width: $max-device-width) {
+      display: flex;
+    }
   }
 }
 
@@ -110,8 +143,11 @@ nav#footer {
 
 #content-container {
   padding-top: $nav-height + 10px;
+  display: flex;
+  justify-content: center;
 }
 
 
 @import "landing";
 @import "authForms";
+@import "home";

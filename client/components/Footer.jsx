@@ -12,9 +12,10 @@ export default class Footer extends React.Component {
       <nav id='footer'>
         <div id='nav-options'>
           <Link to='/about'>About</Link>
+          <Link to='/careers'>Careers</Link>
+          <Link to='/contact'>Contact</Link>
           <Link to='/signup'>Sign Up</Link>
           <Link to='/login'>Log In</Link>
-          <Link to='/careers'>Careers</Link>
         </div>
       </nav>
     )
