@@ -8,6 +8,10 @@ export default class AuthForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    this.usernameInput.focus();
+  }
+
   handleSubmit(evt) {
     evt.preventDefault();
 
@@ -21,7 +25,7 @@ export default class AuthForm extends React.Component {
           <Link to={this.props.otherForm.link}>{this.props.otherForm.name}</Link>
         </div>
         <div className="form-element">
-          <input className="form-control" placeholder="Username / Email" type="text"/>
+          <input ref={el => this.usernameInput = el} className="form-control" placeholder="Username / Email" type="text"/>
         </div>
         <div className="form-element"> 
           <input className="form-control" placeholder="Password" type="password"/>

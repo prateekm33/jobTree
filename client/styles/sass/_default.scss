@@ -45,6 +45,41 @@ nav#header {
   
   #app-logo {
     color: #8eea88;
+    flex-grow: 0.5;
+  }
+  #main-nav-options {
+    flex-grow: 2;
+    font-size: 0.6em;
+    display: flex;
+    align-self: flex-end;
+    padding-bottom: 0.4em;
+    justify-content: space-around;
+
+    a {
+      color: white;
+      &:hover {
+        text-decoration: none;
+        & .menu-highlight {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+
+      .menu-highlight {
+        width: 100%;
+        border: 3px solid white;
+        margin-bottom: 0.6em;
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.2s ease-in-out;
+      }
+    }
+  }
+
+  #auth-buttons {
+    flex-grow: 2;
+    justify-content: flex-end;
+    display: flex;
   }
   
   #app-logo:hover, #app-logo:hover:active, #app-logo:active {

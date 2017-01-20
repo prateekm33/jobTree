@@ -8,6 +8,26 @@ export default class LandingPage extends React.Component {
   constructor() {
     super();
     this.scrollTop = this.scrollTop.bind(this);
+    this.displayScrollTop = this.displayScrollTop.bind(this)
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.displayScrollTop)
+  }
+
+  componentWillUnMount() {
+    window.removeEventListener('scroll', this.displayScrollTop)
+  }
+
+  displayScrollTop() {
+    if (document.body.scrollTop > 300) {
+      this.scrollTopDiv.style.visibility = 'visible';
+      this.scrollTopDiv.style.opacity = '1';
+    }
+    else {
+      this.scrollTopDiv.style.visibility = 'hidden';
+      this.scrollTopDiv.style.opacity = '0';
+    }
   }
 
   scrollTop() {
@@ -20,7 +40,7 @@ export default class LandingPage extends React.Component {
         <SectionOne />
         <SectionTwo />
         <SectionThree />
-        <div onClick={this.scrollTop} id='scroll-top'>
+        <div ref={el => this.scrollTopDiv = el} onClick={this.scrollTop} id='scroll-top'>
           <div className="glyphicon glyphicon-chevron-up"></div>
         </div>
       </div>
