@@ -34,9 +34,8 @@
 
     @media (min-device-width: $max-device-width + 1), (min-width: $max-width + 1) {
       .company-name {
-        font-size: 14px;
+        font-size: 1.1em;
         border-bottom: 2px solid;
-        max-width: 120px;
         padding: 1em;
         border-color: #c7f3c7;// #ccb7b7
 
@@ -98,8 +97,7 @@
       font-size: 1em;
       font-weight: bold;
       color: black;
-      border-color: #483030;
-      border: 2px solid;
+      border: 2px solid #483030;
 
       &:hover {
         background-color: rgba(179, 162, 162, 0.6);
