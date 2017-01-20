@@ -71,27 +71,39 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 body {
   font-size: 20px;
   min-width: 450px;
+  background-color: rgba(201, 243, 199, 0.3);
 }
 
-/* line 8, ../sass/_default.scss */
+/* line 9, ../sass/_default.scss */
 #react-app {
   position: relative;
   min-height: 90vh;
 }
 
-/* line 13, ../sass/_default.scss */
+/* line 14, ../sass/_default.scss */
+.btn-primary {
+  background-color: #72cc6c;
+  border-color: #72cc6c;
+}
+/* line 17, ../sass/_default.scss */
+.btn-primary:hover, .btn-primary:active, .btn-primary:hover:active, .btn-primary:focus, .btn-primary:active:focus {
+  background-color: #3da945;
+  border-color: #3da945;
+}
+
+/* line 23, ../sass/_default.scss */
 nav#header {
   position: fixed;
   z-index: 1000;
   width: 100%;
   height: 50px;
-  border-bottom: 3px solid #e4e43f;
+  border-bottom: 3px solid #483030;
   padding-bottom: 0.1em;
   background: white;
 }
-/* line 22, ../sass/_default.scss */
+/* line 32, ../sass/_default.scss */
 nav#header #inner-nav-div {
-  border-bottom: 3px solid blue;
+  border-bottom: 3px solid #72cc6c;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -101,25 +113,30 @@ nav#header #inner-nav-div {
   font-size: 1.5em;
   padding-left: 0.5em;
   padding-right: 0.5em;
+  background: rgba(72, 48, 48, 0.8);
+}
+/* line 46, ../sass/_default.scss */
+nav#header #app-logo {
+  color: #8eea88;
+}
+/* line 50, ../sass/_default.scss */
+nav#header #app-logo:hover, nav#header #app-logo:hover:active, nav#header #app-logo:active {
+  text-decoration: none;
+  color: #3da945;
 }
 
-/* line 36, ../sass/_default.scss */
+/* line 56, ../sass/_default.scss */
 nav#footer {
   min-height: 3.5em;
   position: absolute;
   bottom: -4.5em;
   width: 100%;
-  border-top: 4px solid lightgrey;
+  border-top: 4px solid green;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
+  background-color: white;
 }
-/* line 45, ../sass/_default.scss */
-nav#footer #footer-divider {
-  width: 99%;
-  border-bottom: 2px solid lightgrey;
-  margin: auto;
-}
-/* line 51, ../sass/_default.scss */
+/* line 66, ../sass/_default.scss */
 nav#footer #nav-options {
   display: flex;
   flex-flow: row nowrap;
@@ -129,7 +146,7 @@ nav#footer #nav-options {
   height: 3.5em;
 }
 
-/* line 61, ../sass/_default.scss */
+/* line 76, ../sass/_default.scss */
 #content-container {
   padding-top: 60px;
 }
@@ -140,88 +157,152 @@ nav#footer #nav-options {
   display: flex;
   border-bottom: 2px solid black;
   padding: 1em;
-  margin: 0 2em 2em;
+  margin: 2em;
+  border: 2px solid #6d5959;
+  background: white;
 }
-/* line 11, ../sass/_landing.scss */
+/* line 13, ../sass/_landing.scss */
 #landing-page-container .section .ldg-blurb-container {
   display: flex;
-  max-width: 35%;
+  flex: 1;
   padding: 0.5em;
   font-size: 2em;
   justify-content: space-between;
 }
-/* line 19, ../sass/_landing.scss */
-#landing-page-container .section .ldg-blurb {
-  overflow: auto;
-}
-/* line 23, ../sass/_landing.scss */
+/* line 21, ../sass/_landing.scss */
 #landing-page-container .section .ldg-imgs-container {
-  max-height: 80%;
-  max-width: 60%;
   padding: 0.5em;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  flex: 2;
 }
-/* line 31, ../sass/_landing.scss */
+/* line 28, ../sass/_landing.scss */
 #landing-page-container .section .ldg-imgs-container * {
   margin-bottom: 0.4em;
 }
-/* line 36, ../sass/_landing.scss */
-#landing-page-container .section .ldg-img {
-  min-height: 75%;
-  min-width: 100%;
-}
-/* line 40, ../sass/_landing.scss */
+/* line 34, ../sass/_landing.scss */
 #landing-page-container .section .ldg-img img {
   width: 100%;
 }
-/* line 46, ../sass/_landing.scss */
+/* line 40, ../sass/_landing.scss */
 #landing-page-container .section#first {
   justify-content: center;
 }
-/* line 49, ../sass/_landing.scss */
+/* line 43, ../sass/_landing.scss */
 #landing-page-container .section#first .ldg-blurb-container {
   flex-flow: column nowrap;
   border: 3px solid;
   align-self: center;
-  min-width: 45%;
   min-height: 50vh;
 }
-/* line 57, ../sass/_landing.scss */
+@media (min-width: 651px) and (min-device-width: 501px) {
+  /* line 43, ../sass/_landing.scss */
+  #landing-page-container .section#first .ldg-blurb-container {
+    max-width: 60%;
+  }
+}
+/* line 55, ../sass/_landing.scss */
 #landing-page-container .section#first .ldg-blurb {
   margin-bottom: 1em;
   text-align: center;
   align-self: center;
 }
-/* line 63, ../sass/_landing.scss */
+/* line 61, ../sass/_landing.scss */
 #landing-page-container .section#first button.sign-up {
   height: 3.5em;
+  width: 100%;
 }
-/* line 68, ../sass/_landing.scss */
+/* line 67, ../sass/_landing.scss */
 #landing-page-container .section#second {
   justify-content: space-between;
 }
-/* line 71, ../sass/_landing.scss */
+/* line 70, ../sass/_landing.scss */
 #landing-page-container .section#second #img-nav {
   width: 60%;
   text-align: center;
 }
-/* line 77, ../sass/_landing.scss */
+@media (max-width: 650px), (500px: 500px) {
+  /* line 67, ../sass/_landing.scss */
+  #landing-page-container .section#second {
+    flex-flow: column nowrap;
+  }
+}
+/* line 80, ../sass/_landing.scss */
 #landing-page-container .section#third {
   justify-content: space-between;
 }
-/* line 83, ../sass/_landing.scss */
+@media (max-width: 650px), (500px: 500px) {
+  /* line 80, ../sass/_landing.scss */
+  #landing-page-container .section#third {
+    flex-flow: column nowrap;
+  }
+  /* line 84, ../sass/_landing.scss */
+  #landing-page-container .section#third .ldg-imgs-container {
+    order: 1;
+  }
+  /* line 87, ../sass/_landing.scss */
+  #landing-page-container .section#third .ldg-blurb-container {
+    order: 2;
+  }
+}
+/* line 95, ../sass/_landing.scss */
 #landing-page-container #scroll-top {
   position: fixed;
   right: 1em;
   bottom: 5.9em;
-  background: white;
-  border: 1px solid black;
+  background: #c9f3c7;
   border-radius: 100px;
   width: 3em;
   height: 3em;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: brown;
+  border-right: 2px solid brown;
+  border-left: 2px solid green;
+  border-top: 2px solid brown;
+  border-bottom: 2px solid green;
+}
+/* line 112, ../sass/_landing.scss */
+#landing-page-container #scroll-top:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 650px), (max-device-width: 500px) {
+  /* line 120, ../sass/_landing.scss */
+  #landing-page-container .section {
+    justify-content: column nowrap;
+  }
+}
+/* line 1, ../sass/_authForms.scss */
+#signup-container, #login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+/* line 8, ../sass/_authForms.scss */
+#signup-form, #login-form {
+  min-width: 60%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding: 2em;
+  border: 2px solid brown;
+  background: white;
+}
+
+/* line 18, ../sass/_authForms.scss */
+.form-element {
+  margin: 0.8em;
+  min-width: 70%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+/* line 25, ../sass/_authForms.scss */
+.form-element input {
+  width: 100%;
 }

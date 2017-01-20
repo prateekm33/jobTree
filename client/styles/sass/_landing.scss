@@ -6,27 +6,24 @@ $divider-color: black;
     display: flex;
     border-bottom: 2px solid $divider-color;
     padding: 1em;
-    margin: 0 2em 2em;
-  
+    margin: 2em;
+    border: 2px solid #6d5959;
+    background: white;
+
     .ldg-blurb-container {
       display: flex;
-      max-width: 35%;
+      flex: 1;
       padding: 0.5em;
       font-size: 2em;
       justify-content: space-between;
     }
-
-    .ldg-blurb {
-      overflow: auto;
-    }
   
     .ldg-imgs-container {
-      max-height: 80%;
-      max-width: 60%;
       padding: 0.5em;
       display: flex;
       flex-flow: column nowrap;
       align-items: center;
+      flex: 2;
 
       * {
         margin-bottom: 0.4em;
@@ -34,9 +31,6 @@ $divider-color: black;
     }
   
     .ldg-img {
-      min-height: 75%;
-      min-width: 100%;
-
       img {
         width: 100%;
       }
@@ -50,9 +44,13 @@ $divider-color: black;
         flex-flow: column nowrap;
         border: 3px solid;
         align-self: center;
-        min-width: 45%;
+
+        @media (min-width: $max-width + 1) and (min-device-width: $max-device-width + 1) {
+          max-width: 60%;
+        }
         min-height: 50vh;
       }
+
 
       .ldg-blurb {
         margin-bottom: 1em;
@@ -62,6 +60,7 @@ $divider-color: black;
 
       button.sign-up {
         height: 3.5em;
+        width: 100%;
       }
     }
 
@@ -72,10 +71,23 @@ $divider-color: black;
         width: 60%;
         text-align: center;
       }
+
+      @media (max-width: $max-width), ($max-device-width: $max-device-width) {
+        flex-flow: column nowrap;
+      }
     }
 
     &#third {
       justify-content: space-between;
+      @media (max-width: $max-width), ($max-device-width: $max-device-width) {
+        flex-flow: column nowrap;
+        .ldg-imgs-container {
+          order: 1;
+        }
+        .ldg-blurb-container {
+          order: 2;
+        }
+      }
     }
   }
 
@@ -84,13 +96,31 @@ $divider-color: black;
     position: fixed;
     right: 1em;
     bottom: 5.9em;
-    background: white;
-    border: 1px solid black;
+    background: #c9f3c7;
     border-radius: 100px;
     width: 3em;
     height: 3em;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: brown;
+    border-right: 2px solid brown;
+    border-left: 2px solid green;
+    border-top: 2px solid brown;
+    border-bottom: 2px solid green;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: $max-width), (max-device-width: $max-device-width) {
+  #landing-page-container {
+    .section {
+      justify-content: column nowrap;
+    }
+
+
   }
 }

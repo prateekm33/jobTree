@@ -10,7 +10,6 @@ export default class Footer extends React.Component {
   render() {
     return (
       <nav id='footer'>
-        <div id='footer-divider'></div>
         <div id='nav-options'>
           <Link to='/about'>About</Link>
           <Link to='/signup'>Sign Up</Link>

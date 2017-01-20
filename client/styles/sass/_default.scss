@@ -3,6 +3,7 @@
 body {
   font-size: $font-size;
   min-width: $app-min-width;
+  background-color: rgba(201, 243, 199, 0.3);
 }
 
 #react-app {
@@ -10,17 +11,26 @@ body {
   min-height: 90vh;
 }
 
+.btn-primary {
+  background-color: #72cc6c;
+  border-color: #72cc6c;
+  &:hover, &:active, &:hover:active, &:focus, &:active:focus {
+    background-color: #3da945;
+    border-color: #3da945;
+  }
+}
+
 nav#header {
   position: fixed;
   z-index: 1000;
   width: 100%;
   height: $nav-height;
-  border-bottom: 3px solid #e4e43f;
+  border-bottom: 3px solid #483030;
   padding-bottom: 0.1em;
   background: white;
 
   #inner-nav-div {
-    border-bottom: 3px solid blue;
+    border-bottom: 3px solid #72cc6c;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -30,6 +40,16 @@ nav#header {
     font-size: 1.5em;
     padding-left: 0.5em;
     padding-right: 0.5em;
+    background: rgba(72, 48, 48, 0.8);
+  }
+  
+  #app-logo {
+    color: #8eea88;
+  }
+  
+  #app-logo:hover, #app-logo:hover:active, #app-logo:active {
+    text-decoration: none;
+    color: #3da945;
   }
 }
 
@@ -38,15 +58,10 @@ nav#footer {
   position: absolute;
   bottom: -($footer-height + 1);
   width: 100%;
-  border-top: 4px solid lightgrey;
+  border-top: 4px solid green;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
-
-  #footer-divider {
-    width: 99%;
-    border-bottom: 2px solid lightgrey;
-    margin: auto;
-  }
+  background-color: white;
 
   #nav-options {
     display: flex;
@@ -64,3 +79,4 @@ nav#footer {
 
 
 @import "landing";
+@import "authForms";
