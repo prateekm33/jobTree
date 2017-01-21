@@ -6,7 +6,6 @@ import Footer from './Footer';
 export default class App extends React.Component {
   constructor() {
     super();
-    this.displayMenuOptions = this.displayMenuOptions.bind(this);
 
     this.state = {
       menuOptions: [
@@ -17,6 +16,9 @@ export default class App extends React.Component {
         <Link key={5} to='/careers'><div className="menu-highlight"></div>Yet Another</Link>
       ]
     }
+
+    this.displayMenuOptions = this.displayMenuOptions.bind(this);
+    this.handleTopLvlClicks = this.handleTopLvlClicks.bind(this);
   }
 
   displayMenuOptions(evt) {
@@ -32,9 +34,25 @@ export default class App extends React.Component {
 
   }
 
+  handleTopLvlClicks(evt) {
+    this.hideDropdowns(evt);
+  }
+
+  hideDropdowns(evt) {
+    // hide all dropdowns that are not the target
+    const dropdowns = Array.prototype.slice.call(document.body.querySelectorAll('.dropdown'));
+
+    dropdowns.forEach(dd => {
+      if (evt.target !== dd && !dd.contains(evt.target)) {
+        dd.querySelector('.dropdown-menu').style.display = 'none';
+      }
+    });
+
+  }
+
   render() {
     return (
-      <div id='main-app-container'>
+      <div onClick={this.handleTopLvlClicks} id='main-app-container'>
         <nav id='header'>
           <div id='inner-nav-div'>
             <Link to="/" id="app-logo">JobTree</Link>
