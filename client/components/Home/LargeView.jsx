@@ -8,8 +8,10 @@ export default class LargeView extends React.Component {
     super(props);
     this.state = {
       defaultOrder: 'status',
-      menuItems: ['STATUS', 'ROLE', 'LOCATION', 'RECRUITER', 'DATE APPLIED']
-    }
+      menuItems: ['STATUS', 'ROLE', 'LOCATION', 'RECRUITER', 'DATE APPLIED'],
+      open: false
+    };
+
     this.handleCompanyNameClicked = this.handleCompanyNameClicked.bind(this);
     this.showJobs = this.showJobs.bind(this);
     this.selectSortOption = this.selectSortOption.bind(this);
@@ -18,6 +20,7 @@ export default class LargeView extends React.Component {
 
   handleCompanyNameClicked(evt) {
     if (evt.target.classList.value.indexOf('dropdown') > -1) return;
+    this.setState({open: !this.state.open});
     this.showJobs();
     this.toggleDropDown();
   }
@@ -55,6 +58,11 @@ export default class LargeView extends React.Component {
           className="company-name-container">
           <button ref={el => this.companyName = el} className="company-name btn btn-default">
             {this.props.company.toUpperCase()}
+            <div className="open-close-help">
+              {
+                this.state.open ? "Close" : "Open"
+              }
+            </div>
           </button>
           <Dropdown menuItems={this.state.menuItems} 
             defaultOption={this.state.defaultOrder}

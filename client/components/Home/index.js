@@ -13,10 +13,12 @@ export default class Home extends React.Component {
 
     this.state = {
       jobs: [],
-      company: null
+      company: null,
+      title: 'My Pipeline'
     };
 
     this.showJobs = this.showJobs.bind(this);
+    this.handleTitleEdit = this.handleTitleEdit.bind(this);
   }
 
   renderLargeView() {
@@ -44,10 +46,28 @@ export default class Home extends React.Component {
 
   }
 
+  handleTitleEdit(evt) {
+    const keyCode = evt.keyCode;
+    const enter = 13;
+
+    switch (keyCode) {
+      case enter:
+        if (!evt.shiftKey) {
+          evt.preventDefault();
+          evt.target.blur();
+          this.setState({title: evt.target.innerText});
+        }
+        return;
+      default:
+        return;
+    }
+
+  }
+
   render() {
     return (
       <div id='home-container'>
-        <div contentEditable={true} id="home-title"> MY PIPELINE </div>
+        <div onKeyDown={this.handleTitleEdit} contentEditable={true} id="home-title"> {this.state.title} </div>
         <div id='large-jobs-view-container'>
           {
             this.renderLargeView()

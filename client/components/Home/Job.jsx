@@ -16,7 +16,7 @@ export default class Job extends React.Component {
         if (!evt.shiftKey) {
           evt.preventDefault();
           evt.target.blur();
-          // todo -- update value in job for cell
+          this.props.job[evt.target.classList.value] = evt.target.innerTest;
         }
         return;
       default:

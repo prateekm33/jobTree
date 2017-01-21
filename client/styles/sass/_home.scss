@@ -4,8 +4,14 @@
 
   #home-title {
     text-align: center;
-    margin-top: 1em;
     font-size: 2em;
+    max-width: 60%;
+    margin: auto;
+    margin-top: 1em;
+
+    &:focus {
+      outline: 2px dotted green;
+    }
   }
 
   #large-jobs-view-container {
@@ -90,12 +96,15 @@
         border-bottom: 3px solid #1d7117; // 
         background: #96e891;
       }
+      .open-close-help {
+        visibility: visible;
+      }
     }
 
     .company-name {
       border-bottom: 3px solid;
-      padding: 1em;
       border-color:  #1d7117;
+      position: relative;
       &:focus {
           outline: none;
           background: white;
@@ -105,6 +114,16 @@
         border-color: #72cc6c;
         border-bottom: 3px solid #1d7117; // 
         background: #96e891;
+      }
+
+      .open-close-help {
+        font-size: 0.8em;
+        color: #1d7117;
+        font-style: italic;
+        position: relative;
+        text-align: center;
+        width: 100%;
+        visibility: hidden;
       }
     }
 
