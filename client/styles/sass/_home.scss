@@ -14,6 +14,18 @@
     }
   }
 
+  #company-sort-dd {
+    left: -1em;
+    justify-content: flex-end;
+
+    ul.dropdown-menu {
+      right: 0;
+      left: initial;
+    }
+  }
+
+
+
   #large-jobs-view-container {
     min-height: 80vh;
     padding: 1em;
@@ -52,21 +64,8 @@
       display: flex;
       flex-flow: row nowrap;
       
-      .order-options.dropdown {
+      .jobs-order.dropdown {
         display: none;
-        height: 35px;
-        left: 1.5em;
-        bottom: -1em;
-
-        div:first-child {
-          width: 5em;
-          max-height: 50%;
-          align-self: center;
-        }
-
-        & > * {
-          font-size: 0.6em;
-        }
 
         ul.dropdown-menu {
           left: 5em;
@@ -99,6 +98,12 @@
       .open-close-help {
         visibility: visible;
       }
+    }
+
+    .company-header-container {
+      display: flex;
+      flex-flow: row nowrap;
+      width: 100%;
     }
 
     .company-name {

@@ -183,6 +183,23 @@ nav#footer {
 }
 
 
+.order-options.dropdown {
+  height: 35px;
+  left: 1.5em;
+  display: flex;
+  flex-flow: row nowrap;
+
+  div:first-child {
+    width: 5em;
+    max-height: 50%;
+    align-self: center;
+  }
+
+  & > * {
+    font-size: 0.6em;
+  }
+}
+
 ul.dropdown-menu {
   flex-flow: column nowrap;
 

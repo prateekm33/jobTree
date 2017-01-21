@@ -5,6 +5,7 @@ import {jobs} from '../../mockData';
 import LargeView from './LargeView';
 import SmallView from './SmallView';
 import Job from './Job';
+import { Dropdown } from '../Utils';
 
 
 export default class Home extends React.Component {
@@ -14,11 +15,21 @@ export default class Home extends React.Component {
     this.state = {
       jobs: [],
       company: null,
-      title: 'My Pipeline'
+      title: 'My Pipeline',
+      defaultOrder: 'COMPANY',
+      menuItems: [
+        'JOB APPS',
+        '# APPLIED',
+        '# PHONE-SCREENS',
+        '# ON-SITES',
+        '# REJECTED',
+        '# OFFERS',
+      ]
     };
 
     this.showJobs = this.showJobs.bind(this);
     this.handleTitleEdit = this.handleTitleEdit.bind(this);
+    this.selectItem = this.selectItem.bind(this);
   }
 
   renderLargeView() {
@@ -64,10 +75,16 @@ export default class Home extends React.Component {
 
   }
 
+  selectItem(evt) {
+    const target = evt.target;
+    this.setState({defaultOrder: target.innerText});
+  }
+
   render() {
     return (
       <div id='home-container'>
         <div onKeyDown={this.handleTitleEdit} contentEditable={true} id="home-title"> {this.state.title} </div>
+          <Dropdown id="company-sort-dd" defaultOption={this.state.defaultOrder} selectItem={this.selectItem} menuItems={this.state.menuItems} />
         <div id='large-jobs-view-container'>
           {
             this.renderLargeView()

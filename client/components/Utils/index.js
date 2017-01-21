@@ -23,7 +23,7 @@ export class Dropdown extends React.Component {
 
   render() {
     return (
-      <div className="order-options dropdown">
+      <div id={this.props.id || ''} className={"order-options dropdown" + " " + (this.props.extraClasses ||'')}>
         <div>Order By: </div>
         <button onClick={this.toggleDropDownMenu} className="btn btn-default dropdown-toggle">
           {this.props.defaultOption.toUpperCase()}

@@ -64,10 +64,12 @@ export default class LargeView extends React.Component {
               }
             </div>
           </button>
-          <Dropdown menuItems={this.state.menuItems} 
+          <div className="company-header-container">
+            <Dropdown menuItems={this.state.menuItems} 
             defaultOption={this.state.defaultOrder}
-            selectItem={this.selectSortOption}/>
-          <Summary data={this.props.data}/>
+            selectItem={this.selectSortOption} extraClasses={"jobs-order"}/>
+            <Summary data={this.props.data}/>
+          </div>
         </div>
         <table ref={el => this.table = el} className="company-jobs">
           <thead>
