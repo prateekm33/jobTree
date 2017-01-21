@@ -47,7 +47,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <div id='home-container'>
-        <div id="home-title"> MY PIPELINE </div>
+        <div contentEditable={true} id="home-title"> MY PIPELINE </div>
         <div id='large-jobs-view-container'>
           {
             this.renderLargeView()

@@ -1,15 +1,37 @@
 import React from 'react';
 
-import Job from './Job'
+import Job from './Job';
+import { Dropdown } from '../Utils';
 
 export default class LargeView extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      defaultOrder: 'status',
+      menuItems: ['STATUS', 'ROLE', 'LOCATION', 'RECRUITER', 'DATE APPLIED']
+    }
+    this.handleCompanyNameClicked = this.handleCompanyNameClicked.bind(this);
     this.showJobs = this.showJobs.bind(this);
+    this.selectSortOption = this.selectSortOption.bind(this);
+    this.toggleDropDown = this.toggleDropDown.bind(this);
   }
 
-  showJobs(evt) {
-    const button = evt.target;
+  handleCompanyNameClicked(evt) {
+    if (evt.target.classList.value.indexOf('dropdown') > -1) return;
+    this.showJobs();
+    this.toggleDropDown();
+  }
+
+  toggleDropDown() {
+    const dropdown = this.companyContainer.querySelector('.dropdown');
+    const currDisplay = window.getComputedStyle(dropdown).display;
+
+    if (currDisplay === 'none') dropdown.style.display = 'flex';
+    else dropdown.style.display = 'none';
+  }
+
+  showJobs() {
+    const button = this.companyName;
     button.classList.toggle('active');
     const currDisplay = window.getComputedStyle(this.table).display;
 
@@ -19,16 +41,37 @@ export default class LargeView extends React.Component {
 
   }
 
+  selectSortOption(evt) {
+    const target = evt.target;
+    // dispatch redux action...
+    this.setState({defaultOrder: target.innerText});
+  }
+
   render() {
     return (
       <div className="company-container">
-        <div className="company-name-container">
-          <button onClick={this.showJobs} className="company-name btn btn-default">
+        <div onClick={this.handleCompanyNameClicked}
+          ref={el => this.companyContainer = el}
+          className="company-name-container">
+          <button ref={el => this.companyName = el} className="company-name btn btn-default">
             {this.props.company.toUpperCase()}
           </button>
+          <Dropdown menuItems={this.state.menuItems} 
+            defaultOption={this.state.defaultOrder}
+            selectItem={this.selectSortOption}/>
           <Summary data={this.props.data}/>
         </div>
         <table ref={el => this.table = el} className="company-jobs">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Status</th>
+              <th>Role</th>
+              <th>Location</th>
+              <th>Recruiter</th>
+              <th>Date Applied</th>
+            </tr>
+          </thead>
           <tbody>
             {
               this.props.data.jobs.map((job,idx) => (
@@ -41,6 +84,7 @@ export default class LargeView extends React.Component {
     )
   }
 }
+
 
 function Summary(props) {
   const statuses = [

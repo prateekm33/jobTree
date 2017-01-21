@@ -183,6 +183,18 @@ nav#footer {
 }
 
 
+ul.dropdown-menu {
+  flex-flow: column nowrap;
+
+  li {
+    padding: 1em;
+    &:hover {
+      background: rgba(211, 234, 255, 0.42);
+      cursor: pointer
+    }
+  }
+}
+
 @import "landing";
 @import "authForms";
 @import "home";

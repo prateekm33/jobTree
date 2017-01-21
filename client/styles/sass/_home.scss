@@ -21,6 +21,8 @@
       display: flex;
       flex-flow: column nowrap;
       margin-bottom: 1.5em;
+      padding: 1em;
+      border-bottom: 1px dashed;
     }
 
     .company-jobs {
@@ -30,11 +32,40 @@
       border-collapse: initial;
       border-spacing: 0 2em;
       display: none;
+
+      thead th {
+        position: relative; 
+        text-align: center;
+        font-size: 0.8em;
+        color: rgba(165, 42, 42, 0.7);
+        font-weight: bold;
+      }
     }
 
     .company-name-container {
       display: flex;
       flex-flow: row nowrap;
+      
+      .order-options.dropdown {
+        display: none;
+        height: 35px;
+        left: 1.5em;
+        bottom: -1em;
+
+        div:first-child {
+          width: 5em;
+          max-height: 50%;
+          align-self: center;
+        }
+
+        & > * {
+          font-size: 0.6em;
+        }
+
+        ul.dropdown-menu {
+          left: 5em;
+        }
+      }
       
       .company-summary {
         display: flex;
@@ -51,24 +82,29 @@
       }
     }
 
-    @media (min-device-width: $max-device-width + 1), (min-width: $max-width + 1) {
+    .company-name-container:hover {
+      cursor: pointer;
       .company-name {
-        border-bottom: 3px solid;
-        padding: 1em;
-        border-color:  #1d7117;
+        cursor: pointer;
+        border-color: #72cc6c;
+        border-bottom: 3px solid #1d7117; // 
+        background: #96e891;
+      }
+    }
 
-        &:focus {
+    .company-name {
+      border-bottom: 3px solid;
+      padding: 1em;
+      border-color:  #1d7117;
+      &:focus {
           outline: none;
           background: white;
         }
-        &:hover, &.active {
-          cursor: pointer;
-          border-color: #72cc6c;
-          border-bottom: 3px solid #1d7117; // 
-          background: #96e891;
-        }
-        
-
+      &:hover, &.active {
+        cursor: pointer;
+        border-color: #72cc6c;
+        border-bottom: 3px solid #1d7117; // 
+        background: #96e891;
       }
     }
 
@@ -89,7 +125,8 @@
       position: relative;
       text-align: center;
       border-bottom: 1px dotted lightgrey;
-      padding: 0.5em;
+      padding-left: 1em;
+      padding-right: 1em;
       
       .td-dividers {
         border: 1px solid lightcoral;
@@ -97,7 +134,7 @@
         height: 90%;
         position: absolute;
         top: 0;
-        right: 2%;
+        right: -5%;
       }
     }
 
@@ -143,5 +180,24 @@
       display: none;
     }
     
+  }
+
+  .job-component td:nth-of-type(1n + 2) {
+    border-right: 2px solid darksalmon;
+
+    &:focus {
+      outline: 2px solid green;
+      outline-offset: -1px;
+    }
+
+    &:hover {
+      box-shadow: 3px -3px 30px #c0ffc0;
+      cursor: pointer;
+      transform: scale(1.2);
+      background: white;
+      border-radius: 10px;
+      border-left: 2px solid darksalmon;
+      font-size: 0.88em
+    }
   }
 }
