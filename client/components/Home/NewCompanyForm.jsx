@@ -8,16 +8,17 @@ export default class NewCompanyForm extends React.Component {
     this.saveRecruiterName = this.saveRecruiterName.bind(this);
     this.handleAddNewJob = this.handleAddNewJob.bind(this);
     this.deleteJobAt = this.deleteJobAt.bind(this);
-    this.showForms = this.showForms.bind(this);
 
     this.state = {
       recruiterName: '',
-      jobKey: 0,
-      jobForms: [<NewJobsForm handleDelete={this.deleteJobAt} key={0} num={1} recruiterName={''} />],
-
-      count: 1
+      count: 1,
+      jobForms: []
     }
 
+  }
+
+  componentDidMount() {
+    this.createNewForm()
   }
 
   saveRecruiterName(evt) {
@@ -26,24 +27,26 @@ export default class NewCompanyForm extends React.Component {
 
   handleAddNewJob(evt) {
     evt.preventDefault();
-    const length = this.state.jobForms.length;
-    this.state.jobForms.push(
-      <NewJobsForm handleDelete={this.deleteJobAt} key={this.state.jobKey+1} num={length + 1} recruiterName={this.state.recruiterName}/>
-    )
-
-    this.setState({jobKey: this.state.jobKey + 1});
+    this.createNewForm();
+    this.setState({count: this.state.count + 1});
   }
 
   deleteJobAt(idx) {
-    this.state.jobForms.splice(idx, 1);
+    const el = this.state.jobForms.splice(idx, 1)[0];
+    console.log(el.status, el);
     this.forceUpdate();
   }
 
-  showForms() {
-
+  createNewForm() {
+    const length = this.state.jobForms.length;
+    this.state.jobForms.push(
+        <NewJobsForm handleDelete={this.deleteJobAt} idx={length} recruiterName={this.state.recruiterName}/>
+    )
+    this.forceUpdate();
   }
 
   render() {
+
     return (
       <form id='new-company'>
         <div className="form-line">
@@ -64,8 +67,12 @@ export default class NewCompanyForm extends React.Component {
             <button onClick={this.handleAddNewJob} className="btn btn-default glyphicon glyphicon-plus"></button>
           </div>
           {
-            // this.state.jobForms.map(i => i).reverse()
-            this.state.jobForms
+            this.state.jobForms.map((form,idx) => (
+              <div className="new-job-form-container" key={idx}>
+                <div className="job-number">#{idx + 1}</div>
+                {form}
+              </div>
+            ))
           }
         </div>
       </form>
