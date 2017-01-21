@@ -47,3 +47,15 @@ export class Dropdown extends React.Component {
     )
   }
 }
+
+
+
+
+export class List {
+  constructor() {
+    this.list = { head: null, tail: null}
+    
+  }
+
+
+}

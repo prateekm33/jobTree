@@ -40,7 +40,7 @@ export default class NewJobsForm extends React.Component {
   render() {
     return (
       <div className="new-job">
-        <div onClick={() => this.props.handleDelete(this.props.num)} className="remove-job glyphicon glyphicon-remove"></div>
+        <div className="remove-job glyphicon glyphicon-remove"></div>
         <div className="form-line">
           <div>
             <label htmlFor="status-name">Status</label>

@@ -8,6 +8,7 @@ export default class NewCompanyForm extends React.Component {
     this.saveRecruiterName = this.saveRecruiterName.bind(this);
     this.handleAddNewJob = this.handleAddNewJob.bind(this);
     this.deleteJobAt = this.deleteJobAt.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
     this.state = {
       recruiterName: '',
@@ -33,16 +34,23 @@ export default class NewCompanyForm extends React.Component {
 
   deleteJobAt(idx) {
     const el = this.state.jobForms.splice(idx, 1)[0];
-    console.log(el.status, el);
+    console.log(el, 'IDX', idx);
     this.forceUpdate();
   }
 
   createNewForm() {
     const length = this.state.jobForms.length;
     this.state.jobForms.push(
-        <NewJobsForm handleDelete={this.deleteJobAt} idx={length} recruiterName={this.state.recruiterName}/>
+        <NewJobsForm key={length} idx={length} recruiterName={this.state.recruiterName}/>
     )
     this.forceUpdate();
+  }
+
+  handleClick(evt, idx) {
+    const target = evt.target;
+    if (target.classList.contains('remove-job')) {
+      this.deleteJobAt(idx)
+    }
   }
 
   render() {
@@ -68,7 +76,7 @@ export default class NewCompanyForm extends React.Component {
           </div>
           {
             this.state.jobForms.map((form,idx) => (
-              <div className="new-job-form-container" key={idx}>
+              <div onClick={evt => this.handleClick(evt, idx)} className="new-job-form-container" key={idx}>
                 <div className="job-number">#{idx + 1}</div>
                 {form}
               </div>
