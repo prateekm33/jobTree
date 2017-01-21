@@ -185,7 +185,7 @@ nav#footer {
 
 .order-options.dropdown {
   height: 35px;
-  left: 1.5em;
+  margin-left: 1em;
   display: flex;
   flex-flow: row nowrap;
 
@@ -210,6 +210,19 @@ ul.dropdown-menu {
       cursor: pointer
     }
   }
+}
+
+.btn.btn-default.glyphicon.glyphicon-plus {
+   background: lightsalmon;
+    color: #ffffff;
+
+    &:hover, &:active, &:hover:active {
+      background: darksalmon;
+    }
+
+    &:focus {
+      outline: 5px auto darksalmon;
+    }
 }
 
 @import "landing";

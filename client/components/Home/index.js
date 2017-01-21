@@ -5,6 +5,7 @@ import {jobs} from '../../mockData';
 import LargeView from './LargeView';
 import SmallView from './SmallView';
 import Job from './Job';
+import NewCompanyForm from './NewCompanyForm';
 import { Dropdown } from '../Utils';
 
 
@@ -18,7 +19,8 @@ export default class Home extends React.Component {
       title: 'My Pipeline',
       defaultOrder: 'COMPANY',
       menuItems: [
-        'JOB APPS',
+        'COMPANY',
+        '# JOB APPS',
         '# APPLIED',
         '# PHONE-SCREENS',
         '# ON-SITES',
@@ -30,6 +32,7 @@ export default class Home extends React.Component {
     this.showJobs = this.showJobs.bind(this);
     this.handleTitleEdit = this.handleTitleEdit.bind(this);
     this.selectItem = this.selectItem.bind(this);
+    this.handleAddBtnClick = this.handleAddBtnClick.bind(this);
   }
 
   renderLargeView() {
@@ -80,11 +83,23 @@ export default class Home extends React.Component {
     this.setState({defaultOrder: target.innerText});
   }
 
+  handleAddBtnClick(evt) {
+
+  }
+
   render() {
     return (
       <div id='home-container'>
-        <div onKeyDown={this.handleTitleEdit} contentEditable={true} id="home-title"> {this.state.title} </div>
-          <Dropdown id="company-sort-dd" defaultOption={this.state.defaultOrder} selectItem={this.selectItem} menuItems={this.state.menuItems} />
+        <div id="jobs-view-header">
+          <div onKeyDown={this.handleTitleEdit} contentEditable={true} id="home-title"> {this.state.title} </div>
+          <div id="line-2">
+            <button id="add-company" onClick={this.handleAddBtnClick} className='btn btn-default glyphicon glyphicon-plus'></button>
+            <Dropdown id="company-sort-dd" defaultOption={this.state.defaultOrder} selectItem={this.selectItem} menuItems={this.state.menuItems} />
+          </div>
+        </div>
+
+        <NewCompanyForm />
+
         <div id='large-jobs-view-container'>
           {
             this.renderLargeView()
