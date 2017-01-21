@@ -211,19 +211,52 @@ ul.dropdown-menu {
     }
   }
 }
+form .form-line {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+
+  & > * {
+    flex: 1;
+  }
+}
 
 .btn.btn-default.glyphicon.glyphicon-plus {
-   background: lightsalmon;
-    color: #ffffff;
+  background: lightsalmon;
+  color: #ffffff;
+  max-width: 2.7em;
 
-    &:hover, &:active, &:hover:active {
-      background: darksalmon;
-    }
+  &:hover, &:active, &:hover:active {
+    background: darksalmon;
+  }
 
-    &:focus {
-      outline: 5px auto darksalmon;
-    }
+  &:focus {
+    outline: 5px auto darksalmon;
+  }
 }
+
+.status-bar {
+  &.applied {
+    background-color: rgba(220, 255, 230, 0.8);
+  }
+
+  &.phone-screen {
+    background-color: #C9F7D4;
+  }
+
+  &.on-site {
+    background-color: #85ED9F;
+  }
+
+  &.rejected {
+    background-color: #5DE77F;
+  }
+
+  &.offer {
+    background-color: rgba(253,106,106,0.6);
+  }
+}
+
 
 @import "landing";
 @import "authForms";

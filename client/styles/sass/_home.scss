@@ -1,6 +1,8 @@
 #home-container {
   min-width: 85%;
   background: white;
+  display: flex;
+  flex-flow: column nowrap;
 
   #line-2 {
     display: flex;
@@ -11,6 +13,80 @@
       position: relative;
     }
   }
+
+  form#new-company {
+    min-width: 80%;
+    align-self: center;
+    margin-top: 2em;
+    font-size: 0.7em;
+
+    label {
+      margin-bottom: 0.5em;
+    }
+
+    input {
+      margin-bottom: 1em;
+    }
+  }
+
+  #jobs-forms-container {
+    margin-top: 2em;
+
+    & > .form-line:first-child {
+      margin-bottom: 2em;
+      border-bottom: 2px solid;
+      padding: 1em;
+    }
+
+    .new-job {
+      margin-bottom: 1.5em;
+      border-bottom: 2px solid #c35959;
+      padding: 1em;
+      position: relative;
+
+      .dropdown {
+        font-size: 1.2em;
+      }
+
+      ul.dropdown-menu {
+        background: #eefbee
+      }
+
+      .job-number {
+        position: absolute;
+        left: -2.5em;
+        font-size: 1.5em;
+        font-style: italic;
+        font-weight: bold;
+        color: #a7a2a2;
+      }
+
+      .remove-job {
+        right: 0.3em;
+        position: absolute;
+        font-weight: bold;
+        font-size: 2em;
+        top: -0.5em;
+        color: rgba(175, 14, 14, 0.36);
+        &:hover {
+          cursor: pointer;
+          color: #af0e0e; 
+        }
+      }
+
+      #status-dd-job-form {
+        height: 35px;
+        margin-left: 1em;
+        display: flex;
+        flex-flow: row nowrap;
+        max-width: 150px;
+        justify-content: flex-end;
+        align-self: center;
+      }
+    }
+
+  }
+  
 
 
 
