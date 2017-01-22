@@ -344,6 +344,32 @@ form .form-line > * {
   background-color: rgba(253, 106, 106, 0.6);
 }
 
+/* line 261, ../sass/_default.scss */
+.form-title {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bolder;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+/* line 269, ../sass/_default.scss */
+form label {
+  color: #b93737;
+  font-weight: bold;
+}
+
+/* line 274, ../sass/_default.scss */
+.glyphicon-remove {
+  font-weight: bold;
+  color: rgba(175, 14, 14, 0.36);
+}
+/* line 277, ../sass/_default.scss */
+.glyphicon-remove:hover {
+  cursor: pointer;
+  color: #af0e0e;
+}
+
 /* line 4, ../sass/_landing.scss */
 #landing-page-container .section {
   min-height: 80vh;
@@ -517,78 +543,101 @@ form .form-line > * {
   justify-content: space-between;
 }
 /* line 11, ../sass/_home.scss */
-#home-container #line-2 button#add-company {
+#home-container #line-2 button#add-company, #home-container #line-2 button#cancel-company {
   right: -2.7em;
   position: relative;
 }
-/* line 17, ../sass/_home.scss */
+/* line 19, ../sass/_home.scss */
+#home-container #line-2 #form-toggle-options:hover #company-form-btn-help {
+  visibility: visible;
+}
+/* line 25, ../sass/_home.scss */
+#home-container #line-2 button#cancel-company {
+  display: none;
+}
+/* line 29, ../sass/_home.scss */
+#home-container #line-2 #company-form-btn-help {
+  visibility: hidden;
+  position: relative;
+  bottom: 1.3em;
+  left: 2em;
+}
+/* line 35, ../sass/_home.scss */
+#home-container #line-2 #company-form-btn-help #help-for-add, #home-container #line-2 #company-form-btn-help #help-for-cancel {
+  font-size: 0.6em;
+  color: lightgrey;
+  position: relative;
+  left: 4.5em;
+  bottom: 45%;
+}
+/* line 42, ../sass/_home.scss */
+#home-container #line-2 #company-form-btn-help #help-for-add {
+  display: flex;
+}
+/* line 46, ../sass/_home.scss */
+#home-container #line-2 #company-form-btn-help #help-for-cancel {
+  display: none;
+}
+/* line 52, ../sass/_home.scss */
 #home-container form#new-company {
   min-width: 80%;
   align-self: center;
   margin-top: 2em;
   font-size: 0.7em;
+  border: 2px solid;
+  padding: 2.5em;
 }
-/* line 23, ../sass/_home.scss */
+/* line 61, ../sass/_home.scss */
 #home-container form#new-company label {
   margin-bottom: 0.5em;
 }
-/* line 27, ../sass/_home.scss */
+/* line 65, ../sass/_home.scss */
 #home-container form#new-company input {
   margin-bottom: 1em;
 }
-/* line 32, ../sass/_home.scss */
+/* line 70, ../sass/_home.scss */
 #home-container #jobs-forms-container {
   margin-top: 2em;
 }
-/* line 35, ../sass/_home.scss */
+/* line 73, ../sass/_home.scss */
 #home-container #jobs-forms-container > .form-line:first-child {
   margin-bottom: 2em;
   border-bottom: 2px solid;
   padding: 1em;
 }
-/* line 41, ../sass/_home.scss */
-#home-container #jobs-forms-container .new-job-form-container {
-  position: relative;
-}
-/* line 43, ../sass/_home.scss */
-#home-container #jobs-forms-container .new-job-form-container .job-number {
-  position: absolute;
-  left: -2.5em;
-  font-size: 1.5em;
-  font-style: italic;
-  font-weight: bold;
-  color: #a7a2a2;
-}
-/* line 53, ../sass/_home.scss */
+/* line 79, ../sass/_home.scss */
 #home-container #jobs-forms-container .new-job {
   margin-bottom: 1.5em;
   border-bottom: 2px solid #c35959;
   padding: 1em;
   position: relative;
 }
-/* line 59, ../sass/_home.scss */
+/* line 85, ../sass/_home.scss */
+#home-container #jobs-forms-container .new-job .job-number {
+  position: absolute;
+  left: -1em;
+  top: -0.5em;
+  font-size: 1.5em;
+  font-style: italic;
+  font-weight: bold;
+  color: #a7a2a2;
+}
+/* line 95, ../sass/_home.scss */
 #home-container #jobs-forms-container .new-job .dropdown {
   font-size: 1.2em;
 }
-/* line 63, ../sass/_home.scss */
+/* line 99, ../sass/_home.scss */
 #home-container #jobs-forms-container .new-job ul.dropdown-menu {
   background: #eefbee;
 }
-/* line 67, ../sass/_home.scss */
+/* line 103, ../sass/_home.scss */
 #home-container #jobs-forms-container .new-job .remove-job {
   right: 0.3em;
   position: absolute;
-  font-weight: bold;
-  font-size: 2em;
   top: -0.5em;
-  color: rgba(175, 14, 14, 0.36);
+  font-size: 2em;
 }
-/* line 74, ../sass/_home.scss */
-#home-container #jobs-forms-container .new-job .remove-job:hover {
-  cursor: pointer;
-  color: #af0e0e;
-}
-/* line 80, ../sass/_home.scss */
+/* line 110, ../sass/_home.scss */
 #home-container #jobs-forms-container .new-job #status-dd-job-form {
   height: 35px;
   margin-left: 1em;
@@ -598,7 +647,7 @@ form .form-line > * {
   justify-content: flex-end;
   align-self: center;
 }
-/* line 96, ../sass/_home.scss */
+/* line 126, ../sass/_home.scss */
 #home-container #home-title {
   text-align: center;
   font-size: 2em;
@@ -607,33 +656,33 @@ form .form-line > * {
   margin-top: 1em;
   margin-bottom: 0.7em;
 }
-/* line 104, ../sass/_home.scss */
+/* line 134, ../sass/_home.scss */
 #home-container #home-title:focus {
   outline: 2px dotted green;
 }
-/* line 109, ../sass/_home.scss */
+/* line 139, ../sass/_home.scss */
 #home-container #company-sort-dd {
   left: -1em;
   justify-content: flex-end;
 }
-/* line 113, ../sass/_home.scss */
+/* line 143, ../sass/_home.scss */
 #home-container #company-sort-dd ul.dropdown-menu {
   right: 0;
   left: initial;
 }
-/* line 121, ../sass/_home.scss */
+/* line 151, ../sass/_home.scss */
 #home-container #large-jobs-view-container {
   min-height: 80vh;
   padding: 1em;
   margin: 0 auto;
 }
 @media (max-width: 650px), (max-device-width: 650px) {
-  /* line 121, ../sass/_home.scss */
+  /* line 151, ../sass/_home.scss */
   #home-container #large-jobs-view-container {
     display: none;
   }
 }
-/* line 130, ../sass/_home.scss */
+/* line 160, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-container {
   display: flex;
   flex-flow: column nowrap;
@@ -641,7 +690,7 @@ form .form-line > * {
   padding: 1em;
   border-bottom: 1px dashed;
 }
-/* line 138, ../sass/_home.scss */
+/* line 168, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-jobs {
   margin-left: 2.5em;
   font-size: 0.75em;
@@ -650,7 +699,7 @@ form .form-line > * {
   border-spacing: 0 2em;
   display: none;
 }
-/* line 146, ../sass/_home.scss */
+/* line 176, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-jobs thead th {
   position: relative;
   text-align: center;
@@ -658,20 +707,20 @@ form .form-line > * {
   color: rgba(165, 42, 42, 0.7);
   font-weight: bold;
 }
-/* line 155, ../sass/_home.scss */
+/* line 185, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name-container {
   display: flex;
   flex-flow: row nowrap;
 }
-/* line 159, ../sass/_home.scss */
+/* line 189, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name-container .jobs-order.dropdown {
   display: none;
 }
-/* line 162, ../sass/_home.scss */
+/* line 192, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name-container .jobs-order.dropdown ul.dropdown-menu {
   left: 5em;
 }
-/* line 167, ../sass/_home.scss */
+/* line 197, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name-container .company-summary {
   display: flex;
   justify-content: flex-end;
@@ -681,50 +730,50 @@ form .form-line > * {
   font-style: italic;
   color: #afadad;
 }
-/* line 176, ../sass/_home.scss */
+/* line 206, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name-container .company-summary > div {
   margin-left: 2em;
 }
-/* line 182, ../sass/_home.scss */
+/* line 212, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name-container:hover {
   cursor: pointer;
 }
-/* line 184, ../sass/_home.scss */
+/* line 214, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name-container:hover .company-name {
   cursor: pointer;
   border-color: #72cc6c;
   border-bottom: 3px solid #1d7117;
   background: #96e891;
 }
-/* line 190, ../sass/_home.scss */
+/* line 220, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name-container:hover .open-close-help {
   visibility: visible;
 }
-/* line 195, ../sass/_home.scss */
+/* line 225, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-header-container {
   display: flex;
   flex-flow: row nowrap;
   width: 100%;
 }
-/* line 201, ../sass/_home.scss */
+/* line 231, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name {
   border-bottom: 3px solid;
   border-color: #1d7117;
   position: relative;
 }
-/* line 205, ../sass/_home.scss */
+/* line 235, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name:focus {
   outline: none;
   background: white;
 }
-/* line 209, ../sass/_home.scss */
+/* line 239, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name:hover, #home-container #large-jobs-view-container .company-name.active {
   cursor: pointer;
   border-color: #72cc6c;
   border-bottom: 3px solid #1d7117;
   background: #96e891;
 }
-/* line 216, ../sass/_home.scss */
+/* line 246, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name .open-close-help {
   font-size: 0.8em;
   color: #1d7117;
@@ -734,11 +783,11 @@ form .form-line > * {
   width: 100%;
   visibility: hidden;
 }
-/* line 227, ../sass/_home.scss */
+/* line 257, ../sass/_home.scss */
 #home-container #large-jobs-view-container .glyphicon-share-alt {
   transform: scaleY(-1) translateY(50%) translateX(100%);
 }
-/* line 231, ../sass/_home.scss */
+/* line 261, ../sass/_home.scss */
 #home-container #large-jobs-view-container .job-component td:first-child {
   border-bottom: 2px solid;
   width: 1.5em;
@@ -747,7 +796,7 @@ form .form-line > * {
   transform: translateY(-45%);
   border-color: lightgrey;
 }
-/* line 240, ../sass/_home.scss */
+/* line 270, ../sass/_home.scss */
 #home-container #large-jobs-view-container .job-component td {
   position: relative;
   text-align: center;
@@ -755,7 +804,7 @@ form .form-line > * {
   padding-left: 1em;
   padding-right: 1em;
 }
-/* line 247, ../sass/_home.scss */
+/* line 277, ../sass/_home.scss */
 #home-container #large-jobs-view-container .job-component td .td-dividers {
   border: 1px solid lightcoral;
   width: 0;
@@ -764,7 +813,7 @@ form .form-line > * {
   top: 0;
   right: -5%;
 }
-/* line 259, ../sass/_home.scss */
+/* line 289, ../sass/_home.scss */
 #home-container #small-jobs-view-container {
   display: flex;
   flex-flow: column nowrap;
@@ -774,12 +823,12 @@ form .form-line > * {
   max-width: 80%;
 }
 @media (min-width: 650px) and (min-device-width: 650px) {
-  /* line 259, ../sass/_home.scss */
+  /* line 289, ../sass/_home.scss */
   #home-container #small-jobs-view-container {
     display: none;
   }
 }
-/* line 271, ../sass/_home.scss */
+/* line 301, ../sass/_home.scss */
 #home-container #small-jobs-view-container .company-name {
   width: 100%;
   background-color: white;
@@ -790,33 +839,33 @@ form .form-line > * {
   color: black;
   border: 2px solid #483030;
 }
-/* line 281, ../sass/_home.scss */
+/* line 311, ../sass/_home.scss */
 #home-container #small-jobs-view-container .company-name:hover {
   background-color: rgba(179, 162, 162, 0.6);
 }
-/* line 285, ../sass/_home.scss */
+/* line 315, ../sass/_home.scss */
 #home-container #small-jobs-view-container .company-name:focus {
   outline: 3px solid #483030;
 }
-/* line 289, ../sass/_home.scss */
+/* line 319, ../sass/_home.scss */
 #home-container #small-jobs-view-container .company-name div {
   font-size: 0.6em;
   color: #5d5959;
 }
-/* line 295, ../sass/_home.scss */
+/* line 325, ../sass/_home.scss */
 #home-container #small-jobs-view-container .jobs-container {
   display: none;
 }
-/* line 301, ../sass/_home.scss */
+/* line 331, ../sass/_home.scss */
 #home-container .job-component td:nth-of-type(1n + 2) {
   border-right: 2px solid darksalmon;
 }
-/* line 304, ../sass/_home.scss */
+/* line 334, ../sass/_home.scss */
 #home-container .job-component td:nth-of-type(1n + 2):focus {
   outline: 2px solid green;
   outline-offset: -1px;
 }
-/* line 309, ../sass/_home.scss */
+/* line 339, ../sass/_home.scss */
 #home-container .job-component td:nth-of-type(1n + 2):hover {
   box-shadow: 3px -3px 30px #c0ffc0;
   cursor: pointer;

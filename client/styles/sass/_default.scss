@@ -258,6 +258,28 @@ form .form-line {
 }
 
 
+.form-title {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bolder;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+form label {
+  color: #b93737;
+  font-weight: bold;
+}
+
+.glyphicon-remove {
+  font-weight: bold;
+  color: rgba(175, 14, 14, 0.36);
+  &:hover {
+    cursor: pointer;
+    color: #af0e0e; 
+  }
+}
+
 @import "landing";
 @import "authForms";
 @import "home";

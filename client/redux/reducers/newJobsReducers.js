@@ -11,6 +11,14 @@ const newJobsReducers = {
       default: 
         return data;
     }
+  },
+
+  showCompanyForm(show = false, action) {
+    switch (action.type) {
+      case types.toggleCompanyForm:
+        return !show;
+      default: return show;
+    }
   }
 }
 

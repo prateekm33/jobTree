@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import actions from '../../redux/actions';
 
 import {jobs} from '../../mockData';
 
@@ -9,7 +11,7 @@ import NewCompanyForm from './NewCompanyForm';
 import { Dropdown } from '../Utils';
 
 
-export default class Home extends React.Component {
+class Home extends React.Component {
   constructor(props) {
     super(props);
 
@@ -28,11 +30,11 @@ export default class Home extends React.Component {
         '# OFFERS',
       ]
     };
-
-    this.showJobs = this.showJobs.bind(this);
+    
     this.handleTitleEdit = this.handleTitleEdit.bind(this);
     this.selectItem = this.selectItem.bind(this);
     this.handleAddBtnClick = this.handleAddBtnClick.bind(this);
+    this.toggleCompanyForm = this.toggleCompanyForm.bind(this);
   }
 
   renderLargeView() {
@@ -54,10 +56,6 @@ export default class Home extends React.Component {
     }
 
     return arr;
-  }
-
-  showJobs() {
-
   }
 
   handleTitleEdit(evt) {
@@ -84,7 +82,27 @@ export default class Home extends React.Component {
   }
 
   handleAddBtnClick(evt) {
+    evt.preventDefault();
+    this.props.dispatch(actions.toggleCompanyForm());
+  }
 
+  toggleCompanyForm(evt) {
+    evt.preventDefault();
+    if (evt.target.tagName !== 'BUTTON') return;
+    
+    this.props.dispatch(actions.toggleCompanyForm());
+
+    if (evt.target.id === 'add-company') {
+      evt.target.style.display = 'none';
+      evt.target.nextElementSibling.style.display = 'flex';
+      this.helpForAdd.style.display = 'none';
+      this.helpForCancel.style.display = 'flex';
+    } else if (evt.target.id === 'cancel-company') {
+      evt.target.style.display = 'none';
+      evt.target.previousElementSibling.style.display = 'flex';
+      this.helpForAdd.style.display = 'flex';
+      this.helpForCancel.style.display = 'none';
+    }
   }
 
   render() {
@@ -93,12 +111,19 @@ export default class Home extends React.Component {
         <div id="jobs-view-header">
           <div onKeyDown={this.handleTitleEdit} contentEditable={true} id="home-title"> {this.state.title} </div>
           <div id="line-2">
-            <button id="add-company" onClick={this.handleAddBtnClick} className='btn btn-default glyphicon glyphicon-plus'></button>
+            <div id="form-toggle-options" onClick={this.toggleCompanyForm}> 
+              <button id="add-company" className='btn btn-default glyphicon glyphicon-plus'></button>
+              <button id="cancel-company" className='btn btn-default glyphicon glyphicon-remove'></button>
+              <div id='company-form-btn-help'>
+                <div ref={el => this.helpForAdd = el} id="help-for-add">Click to open new company form</div>
+                <div ref={el => this.helpForCancel = el} id="help-for-cancel">Click to cancel form</div>
+              </div>
+            </div>
             <Dropdown id="company-sort-dd" defaultOption={this.state.defaultOrder} selectItem={this.selectItem} menuItems={this.state.menuItems} />
           </div>
         </div>
 
-        <NewCompanyForm />
+        { this.props.showCompanyForm ? <NewCompanyForm /> : null }
 
         <div id='large-jobs-view-container'>
           {
@@ -124,3 +149,9 @@ export default class Home extends React.Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return { showCompanyForm: state.showCompanyForm };
+}
+
+export default connect(mapStateToProps)(Home);

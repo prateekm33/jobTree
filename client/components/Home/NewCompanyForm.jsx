@@ -31,6 +31,7 @@ class NewCompanyForm extends React.Component {
 
     return (
       <form id='new-company'>
+        <div className="form-title">New Company Form</div>
         <div className="form-line">
           <div>
             <label htmlFor="company-name">Company Name </label>

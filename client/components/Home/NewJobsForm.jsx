@@ -54,7 +54,6 @@ class NewJobsForm extends React.Component {
   }
 
   updateJobProps(evt) {
-    console.log('update props...')
     const target = evt.target;
     switch (target.id) {
       case 'status-name':

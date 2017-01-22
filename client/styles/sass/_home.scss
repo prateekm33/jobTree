@@ -8,9 +8,44 @@
     display: flex;
     justify-content: space-between;
 
-    button#add-company {
+    button#add-company, button#cancel-company {
       right: -2.7em;
       position: relative;
+
+    }
+
+    #form-toggle-options {
+      &:hover {
+        #company-form-btn-help {
+          visibility: visible;
+        }
+      }
+    }
+
+    button#cancel-company {
+      display: none;
+    }
+
+    #company-form-btn-help {
+      visibility: hidden;
+      position: relative;
+      bottom: 1.3em;
+      left: 2em;
+      
+      #help-for-add, #help-for-cancel {
+        font-size: 0.6em;
+        color: lightgrey;
+        position: relative;
+        left: 4.5em;
+        bottom: 45%;
+      }
+      #help-for-add {
+        display: flex;
+      }
+
+      #help-for-cancel {
+        display: none;
+      }
     }
   }
 
@@ -19,6 +54,9 @@
     align-self: center;
     margin-top: 2em;
     font-size: 0.7em;
+
+    border: 2px solid;
+    padding: 2.5em;
 
     label {
       margin-bottom: 0.5em;
@@ -37,24 +75,22 @@
       border-bottom: 2px solid;
       padding: 1em;
     }
-  
-    .new-job-form-container {
-      position: relative;
-      .job-number {
-        position: absolute;
-        left: -2.5em;
-        font-size: 1.5em;
-        font-style: italic;
-        font-weight: bold;
-        color: #a7a2a2;
-      }
-    }
 
     .new-job {
       margin-bottom: 1.5em;
       border-bottom: 2px solid #c35959;
       padding: 1em;
       position: relative;
+
+      .job-number {
+        position: absolute;
+        left: -1em;
+        top: -0.5em;
+        font-size: 1.5em;
+        font-style: italic;
+        font-weight: bold;
+        color: #a7a2a2;
+      }
 
       .dropdown {
         font-size: 1.2em;
@@ -67,14 +103,8 @@
       .remove-job {
         right: 0.3em;
         position: absolute;
-        font-weight: bold;
-        font-size: 2em;
         top: -0.5em;
-        color: rgba(175, 14, 14, 0.36);
-        &:hover {
-          cursor: pointer;
-          color: #af0e0e; 
-        }
+        font-size: 2em;
       }
 
       #status-dd-job-form {
