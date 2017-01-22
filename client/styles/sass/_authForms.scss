@@ -1,0 +1,29 @@
+#signup-container, #login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  min-width: 100%;
+}
+
+#signup-form, #login-form {
+  min-width: 60%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding: 2em;
+  border: 2px solid brown;
+  background: white;
+}
+
+.form-element {
+  margin: 0.8em;
+  min-width: 70%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+
+  input {
+    width: 100%;
+  }
+}

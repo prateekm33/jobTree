@@ -1,0 +1,285 @@
+@import "variables";
+
+body {
+  font-size: $font-size;
+  min-width: $app-min-width;
+  background-color: rgba(201, 243, 199, 0.3);
+}
+
+#react-app {
+  position: relative;
+  min-height: 90vh;
+}
+
+.btn-primary {
+  background-color: #72cc6c;
+  border-color: #72cc6c;
+  &:hover, &:active, &:hover:active, &:focus, &:active:focus {
+    background-color: #3da945;
+    border-color: #3da945;
+  }
+}
+
+nav#header {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: $nav-height;
+  border-bottom: 3px solid #483030;
+  padding-bottom: 0.1em;
+  background: white;
+
+  #inner-nav-div {
+    border-bottom: 3px solid #72cc6c;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row nowrap;
+    height: 100%;
+    align-items: center;
+    font-size: 1.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    background: rgba(72, 48, 48, 0.8);
+  }
+  
+  #app-logo {
+    color: #8eea88;
+    flex-grow: 0.5;
+  }
+  #main-nav-options {
+    flex-grow: 2;
+    font-size: 0.45em;
+    display: flex;
+    align-self: flex-end;
+    padding-bottom: 0.8em;
+    justify-content: space-around;
+    height: 100%;
+  
+    @media (max-width: $max-width), (max-device-width: $max-device-width) {
+      display: none;
+    }
+    a {
+      color: white;
+      margin-right: 0.45em;
+      margin-left: 0.45em;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      &:hover {
+        text-decoration: none;
+        & .menu-highlight {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+
+      &:hover, &:active, &:hover:active, &:focus {
+        text-decoration: none;
+      }
+
+      .menu-highlight {
+        width: 100%;
+        border: 3px solid white;
+        margin-bottom: 0.6em;
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.2s ease-in-out;
+        position: absolute;
+        top: 0;
+      }
+    }
+  }
+
+  #auth-buttons {
+    flex-grow: 2;
+    justify-content: flex-end;
+    display: flex;
+    a {
+      margin-left: 0.5em;
+    }
+  
+      @media (max-width: $max-width), (max-device-width: $max-device-width) {
+        #login-link {
+          display: none;
+        }
+      }
+  }
+  
+  #app-logo:hover, #app-logo:hover:active, #app-logo:active {
+    text-decoration: none;
+    color: #3da945;
+  }
+
+  #hamburger {
+    display: none;
+
+    #menu-options {
+      display: none;
+    }
+
+    @media (max-width: $max-width), (max-device-width: $max-device-width) {
+      display: flex;
+      color: white;
+      margin-left: 0.5em;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      #menu-options {
+        position: absolute;
+        font-size: 0.5em;
+        flex-flow: column nowrap;
+        top: 35px;
+        right: -1em;
+        border: 4px solid cadetblue;
+        padding: 1em;
+        min-width: 12em;
+        background: white;
+
+        a {
+          margin-bottom: 0.5em;
+          border-bottom: 2px solid lightblue;
+          padding: 0.7em;
+          
+          &:hover {
+            background: rgba(173, 216, 230, 0.3);
+          }
+
+          &:hover, &:active, &:hover:active, &:focus {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+nav#footer { 
+  min-height: $footer-height;
+  position: absolute;
+  bottom: -($footer-height + 1);
+  width: 100%;
+  border-top: 4px solid green;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  background-color: white;
+
+  #nav-options {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 0.7em;
+    height: $footer-height;
+  }
+}
+
+#content-container {
+  padding-top: $nav-height + 10px;
+  display: flex;
+  justify-content: center;
+}
+
+
+.order-options.dropdown {
+  height: 35px;
+  margin-left: 1em;
+  display: flex;
+  flex-flow: row nowrap;
+
+  div:first-child {
+    width: 5em;
+    max-height: 50%;
+    align-self: center;
+  }
+
+  & > * {
+    font-size: 0.6em;
+  }
+}
+
+ul.dropdown-menu {
+  flex-flow: column nowrap;
+
+  li {
+    padding: 1em;
+    &:hover {
+      background: rgba(211, 234, 255, 0.42);
+      cursor: pointer
+    }
+  }
+}
+form .form-line {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+
+  & > * {
+    flex: 1;
+  }
+}
+
+.btn.btn-default.glyphicon.glyphicon-plus {
+  background: lightsalmon;
+  color: #ffffff;
+  max-width: 2.7em;
+
+  &:hover, &:active, &:hover:active {
+    background: darksalmon;
+  }
+
+  &:focus {
+    outline: 5px auto darksalmon;
+  }
+}
+
+.status-bar {
+  &.applied {
+    background-color: rgba(220, 255, 230, 0.8);
+  }
+
+  &.phone-screen {
+    background-color: #C9F7D4;
+  }
+
+  &.on-site {
+    background-color: #85ED9F;
+  }
+
+  &.rejected {
+    background-color: #5DE77F;
+  }
+
+  &.offer {
+    background-color: rgba(253,106,106,0.6);
+  }
+}
+
+
+.form-title {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bolder;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+form label {
+  color: #b93737;
+  font-weight: bold;
+}
+
+.glyphicon-remove {
+  font-weight: bold;
+  color: rgba(175, 14, 14, 0.36);
+  &:hover {
+    cursor: pointer;
+    color: #af0e0e; 
+  }
+}
+
+@import "landing";
+@import "authForms";
+@import "home";

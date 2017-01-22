@@ -1,0 +1,130 @@
+$divider-color: black;
+
+#landing-page-container {
+  .section {
+    min-height: 80vh;
+    display: flex;
+    border-bottom: 2px solid $divider-color;
+    padding: 1em;
+    margin: 2em;
+    border: 2px solid #6d5959;
+    background: white;
+
+    .ldg-blurb-container {
+      display: flex;
+      flex: 1;
+      padding: 0.5em;
+      font-size: 2em;
+      justify-content: space-between;
+    }
+  
+    .ldg-imgs-container {
+      padding: 0.5em;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      flex: 2;
+
+      * {
+        margin-bottom: 0.4em;
+      }
+    }
+  
+    .ldg-img {
+      img {
+        width: 100%;
+      }
+    }
+  
+
+    &#first {
+      justify-content: center;
+
+      .ldg-blurb-container {
+        flex-flow: column nowrap;
+        border: 3px solid;
+        align-self: center;
+
+        @media (min-width: $max-width + 1) and (min-device-width: $max-device-width + 1) {
+          max-width: 60%;
+        }
+        min-height: 50vh;
+      }
+
+
+      .ldg-blurb {
+        margin-bottom: 1em;
+        text-align: center;
+        align-self: center;
+      }
+
+      button.sign-up {
+        height: 3.5em;
+        width: 100%;
+      }
+    }
+
+    &#second {
+      justify-content: space-between;
+  
+      #img-nav {
+        width: 60%;
+        text-align: center;
+      }
+
+      @media (max-width: $max-width), ($max-device-width: $max-device-width) {
+        flex-flow: column nowrap;
+      }
+    }
+
+    &#third {
+      justify-content: space-between;
+      @media (max-width: $max-width), ($max-device-width: $max-device-width) {
+        flex-flow: column nowrap;
+        .ldg-imgs-container {
+          order: 1;
+        }
+        .ldg-blurb-container {
+          order: 2;
+        }
+      }
+    }
+  }
+
+
+  #scroll-top {
+    position: fixed;
+    right: 1em;
+    bottom: 5.9em;
+    background: #c9f3c7;
+    border-radius: 100px;
+    width: 3em;
+    height: 3em;
+    justify-content: center;
+    align-items: center;
+    color: brown;
+    border-right: 2px solid brown;
+    border-left: 2px solid green;
+    border-top: 2px solid brown;
+    border-bottom: 2px solid green;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: $max-width), (max-device-width: $max-device-width) {
+  #landing-page-container {
+    .section {
+      justify-content: column nowrap;
+    }
+
+
+  }
+}
