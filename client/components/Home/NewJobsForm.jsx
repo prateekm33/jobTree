@@ -18,8 +18,8 @@ class NewJobsForm extends React.Component {
         'APPLIED', 
         'PHONE-SCREEN',
         'ON-SITE',
-        'REJECTED',
-        'OFFER'
+        'OFFER',
+        'REJECTED'
       ],
 
       itemClasses: {
@@ -35,6 +35,7 @@ class NewJobsForm extends React.Component {
   componentDidMount() {
     this.recruiterInput.value = this.props.recruiterName;
     this.props.job.recruiter = this.props.recruiterName;
+    this.roleEl.focus();
   }
 
   componentDidUpdate() {
@@ -50,6 +51,7 @@ class NewJobsForm extends React.Component {
 
   selectStatus(evt) {
     const status = evt.target.innerText;
+    this.props.job.status = status;
     this.setState({defaultStatus: status});
   }
 
@@ -86,16 +88,10 @@ class NewJobsForm extends React.Component {
         <div className="job-number">#{this.props.idx + 1}</div>
         <div className="form-line">
           <div>
-            <label htmlFor="status-name">Status</label>
-            <input onBlur={this.updateJobProps} ref={el => this.statusEl = el} id="status-name" className="form-control" placeholder="Status"/>
-          </div>
-        </div>
-        <div className="form-line">
-          <div>
             <label htmlFor="role-name">Role</label>
             <input onBlur={this.updateJobProps} ref={el => this.roleEl = el} id="role-name" className="form-control" placeholder="Role"/>
           </div> 
-          <Dropdown defaultOption={this.state.defaultStatus} selectItem={this.selectStatus} id={'status-dd-job-form'} extraClasses={'status-dropdown'} itemClasses={this.state.itemClasses} menuItems={this.state.menuItems} message={"Status"} />
+          <Dropdown defaultOption={this.props.job.status || this.state.defaultStatus} selectItem={this.selectStatus} id={'status-dd-job-form'} extraClasses={'status-dropdown'} itemClasses={this.state.itemClasses} menuItems={this.state.menuItems} message={"Status"} />
         </div>
         <div className="form-line">
           <div>

@@ -337,11 +337,11 @@ form .form-line > * {
 }
 /* line 251, ../sass/_default.scss */
 .status-bar.rejected {
-  background-color: #5DE77F;
+  background-color: rgba(253, 106, 106, 0.6);
 }
 /* line 255, ../sass/_default.scss */
 .status-bar.offer {
-  background-color: rgba(253, 106, 106, 0.6);
+  background-color: #5DE77F;
 }
 
 /* line 261, ../sass/_default.scss */

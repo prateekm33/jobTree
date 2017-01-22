@@ -249,11 +249,11 @@ form .form-line {
   }
 
   &.rejected {
-    background-color: #5DE77F;
+    background-color: rgba(253,106,106,0.6);
   }
 
   &.offer {
-    background-color: rgba(253,106,106,0.6);
+    background-color: #5DE77F;
   }
 }
 

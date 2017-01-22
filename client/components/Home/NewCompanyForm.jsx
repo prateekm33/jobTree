@@ -50,9 +50,10 @@ class NewCompanyForm extends React.Component {
             <button onClick={this.handleAddNewJob} className="btn btn-default glyphicon glyphicon-plus"></button>
           </div>
           {
-            this.props.newJobsData.map((job,idx) => (
-              <NewJobsForm recruiterName={this.state.recruiterName} job={job} key={idx} idx={idx} />
-            ))
+            this.props.newJobsData.reduceRight((arr,job,idx) => {
+              arr.push(<NewJobsForm recruiterName={this.state.recruiterName} job={job} key={idx} idx={idx} />)
+              return arr;
+              }, [])
           }
         </div>
       </form>
