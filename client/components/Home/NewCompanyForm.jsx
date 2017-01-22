@@ -1,25 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import actions from '../../redux/actions';
 
 import NewJobsForm from './NewJobsForm';
 
-export default class NewCompanyForm extends React.Component {
+class NewCompanyForm extends React.Component {
   constructor(props) {
     super(props);
     this.saveRecruiterName = this.saveRecruiterName.bind(this);
     this.handleAddNewJob = this.handleAddNewJob.bind(this);
-    this.deleteJobAt = this.deleteJobAt.bind(this);
-    this.handleClick = this.handleClick.bind(this);
 
     this.state = {
       recruiterName: '',
-      count: 1,
+      deleteIdx: +Infinity,
       jobForms: []
     }
 
-  }
-
-  componentDidMount() {
-    this.createNewForm()
   }
 
   saveRecruiterName(evt) {
@@ -28,29 +24,7 @@ export default class NewCompanyForm extends React.Component {
 
   handleAddNewJob(evt) {
     evt.preventDefault();
-    this.createNewForm();
-    this.setState({count: this.state.count + 1});
-  }
-
-  deleteJobAt(idx) {
-    const el = this.state.jobForms.splice(idx, 1)[0];
-    console.log(el, 'IDX', idx);
-    this.forceUpdate();
-  }
-
-  createNewForm() {
-    const length = this.state.jobForms.length;
-    this.state.jobForms.push(
-        <NewJobsForm key={length} idx={length} recruiterName={this.state.recruiterName}/>
-    )
-    this.forceUpdate();
-  }
-
-  handleClick(evt, idx) {
-    const target = evt.target;
-    if (target.classList.contains('remove-job')) {
-      this.deleteJobAt(idx)
-    }
+    this.props.dispatch(actions.createNewJob())
   }
 
   render() {
@@ -75,11 +49,8 @@ export default class NewCompanyForm extends React.Component {
             <button onClick={this.handleAddNewJob} className="btn btn-default glyphicon glyphicon-plus"></button>
           </div>
           {
-            this.state.jobForms.map((form,idx) => (
-              <div onClick={evt => this.handleClick(evt, idx)} className="new-job-form-container" key={idx}>
-                <div className="job-number">#{idx + 1}</div>
-                {form}
-              </div>
+            this.props.newJobsData.map((job,idx) => (
+              <NewJobsForm recruiterName={this.state.recruiterName} job={job} key={idx} idx={idx} />
             ))
           }
         </div>
@@ -87,3 +58,10 @@ export default class NewCompanyForm extends React.Component {
     )
   }
 }
+
+
+function mapStateToProps(state) {
+  return { newJobsData: state.newJobsData }
+}
+
+export default connect(mapStateToProps)(NewCompanyForm);

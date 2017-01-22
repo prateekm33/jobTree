@@ -564,16 +564,17 @@ form .form-line > * {
   margin-bottom: 1.5em;
   border-bottom: 2px solid #c35959;
   padding: 1em;
+  position: relative;
 }
-/* line 58, ../sass/_home.scss */
+/* line 59, ../sass/_home.scss */
 #home-container #jobs-forms-container .new-job .dropdown {
   font-size: 1.2em;
 }
-/* line 62, ../sass/_home.scss */
+/* line 63, ../sass/_home.scss */
 #home-container #jobs-forms-container .new-job ul.dropdown-menu {
   background: #eefbee;
 }
-/* line 66, ../sass/_home.scss */
+/* line 67, ../sass/_home.scss */
 #home-container #jobs-forms-container .new-job .remove-job {
   right: 0.3em;
   position: absolute;
@@ -582,12 +583,12 @@ form .form-line > * {
   top: -0.5em;
   color: rgba(175, 14, 14, 0.36);
 }
-/* line 73, ../sass/_home.scss */
+/* line 74, ../sass/_home.scss */
 #home-container #jobs-forms-container .new-job .remove-job:hover {
   cursor: pointer;
   color: #af0e0e;
 }
-/* line 79, ../sass/_home.scss */
+/* line 80, ../sass/_home.scss */
 #home-container #jobs-forms-container .new-job #status-dd-job-form {
   height: 35px;
   margin-left: 1em;
@@ -597,7 +598,7 @@ form .form-line > * {
   justify-content: flex-end;
   align-self: center;
 }
-/* line 95, ../sass/_home.scss */
+/* line 96, ../sass/_home.scss */
 #home-container #home-title {
   text-align: center;
   font-size: 2em;
@@ -606,33 +607,33 @@ form .form-line > * {
   margin-top: 1em;
   margin-bottom: 0.7em;
 }
-/* line 103, ../sass/_home.scss */
+/* line 104, ../sass/_home.scss */
 #home-container #home-title:focus {
   outline: 2px dotted green;
 }
-/* line 108, ../sass/_home.scss */
+/* line 109, ../sass/_home.scss */
 #home-container #company-sort-dd {
   left: -1em;
   justify-content: flex-end;
 }
-/* line 112, ../sass/_home.scss */
+/* line 113, ../sass/_home.scss */
 #home-container #company-sort-dd ul.dropdown-menu {
   right: 0;
   left: initial;
 }
-/* line 120, ../sass/_home.scss */
+/* line 121, ../sass/_home.scss */
 #home-container #large-jobs-view-container {
   min-height: 80vh;
   padding: 1em;
   margin: 0 auto;
 }
 @media (max-width: 650px), (max-device-width: 650px) {
-  /* line 120, ../sass/_home.scss */
+  /* line 121, ../sass/_home.scss */
   #home-container #large-jobs-view-container {
     display: none;
   }
 }
-/* line 129, ../sass/_home.scss */
+/* line 130, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-container {
   display: flex;
   flex-flow: column nowrap;
@@ -640,7 +641,7 @@ form .form-line > * {
   padding: 1em;
   border-bottom: 1px dashed;
 }
-/* line 137, ../sass/_home.scss */
+/* line 138, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-jobs {
   margin-left: 2.5em;
   font-size: 0.75em;
@@ -649,7 +650,7 @@ form .form-line > * {
   border-spacing: 0 2em;
   display: none;
 }
-/* line 145, ../sass/_home.scss */
+/* line 146, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-jobs thead th {
   position: relative;
   text-align: center;
@@ -657,20 +658,20 @@ form .form-line > * {
   color: rgba(165, 42, 42, 0.7);
   font-weight: bold;
 }
-/* line 154, ../sass/_home.scss */
+/* line 155, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name-container {
   display: flex;
   flex-flow: row nowrap;
 }
-/* line 158, ../sass/_home.scss */
+/* line 159, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name-container .jobs-order.dropdown {
   display: none;
 }
-/* line 161, ../sass/_home.scss */
+/* line 162, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name-container .jobs-order.dropdown ul.dropdown-menu {
   left: 5em;
 }
-/* line 166, ../sass/_home.scss */
+/* line 167, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name-container .company-summary {
   display: flex;
   justify-content: flex-end;
@@ -680,50 +681,50 @@ form .form-line > * {
   font-style: italic;
   color: #afadad;
 }
-/* line 175, ../sass/_home.scss */
+/* line 176, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name-container .company-summary > div {
   margin-left: 2em;
 }
-/* line 181, ../sass/_home.scss */
+/* line 182, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name-container:hover {
   cursor: pointer;
 }
-/* line 183, ../sass/_home.scss */
+/* line 184, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name-container:hover .company-name {
   cursor: pointer;
   border-color: #72cc6c;
   border-bottom: 3px solid #1d7117;
   background: #96e891;
 }
-/* line 189, ../sass/_home.scss */
+/* line 190, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name-container:hover .open-close-help {
   visibility: visible;
 }
-/* line 194, ../sass/_home.scss */
+/* line 195, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-header-container {
   display: flex;
   flex-flow: row nowrap;
   width: 100%;
 }
-/* line 200, ../sass/_home.scss */
+/* line 201, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name {
   border-bottom: 3px solid;
   border-color: #1d7117;
   position: relative;
 }
-/* line 204, ../sass/_home.scss */
+/* line 205, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name:focus {
   outline: none;
   background: white;
 }
-/* line 208, ../sass/_home.scss */
+/* line 209, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name:hover, #home-container #large-jobs-view-container .company-name.active {
   cursor: pointer;
   border-color: #72cc6c;
   border-bottom: 3px solid #1d7117;
   background: #96e891;
 }
-/* line 215, ../sass/_home.scss */
+/* line 216, ../sass/_home.scss */
 #home-container #large-jobs-view-container .company-name .open-close-help {
   font-size: 0.8em;
   color: #1d7117;
@@ -733,11 +734,11 @@ form .form-line > * {
   width: 100%;
   visibility: hidden;
 }
-/* line 226, ../sass/_home.scss */
+/* line 227, ../sass/_home.scss */
 #home-container #large-jobs-view-container .glyphicon-share-alt {
   transform: scaleY(-1) translateY(50%) translateX(100%);
 }
-/* line 230, ../sass/_home.scss */
+/* line 231, ../sass/_home.scss */
 #home-container #large-jobs-view-container .job-component td:first-child {
   border-bottom: 2px solid;
   width: 1.5em;
@@ -746,7 +747,7 @@ form .form-line > * {
   transform: translateY(-45%);
   border-color: lightgrey;
 }
-/* line 239, ../sass/_home.scss */
+/* line 240, ../sass/_home.scss */
 #home-container #large-jobs-view-container .job-component td {
   position: relative;
   text-align: center;
@@ -754,7 +755,7 @@ form .form-line > * {
   padding-left: 1em;
   padding-right: 1em;
 }
-/* line 246, ../sass/_home.scss */
+/* line 247, ../sass/_home.scss */
 #home-container #large-jobs-view-container .job-component td .td-dividers {
   border: 1px solid lightcoral;
   width: 0;
@@ -763,7 +764,7 @@ form .form-line > * {
   top: 0;
   right: -5%;
 }
-/* line 258, ../sass/_home.scss */
+/* line 259, ../sass/_home.scss */
 #home-container #small-jobs-view-container {
   display: flex;
   flex-flow: column nowrap;
@@ -773,12 +774,12 @@ form .form-line > * {
   max-width: 80%;
 }
 @media (min-width: 650px) and (min-device-width: 650px) {
-  /* line 258, ../sass/_home.scss */
+  /* line 259, ../sass/_home.scss */
   #home-container #small-jobs-view-container {
     display: none;
   }
 }
-/* line 270, ../sass/_home.scss */
+/* line 271, ../sass/_home.scss */
 #home-container #small-jobs-view-container .company-name {
   width: 100%;
   background-color: white;
@@ -789,33 +790,33 @@ form .form-line > * {
   color: black;
   border: 2px solid #483030;
 }
-/* line 280, ../sass/_home.scss */
+/* line 281, ../sass/_home.scss */
 #home-container #small-jobs-view-container .company-name:hover {
   background-color: rgba(179, 162, 162, 0.6);
 }
-/* line 284, ../sass/_home.scss */
+/* line 285, ../sass/_home.scss */
 #home-container #small-jobs-view-container .company-name:focus {
   outline: 3px solid #483030;
 }
-/* line 288, ../sass/_home.scss */
+/* line 289, ../sass/_home.scss */
 #home-container #small-jobs-view-container .company-name div {
   font-size: 0.6em;
   color: #5d5959;
 }
-/* line 294, ../sass/_home.scss */
+/* line 295, ../sass/_home.scss */
 #home-container #small-jobs-view-container .jobs-container {
   display: none;
 }
-/* line 300, ../sass/_home.scss */
+/* line 301, ../sass/_home.scss */
 #home-container .job-component td:nth-of-type(1n + 2) {
   border-right: 2px solid darksalmon;
 }
-/* line 303, ../sass/_home.scss */
+/* line 304, ../sass/_home.scss */
 #home-container .job-component td:nth-of-type(1n + 2):focus {
   outline: 2px solid green;
   outline-offset: -1px;
 }
-/* line 308, ../sass/_home.scss */
+/* line 309, ../sass/_home.scss */
 #home-container .job-component td:nth-of-type(1n + 2):hover {
   box-shadow: 3px -3px 30px #c0ffc0;
   cursor: pointer;
