@@ -20,6 +20,9 @@ class NewCompanyForm extends React.Component {
   componentWillMount() {
     this.props.dispatch(actions.resetCompanyForm());
   }
+  componentDidMount() {
+    this.companyNameInput.focus();
+  }
 
   saveRecruiterName(evt) {
     this.setState({recruiterName: evt.target.value});
@@ -38,7 +41,7 @@ class NewCompanyForm extends React.Component {
         <div className="form-line">
           <div>
             <label htmlFor="company-name">Company Name </label>
-            <input id="company-name" className="form-control" placeholder="Company name" />
+            <input ref={el => this.companyNameInput = el} id="company-name" className="form-control" placeholder="Company name" />
           </div>
         </div>
         <div className="form-line">
@@ -54,7 +57,7 @@ class NewCompanyForm extends React.Component {
           </div>
           {
             this.props.newJobsData.reduceRight((arr,job,idx) => {
-              arr.push(<NewJobsForm recruiterName={this.state.recruiterName} job={job} key={idx} idx={idx} />)
+              arr.push(<NewJobsForm recruiterName={this.state.recruiterName} company={this.companyNameInput.value} job={job} key={idx} idx={idx} />)
               return arr;
               }, [])
           }
