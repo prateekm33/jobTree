@@ -8,6 +8,8 @@ const newJobsReducers = {
         return createNewJob(data);
       case types.removeJob:
         return data.filter((job, idx) => idx !== action.idx);
+      case types.resetCompanyForm:
+        return [{role: '', location: '', status: '', recruiter: '', date_applied: '', company: '', reqURL: ''}];
       default: 
         return data;
     }
@@ -26,6 +28,5 @@ function createNewJob(data) {
   const newJob = {role: '', location: '', status: '', recruiter: '', date_applied: '', company: '', reqURL: ''};
   return data.concat([newJob])
 }
-
 
 export default newJobsReducers;

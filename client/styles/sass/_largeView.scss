@@ -1,0 +1,138 @@
+#large-jobs-view-container {
+  min-height: 80vh;
+  padding: 1em;
+  margin: 0 auto;
+  min-width: 80%;
+  
+  @media (max-width: $max-width), (max-device-width: $max-device-width) {
+    display: none;
+  }
+
+  .company-container {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-bottom: 1.5em;
+    padding: 1em;
+    border-bottom: 1px dashed;
+  }
+
+  .company-jobs {
+    margin-left: 2.5em;
+    font-size: 0.75em;
+    width: 90%;
+    border-collapse: initial;
+    border-spacing: 0 2em;
+    display: none;
+
+    thead th {
+      position: relative; 
+      text-align: center;
+      font-size: 0.8em;
+      color: rgba(165, 42, 42, 0.7);
+      font-weight: bold;
+    }
+  }
+
+  .company-name-container {
+    display: flex;
+    flex-flow: row nowrap;
+    
+    .jobs-order.dropdown {
+      display: none;
+
+      ul.dropdown-menu {
+        left: 5em;
+      }
+    }
+    
+    .company-summary {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      font-size: 0.6em;
+      align-items: center;
+      font-style: italic;
+      color: #afadad;
+
+      & > div {
+        margin-left: 2em;
+      }
+    }
+  }
+
+  .company-name-container:hover {
+    cursor: pointer;
+    .company-name {
+      cursor: pointer;
+      border-color: #72cc6c;
+      border-bottom: 3px solid #1d7117; // 
+      background: #96e891;
+    }
+    .open-close-help {
+      visibility: visible;
+    }
+  }
+
+  .company-header-container {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+  }
+
+  .company-name {
+    border-bottom: 3px solid;
+    border-color:  #1d7117;
+    position: relative;
+    &:focus {
+        outline: none;
+        background: white;
+      }
+    &:hover, &.active {
+      cursor: pointer;
+      border-color: #72cc6c;
+      border-bottom: 3px solid #1d7117; // 
+      background: #96e891;
+    }
+
+    .open-close-help {
+      font-size: 0.8em;
+      color: #1d7117;
+      font-style: italic;
+      position: relative;
+      text-align: center;
+      width: 100%;
+      visibility: hidden;
+    }
+  }
+
+  .glyphicon-share-alt {
+    transform: scaleY(-1) translateY(50%) translateX(100%);
+  }
+
+  .job-component td:first-child {
+    border-bottom: 2px solid;
+    width: 1.5em;
+    border-left: 2px solid;
+    height: 1.5em;
+    transform: translateY(-45%);
+    border-color: lightgrey;
+  }
+
+  .job-component td {
+    position: relative;
+    text-align: center;
+    border-bottom: 1px dotted lightgrey;
+    padding-left: 1em;
+    padding-right: 1em;
+    
+    .td-dividers {
+      border: 1px solid lightcoral;
+      width: 0;
+      height: 90%;
+      position: absolute;
+      top: 0;
+      right: -5%;
+    }
+  }
+
+}

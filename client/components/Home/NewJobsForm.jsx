@@ -41,10 +41,8 @@ class NewJobsForm extends React.Component {
   componentDidUpdate() {
     this.props.job.recruiter = this.props.job.recruiter || this.recruiterInput.value || this.props.recruiterName;
 
-    this.statusEl.value = this.props.job.status;
     this.roleEl.value = this.props.job.role;
     this.locationEl.value = this.props.job.location;
-    this.recruiterInput.value = this.props.job.recruiter;
     this.dateAppliedEl.value = this.props.job.date_applied;
     this.recruiterInput.value = this.props.job.recruiter;
   }

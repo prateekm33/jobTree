@@ -5,6 +5,7 @@ export default class Job extends React.Component {
   constructor(props) {
     super(props);
     this.handleUserEdit = this.handleUserEdit.bind(this);
+    this.handleEditBtnClick = this.handleEditBtnClick.bind(this);
   }
 
   handleUserEdit(evt) {
@@ -29,6 +30,12 @@ export default class Job extends React.Component {
     return date.toDateString();
   }
 
+  handleEditBtnClick(evt) {
+    evt.preventDefault();
+
+    console.log('TODO --- ROUTE TO /manage/jobs')
+  }
+
   renderTable() {
     return (
       <tr onKeyDown={this.handleUserEdit} className="job-component">
@@ -45,11 +52,14 @@ export default class Job extends React.Component {
   renderSmall() {
     return (
       <div onKeyDown={this.handleUserEdit} className="job-component">
-        <div contentEditable={true} className="status">{this.props.job.status}</div>
-        <div contentEditable={true} className="role">{this.props.job.role}</div>
-        <div contentEditable={true} className="location">{this.props.job.location}</div>
-        <div contentEditable={true} className="recruiter">{this.props.job.recruiter}</div>
-        <div contentEditable={true} className="date_applied">{this.formatDate(this.props.job.date_applied)}</div>
+        <div className="date_applied">{this.formatDate(this.props.job.date_applied)}</div>
+        <div className="rol-loc-div">
+          <div className="role">{this.props.job.role} </div>
+          <div className="location">{this.props.job.location}</div>
+        </div>
+        <div className="status">{this.props.job.status}</div>
+        <div className="recruiter">{this.props.job.recruiter}</div>
+        <button onClick={this.handleEditBtnClick} className="edit btn btn-default">Edit</button>
       </div>
     )
   }

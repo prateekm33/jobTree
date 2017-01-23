@@ -15,7 +15,10 @@ class NewCompanyForm extends React.Component {
       deleteIdx: +Infinity,
       jobForms: []
     }
+  }
 
+  componentWillMount() {
+    this.props.dispatch(actions.resetCompanyForm());
   }
 
   saveRecruiterName(evt) {

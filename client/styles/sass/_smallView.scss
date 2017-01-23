@@ -1,0 +1,104 @@
+#small-jobs-view-container {
+  @media (min-width: $max-width) and (min-device-width: $max-device-width) {
+    display: none;
+  }
+
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 80vh;
+  padding: 1em;
+  margin: 0 auto;
+  min-width: 80%;
+
+  .company-container {
+    margin-bottom: 2em;
+  }
+
+  .company-name {
+    width: 100%;
+    background-color: rgb(255, 255, 255); //rgba(179, 162, 162, 0.6)
+    margin-bottom: 1em;
+    padding: 1em;
+    font-size: 1em;
+    font-weight: bold;
+    color: black;
+    border-bottom: 3px solid;
+    border-color: #1d7117;
+    &:focus {
+        outline: none;
+        background: white;
+      }
+    &:hover, &.active {
+      cursor: pointer;
+      border-color: #72cc6c;
+      border-bottom: 3px solid #1d7117; // 
+      background: #96e891;
+    }
+
+    div {
+      font-size: 0.6em;
+      color: #5d5959;
+    }
+  }
+
+  .sv-company-jobs-container {
+    display: none;
+    flex-flow: column nowrap;
+  }
+
+  .jobs-container {
+    display: none;
+  }
+
+  .job-component {
+    border: 1px solid black;
+    padding: 1em;
+    margin-bottom: 1em;
+    position: relative;
+    border-radius: 0.5em;
+
+    & > div {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      margin-top: 0.5em;
+      padding: 0.5em;
+      border-bottom: 1px dotted grey;
+
+      &.rol-loc-div {
+        margin-top: 1em;
+      }
+    }
+
+    .role {
+      margin-right: 0.5em;
+    }
+
+    .status {
+      font-size: 0.8em;
+    }
+
+    .date_applied {
+      position: absolute;
+      top: 1em;
+      right: 1em;
+      font-size: 0.5em;
+      color: grey;
+      border-bottom: none;
+    }
+
+    .recruiter {
+      font-size: 0.7em;
+      align-self: flex-end;
+      font-style: italic;
+    }
+
+    button.edit {
+      margin-top: 1em;
+      position: relative;
+      left: 80%;
+    }
+
+  }
+  
+}

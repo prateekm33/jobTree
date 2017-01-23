@@ -12,7 +12,7 @@ const finalCreateStore = compose(
 
 
 const defaultState = {
-  newJobsData: [{role: '', location: '', status: '', recruiter: '', date_applied: '', company: '', reqURL: ''}],
+  newJobsData: [],
 
   showCompanyForm: false
 }

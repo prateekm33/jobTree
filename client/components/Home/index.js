@@ -51,7 +51,7 @@ class Home extends React.Component {
 
     for (let company in jobs) {
       arr.push(
-        <SmallView showJobs={this.showJobs} key={company} jobs={jobs[company]} company={company} />
+        <SmallView key={company} data={jobs[company]} company={company} />
       );
     }
 

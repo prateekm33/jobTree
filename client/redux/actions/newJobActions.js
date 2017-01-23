@@ -7,6 +7,12 @@ const newJobActions = {
     }
   },
 
+  resetCompanyForm() {
+    return {
+      type: types.resetCompanyForm
+    }
+  },
+
   createNewJob() {
     return {
       type: types.createNewJob
