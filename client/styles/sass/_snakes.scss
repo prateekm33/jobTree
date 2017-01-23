@@ -1,0 +1,54 @@
+#snakes-game-container {
+  border: 2px solid black;
+  min-width: 90%;
+  min-height: 80vh;
+  display: flex;
+  flex-flow: column nowrap;
+
+  #game-options, #game-board {
+    width: 100%;
+    border: 1px solid;
+  }
+
+  #game-board {
+    min-height: 85%;
+    display: flex;
+    flex-flow: column nowrap;
+
+    .game-row {
+      display: flex;
+      flex-flow: row nowrap;
+      flex: 1;
+
+      .game-cell {
+        border: 1px solid lightgrey;
+        flex: 1;
+
+        &.black {
+          background: black;
+        }
+      }
+    }
+  }
+
+  #game-options {
+    min-height: 15%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 0.2em;
+
+    #game-difficulty {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      & > * {
+        margin-right: 1em;
+      }
+    }
+
+    #scoreboard {
+      text-align: right;
+    }
+  }
+}

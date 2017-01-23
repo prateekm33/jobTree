@@ -12,7 +12,7 @@ export default class App extends React.Component {
         <Link key={1} to='/about'><div className="menu-highlight"></div>About</Link>,
         <Link key={2} to='/careers'><div className="menu-highlight"></div>Careers</Link>,
         <Link key={3} to='/home'><div className="menu-highlight"></div>temp for Home</Link>,
-        <Link key={4} to='/careers'><div className="menu-highlight"></div>Another Pg</Link>,
+        <Link key={4} to='/snakes'><div className="menu-highlight"></div>Snakes</Link>,
         <Link key={5} to='/careers'><div className="menu-highlight"></div>Yet Another</Link>
       ]
     }
