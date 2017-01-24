@@ -46,6 +46,7 @@ nav#header {
   #app-logo {
     color: #76BA76; //#8eea88;
     flex-grow: 0.5;
+    text-decoration: none;
   }
   #main-nav-options {
     flex-grow: 2;
@@ -161,12 +162,10 @@ nav#header {
 nav#footer { 
   min-height: $footer-height;
   position: absolute;
-  bottom: -($footer-height + 1);
+  bottom: -4.5em;
   width: 100%;
-  border-top: 4px solid green;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-  background-color: white;
+  border-top: 2px solid #472902;
+  background-color: #e4eae4;
 
   #nav-options {
     display: flex;
@@ -175,6 +174,10 @@ nav#footer {
     align-items: center;
     font-size: 0.7em;
     height: $footer-height;
+
+    & > a {
+      color: #65461e;
+    }
   }
 }
 

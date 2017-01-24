@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import actions from '../../redux/actions';
 
 import {validateAuthForm} from '../Utils';
 
 
-export default class AuthForm extends React.Component {
+class AuthForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,6 +39,8 @@ export default class AuthForm extends React.Component {
     inputs.forEach(input => {
       input.style.border = '';
     });
+    const user = {};
+    this.props.dispatch(actions.submitAuthForm(user, form.id));
 
   }
 
@@ -70,3 +74,8 @@ export default class AuthForm extends React.Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {};
+}
+export default connect(mapStateToProps)(AuthForm);

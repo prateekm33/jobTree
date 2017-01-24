@@ -9,7 +9,15 @@ const types = {
   postingNewJobs: 'POSTING_NEW_JOBS',
   postedJobs: 'POSTED_JOBS',
   asyncError: 'ASYNC_ERROR',
-  resetJobsPost: 'RESET_JOBS_POST'
+  resetJobsPost: 'RESET_JOBS_POST',
+
+  authorizingUser: 'AUTHORIZING_USER',
+  loggingOutUser: 'LOGGING_OUT_USER',
+  logInUser: 'LOGIN_USER',
+  logOutUser: 'LOGOUT_USER',
+  invalidCreds: 'INVALID_CREDS',
+  logOutError: 'LOGOUT_ERROR'
+
 }
 
 
