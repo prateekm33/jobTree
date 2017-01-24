@@ -22,7 +22,7 @@ export default class Snakes extends React.Component {
       leader: {user: '', score: 0},
       length: 31,
       speed: 1000,
-      board: new Array(31).fillWithFn(() => new Array(31).fill(false)),
+      board: new Array(31).fillWithFn(() => new Array(31).fill(2)),
       food: {r: null, c: null},
       tailOnPiece: false,
       dir: 'right'
@@ -39,7 +39,11 @@ export default class Snakes extends React.Component {
     this.summonFood = this.summonFood.bind(this);
     this._moveBody = this._moveBody.bind(this);
     this.moveSnake = this.moveSnake.bind(this);
+    this._moveSnake = this._moveSnake.bind(this);
     this.resetGame = this.resetGame.bind(this);
+    this.canIGo = this.canIGo.bind(this);
+    this.gameOver = this.gameOver.bind(this);
+    this.endGame = this.endGame.bind(this);
   }
 
   componentDidMount() {
@@ -69,12 +73,14 @@ export default class Snakes extends React.Component {
   }
 
   resetGame(length = this.state.length, speed = this.state.speed) {
-    const board = new Array(length).fillWithFn(() => new Array(length).fill(0));
+    const board = new Array(length).fillWithFn(() => new Array(length).fill(2));
     const mid = Math.floor(board.length / 2);
     board[mid][mid] = 1;
+    this.takenSpots = {};
     this.takenSpots[mid] = this.takenSpots[mid] || {};
     this.takenSpots[mid][mid] = true;
     this.setState({board});
+    this.snake = {head: null, tail: null};
     this.snake.head = {r: mid, c: mid, prev: null, next: null};
     this.snake.tail = this.snake.head;
     this.setState({ board, length: length, speed: speed}, this.summonFood);
@@ -109,7 +115,7 @@ export default class Snakes extends React.Component {
     }
   }
 
-  temp(moveFn) {
+  _moveSnake(moveFn) {
     clearInterval(this.timer);
     this.timer = setInterval(moveFn, this.state.speed);
   }
@@ -122,11 +128,38 @@ export default class Snakes extends React.Component {
 
     this.setState({dir});
 
-    this.temp(this.moveSnake);
+    this._moveSnake(this.moveSnake);
 
     return function (dir) {
       this.setState({dir});
     }
+  }
+
+  canIGo(dir) {
+    const r = this.snake.head.r;
+    const c = this.snake.head.c;
+    switch(dir) {
+      case 'up':
+        if (!this.state.board[r - 1]) return false;
+      case 'right':
+        if (!this.state.board[r][c + 1]) return false;
+      case 'down':
+        if (!this.state.board[r +1]) return false;
+      case 'left':
+        if (!this.state.board[r][c - 1]) return false;
+      default: return true;
+    }
+  }
+
+  gameOver() {
+    this.endGame();
+  }
+
+  endGame() {
+    this.endBtn.disabled = true;
+    this.setState({started: false, paused: false});
+    clearInterval(this.timer);
+    console.log('TODO --- COMPLETE END GAME...');
   }
 
   moveSnake(dir = this.state.dir) {
@@ -137,8 +170,9 @@ export default class Snakes extends React.Component {
           this.wasTailOnPiece();
           this.isTailOnPiece();
           this._moveBody();
+          if (!this.canIGo('up')) return this.gameOver();
           board[this.snake.head.r - 1][this.snake.head.c] = 1;
-          board[this.snake.head.r][this.snake.head.c] = 0;
+          board[this.snake.head.r][this.snake.head.c] = 2;
           this.snake.head.r = this.snake.head.r - 1;
           this.takenSpots[this.snake.head.r] = this.takenSpots[this.snake.head.r] || {};
           this.takenSpots[this.snake.head.r][this.snake.head.c] = true;
@@ -148,8 +182,9 @@ export default class Snakes extends React.Component {
           this.wasTailOnPiece();
           this.isTailOnPiece();
           this._moveBody();
+          if (!this.canIGo('right')) return this.gameOver();
           board[this.snake.head.r][this.snake.head.c + 1] = 1;
-          board[this.snake.head.r][this.snake.head.c] = 0;
+          board[this.snake.head.r][this.snake.head.c] = 2;
           this.snake.head.c = this.snake.head.c + 1;
           this.takenSpots[this.snake.head.r] = this.takenSpots[this.snake.head.r] || {};
           this.takenSpots[this.snake.head.r][this.snake.head.c] = true;
@@ -159,8 +194,9 @@ export default class Snakes extends React.Component {
           this.wasTailOnPiece();
           this.isTailOnPiece();
           this._moveBody();
+          if (!this.canIGo('down')) return this.gameOver();
           board[this.snake.head.r + 1][this.snake.head.c] = 1;
-          board[this.snake.head.r][this.snake.head.c] = 0;
+          board[this.snake.head.r][this.snake.head.c] = 2;
           this.snake.head.r = this.snake.head.r + 1;
           this.takenSpots[this.snake.head.r] = this.takenSpots[this.snake.head.r] || {};
           this.takenSpots[this.snake.head.r][this.snake.head.c] = true;
@@ -170,8 +206,9 @@ export default class Snakes extends React.Component {
           this.wasTailOnPiece();
           this.isTailOnPiece();
           this._moveBody();
+          if (!this.canIGo('left')) return this.gameOver();
           board[this.snake.head.r][this.snake.head.c - 1] = 1;
-          board[this.snake.head.r][this.snake.head.c] = 0;
+          board[this.snake.head.r][this.snake.head.c] = 2;
           this.snake.head.c = this.snake.head.c - 1;
           this.takenSpots[this.snake.head.r] = this.takenSpots[this.snake.head.r] || {};
           this.takenSpots[this.snake.head.r][this.snake.head.c] = true;
@@ -199,7 +236,7 @@ export default class Snakes extends React.Component {
       this.takenSpots[this.state.food.r][this.state.food.c] = true;
       let newSpeed = this.state.speed - 100;
       if (newSpeed < 50) newSpeed = 50;
-      this.setState({speed: newSpeed}, () => this.temp(this.moveSnake));
+      this.setState({speed: newSpeed}, () => this._moveSnake(this.moveSnake));
       this.summonFood();
     } 
   }
@@ -225,9 +262,7 @@ export default class Snakes extends React.Component {
 
   handleEndBtn(evt) {
     evt.preventDefault();
-    this.endBtn.disabled = true;
-    this.setState({started: false, paused: false});
-    clearInterval(this.timer);
+    this.endGame();
   }
 
   genBoard() {
