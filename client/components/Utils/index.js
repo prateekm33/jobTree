@@ -5,6 +5,14 @@ export class Dropdown extends React.Component {
     super(props);
     this.toggleDropDownMenu = this.toggleDropDownMenu.bind(this);
     this.handleItemClick = this.handleItemClick.bind(this);
+
+    this.menuItems = [];
+
+    if (!Array.isArray(props.menuItems)) {
+      for (let key in props.menuItems) {
+        this.menuItems.push(props.menuItems[key]);
+      }
+    } else this.menuItems = props.menuItems;
   }
 
   toggleDropDownMenu(evt) {
@@ -36,7 +44,7 @@ export class Dropdown extends React.Component {
         </button>
         <ul onClick={this.handleItemClick} ref={el => this.dropdownMenu = el} className='dropdown-menu'>
           {
-            this.props.menuItems.map((item, idx) => (
+            this.menuItems.map((item, idx) => (
               <li key={idx} id={item} className={"dropdown-item" + " " +(itemClasses[item] || '')}>
                 { item }
               </li>

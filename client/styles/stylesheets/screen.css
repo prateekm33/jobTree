@@ -817,6 +817,8 @@ form label {
   padding: 1em;
   margin: 0 auto;
   min-width: 80%;
+  top: 1em;
+  position: relative;
 }
 @media (min-width: 650px) and (min-device-width: 650px) {
   /* line 1, ../sass/_smallView.scss */
@@ -824,11 +826,13 @@ form label {
     display: none;
   }
 }
-/* line 13, ../sass/_smallView.scss */
+/* line 15, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .company-container {
-  margin-bottom: 2em;
+  margin-bottom: 3em;
+  border-bottom: 2px dotted;
+  margin-top: 1.5em;
 }
-/* line 17, ../sass/_smallView.scss */
+/* line 21, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .company-name {
   width: 100%;
   background-color: white;
@@ -839,33 +843,52 @@ form label {
   color: black;
   border-bottom: 3px solid;
   border-color: #1d7117;
+  position: relative;
 }
-/* line 27, ../sass/_smallView.scss */
+/* line 33, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .company-name:focus {
   outline: none;
   background: white;
 }
-/* line 31, ../sass/_smallView.scss */
+/* line 37, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .company-name:hover, #home-container #small-jobs-view-container .company-name.active {
   cursor: pointer;
   border-color: #72cc6c;
   border-bottom: 3px solid #1d7117;
   background: #96e891;
 }
-/* line 38, ../sass/_smallView.scss */
+/* line 44, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .company-name div {
   font-size: 0.6em;
   color: #5d5959;
 }
-/* line 44, ../sass/_smallView.scss */
+/* line 49, ../sass/_smallView.scss */
+#home-container #small-jobs-view-container .company-name .company-summary {
+  position: absolute;
+  top: -1.8em;
+  left: 0;
+  display: flex;
+  right: 0;
+  justify-content: space-between;
+  font-size: 1em;
+  align-items: flex-end;
+  flex-flow: row wrap;
+  font-weight: bolder;
+}
+/* line 61, ../sass/_smallView.scss */
+#home-container #small-jobs-view-container .company-name .company-summary > div {
+  color: #8e8a8a;
+  margin-right: 0.7em;
+}
+/* line 68, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .sv-company-jobs-container {
   flex-flow: column nowrap;
 }
-/* line 48, ../sass/_smallView.scss */
+/* line 72, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .jobs-container {
   display: none;
 }
-/* line 52, ../sass/_smallView.scss */
+/* line 76, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .job-component {
   border: 1px solid black;
   padding: 1em;
@@ -873,7 +896,7 @@ form label {
   position: relative;
   border-radius: 0.5em;
 }
-/* line 59, ../sass/_smallView.scss */
+/* line 83, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .job-component > div {
   display: flex;
   flex-flow: row wrap;
@@ -882,19 +905,19 @@ form label {
   padding: 0.5em;
   border-bottom: 1px dotted grey;
 }
-/* line 67, ../sass/_smallView.scss */
+/* line 91, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .job-component > div.rol-loc-div {
   margin-top: 1em;
 }
-/* line 72, ../sass/_smallView.scss */
+/* line 96, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .job-component .role {
   margin-right: 0.5em;
 }
-/* line 76, ../sass/_smallView.scss */
+/* line 100, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .job-component .status {
   font-size: 0.8em;
 }
-/* line 80, ../sass/_smallView.scss */
+/* line 104, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .job-component .date_applied {
   position: absolute;
   top: 1em;
@@ -903,13 +926,13 @@ form label {
   color: grey;
   border-bottom: none;
 }
-/* line 89, ../sass/_smallView.scss */
+/* line 113, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .job-component .recruiter {
   font-size: 0.7em;
   align-self: flex-end;
   font-style: italic;
 }
-/* line 95, ../sass/_smallView.scss */
+/* line 119, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .job-component button.edit {
   margin-top: 1em;
   position: relative;

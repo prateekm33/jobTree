@@ -2,14 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import actions from '../../redux/actions';
 
-import {jobs} from '../../mockData';
-
 import LargeView from './LargeView';
 import SmallView from './SmallView';
 import Job from './Job';
 import NewCompanyForm from './NewCompanyForm';
 import { Dropdown } from '../Utils';
 
+import menuItems from './companySortItems';
 
 class Home extends React.Component {
   constructor(props) {
@@ -19,28 +18,21 @@ class Home extends React.Component {
       jobs: [],
       company: null,
       title: 'My Pipeline',
-      defaultOrder: 'COMPANY',
-      menuItems: [
-        'COMPANY',
-        '# JOB APPS',
-        '# APPLIED',
-        '# PHONE-SCREENS',
-        '# ON-SITES',
-        '# REJECTED',
-        '# OFFERS',
-      ]
+      defaultOrder: 'Select order',
+      menuItems: menuItems
     };
     
     this.handleTitleEdit = this.handleTitleEdit.bind(this);
-    this.selectItem = this.selectItem.bind(this);
+    this.selectSort = this.selectSort.bind(this);
     this.handleAddBtnClick = this.handleAddBtnClick.bind(this);
     this.toggleCompanyForm = this.toggleCompanyForm.bind(this);
   }
 
   renderLargeView() {
     const arr = [];
-    for (let company in jobs) {
-      arr.push(<LargeView key={company} company={company} data={jobs[company]}/>);
+    const jobs = this.props.allJobs;
+    for (let i = 0; i < jobs.length; i++) {
+      arr.push(<LargeView key={i} company={jobs[i].company} data={jobs[i].data}/>);
     }
 
     return arr;
@@ -49,9 +41,10 @@ class Home extends React.Component {
   renderSmallView() {
     const arr = [];
 
-    for (let company in jobs) {
+    const jobs = this.props.allJobs;
+    for (let i = 0; i < jobs.length; i++) {
       arr.push(
-        <SmallView key={company} data={jobs[company]} company={company} />
+        <SmallView key={i} data={jobs[i].data} company={jobs[i].company} />
       );
     }
 
@@ -76,9 +69,10 @@ class Home extends React.Component {
 
   }
 
-  selectItem(evt) {
+  selectSort(evt) {
     const target = evt.target;
     this.setState({defaultOrder: target.innerText});
+    this.props.dispatch(actions.sortCompaniesBy(target.innerText));
   }
 
   handleAddBtnClick(evt) {
@@ -119,7 +113,7 @@ class Home extends React.Component {
                 <div ref={el => this.helpForCancel = el} id="help-for-cancel">Click to cancel form</div>
               </div>
             </div>
-            <Dropdown id="company-sort-dd" defaultOption={this.state.defaultOrder} selectItem={this.selectItem} menuItems={this.state.menuItems} />
+            <Dropdown id="company-sort-dd" defaultOption={this.state.defaultOrder} selectItem={this.selectSort} menuItems={this.state.menuItems} />
           </div>
         </div>
 
@@ -151,7 +145,7 @@ class Home extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { showCompanyForm: state.showCompanyForm };
+  return { showCompanyForm: state.showCompanyForm, allJobs: state.allJobs };
 }
 
 export default connect(mapStateToProps)(Home);

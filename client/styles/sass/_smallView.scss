@@ -9,9 +9,13 @@
   padding: 1em;
   margin: 0 auto;
   min-width: 80%;
+  top: 1em;
+  position: relative;
 
   .company-container {
-    margin-bottom: 2em;
+    margin-bottom: 3em;
+    border-bottom: 2px dotted;
+    margin-top: 1.5em;
   }
 
   .company-name {
@@ -24,6 +28,8 @@
     color: black;
     border-bottom: 3px solid;
     border-color: #1d7117;
+    position: relative;
+
     &:focus {
         outline: none;
         background: white;
@@ -38,6 +44,24 @@
     div {
       font-size: 0.6em;
       color: #5d5959;
+    }
+
+    .company-summary {
+      position: absolute;
+      top: -1.8em;
+      left: 0;
+      display: flex;
+      right: 0;
+      justify-content: space-between;
+      font-size: 1em;
+      align-items: flex-end;
+      flex-flow: row wrap;
+      font-weight: bolder;
+
+      & > div {
+        color: #8e8a8a;
+        margin-right: 0.7em;
+      }
     }
   }
 

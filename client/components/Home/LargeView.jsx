@@ -6,6 +6,7 @@ import actions from '../../redux/actions';
 
 import Job from './Job';
 import { Dropdown } from '../Utils';
+import Summary from './Summary';
 
 class LargeView extends React.Component {
   constructor(props) {
@@ -83,43 +84,6 @@ class LargeView extends React.Component {
   }
 }
 
-
-function Summary(props) {
-  const statuses = [
-    'APPLIED', 'PHONE SCREEN', 'ON SITE', 'REJECTED', 'OFFER'
-  ];
-  const jobs = props.data.jobs;
-  return (
-    <div className="company-summary">
-      <div className="jobs-count"># of Jobs: {jobs.length}</div>
-      {
-        displayStats(statusCount(jobs))
-      }
-      <div className="recruiter-info">P.O.C: {props.data.recruiter}</div>
-    </div>
-  )
-}
-
-
-function statusCount(jobs) {
-  return jobs.reduce((count,job) => {
-    count[job.status] = count[job.status] + 1 || 1
-    return count;
-  }, {})
-}
-
-function displayStats(count) {
-  const arr = [];
-  for (let status in count) {
-    arr.push(
-      <div key={status} className={status + "-count"}>
-        {status} : {count[status]}
-      </div>
-    )
-  }
-
-  return arr;
-}
 
 function mapStateToProps(state) {
   return { activeCompanies: state.activeCompanies };

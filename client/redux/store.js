@@ -10,8 +10,16 @@ const finalCreateStore = compose(
   applyMiddleware(logger(), thunk, historyMiddleware)
 )(createStore);
 
+import {jobs} from '../mockData';
+const allJobs = [];
+for (let company in jobs) {
+  allJobs.push({company, data: jobs[company]});
+}
 
 const defaultState = {
+  allJobs: allJobs,
+  companySort: '',
+
   newJobsData: [],
 
   showCompanyForm: false,
