@@ -1,0 +1,18 @@
+#dne-page-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
+  #snakes-title {
+    font-size: 0.8em;
+    color: black;
+    max-width: 90%;
+    padding: 1em;
+    background: white;
+    border: 2px solid black;
+
+    #center {
+      margin-top: 1.5em;
+    }
+  }
+}

@@ -12,8 +12,8 @@ Array.prototype.fillWithFn = function(fn) {
 
 
 export default class Snakes extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       started: false,

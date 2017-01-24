@@ -5,7 +5,7 @@ const authReducers = {
   user(state = null, action) {
     switch (action.type) {
       case types.logInUser: return action.user;
-      case types.logOutUser: return null;
+      case types.userLoggedOut: return null;
       default: return state;
     }
   }

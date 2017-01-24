@@ -4,6 +4,7 @@
   min-height: 80vh;
   display: flex;
   flex-flow: column nowrap;
+  background: white;
 
   #game-options, #game-board {
     width: 100%;
@@ -11,9 +12,9 @@
   }
 
   #game-board {
-    min-height: 85%;
     display: flex;
     flex-flow: column nowrap;
+    flex: 10;
 
     .game-row {
       display: flex;
@@ -101,11 +102,11 @@
   }
 
   #game-options {
-    min-height: 15%;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     padding: 0.2em;
+    flex: 1;
 
     #game-difficulty {
       display: flex;

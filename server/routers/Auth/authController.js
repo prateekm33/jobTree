@@ -19,7 +19,7 @@ module.exports = {
 
   logOutUser(req, res, next) {
     if (!req.user) return res.status(401).end();
-
+    console.log('LOGGING OUT USER: ', req.user);
     req.logout();
     res.status(200).end();
   }

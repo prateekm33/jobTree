@@ -15,6 +15,7 @@ const types = {
   loggingOutUser: 'LOGGING_OUT_USER',
   logInUser: 'LOGIN_USER',
   logOutUser: 'LOGOUT_USER',
+  userLoggedOut: 'USER_LOGGED_OUT',
   invalidCreds: 'INVALID_CREDS',
   logOutError: 'LOGOUT_ERROR',
 

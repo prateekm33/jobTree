@@ -315,9 +315,17 @@ form label {
   }
 }
 
+.quote {
+  font-style: italic;
+  color: brown;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
 @import "landing";
 @import "authForms";
 @import "home";
+@import "dne";
 
 
 @import "snakes";

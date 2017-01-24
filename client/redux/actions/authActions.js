@@ -46,18 +46,25 @@ const authActions = {
       const user = getState().user;
       fetch('/auth/logout', {
         method: 'POST',
-        body: JSON.stringify({email: user}),
+        body: JSON.stringify({username: user}),
         headers: {
           "Content-Type": "application/json"
         },
         credentials: 'include'
       }).then(r => {
         if (r.status === 200) {
+          dispatch(actions.userLoggedOut());
           dispatch(replace('/'));
         } else {
           dispatch(actions.logOutError());
         }
       }).catch(err => dispatch(actions.asyncError(err)));
+    }
+  },
+
+  userLoggedOut() {
+    return {
+      type: types.userLoggedOut
     }
   },
 
