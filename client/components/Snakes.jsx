@@ -24,10 +24,13 @@ export default class Snakes extends React.Component {
       length: 31,
       level: 'easy',
       speed: 900,
+      foodValue: 10,
+      multiplier: 1,
       board: new Array(31).fillWithFn(() => new Array(31).fill(2)),
       food: {r: null, c: null},
       tailOnPiece: false,
       dir: 'right',
+      showLeaderBoard: false
     }
 
     this.takenSpots = {};
@@ -52,10 +55,16 @@ export default class Snakes extends React.Component {
     this.submitScore = this.submitScore.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
     this.initSnake = this.initSnake.bind(this);
+    this.toggleLeaderBoard = this.toggleLeaderBoard.bind(this);
+    this.incrementScore = this.incrementScore.bind(this);
+    this.eatPiece = this.eatPiece.bind(this);
+    this.grow = this.grow.bind(this);
+    this.isThisFood = this.isThisFood.bind(this);
   }
 
   componentDidMount() {
     this.initSnake(this.state.board);
+    this.endBtn.disabled = true;
   }
 
   componentWillUnmount() {
@@ -69,11 +78,11 @@ export default class Snakes extends React.Component {
 
     switch (target.id) {
       case 'easy':
-        return this.setState({level: 'easy'}, this.resetGame);
+        return this.setState({level: 'easy', foodValue: 10}, this.resetGame);
       case 'medium':
-        return this.setState({level: 'medium'},this.resetGame);
+        return this.setState({level: 'medium', foodValue: 30},this.resetGame);
       case 'hard':
-        return this.setState({level: 'hard'}, this.resetGame);
+        return this.setState({level: 'hard', foodValue: 50}, this.resetGame);
       default: return;
     }
   }
@@ -108,7 +117,7 @@ export default class Snakes extends React.Component {
     }
     const board = new Array(length).fillWithFn(() => new Array(length).fill(2));
     this.initSnake(board);
-    this.setState({length, speed})
+    this.setState({length, speed, multiplier: 1, currScore: 0})
     this.dirQueue = new Queue();
   }
 
@@ -154,7 +163,7 @@ export default class Snakes extends React.Component {
     window.addEventListener('keydown', this.handleKeyEvent);
     this.resetGame();
     this.summonFood();
-    this.endBtn.disabled = true;
+    this.endBtn.disabled = false;
     evt.preventDefault();
     this.setState({ started: true});
     this._moveSnake(this.moveSnake);
@@ -197,6 +206,10 @@ export default class Snakes extends React.Component {
     window.removeEventListener('keydown', this.handleKeyEvent);
   }
 
+  incrementScore() {
+    this.setState({currScore: this.state.currScore + this.state.foodValue});
+  }
+
   moveSnake() {
     let dir;
     // check queue for next dir
@@ -208,58 +221,70 @@ export default class Snakes extends React.Component {
       dir = this.prevDir;
     }
 
-      const board = this.state.board.map(i => i);
-      switch (dir) {
-        case 'up':
-          this.wasTailOnPiece();
-          this.isTailOnPiece();
-          this._moveBody();
-          if (!this.canIGo('up')) return this.gameOver();
-          board[this.snake.head.r - 1][this.snake.head.c] = 1;
-          board[this.snake.head.r][this.snake.head.c] = 2;
-          this.snake.head.r = this.snake.head.r - 1;
-          this.takenSpots[this.snake.head.r] = this.takenSpots[this.snake.head.r] || {};
-          this.takenSpots[this.snake.head.r][this.snake.head.c] = true;
-          this.setState({board});
-          return;
-        case 'right':
-          this.wasTailOnPiece();
-          this.isTailOnPiece();
-          this._moveBody();
-          if (!this.canIGo('right')) return this.gameOver();
-          board[this.snake.head.r][this.snake.head.c + 1] = 1;
-          board[this.snake.head.r][this.snake.head.c] = 2;
-          this.snake.head.c = this.snake.head.c + 1;
-          this.takenSpots[this.snake.head.r] = this.takenSpots[this.snake.head.r] || {};
-          this.takenSpots[this.snake.head.r][this.snake.head.c] = true;
-          this.setState({board});
-          return;
-        case 'down':
-          this.wasTailOnPiece();
-          this.isTailOnPiece();
-          this._moveBody();
-          if (!this.canIGo('down')) return this.gameOver();
-          board[this.snake.head.r + 1][this.snake.head.c] = 1;
-          board[this.snake.head.r][this.snake.head.c] = 2;
-          this.snake.head.r = this.snake.head.r + 1;
-          this.takenSpots[this.snake.head.r] = this.takenSpots[this.snake.head.r] || {};
-          this.takenSpots[this.snake.head.r][this.snake.head.c] = true;
-          this.setState({board});
-          return;
-        case 'left':
-          this.wasTailOnPiece();
-          this.isTailOnPiece();
-          this._moveBody();
-          if (!this.canIGo('left')) return this.gameOver();
-          board[this.snake.head.r][this.snake.head.c - 1] = 1;
-          board[this.snake.head.r][this.snake.head.c] = 2;
-          this.snake.head.c = this.snake.head.c - 1;
-          this.takenSpots[this.snake.head.r] = this.takenSpots[this.snake.head.r] || {};
-          this.takenSpots[this.snake.head.r][this.snake.head.c] = true;
-          this.setState({board});
-          return;
-      }
+    const board = this.state.board.map(i => i);
+    switch (dir) {
+      case 'up':
+        this.wasTailOnPiece();
+        this.isTailOnPiece();
+        this._moveBody();
+        if (!this.canIGo('up')) return this.gameOver();
+        board[this.snake.head.r - 1][this.snake.head.c] = 1;
+        board[this.snake.head.r][this.snake.head.c] = 2;
+        this.snake.head.r = this.snake.head.r - 1;
+        this.takenSpots[this.snake.head.r] = this.takenSpots[this.snake.head.r] || {};
+        this.takenSpots[this.snake.head.r][this.snake.head.c] = true;
+        this.isThisFood();
+        this.setState({board});
+        return;
+      case 'right':
+        this.wasTailOnPiece();
+        this.isTailOnPiece();
+        this._moveBody();
+        if (!this.canIGo('right')) return this.gameOver();
+        board[this.snake.head.r][this.snake.head.c + 1] = 1;
+        board[this.snake.head.r][this.snake.head.c] = 2;
+        this.snake.head.c = this.snake.head.c + 1;
+        this.takenSpots[this.snake.head.r] = this.takenSpots[this.snake.head.r] || {};
+        this.takenSpots[this.snake.head.r][this.snake.head.c] = true;
+        this.isThisFood();
+        this.setState({board});
+        return;
+      case 'down':
+        this.wasTailOnPiece();
+        this.isTailOnPiece();
+        this._moveBody();
+        if (!this.canIGo('down')) return this.gameOver();
+        board[this.snake.head.r + 1][this.snake.head.c] = 1;
+        board[this.snake.head.r][this.snake.head.c] = 2;
+        this.snake.head.r = this.snake.head.r + 1;
+        this.takenSpots[this.snake.head.r] = this.takenSpots[this.snake.head.r] || {};
+        this.takenSpots[this.snake.head.r][this.snake.head.c] = true;
+        this.isThisFood();
+        this.setState({board});
+        return;
+      case 'left':
+        this.wasTailOnPiece();
+        this.isTailOnPiece();
+        this._moveBody();
+        if (!this.canIGo('left')) return this.gameOver();
+        board[this.snake.head.r][this.snake.head.c - 1] = 1;
+        board[this.snake.head.r][this.snake.head.c] = 2;
+        this.snake.head.c = this.snake.head.c - 1;
+        this.takenSpots[this.snake.head.r] = this.takenSpots[this.snake.head.r] || {};
+        this.takenSpots[this.snake.head.r][this.snake.head.c] = true;
+        this.isThisFood();
+        this.setState({board});
+        return;
     }
+  }
+
+  isThisFood() {
+    if (this.snake.head.r === this.state.food.r && this.snake.head.c === this.state.food.c) this.eatPiece();
+  }
+
+  eatPiece() {
+    this.incrementScore();
+  }
 
   _moveBody(dir) {
     let node = this.snake.tail;
@@ -274,15 +299,19 @@ export default class Snakes extends React.Component {
 
   wasTailOnPiece() {
     if (this.state.tailOnPiece) {
-      this.snake.tail.next = {r: this.state.food.r, c: this.state.food.c, next: null, prev: this.snake.tail};
-      this.snake.tail = this.snake.tail.next;
-      this.takenSpots[this.state.food.r] = this.takenSpots[this.state.food.r] || {};
-      this.takenSpots[this.state.food.r][this.state.food.c] = true;
-      let newSpeed = this.state.speed - 50;
-      if (newSpeed < 50) newSpeed = 50;
-      this.setState({speed: newSpeed}, () => this._moveSnake(this.moveSnake));
-      this.summonFood();
+      this.grow();
     } 
+  }
+
+  grow() {
+    this.snake.tail.next = {r: this.state.food.r, c: this.state.food.c, next: null, prev: this.snake.tail};
+    this.snake.tail = this.snake.tail.next;
+    this.takenSpots[this.state.food.r] = this.takenSpots[this.state.food.r] || {};
+    this.takenSpots[this.state.food.r][this.state.food.c] = true;
+    let newSpeed = this.state.speed - 50;
+    if (newSpeed < 50) newSpeed = 50;
+    this.setState({speed: newSpeed, foodValue: this.state.foodValue + this.state.multiplier, multiplier: this.state.multiplier * this.state.multiplier}, () => this._moveSnake(this.moveSnake));
+    this.summonFood();
   }
 
   isTailOnPiece() {
@@ -364,6 +393,10 @@ export default class Snakes extends React.Component {
     this.pauseMenu.style.display = this.gameOverMenu.style.display = 'none';
   }
 
+  toggleLeaderBoard() {
+    this.setState({showLeaderBoard: !this.state.showLeaderBoard});
+  }
+
   render() {
     return (
       <div id='snakes-game-container'>
@@ -371,13 +404,13 @@ export default class Snakes extends React.Component {
           <div id='game-btns'>
             {
               this.state.started ? null :
-              <button onClick={this.handleStartClick} className="btn btn-default" id="toggle-start">Start!</button>
+              <button onClick={this.handleStartClick} className="btn btn-primary" id="toggle-start">Start!</button>
             }
             {
               this.state.started ? 
               <button onClick={this.togglePause} id="pause" className="btn btn-default">{this.state.paused ? "Continue" : "Pause"}</button> : null 
             }
-            <button ref={el => this.endBtn = el} onClick={this.handleEndBtn} className='btn btn-default'>End</button>
+            <button ref={el => this.endBtn = el} onClick={this.handleEndBtn} className='btn btn-danger'>End</button>
           </div>
           <div onClick={this.changeGameDifficulty} id='game-difficulty'>
             <div id='easy'>Easy</div>
@@ -397,18 +430,31 @@ export default class Snakes extends React.Component {
             <div className="menu-help">Press spacebar to continue</div>
             <div className="btn-container">
               <button onClick={this.togglePause} className="btn btn-default">Resume</button>
-              <button onClick={this.handleEndBtn} className="btn btn-default">End Game</button>
+              <button onClick={this.handleEndBtn} className="btn btn-danger">End Game</button>
             </div>
           </div>
           <div className="menu" ref={el => this.gameOverMenu = el} id='game-over-menu'>
             <div className="menu-title">Game Over!</div>
-            <div id="game-score">Score : ####</div>
+            <div id="game-score">Score : {this.state.currScore} </div>
             <form onSubmit={this.submitScore} id="submit-score">
-              <input placeholder="username" />
+              <input className="form-control" placeholder="username" />
               <input className="btn btn-default" type='submit' value="Submit!" />
             </form>
+            <div id="leaderboard-toggle" onClick={this.toggleLeaderBoard}>
+              {
+                !this.state.showLeaderBoard ? 
+                  <div>Show Leaderboard</div> :
+                  <div>Hide Leaderboard</div>
+              }
+            </div>
+            {
+              this.state.showLeaderBoard ? 
+              <div id='leaderboard'>
+                leader board goes here
+              </div> : null
+            }
             <div className="btn-container">
-              <button onClick={this.startGame} className="btn btn-default">Start Over</button>
+              <button onClick={this.startGame} className="btn btn-primary">Start Over</button>
               <button onClick={this.closeMenu} className="btn btn-default">Cancel</button>
             </div>
           </div>

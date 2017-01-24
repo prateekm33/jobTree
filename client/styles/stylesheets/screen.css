@@ -1008,8 +1008,51 @@ form label {
   top: 40%;
   background: white;
   padding: 2em;
+  flex-flow: column nowrap;
+  min-width: 50%;
 }
 /* line 49, ../sass/_snakes.scss */
+#snakes-game-container #game-board .menu .menu-title {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+/* line 55, ../sass/_snakes.scss */
+#snakes-game-container #game-board .menu .menu-help {
+  text-align: center;
+  font-size: 0.5em;
+  color: grey;
+}
+/* line 61, ../sass/_snakes.scss */
+#snakes-game-container #game-board .menu .btn-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5em;
+}
+/* line 67, ../sass/_snakes.scss */
+#snakes-game-container #game-board .menu #game-score {
+  text-align: center;
+  font-size: 0.9em;
+  margin-bottom: 1em;
+}
+/* line 73, ../sass/_snakes.scss */
+#snakes-game-container #game-board .menu form {
+  display: flex;
+  justify-content: space-between;
+}
+/* line 78, ../sass/_snakes.scss */
+#snakes-game-container #game-board .menu #leaderboard-toggle {
+  font-size: 0.7em;
+  text-align: center;
+  margin-top: 2em;
+  color: #5151d2;
+}
+/* line 84, ../sass/_snakes.scss */
+#snakes-game-container #game-board .menu #leaderboard-toggle:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+/* line 92, ../sass/_snakes.scss */
 #snakes-game-container #game-options {
   min-height: 15%;
   display: flex;
@@ -1017,17 +1060,21 @@ form label {
   justify-content: space-between;
   padding: 0.2em;
 }
-/* line 56, ../sass/_snakes.scss */
+/* line 99, ../sass/_snakes.scss */
 #snakes-game-container #game-options #game-difficulty {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
-/* line 60, ../sass/_snakes.scss */
+/* line 103, ../sass/_snakes.scss */
 #snakes-game-container #game-options #game-difficulty > * {
   margin-right: 1em;
 }
-/* line 65, ../sass/_snakes.scss */
+/* line 108, ../sass/_snakes.scss */
 #snakes-game-container #game-options #scoreboard {
   text-align: right;
+}
+/* line 113, ../sass/_snakes.scss */
+#snakes-game-container #game-options #game-btns button {
+  margin-right: 1em;
 }

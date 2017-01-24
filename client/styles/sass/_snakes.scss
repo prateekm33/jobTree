@@ -43,6 +43,49 @@
       top: 40%;
       background: white;
       padding: 2em;
+      flex-flow: column nowrap;
+      min-width: 50%;
+
+      .menu-title {
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 0.5em;
+      }
+
+      .menu-help {
+        text-align: center;
+        font-size: 0.5em;
+        color: grey;
+      }
+
+      .btn-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1.5em;
+      }
+
+      #game-score {
+        text-align: center;
+        font-size: 0.9em;
+        margin-bottom: 1em;
+      }
+
+      form {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      #leaderboard-toggle {
+        font-size: 0.7em;
+        text-align: center;
+        margin-top: 2em;
+        color: #5151d2;
+
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
     }
   }
 
@@ -64,6 +107,12 @@
 
     #scoreboard {
       text-align: right;
+    }
+
+    #game-btns {
+      button {
+        margin-right: 1em;
+      }
     }
   }
 }
