@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
 const userSchema = mongoose.Schema({
-  email: { type: String, unique: true },
+  username: { type: String, unique: true },
   password: { type: String },
   companies: { type: [
     {

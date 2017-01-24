@@ -41,6 +41,39 @@ nav#header {
     padding-left: 0.5em;
     padding-right: 0.5em;
     background: #65461e; //rgba(72, 48, 48, 0.8);
+
+    & > div:not(#main-nav-options) {
+      display: flex;
+      flex-flow: row nowrap;
+    }
+
+    #nav-user-settings {
+      color: white;
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      font-size: 0.8em;
+      #user-name {
+        margin-right: 0.5em;
+      }
+
+      #user-dropdown {
+        font-size: 0.5em;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        ul.dropdown-menu {
+          right: -0.6em;
+          left: initial;
+          color: #6a581e;
+          text-align: right;
+          font-weight: bolder;
+          min-width: 100px;
+        }
+      }
+    }
   }
   
   #app-logo {
@@ -122,7 +155,7 @@ nav#header {
     @media (max-width: $max-width), (max-device-width: $max-device-width) {
       display: flex;
       color: white;
-      margin-left: 0.5em;
+      margin-right: 0.5em;
 
       &:hover {
         cursor: pointer;

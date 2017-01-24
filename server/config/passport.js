@@ -15,9 +15,9 @@ passport.deserializeUser(function(id, done) {
 
 
 passport.use(new LocalStrategy(
-  { usernameField: 'email', passReqToCallback: true},
-  (req, email, password, done) => {
-    User.findOne({email})
+  { usernameField: 'username', passReqToCallback: true},
+  (req, username, password, done) => {
+    User.findOne({username})
       .then(user => {
         if (!user) { 
           console.log('USER DOES NOT EXIST');

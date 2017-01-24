@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
 import Footer from './Footer';
+import UserSettings from './UserSettings';
 
-export default class App extends React.Component {
+class App extends React.Component {
   constructor() {
     super();
 
@@ -55,21 +57,28 @@ export default class App extends React.Component {
       <div onClick={this.handleTopLvlClicks} id='main-app-container'>
         <nav id='header'>
           <div id='inner-nav-div'>
-            <Link to="/" id="app-logo">JobTree</Link>
-
+            <div>
+              <div id='hamburger' ref={el => this.hamburger = el} onClick={this.displayMenuOptions} className="glyphicon glyphicon-menu-hamburger">
+                <div id="menu-options">
+                  { this.state.menuOptions }
+                </div>
+              </div>
+              <Link to="/" id="app-logo">
+                JobTree
+              </Link>
+            </div>
             <div id='main-nav-options'>
               { this.state.menuOptions }
             </div>
 
-            <div id='auth-buttons'>
-              <Link to="/signup"><button className='sign-up btn btn-primary'>Sign Up</button></Link>
-              <Link to="/login" id="login-link"><button className='log-in btn btn-default'>Log In</button></Link>
-            </div>
-            <div id='hamburger' ref={el => this.hamburger = el} onClick={this.displayMenuOptions} className="glyphicon glyphicon-menu-hamburger">
-              <div id="menu-options">
-                { this.state.menuOptions }
-              </div>
-            </div>
+            {
+              !this.props.user ? 
+                <div id='auth-buttons'>
+                  <Link to="/signup"><button className='sign-up btn btn-primary'>Sign Up</button></Link>
+                  <Link to="/login" id="login-link"><button className='log-in btn btn-default'>Log In</button></Link>
+                </div>
+              : <UserSettings />
+            }
           </div>
         </nav>
 
@@ -84,3 +93,9 @@ export default class App extends React.Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {user: state.user};
+}
+
+export default connect(mapStateToProps)(App);

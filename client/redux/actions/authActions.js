@@ -18,8 +18,9 @@ const authActions = {
         credentials: 'include'
       }).then(res => {
         if (res.status === 201 || res.status === 200) {
-          dispatch(actions.logInUser(user));
-          dispatch(replace('/home'));
+          dispatch(actions.logInUser(user.username));
+          const requestedPath = getState().requestedPath;
+          dispatch(replace(requestedPath));
         } else res.json().then(r => dispatch(actions.invalidCreds(r)));
       }).catch(err => actions.asyncError(err));
     }
@@ -78,3 +79,5 @@ const authActions = {
     }
   }
 }
+
+export default authActions;

@@ -19,6 +19,7 @@ for (let company in jobs) {
 const defaultState = {
   allJobs: allJobs,
   companySort: '',
+  user: null,
 
   newJobsData: [],
   postedSuccessfully: false,
@@ -26,7 +27,9 @@ const defaultState = {
 
   showCompanyForm: false,
 
-  activeCompanies: {}
+  activeCompanies: {},
+
+  requestedPath: '/home'
 }
 
 

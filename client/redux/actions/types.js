@@ -16,7 +16,9 @@ const types = {
   logInUser: 'LOGIN_USER',
   logOutUser: 'LOGOUT_USER',
   invalidCreds: 'INVALID_CREDS',
-  logOutError: 'LOGOUT_ERROR'
+  logOutError: 'LOGOUT_ERROR',
+
+  requestedPath: 'REQUESTED_PATH'
 
 }
 
