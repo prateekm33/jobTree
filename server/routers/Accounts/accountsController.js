@@ -76,11 +76,13 @@ module.exports = {
 
     const jobs = req.body.jobs;
     const user = req.params.user;
-    User.update({email: user}, { $pushAll: {companies: jobs} }).
-      then((r, e) => {
-        !e && res.status(200).end();
-        e && res.status(400).end();
-      })
+    console.log(user, jobs);
+    res.end();
+    // User.update({email: user}, { $pushAll: {companies: jobs} }).
+    //   then((r, e) => {
+    //     !e && res.status(200).end();
+    //     e && res.status(400).end();
+    //   })
   },
 
   updateJobs(req, res) {

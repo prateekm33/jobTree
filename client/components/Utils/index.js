@@ -75,3 +75,71 @@ export const sortJobsBy = (option, jobs) => {
     default: return jobs;
   }
 }
+
+
+export const validateForm = (form) => {
+  const inputs = Array.prototype.slice.call(form.querySelectorAll('input'));
+
+  let hasAtLeastOneJob = false;
+  const response = {valid: true, inputs: []};
+
+  for (let i = 0; i < inputs.length; i++) {
+    if (!inputValidated(inputs[i])) {
+      response.valid = false;
+      response.inputs.push(inputs[i]);
+    }
+    if (inputs[i].id === 'role-name') hasAtLeastOneJob = true;
+  }
+
+  if (!hasAtLeastOneJob) {
+    response.valid = false;
+    response.msg = 'Please enter at least one role that you have applied to';
+    return response;
+  }
+
+  if (response.valid) response.inputs = inputs;
+  return response;
+}
+
+function inputValidated(input) {
+  switch (input.id) {
+    case 'company-name':
+      return !!input.value;
+    case 'role-name':
+      return !!input.value;
+    case 'location-name':
+      return !!input.value;
+    case 'date-applied':
+      return !!input.value;
+    default: return true;
+  }
+}
+
+
+export const validateAuthForm = (form) => {
+  const inputs = Array.prototype.slice.call(form.querySelectorAll('input'));
+  const response = {valid: true, inputs: [], msg: ''};
+
+  for (let i = 0; i < inputs.length; i++) {
+    if (!inputs[i].value) {
+      response.valid = false;
+      response.inputs.push(inputs[i]);
+      response.msg = 'Please fill out the required fields';
+    }
+  }
+  if (form.id === 'signup-form') {
+    const pws = inputs.filter(i => i.type === 'password');
+
+
+    const pwsMatch = pws.reduce((a,b) => a.value === b.value);
+    if (!pwsMatch) {
+      response.msg += '***Passwords do not match';
+      response.valid = false;
+      response.inputs.push(...pws);
+    }
+  }
+
+  if (response.valid) response.inputs = inputs;
+  return response;
+}
+

@@ -15,7 +15,7 @@ const userSchema = mongoose.Schema({
         location: String,
         recruiter: String,
         date_applied: { type: Date, default: Date.now },
-      }, default: []]
+      }]
     }
   ], default: []}
 });

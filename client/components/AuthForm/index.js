@@ -1,11 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import {validateAuthForm} from '../Utils';
+
 
 export default class AuthForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.state = {
+      formInvalid: false,
+      errMsgs: []
+    }
   }
 
   componentDidMount() {
@@ -14,15 +21,37 @@ export default class AuthForm extends React.Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
+    const form = evt.target;
+    const response = validateAuthForm(form);
+    const inputs = response.inputs;
+    this.setState({formInvalid: !response.valid, errMsgs: response.msg.split('***')});
+    console.log('submitting...', response)
+    if (!response.valid) {
+      inputs.forEach(input => {
+        input.style.border = '2px solid red';
+      });
+      return;
+    } 
+
+
+    inputs.forEach(input => {
+      input.style.border = '';
+    });
 
   }
 
   render() {
     return (
       <form id={this.props.id} onSubmit={this.handleSubmit}>
+        {
+          this.state.formInvalid ? 
+            this.state.errMsgs.map((msg, idx) => (
+              <div key={idx} className="form-invalid-msg">{msg}</div>
+            )) : null
+        }
         <div className="form-element">
           <div className="form-title">{this.props.title}</div>
-          <Link to={this.props.otherForm.link}>{this.props.otherForm.name}</Link>
+          <div><Link to={this.props.otherForm.link}>{this.props.otherForm.name}</Link></div>
         </div>
         <div className="form-element">
           <input ref={el => this.usernameInput = el} className="form-control" placeholder="Username / Email" type="text"/>

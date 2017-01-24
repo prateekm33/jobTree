@@ -4,6 +4,13 @@
   align-items: center;
   min-height: 60vh;
   min-width: 100%;
+  .form-invalid-msg {
+    flex-flow: column nowrap;
+    color: #f71f1f;
+    font-weight: bolder;
+    text-align: right;
+    font-size: 0.9em;
+  }
 }
 
 #signup-form, #login-form {

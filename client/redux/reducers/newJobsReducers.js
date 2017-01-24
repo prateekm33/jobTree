@@ -2,6 +2,22 @@ import newJobActions from '../actions/newJobActions';
 import types from '../actions/types';
 
 const newJobsReducers = {
+  postedJobs(state = false, action) {
+    switch (action.type) {
+      case types.postedJobs: return true;
+      case types.resetJobsPost: return false;
+      default: return state;
+    }
+  },
+
+  postedSuccessfully(state = false, action) {
+    switch(action.type) {
+      case types.postedJobs: return !action.err;
+      case types.resetJobsPost: return false;
+      default: return state;
+    }
+  },
+
   newJobsData(data = [], action) {
     switch (action.type) {
       case types.createNewJob:

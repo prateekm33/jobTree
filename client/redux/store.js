@@ -21,6 +21,8 @@ const defaultState = {
   companySort: '',
 
   newJobsData: [],
+  postedSuccessfully: false,
+  postedJobs: false,
 
   showCompanyForm: false,
 

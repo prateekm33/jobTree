@@ -1,10 +1,10 @@
 import React from 'react';
 
-import AuthForm from '../AuthForm'
+import AuthForm from '../AuthForm';
 
 export default class Signup extends React.Component {
   constructor() {
-    super()
+    super();
   }
 
   renderPWConfirm() {

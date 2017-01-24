@@ -215,7 +215,7 @@ nav#header #hamburger #menu-options {
     flex-flow: column nowrap;
     top: 35px;
     right: -1em;
-    border: 4px solid cadetblue;
+    border: 4px solid #472902;
     padding: 1em;
     min-width: 12em;
     background: white;
@@ -223,20 +223,22 @@ nav#header #hamburger #menu-options {
   /* line 141, ../sass/_default.scss */
   nav#header #hamburger #menu-options a {
     margin-bottom: 0.5em;
-    border-bottom: 2px solid lightblue;
+    border-bottom: 2px solid #76ba76;
     padding: 0.7em;
+    color: #65461e;
+    font-weight: bolder;
   }
-  /* line 146, ../sass/_default.scss */
+  /* line 148, ../sass/_default.scss */
   nav#header #hamburger #menu-options a:hover {
-    background: rgba(173, 216, 230, 0.3);
+    background: #B3EFB4;
   }
-  /* line 150, ../sass/_default.scss */
+  /* line 152, ../sass/_default.scss */
   nav#header #hamburger #menu-options a:hover, nav#header #hamburger #menu-options a:active, nav#header #hamburger #menu-options a:hover:active, nav#header #hamburger #menu-options a:focus {
     text-decoration: none;
   }
 }
 
-/* line 159, ../sass/_default.scss */
+/* line 161, ../sass/_default.scss */
 nav#footer {
   min-height: 3.5em;
   position: absolute;
@@ -247,7 +249,7 @@ nav#footer {
   border-top-right-radius: 40px;
   background-color: white;
 }
-/* line 169, ../sass/_default.scss */
+/* line 171, ../sass/_default.scss */
 nav#footer #nav-options {
   display: flex;
   flex-flow: row nowrap;
@@ -257,113 +259,110 @@ nav#footer #nav-options {
   height: 3.5em;
 }
 
-/* line 179, ../sass/_default.scss */
+/* line 181, ../sass/_default.scss */
 #content-container {
   padding-top: 60px;
   display: flex;
   justify-content: center;
 }
 
-/* line 186, ../sass/_default.scss */
+/* line 188, ../sass/_default.scss */
 .order-options.dropdown {
   height: 35px;
   margin-left: 1em;
   display: flex;
   flex-flow: row nowrap;
 }
-/* line 192, ../sass/_default.scss */
+/* line 194, ../sass/_default.scss */
 .order-options.dropdown div:first-child {
   width: 5em;
   max-height: 50%;
   align-self: center;
 }
-/* line 198, ../sass/_default.scss */
+/* line 200, ../sass/_default.scss */
 .order-options.dropdown > * {
   font-size: 0.6em;
 }
 
-/* line 203, ../sass/_default.scss */
+/* line 205, ../sass/_default.scss */
 ul.dropdown-menu {
   flex-flow: column nowrap;
 }
-/* line 206, ../sass/_default.scss */
+/* line 208, ../sass/_default.scss */
 ul.dropdown-menu li {
   padding: 1em;
 }
-/* line 208, ../sass/_default.scss */
+/* line 210, ../sass/_default.scss */
 ul.dropdown-menu li:hover {
   background: #B3EFB4;
   cursor: pointer;
 }
 
-/* line 214, ../sass/_default.scss */
+/* line 216, ../sass/_default.scss */
 form .form-line {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
-/* line 219, ../sass/_default.scss */
+/* line 221, ../sass/_default.scss */
 form .form-line > * {
   flex: 1;
 }
 
-/* line 224, ../sass/_default.scss */
+/* line 226, ../sass/_default.scss */
 .btn.btn-default.glyphicon.glyphicon-plus {
   background: lightsalmon;
   color: #ffffff;
   max-width: 2.7em;
 }
-/* line 229, ../sass/_default.scss */
+/* line 231, ../sass/_default.scss */
 .btn.btn-default.glyphicon.glyphicon-plus:hover, .btn.btn-default.glyphicon.glyphicon-plus:active, .btn.btn-default.glyphicon.glyphicon-plus:hover:active {
   background: darksalmon;
 }
-/* line 233, ../sass/_default.scss */
+/* line 235, ../sass/_default.scss */
 .btn.btn-default.glyphicon.glyphicon-plus:focus {
   outline: 5px auto darksalmon;
 }
 
-/* line 239, ../sass/_default.scss */
+/* line 241, ../sass/_default.scss */
 .status-bar.applied {
   background-color: rgba(220, 255, 230, 0.8);
 }
-/* line 243, ../sass/_default.scss */
+/* line 245, ../sass/_default.scss */
 .status-bar.phone-screen {
   background-color: #C9F7D4;
 }
-/* line 247, ../sass/_default.scss */
+/* line 249, ../sass/_default.scss */
 .status-bar.on-site {
   background-color: #85ED9F;
 }
-/* line 251, ../sass/_default.scss */
+/* line 253, ../sass/_default.scss */
 .status-bar.rejected {
   background-color: rgba(253, 106, 106, 0.6);
 }
-/* line 255, ../sass/_default.scss */
+/* line 257, ../sass/_default.scss */
 .status-bar.offer {
   background-color: #5DE77F;
 }
 
-/* line 261, ../sass/_default.scss */
+/* line 263, ../sass/_default.scss */
 .form-title {
   text-align: center;
-  font-size: 1.5em;
   font-weight: bolder;
-  padding: 0.5em;
-  margin-bottom: 0.5em;
 }
 
-/* line 269, ../sass/_default.scss */
+/* line 268, ../sass/_default.scss */
 form label {
-  color: #b93737;
+  color: #65461e;
   font-weight: bold;
 }
 
-/* line 274, ../sass/_default.scss */
+/* line 273, ../sass/_default.scss */
 .glyphicon-remove {
   font-weight: bold;
   color: rgba(175, 14, 14, 0.36);
 }
-/* line 277, ../sass/_default.scss */
+/* line 276, ../sass/_default.scss */
 .glyphicon-remove:hover {
   cursor: pointer;
   color: #af0e0e;
@@ -504,8 +503,16 @@ form label {
   min-height: 60vh;
   min-width: 100%;
 }
+/* line 7, ../sass/_authForms.scss */
+#signup-container .form-invalid-msg, #login-container .form-invalid-msg {
+  flex-flow: column nowrap;
+  color: #f71f1f;
+  font-weight: bolder;
+  text-align: right;
+  font-size: 0.9em;
+}
 
-/* line 9, ../sass/_authForms.scss */
+/* line 16, ../sass/_authForms.scss */
 #signup-form, #login-form {
   min-width: 60%;
   display: flex;
@@ -516,7 +523,7 @@ form label {
   background: white;
 }
 
-/* line 19, ../sass/_authForms.scss */
+/* line 26, ../sass/_authForms.scss */
 .form-element {
   margin: 0.8em;
   min-width: 70%;
@@ -524,7 +531,7 @@ form label {
   flex-flow: row nowrap;
   justify-content: space-between;
 }
-/* line 26, ../sass/_authForms.scss */
+/* line 33, ../sass/_authForms.scss */
 .form-element input {
   width: 100%;
 }
@@ -587,31 +594,46 @@ form label {
   padding: 2.5em;
 }
 /* line 61, ../sass/_home.scss */
+#home-container form#new-company .form-title {
+  font-size: 1.5em;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+}
+/* line 67, ../sass/_home.scss */
 #home-container form#new-company label {
   margin-bottom: 0.5em;
 }
-/* line 65, ../sass/_home.scss */
+/* line 71, ../sass/_home.scss */
 #home-container form#new-company input {
   margin-bottom: 1em;
 }
-/* line 70, ../sass/_home.scss */
+/* line 75, ../sass/_home.scss */
+#home-container form#new-company .form-invalid-msg {
+  display: none;
+  flex-flow: column nowrap;
+  color: #f71f1f;
+  font-weight: bolder;
+  text-align: right;
+  font-size: 0.9em;
+}
+/* line 85, ../sass/_home.scss */
 #home-container #jobs-forms-container {
   margin-top: 2em;
 }
-/* line 73, ../sass/_home.scss */
+/* line 88, ../sass/_home.scss */
 #home-container #jobs-forms-container > .form-line:first-child {
   margin-bottom: 2em;
   border-bottom: 2px solid;
   padding: 1em;
 }
-/* line 79, ../sass/_home.scss */
+/* line 94, ../sass/_home.scss */
 #home-container #jobs-forms-container .new-job {
   margin-bottom: 1.5em;
   border-bottom: 2px solid #c35959;
   padding: 1em;
   position: relative;
 }
-/* line 85, ../sass/_home.scss */
+/* line 100, ../sass/_home.scss */
 #home-container #jobs-forms-container .new-job .job-number {
   position: absolute;
   left: -1em;
@@ -621,22 +643,22 @@ form label {
   font-weight: bold;
   color: #a7a2a2;
 }
-/* line 95, ../sass/_home.scss */
+/* line 110, ../sass/_home.scss */
 #home-container #jobs-forms-container .new-job .dropdown {
   font-size: 1.2em;
 }
-/* line 99, ../sass/_home.scss */
+/* line 114, ../sass/_home.scss */
 #home-container #jobs-forms-container .new-job ul.dropdown-menu {
   background: #eefbee;
 }
-/* line 103, ../sass/_home.scss */
+/* line 118, ../sass/_home.scss */
 #home-container #jobs-forms-container .new-job .remove-job {
   right: 0.3em;
   position: absolute;
   top: -0.5em;
   font-size: 2em;
 }
-/* line 110, ../sass/_home.scss */
+/* line 125, ../sass/_home.scss */
 #home-container #jobs-forms-container .new-job #status-dd-job-form {
   height: 35px;
   margin-left: 1em;
@@ -646,7 +668,7 @@ form label {
   justify-content: flex-end;
   align-self: center;
 }
-/* line 126, ../sass/_home.scss */
+/* line 141, ../sass/_home.scss */
 #home-container #home-title {
   text-align: center;
   font-size: 2em;
@@ -655,16 +677,16 @@ form label {
   margin-top: 1em;
   margin-bottom: 0.7em;
 }
-/* line 134, ../sass/_home.scss */
+/* line 149, ../sass/_home.scss */
 #home-container #home-title:focus {
   outline: 2px dotted green;
 }
-/* line 139, ../sass/_home.scss */
+/* line 154, ../sass/_home.scss */
 #home-container #company-sort-dd {
   left: -1em;
   justify-content: flex-end;
 }
-/* line 143, ../sass/_home.scss */
+/* line 158, ../sass/_home.scss */
 #home-container #company-sort-dd ul.dropdown-menu {
   right: 0;
   left: initial;
@@ -937,16 +959,16 @@ form label {
   position: relative;
   left: 80%;
 }
-/* line 153, ../sass/_home.scss */
+/* line 168, ../sass/_home.scss */
 #home-container .job-component td:nth-of-type(1n + 2) {
   border-right: 2px solid #65461E;
 }
-/* line 156, ../sass/_home.scss */
+/* line 171, ../sass/_home.scss */
 #home-container .job-component td:nth-of-type(1n + 2):focus {
   outline: 2px solid green;
   outline-offset: -1px;
 }
-/* line 161, ../sass/_home.scss */
+/* line 176, ../sass/_home.scss */
 #home-container .job-component td:nth-of-type(1n + 2):hover {
   box-shadow: 3px -3px 30px #c0ffc0;
   cursor: pointer;

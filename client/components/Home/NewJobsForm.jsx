@@ -55,6 +55,8 @@ class NewJobsForm extends React.Component {
 
   updateJobProps(evt) {
     const target = evt.target;
+    if (target.value) target.style.border = '';
+
     switch (target.id) {
       case 'status-name':
         this.props.job.status = target.value;

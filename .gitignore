@@ -2,3 +2,4 @@ node_modules
 .sass-cache
 mockData.js
 notes.js
+dist
