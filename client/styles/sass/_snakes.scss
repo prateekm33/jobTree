@@ -30,8 +30,14 @@
         &.red {
           background: red;
         }
+        &.blue {
+          background: blue;
+        }
         &.green {
           background: green;
+        }
+        &.snake {
+          background: #f34848;
         }
       }
     }
@@ -85,6 +91,11 @@
           cursor: pointer;
           text-decoration: underline;
         }
+      }
+
+      #leaderboard {
+        font-size: 0.7em;
+        text-align: center;
       }
     }
   }

@@ -71,7 +71,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 body {
   font-size: 20px;
   min-width: 300px;
-  background-color: rgba(201, 243, 199, 0.3);
+  background-color: #76BA76;
 }
 
 /* line 9, ../sass/_default.scss */
@@ -82,8 +82,8 @@ body {
 
 /* line 14, ../sass/_default.scss */
 .btn-primary {
-  background-color: #72cc6c;
-  border-color: #72cc6c;
+  background-color: #76BA76;
+  border-color: #76BA76;
 }
 /* line 17, ../sass/_default.scss */
 .btn-primary:hover, .btn-primary:active, .btn-primary:hover:active, .btn-primary:focus, .btn-primary:active:focus {
@@ -97,13 +97,12 @@ nav#header {
   z-index: 1000;
   width: 100%;
   height: 50px;
-  border-bottom: 3px solid #483030;
+  border-bottom: 6px solid #472902;
   padding-bottom: 0.1em;
-  background: white;
+  background: #65461E;
 }
 /* line 32, ../sass/_default.scss */
 nav#header #inner-nav-div {
-  border-bottom: 3px solid #72cc6c;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -113,11 +112,11 @@ nav#header #inner-nav-div {
   font-size: 1.5em;
   padding-left: 0.5em;
   padding-right: 0.5em;
-  background: rgba(72, 48, 48, 0.8);
+  background: #65461e;
 }
 /* line 46, ../sass/_default.scss */
 nav#header #app-logo {
-  color: #8eea88;
+  color: #76BA76;
   flex-grow: 0.5;
 }
 /* line 50, ../sass/_default.scss */
@@ -293,7 +292,7 @@ ul.dropdown-menu li {
 }
 /* line 208, ../sass/_default.scss */
 ul.dropdown-menu li:hover {
-  background: rgba(211, 234, 255, 0.42);
+  background: #B3EFB4;
   cursor: pointer;
 }
 
@@ -940,7 +939,7 @@ form label {
 }
 /* line 153, ../sass/_home.scss */
 #home-container .job-component td:nth-of-type(1n + 2) {
-  border-right: 2px solid darksalmon;
+  border-right: 2px solid #65461E;
 }
 /* line 156, ../sass/_home.scss */
 #home-container .job-component td:nth-of-type(1n + 2):focus {
@@ -954,7 +953,7 @@ form label {
   transform: scale(1.2);
   background: white;
   border-radius: 10px;
-  border-left: 2px solid darksalmon;
+  border-left: 2px solid #65461E;
   font-size: 0.88em;
 }
 
@@ -997,10 +996,18 @@ form label {
   background: red;
 }
 /* line 33, ../sass/_snakes.scss */
+#snakes-game-container #game-board .game-row .game-cell.blue {
+  background: blue;
+}
+/* line 36, ../sass/_snakes.scss */
 #snakes-game-container #game-board .game-row .game-cell.green {
   background: green;
 }
 /* line 39, ../sass/_snakes.scss */
+#snakes-game-container #game-board .game-row .game-cell.snake {
+  background: #f34848;
+}
+/* line 45, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu {
   display: none;
   position: absolute;
@@ -1011,48 +1018,53 @@ form label {
   flex-flow: column nowrap;
   min-width: 50%;
 }
-/* line 49, ../sass/_snakes.scss */
+/* line 55, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu .menu-title {
   text-align: center;
   font-weight: bold;
   margin-bottom: 0.5em;
 }
-/* line 55, ../sass/_snakes.scss */
+/* line 61, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu .menu-help {
   text-align: center;
   font-size: 0.5em;
   color: grey;
 }
-/* line 61, ../sass/_snakes.scss */
+/* line 67, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu .btn-container {
   display: flex;
   justify-content: space-between;
   margin-top: 1.5em;
 }
-/* line 67, ../sass/_snakes.scss */
+/* line 73, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu #game-score {
   text-align: center;
   font-size: 0.9em;
   margin-bottom: 1em;
 }
-/* line 73, ../sass/_snakes.scss */
+/* line 79, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu form {
   display: flex;
   justify-content: space-between;
 }
-/* line 78, ../sass/_snakes.scss */
+/* line 84, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu #leaderboard-toggle {
   font-size: 0.7em;
   text-align: center;
   margin-top: 2em;
   color: #5151d2;
 }
-/* line 84, ../sass/_snakes.scss */
+/* line 90, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu #leaderboard-toggle:hover {
   cursor: pointer;
   text-decoration: underline;
 }
-/* line 92, ../sass/_snakes.scss */
+/* line 96, ../sass/_snakes.scss */
+#snakes-game-container #game-board .menu #leaderboard {
+  font-size: 0.7em;
+  text-align: center;
+}
+/* line 103, ../sass/_snakes.scss */
 #snakes-game-container #game-options {
   min-height: 15%;
   display: flex;
@@ -1060,21 +1072,21 @@ form label {
   justify-content: space-between;
   padding: 0.2em;
 }
-/* line 99, ../sass/_snakes.scss */
+/* line 110, ../sass/_snakes.scss */
 #snakes-game-container #game-options #game-difficulty {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
-/* line 103, ../sass/_snakes.scss */
+/* line 114, ../sass/_snakes.scss */
 #snakes-game-container #game-options #game-difficulty > * {
   margin-right: 1em;
 }
-/* line 108, ../sass/_snakes.scss */
+/* line 119, ../sass/_snakes.scss */
 #snakes-game-container #game-options #scoreboard {
   text-align: right;
 }
-/* line 113, ../sass/_snakes.scss */
+/* line 124, ../sass/_snakes.scss */
 #snakes-game-container #game-options #game-btns button {
   margin-right: 1em;
 }

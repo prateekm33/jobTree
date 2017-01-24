@@ -36,7 +36,7 @@ export default class Snakes extends React.Component {
     this.takenSpots = {};
     this.dirQueue = new Queue();
     this.prevDir = 'right';
-    this.snake = {head: null, tail: null};
+    this.snake = {head: {r: -1, c: -1}, tail: {r: -1, c: -1}};
     this.handleKeyEvent = this.handleKeyEvent.bind(this);
     this.handleStartClick = this.handleStartClick.bind(this);
     this.startGame = this.startGame.bind(this);
@@ -99,7 +99,7 @@ export default class Snakes extends React.Component {
     this.setState({board});
   }
 
-  resetGame() {
+  resetGame(cb) {
     let speed, length;
     switch (this.state.level) {
       case 'easy': 
@@ -117,7 +117,7 @@ export default class Snakes extends React.Component {
     }
     const board = new Array(length).fillWithFn(() => new Array(length).fill(2));
     this.initSnake(board);
-    this.setState({length, speed, multiplier: 1, currScore: 0})
+    this.setState({length, speed, multiplier: 1, currScore: 0}, cb);
     this.dirQueue = new Queue();
   }
 
@@ -161,12 +161,11 @@ export default class Snakes extends React.Component {
 
   startGame(evt) {
     window.addEventListener('keydown', this.handleKeyEvent);
-    this.resetGame();
     this.summonFood();
     this.endBtn.disabled = false;
     evt.preventDefault();
     this.setState({ started: true});
-    this._moveSnake(this.moveSnake);
+    this.resetGame(() => this._moveSnake(this.moveSnake));
     this.pauseMenu.style.display = 'none';
     this.gameOverMenu.style.display = 'none';
   }
@@ -207,7 +206,8 @@ export default class Snakes extends React.Component {
   }
 
   incrementScore() {
-    this.setState({currScore: this.state.currScore + this.state.foodValue});
+    const yourBest = Math.max(this.state.currScore + this.state.foodValue, this.state.yourBest);
+    this.setState({currScore: this.state.currScore + this.state.foodValue, yourBest});
   }
 
   moveSnake() {
@@ -356,8 +356,9 @@ export default class Snakes extends React.Component {
             return (
               <div key={c} className={"game-cell" + " " +
                 (
+                  (c === this.snake.head.c && r === this.snake.head.r ? 'snake' : '') ||
                   (c === this.state.food.c && r === this.state.food.r && this.takenSpots[r] && this.takenSpots[r][c] ? 'green' : '') ||
-                  (c === this.state.food.c && r === this.state.food.r ? 'red' : '') ||
+                  (c === this.state.food.c && r === this.state.food.r ? 'blue' : '') ||
                   (this.takenSpots[r] && this.takenSpots[r][c] ? 'black' : '')
                 )
 
@@ -449,8 +450,8 @@ export default class Snakes extends React.Component {
             </div>
             {
               this.state.showLeaderBoard ? 
-              <div id='leaderboard'>
-                leader board goes here
+              <div id='leaderboard'> 
+                Coming soon!
               </div> : null
             }
             <div className="btn-container">
