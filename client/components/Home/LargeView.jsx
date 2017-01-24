@@ -18,22 +18,12 @@ class LargeView extends React.Component {
 
     this.handleCompanyNameClicked = this.handleCompanyNameClicked.bind(this);
     this.selectSortOption = this.selectSortOption.bind(this);
-    this.toggleDropDown = this.toggleDropDown.bind(this);
   }
 
   handleCompanyNameClicked(evt) {
     if (evt.target.classList.value.indexOf('dropdown') > -1) return;
-    this.toggleDropDown();
 
     this.props.dispatch(actions.toggleActiveCompany(this.props.company));
-  }
-
-  toggleDropDown() {
-    const dropdown = this.companyContainer.querySelector('.dropdown');
-    const currDisplay = window.getComputedStyle(dropdown).display;
-
-    if (currDisplay === 'none') dropdown.style.display = 'flex';
-    else dropdown.style.display = 'none';
   }
 
   selectSortOption(evt) {
@@ -43,6 +33,7 @@ class LargeView extends React.Component {
   }
 
   render() {
+    const dropdownStyle = {display: (this.props.activeCompanies[this.props.company] ? "flex" : "none")};
     return (
       <div className="company-container">
         <div onClick={this.handleCompanyNameClicked}
@@ -57,9 +48,11 @@ class LargeView extends React.Component {
             </div>
           </button>
           <div className="company-header-container">
-            <Dropdown menuItems={this.state.menuItems} 
-            defaultOption={this.state.defaultOrder}
-            selectItem={this.selectSortOption} extraClasses={"jobs-order"}/>
+            <div style={dropdownStyle}>
+              <Dropdown menuItems={this.state.menuItems} 
+              defaultOption={this.state.defaultOrder}
+              selectItem={this.selectSortOption} extraClasses={"jobs-order"}/>
+            </div>
             <Summary data={this.props.data}/>
           </div>
         </div>
