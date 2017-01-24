@@ -1,9 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import actions from '../../redux/actions';
+
 
 import Job from './Job';
 import { Dropdown } from '../Utils';
 
-export default class LargeView extends React.Component {
+class LargeView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,16 +17,15 @@ export default class LargeView extends React.Component {
     };
 
     this.handleCompanyNameClicked = this.handleCompanyNameClicked.bind(this);
-    this.showJobs = this.showJobs.bind(this);
     this.selectSortOption = this.selectSortOption.bind(this);
     this.toggleDropDown = this.toggleDropDown.bind(this);
   }
 
   handleCompanyNameClicked(evt) {
     if (evt.target.classList.value.indexOf('dropdown') > -1) return;
-    this.setState({open: !this.state.open});
-    this.showJobs();
     this.toggleDropDown();
+
+    this.props.dispatch(actions.toggleActiveCompany(this.props.company));
   }
 
   toggleDropDown() {
@@ -31,17 +34,6 @@ export default class LargeView extends React.Component {
 
     if (currDisplay === 'none') dropdown.style.display = 'flex';
     else dropdown.style.display = 'none';
-  }
-
-  showJobs() {
-    const button = this.companyName;
-    button.classList.toggle('active');
-    const currDisplay = window.getComputedStyle(this.table).display;
-
-    if (currDisplay === 'none') this.table.style.display = 'table';
-    else this.table.style.display = 'none';
-
-
   }
 
   selectSortOption(evt) {
@@ -56,11 +48,11 @@ export default class LargeView extends React.Component {
         <div onClick={this.handleCompanyNameClicked}
           ref={el => this.companyContainer = el}
           className="company-name-container">
-          <button ref={el => this.companyName = el} className="company-name btn btn-default">
+          <button ref={el => this.companyName = el} className={"company-name btn btn-default" + " " + (!!this.props.activeCompanies[this.props.company] ? "active" : "")}>
             {this.props.company.toUpperCase()}
             <div className="open-close-help">
               {
-                this.state.open ? "Close" : "Open"
+                this.props.activeCompanies[this.props.company] ? "Close" : "Open"
               }
             </div>
           </button>
@@ -71,25 +63,28 @@ export default class LargeView extends React.Component {
             <Summary data={this.props.data}/>
           </div>
         </div>
-        <table ref={el => this.table = el} className="company-jobs">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Status</th>
-              <th>Role</th>
-              <th>Location</th>
-              <th>Recruiter</th>
-              <th>Date Applied</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              this.props.data.jobs.map((job,idx) => (
-                <Job key={idx} job={job} type={'table'}/>
-              ))
-            }
-          </tbody>
-        </table>
+        {
+          this.props.activeCompanies[this.props.company] ? 
+            <table ref={el => this.table = el} className="company-jobs">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Status</th>
+                  <th>Role</th>
+                  <th>Location</th>
+                  <th>Recruiter</th>
+                  <th>Date Applied</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  this.props.data.jobs.map((job,idx) => (
+                    <Job key={idx} job={job} type={'table'}/>
+                  ))
+                }
+              </tbody>
+            </table> : null
+        }
       </div>
     )
   }
@@ -132,3 +127,9 @@ function displayStats(count) {
 
   return arr;
 }
+
+function mapStateToProps(state) {
+  return { activeCompanies: state.activeCompanies };
+}
+
+export default connect(mapStateToProps)(LargeView);

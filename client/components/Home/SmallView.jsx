@@ -1,8 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import actions from '../../redux/actions';
 
 import Job from './Job';
 
-export default class SmallView extends React.Component {
+class SmallView extends React.Component {
   constructor(props) {
     super(props);
 
@@ -15,30 +18,33 @@ export default class SmallView extends React.Component {
 
   toggleJobs(evt) {
     evt.preventDefault();
-    const currDisplay = window.getComputedStyle(this.jobsContainer).display;
-
-    if (currDisplay === 'none') this.jobsContainer.style.display = 'flex';
-    else this.jobsContainer.style.display = 'none';
-
-    this.setState({open: !this.state.open});
     this.toggleButton.classList.toggle('active');
+    this.props.dispatch(actions.toggleActiveCompany(this.props.company));
   }
 
   render() {
     return (
       <div ref={this.props.refFn} className="company-container">
-        <button ref={el => this.toggleButton = el} onClick={this.toggleJobs} className="company-name btn btn-default">
+        <button ref={el => this.toggleButton = el} onClick={this.toggleJobs} className={"company-name btn btn-default" + " " + (this.props.activeCompanies[this.props.company] ? "active" : "")}>
           {this.props.company}
-          <div>{this.state.open ? "Close" : "Click to view jobs"}</div>
+          <div>{!!this.props.activeCompanies[this.props.company] ? "Close" : "Click to view jobs"}</div>
         </button>
-        <div ref={el => this.jobsContainer = el} className="sv-company-jobs-container">
-          {
-            this.props.data.jobs.map(job => (
-              <Job job={job} type="small"/>
-            ))
-          }
-        </div>
+        {
+          this.props.activeCompanies[this.props.company] ? <div ref={el => this.jobsContainer = el} className="sv-company-jobs-container">
+            {
+              this.props.data.jobs.map((job,idx) => (
+                <Job key={idx} job={job} type="small"/>
+              ))
+            }
+          </div> : null
+        }
       </div>
     )
   }
 }
+
+function mapStateToProps(state) {
+  return { activeCompanies: state.activeCompanies };
+}
+
+export default connect(mapStateToProps)(SmallView);

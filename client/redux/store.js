@@ -14,7 +14,9 @@ const finalCreateStore = compose(
 const defaultState = {
   newJobsData: [],
 
-  showCompanyForm: false
+  showCompanyForm: false,
+
+  activeCompanies: {}
 }
 
 
