@@ -11,9 +11,6 @@ function Summary(props) {
       {
         displayStats(statusCount(jobs))
       }
-      <div className="recruiter-info">PS: 1</div>
-      <div className="recruiter-info">OS: 23</div>
-      <div className="recruiter-info">OFF: 5</div>
       <div className="recruiter-info">REC: {props.data.recruiter}</div>
     </div>
   )

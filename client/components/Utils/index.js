@@ -56,14 +56,22 @@ export class Dropdown extends React.Component {
   }
 }
 
+const statuses = {'OFFER':0, 'APPLIED': 1, 'PHONE-SCREEN': 2, 'ON-SITE':3, 'REJECTED':4};
 
+export const sortJobsBy = (option, jobs) => {
+  const temp = jobs.map(i => i);
 
-
-export class List {
-  constructor() {
-    this.list = { head: null, tail: null}
-    
+  switch (option) {
+    case 'STATUS':
+      return temp.sort((a,b) => statuses[a.status] > statuses[b.status]);
+    case 'ROLE':
+      return temp.sort((a,b) => a.role > b.role);
+    case 'LOCATION':
+      return temp.sort((a,b) => a.location > b.location);
+    case 'RECRUITER':
+      return temp.sort((a,b) => a.recruiter > b.recruiter);
+    case 'DATE APPLIED':
+      return temp.sort((a,b) => a.date_applied > b.date_applied);
+    default: return jobs;
   }
-
-
 }

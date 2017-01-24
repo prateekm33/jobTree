@@ -5,16 +5,17 @@ import actions from '../../redux/actions';
 
 
 import Job from './Job';
-import { Dropdown } from '../Utils';
+import { Dropdown, sortJobsBy } from '../Utils';
 import Summary from './Summary';
 
 class LargeView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      defaultOrder: 'status',
+      defaultOrder: 'Select order',
       menuItems: ['STATUS', 'ROLE', 'LOCATION', 'RECRUITER', 'DATE APPLIED'],
-      open: false
+      open: false,
+      jobs: props.data.jobs
     };
 
     this.handleCompanyNameClicked = this.handleCompanyNameClicked.bind(this);
@@ -29,8 +30,9 @@ class LargeView extends React.Component {
 
   selectSortOption(evt) {
     const target = evt.target;
-    // dispatch redux action...
-    this.setState({defaultOrder: target.innerText});
+    const sorted = sortJobsBy(target.innerText, this.state.jobs);
+    console.log('sorted: ', sorted);
+    this.setState({defaultOrder: target.innerText, jobs: sorted});
   }
 
   render() {
@@ -72,7 +74,7 @@ class LargeView extends React.Component {
               </thead>
               <tbody>
                 {
-                  this.props.data.jobs.map((job,idx) => (
+                  this.state.jobs.map((job,idx) => (
                     <Job key={idx} job={job} type={'table'}/>
                   ))
                 }
