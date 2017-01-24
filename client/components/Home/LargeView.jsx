@@ -31,7 +31,6 @@ class LargeView extends React.Component {
   selectSortOption(evt) {
     const target = evt.target;
     const sorted = sortJobsBy(target.innerText, this.state.jobs);
-    console.log('sorted: ', sorted);
     this.setState({defaultOrder: target.innerText, jobs: sorted});
   }
 

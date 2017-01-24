@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Queue } from '../Utils';
 
 Array.prototype.fillWithFn = function(fn) {
   const length = this.length;
@@ -25,10 +26,12 @@ export default class Snakes extends React.Component {
       board: new Array(31).fillWithFn(() => new Array(31).fill(2)),
       food: {r: null, c: null},
       tailOnPiece: false,
-      dir: 'right'
+      dir: 'right',
     }
 
-    this.takenSpots = {},
+    this.takenSpots = {};
+    this.dirQueue = new Queue();
+    this.prevDir = 'right';
     this.snake = {head: null, tail: null};
     this.handleKeyEvent = this.handleKeyEvent.bind(this);
     this.handleStartClick = this.handleStartClick.bind(this);
@@ -44,6 +47,7 @@ export default class Snakes extends React.Component {
     this.canIGo = this.canIGo.bind(this);
     this.gameOver = this.gameOver.bind(this);
     this.endGame = this.endGame.bind(this);
+    this.setMove = this.setMove.bind(this);
   }
 
   componentDidMount() {
@@ -97,22 +101,26 @@ export default class Snakes extends React.Component {
       case spaceBar: return this.togglePause(evt);
       case up: 
         evt.preventDefault();
-        if (!this.state.started) this.setMove = this.startGame(evt, 'up');
+        if (!this.state.started) this.startGame(evt, 'up');
         return this.setMove('up');
       case right: 
         evt.preventDefault();
-        if (!this.state.started) this.setMove = this.startGame(evt, 'right');
+        if (!this.state.started) this.startGame(evt, 'right');
         return this.setMove('right');
       case down: 
         evt.preventDefault();
-        if (!this.state.started) this.setMove = this.startGame(evt, 'down');
+        if (!this.state.started) this.startGame(evt, 'down');
         return this.setMove('down');
       case left: 
         evt.preventDefault();
-        if (!this.state.started) this.setMove = this.startGame(evt, 'left');
+        if (!this.state.started) this.startGame(evt, 'left');
         return this.setMove('left');
       default: return;
     }
+  }
+
+  setMove(dir) {
+    this.dirQueue.enqueue(dir);
   }
 
   _moveSnake(moveFn) {
@@ -129,10 +137,6 @@ export default class Snakes extends React.Component {
     this.setState({dir});
 
     this._moveSnake(this.moveSnake);
-
-    return function (dir) {
-      this.setState({dir});
-    }
   }
 
   canIGo(dir) {
@@ -166,8 +170,17 @@ export default class Snakes extends React.Component {
     console.log('TODO --- COMPLETE END GAME...');
   }
 
-  moveSnake(dir = this.state.dir) {
-      // triggers a setTimeout that moves the snake in that direction every second or 1.5 seconds (depending on level)
+  moveSnake() {
+    let dir;
+    // check queue for next dir
+    if (this.dirQueue.size()) {
+      dir = this.dirQueue.dequeue();
+      this.prevDir = dir;
+    } else {
+      // if nothing in queue, check prevDir
+      dir = this.prevDir;
+    }
+
       const board = this.state.board.map(i => i);
       switch (dir) {
         case 'up':
@@ -256,7 +269,7 @@ export default class Snakes extends React.Component {
   }
 
   handleStartClick(evt) {
-    this.setMove = this.startGame(evt);
+    this.startGame(evt);
   }
 
   togglePause(evt) {
