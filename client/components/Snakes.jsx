@@ -71,22 +71,6 @@ export default class Snakes extends React.Component {
     window.removeEventListener('keydown', this.handleKeyEvent);
   }
 
-  changeGameDifficulty(evt) {
-    if (this.state.started) return;
-
-    const target = evt.target;
-
-    switch (target.id) {
-      case 'easy':
-        return this.setState({level: 'easy', foodValue: 10}, this.resetGame);
-      case 'medium':
-        return this.setState({level: 'medium', foodValue: 30},this.resetGame);
-      case 'hard':
-        return this.setState({level: 'hard', foodValue: 50}, this.resetGame);
-      default: return;
-    }
-  }
-
   initSnake(board) {
     const mid = Math.floor(board.length / 2);
     board[mid][mid] = 1;
@@ -121,6 +105,85 @@ export default class Snakes extends React.Component {
     this.dirQueue = new Queue();
   }
 
+  summonFood() {
+    const viableSpots = [];
+    this.state.board.forEach((row, r) => {
+      row.forEach((col, c) => {
+        if (this.takenSpots[r] && this.takenSpots[r][c]) return;
+        viableSpots.push(r * this.state.length + c);
+      });
+    });
+    const randIdx = Math.floor(Math.random() * viableSpots.length);
+    const randCell = viableSpots[randIdx];
+    const row = Math.floor(randCell / this.state.length);
+    const col = randCell % this.state.length;
+    this.setState({food: {r: row, c: col} });
+  }
+
+  handleStartClick(evt) {
+    this.startGame(evt);
+  }
+
+  startGame(evt) {
+    window.addEventListener('keydown', this.handleKeyEvent);
+    this.summonFood();
+    this.endBtn.disabled = false;
+    evt.preventDefault();
+    this.setState({ started: true});
+    this.resetGame(() => this._moveSnake(this.moveSnake));
+    this.pauseMenu.style.display = 'none';
+    this.gameOverMenu.style.display = 'none';
+  }
+
+  togglePause(evt) {
+    evt.preventDefault();
+    if (this.state.paused) {
+      this._moveSnake(this.moveSnake);
+      this.pauseMenu.style.display = 'none';
+    }
+    else {
+      clearInterval(this.timer);
+      this.pauseMenu.style.display = 'flex';
+    }
+    this.setState({paused: !this.state.paused});
+  }
+
+  handleEndBtn(evt) {
+    evt.preventDefault();
+    this.endGame();
+  }
+
+  gameOver() {
+    this.endGame();
+  }
+
+  endGame() {
+    console.log('TODO --- COMPLETE END GAME...');
+    this.endBtn.disabled = true;
+    this.setState({started: false, paused: false});
+    clearInterval(this.timer);
+    
+    this.gameOverMenu.style.display = 'flex';
+
+    window.removeEventListener('keydown', this.handleKeyEvent);
+  }
+
+  changeGameDifficulty(evt) {
+    if (this.state.started) return;
+
+    const target = evt.target;
+
+    switch (target.id) {
+      case 'easy':
+        return this.setState({level: 'easy', foodValue: 10}, this.resetGame);
+      case 'medium':
+        return this.setState({level: 'medium', foodValue: 30},this.resetGame);
+      case 'hard':
+        return this.setState({level: 'hard', foodValue: 50}, this.resetGame);
+      default: return;
+    }
+  }
+
   handleKeyEvent(evt) {
     const spaceBar = 32;
     const up = 38;
@@ -150,26 +213,6 @@ export default class Snakes extends React.Component {
     }
   }
 
-  setMove(dir) {
-    this.dirQueue.enqueue(dir);
-  }
-
-  _moveSnake(moveFn) {
-    clearInterval(this.timer);
-    this.timer = setInterval(moveFn, this.state.speed);
-  }
-
-  startGame(evt) {
-    window.addEventListener('keydown', this.handleKeyEvent);
-    this.summonFood();
-    this.endBtn.disabled = false;
-    evt.preventDefault();
-    this.setState({ started: true});
-    this.resetGame(() => this._moveSnake(this.moveSnake));
-    this.pauseMenu.style.display = 'none';
-    this.gameOverMenu.style.display = 'none';
-  }
-
   canIGo(dir) {
     const r = this.snake.head.r;
     const c = this.snake.head.c;
@@ -190,24 +233,13 @@ export default class Snakes extends React.Component {
     }
   }
 
-  gameOver() {
-    this.endGame();
+  setMove(dir) {
+    this.dirQueue.enqueue(dir);
   }
 
-  endGame() {
-    console.log('TODO --- COMPLETE END GAME...');
-    this.endBtn.disabled = true;
-    this.setState({started: false, paused: false});
+  _moveSnake(moveFn) {
     clearInterval(this.timer);
-    
-    this.gameOverMenu.style.display = 'flex';
-
-    window.removeEventListener('keydown', this.handleKeyEvent);
-  }
-
-  incrementScore() {
-    const yourBest = Math.max(this.state.currScore + this.state.foodValue, this.state.yourBest);
-    this.setState({currScore: this.state.currScore + this.state.foodValue, yourBest});
+    this.timer = setInterval(moveFn, this.state.speed);
   }
 
   moveSnake() {
@@ -278,14 +310,6 @@ export default class Snakes extends React.Component {
     }
   }
 
-  isThisFood() {
-    if (this.snake.head.r === this.state.food.r && this.snake.head.c === this.state.food.c) this.eatPiece();
-  }
-
-  eatPiece() {
-    this.incrementScore();
-  }
-
   _moveBody(dir) {
     let node = this.snake.tail;
     this.takenSpots[node.r] = this.takenSpots[node.r] || {};
@@ -294,6 +318,29 @@ export default class Snakes extends React.Component {
       node.r = node.prev.r;
       node.c = node.prev.c;
       node = node.prev;
+    }
+  }
+
+  incrementScore() {
+    const yourBest = Math.max(this.state.currScore + this.state.foodValue, this.state.yourBest);
+    this.setState({currScore: this.state.currScore + this.state.foodValue, yourBest});
+  }
+
+  isThisFood() {
+    if (this.snake.head.r === this.state.food.r && this.snake.head.c === this.state.food.c) this.eatPiece();
+  }
+
+  eatPiece() {
+    this.incrementScore();
+  }
+
+  isTailOnPiece() {
+    if (this.snake.tail.r === this.state.food.r && this.snake.tail.c === this.state.food.c) {
+      this.setState({tailOnPiece: true})
+      return true;
+    } else {
+      this.setState({tailOnPiece: false});
+      return false;
     }
   }
 
@@ -312,38 +359,6 @@ export default class Snakes extends React.Component {
     if (newSpeed < 50) newSpeed = 50;
     this.setState({speed: newSpeed, foodValue: this.state.foodValue + this.state.multiplier, multiplier: this.state.multiplier * this.state.multiplier}, () => this._moveSnake(this.moveSnake));
     this.summonFood();
-  }
-
-  isTailOnPiece() {
-    if (this.snake.tail.r === this.state.food.r && this.snake.tail.c === this.state.food.c) {
-      this.setState({tailOnPiece: true})
-      return true;
-    } else {
-      this.setState({tailOnPiece: false});
-      return false;
-    }
-  }
-
-  handleStartClick(evt) {
-    this.startGame(evt);
-  }
-
-  togglePause(evt) {
-    evt.preventDefault();
-    if (this.state.paused) {
-      this._moveSnake(this.moveSnake);
-      this.pauseMenu.style.display = 'none';
-    }
-    else {
-      clearInterval(this.timer);
-      this.pauseMenu.style.display = 'flex';
-    }
-    this.setState({paused: !this.state.paused});
-  }
-
-  handleEndBtn(evt) {
-    evt.preventDefault();
-    this.endGame();
   }
 
   genBoard() {
@@ -368,21 +383,6 @@ export default class Snakes extends React.Component {
         }
       </div>
     ))
-  }
-
-  summonFood() {
-    const viableSpots = [];
-    this.state.board.forEach((row, r) => {
-      row.forEach((col, c) => {
-        if (this.takenSpots[r] && this.takenSpots[r][c]) return;
-        viableSpots.push(r * this.state.length + c);
-      });
-    });
-    const randIdx = Math.floor(Math.random() * viableSpots.length);
-    const randCell = viableSpots[randIdx];
-    const row = Math.floor(randCell / this.state.length);
-    const col = randCell % this.state.length;
-    this.setState({food: {r: row, c: col} });
   }
 
   submitScore(evt) {
