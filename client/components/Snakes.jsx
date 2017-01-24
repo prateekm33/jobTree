@@ -21,7 +21,7 @@ export default class Snakes extends React.Component {
       yourBest: 0,
       leader: {user: '', score: 0},
       length: 31,
-      speed: 1000,
+      speed: 900,
       board: new Array(31).fillWithFn(() => new Array(31).fill(2)),
       food: {r: null, c: null},
       tailOnPiece: false,
@@ -63,11 +63,11 @@ export default class Snakes extends React.Component {
 
     switch (target.id) {
       case 'easy':
-        this.resetGame(31, 1000);
+        return this.resetGame(31, 900);
       case 'medium':
-        this.resetGame(21, 500);
+        return this.resetGame(21, 500);
       case 'hard':
-        this.resetGame(11, 300);
+        return this.resetGame(11, 300);
       default: return;
     }
   }
@@ -141,12 +141,16 @@ export default class Snakes extends React.Component {
     switch(dir) {
       case 'up':
         if (!this.state.board[r - 1]) return false;
+        if (this.takenSpots[r-1]) return !this.takenSpots[r-1][c];
       case 'right':
         if (!this.state.board[r][c + 1]) return false;
+        if (this.takenSpots[r]) return !this.takenSpots[r][c + 1];
       case 'down':
         if (!this.state.board[r +1]) return false;
+        if (this.takenSpots[r+1]) return !this.takenSpots[r+1][c];
       case 'left':
         if (!this.state.board[r][c - 1]) return false;
+        if (this.takenSpots[r]) return !this.takenSpots[r][c - 1];
       default: return true;
     }
   }
@@ -234,7 +238,7 @@ export default class Snakes extends React.Component {
       this.snake.tail = this.snake.tail.next;
       this.takenSpots[this.state.food.r] = this.takenSpots[this.state.food.r] || {};
       this.takenSpots[this.state.food.r][this.state.food.c] = true;
-      let newSpeed = this.state.speed - 100;
+      let newSpeed = this.state.speed - 50;
       if (newSpeed < 50) newSpeed = 50;
       this.setState({speed: newSpeed}, () => this._moveSnake(this.moveSnake));
       this.summonFood();
