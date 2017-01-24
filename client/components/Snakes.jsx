@@ -24,6 +24,7 @@ export default class Snakes extends React.Component {
       length: 31,
       level: 'easy',
       speed: 900,
+      step: 50,
       foodValue: 10,
       multiplier: 1,
       board: new Array(31).fillWithFn(() => new Array(31).fill(2)),
@@ -60,15 +61,63 @@ export default class Snakes extends React.Component {
     this.eatPiece = this.eatPiece.bind(this);
     this.grow = this.grow.bind(this);
     this.isThisFood = this.isThisFood.bind(this);
+    this.commenceRaving = this.commenceRaving.bind(this);
+    this.pleaseNoMore = this.pleaseNoMore.bind(this);
+    this.hoverRave = this.hoverRave.bind(this);
+    this.stopHoverRave = this.stopHoverRave.bind(this);
   }
 
   componentDidMount() {
+    Array.prototype.slice.call(this.scoreForm.querySelectorAll('input')).forEach(i => i.disabled = true);
     this.initSnake(this.state.board);
     this.endBtn.disabled = true;
+    this.insaneTimers = {hover: null, click: null};
+    this.insaneColors = [
+      'red', 'orange', 'yellow', 'blue', 'violet', 'purple', 'green'
+    ];
+    this.currentColor = 0;
+    this.areYouCrazy.addEventListener('mouseover', this.hoverRave);
+
+    this.areYouCrazy.addEventListener('mouseout', this.stopHoverRave)
   }
 
   componentWillUnmount() {
     window.removeEventListener('keydown', this.handleKeyEvent);
+    this.areYouCrazy.removeEventListener('mouseover', this.hoverRave)
+    this.areYouCrazy.removeEventListener('mouseout', this.stopHoverRave)
+  }
+
+  pleaseNoMore(insanity) {
+    // if (this.insaneTimers.hover === insanity) {
+    //   console.log("Not your jam, huh. It's ok, the mountain tops are not meant for everyone ;)")
+    // } else {
+    //   console.log("Can't shuffle no mo'");
+    // }
+    clearInterval(insanity);
+    if (this.insaneTimers.hover === insanity) this.insaneTimers.hover = null;
+    else if (this.insaneTimers.click === insanity) this.insaneTimers.click = null;
+    this.areYouCrazy.style.color = 'white';
+    this.currentColor = 0;
+  }
+
+  hoverRave() {
+    this.insaneTimers.hover = this.commenceRaving();
+  }
+  stopHoverRave() {
+    this.pleaseNoMore(this.insaneTimers.hover);
+  }
+
+  commenceRaving(origin?) {
+    if (origin === 'click' && this.insaneTimers.click !== null) {
+      console.log('EAT, SLEEP, RAVE, REPEAT!!!!!!');
+      return this.insaneTimers.click;
+    }
+    console.log('Eat, sleep, rave, repeat');
+    return setInterval(() => {
+      this.areYouCrazy.style.color = this.insaneColors[this.currentColor];
+      this.currentColor++;
+      this.currentColor %= this.insaneColors.length;
+    }, 100);
   }
 
   initSnake(board) {
@@ -84,24 +133,33 @@ export default class Snakes extends React.Component {
   }
 
   resetGame(cb) {
-    let speed, length;
+    let speed, length, step, multiplier = 1;
     switch (this.state.level) {
       case 'easy': 
         speed = 900;
         length = 31;
+        step = 50;
         break;
       case 'medium':
         speed = 500;
         length = 21;
+        step = 50;
         break;
       case 'hard':
         speed = 300;
         length = 11;
+        step = 50;
+        break;
+      case 'insane':
+        speed = 200;
+        length = 15;
+        step = 30;
+        multiplier = 2;
         break;
     }
     const board = new Array(length).fillWithFn(() => new Array(length).fill(2));
     this.initSnake(board);
-    this.setState({length, speed, multiplier: 1, currScore: 0}, cb);
+    this.setState({length, speed, multiplier, step, currScore: 0}, cb);
     this.dirQueue = new Queue();
   }
 
@@ -175,11 +233,32 @@ export default class Snakes extends React.Component {
 
     switch (target.id) {
       case 'easy':
+        target.classList.add('active');
+        this.levelMedium.classList.remove('active');
+        this.levelHard.classList.remove('active');
+        this.areYouCrazy.classList.remove('active');
+        this.pleaseNoMore(this.insaneTimers.click);
         return this.setState({level: 'easy', foodValue: 10}, this.resetGame);
       case 'medium':
+        target.classList.add('active');
+        this.levelEasy.classList.remove('active');
+        this.levelHard.classList.remove('active');
+        this.areYouCrazy.classList.remove('active');
+        this.pleaseNoMore(this.insaneTimers.click);
         return this.setState({level: 'medium', foodValue: 30},this.resetGame);
       case 'hard':
+        target.classList.add('active');
+        this.levelEasy.classList.remove('active');
+        this.levelMedium.classList.remove('active');
+        this.areYouCrazy.classList.remove('active');
+        this.pleaseNoMore(this.insaneTimers.click);
         return this.setState({level: 'hard', foodValue: 50}, this.resetGame);
+      case 'omg':
+        this.insaneTimers.click = this.commenceRaving('click');
+        this.levelEasy.classList.remove('active');
+        this.levelMedium.classList.remove('active');
+        this.levelHard.classList.remove('active');
+        return this.setState({level: 'insane', foodValue: 100000}, this.resetGame);
       default: return;
     }
   }
@@ -355,14 +434,17 @@ export default class Snakes extends React.Component {
     this.snake.tail = this.snake.tail.next;
     this.takenSpots[this.state.food.r] = this.takenSpots[this.state.food.r] || {};
     this.takenSpots[this.state.food.r][this.state.food.c] = true;
-    let newSpeed = this.state.speed - 50;
-    if (newSpeed < 50) newSpeed = 50;
+    
+    let step = this.state.step;
+    let newSpeed = this.state.speed - step;
+    if (newSpeed <= step) {
+      newSpeed = step;
+    }
     this.setState({speed: newSpeed, foodValue: this.state.foodValue + this.state.multiplier, multiplier: this.state.multiplier * this.state.multiplier}, () => this._moveSnake(this.moveSnake));
     this.summonFood();
   }
 
   genBoard() {
-    const n = this.state.level;
 
     return this.state.board.map((row, r) => (
       <div key={r} className="game-row">
@@ -413,16 +495,21 @@ export default class Snakes extends React.Component {
             }
             <button ref={el => this.endBtn = el} onClick={this.handleEndBtn} className='btn btn-danger'>End</button>
           </div>
-          <div onClick={this.changeGameDifficulty} id='game-difficulty'>
-            <div id='easy'>Easy</div>
-            <div id='medium'>Medium</div>
-            <div id='hard'>Hard</div>
+          <div style={{display: 'flex', flexFlow: 'row wrap', justifyContent: 'flex-end'}}>
+            <div onClick={this.changeGameDifficulty} id='game-difficulty'>
+              <div ref={el => this.areYouCrazy = el} id='omg'>INSANE</div>
+              <div ref={el => this.levelEasy = el} id='easy'>Easy</div>
+              <div ref={el => this.levelMedium = el} id='medium'>Medium</div>
+              <div ref={el => this.levelHard = el} id='hard'>Hard</div>
+            </div>
+            <div>
+              <div id='scoreboard'>
+                <div id="curr-score">Curr score: {this.state.currScore}</div>
+                <div id="your-best-score">Your best: {this.state.yourBest}</div>
+              </div>
+              <div id="best-ever-score">Leaderboard: {this.state.leader.score}</div>
+            </div>
           </div>
-          <div id='scoreboard'>
-            <div id="curr-score">Curr score: {this.state.currScore}</div>
-            <div id="your-best-score">Your best: {this.state.yourBest}</div>
-          </div>
-          <div id="best-ever-score">Leaderboard: {this.state.leader.user} - {this.state.leader.score}</div>
         </div>
         <div id="game-board">
           { this.genBoard() }
@@ -437,8 +524,8 @@ export default class Snakes extends React.Component {
           <div className="menu" ref={el => this.gameOverMenu = el} id='game-over-menu'>
             <div className="menu-title">Game Over!</div>
             <div id="game-score">Score : {this.state.currScore} </div>
-            <form onSubmit={this.submitScore} id="submit-score">
-              <input className="form-control" placeholder="username" />
+            <form ref={el=> this.scoreForm = el} onSubmit={this.submitScore} id="submit-score">
+              <input className="form-control" placeholder="Coming soon!" />
               <input className="btn btn-default" type='submit' value="Submit!" />
             </form>
             <div id="leaderboard-toggle" onClick={this.toggleLeaderBoard}>

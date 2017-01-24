@@ -12,7 +12,7 @@ const actions = Object.assign({},
 
   {
     asyncError(err) {
-      console.log('HTTP ERROR: ', err);
+      console.warn('ERROR: ', err);
       return {
         type: types.asyncError
       }

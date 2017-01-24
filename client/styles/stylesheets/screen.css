@@ -213,12 +213,6 @@ nav#header #auth-buttons {
 nav#header #auth-buttons a {
   margin-left: 0.5em;
 }
-@media (max-width: 650px), (max-device-width: 650px) {
-  /* line 137, ../sass/_default.scss */
-  nav#header #auth-buttons #login-link {
-    display: none;
-  }
-}
 /* line 143, ../sass/_default.scss */
 nav#header #app-logo:hover, nav#header #app-logo:hover:active, nav#header #app-logo:active {
   text-decoration: none;
@@ -249,7 +243,7 @@ nav#header #hamburger #menu-options {
     font-size: 0.5em;
     flex-flow: column nowrap;
     top: 35px;
-    right: -1em;
+    left: -1em;
     border: 4px solid #472902;
     padding: 1em;
     min-width: 12em;
@@ -1029,73 +1023,74 @@ form label {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  max-width: 100%;
 }
-/* line 6, ../sass/_dne.scss */
+/* line 7, ../sass/_dne.scss */
 #dne-page-container #snakes-title {
   font-size: 0.8em;
   color: black;
-  max-width: 90%;
+  min-width: 100%;
   padding: 1em;
   background: white;
   border: 2px solid black;
 }
-/* line 14, ../sass/_dne.scss */
+/* line 15, ../sass/_dne.scss */
 #dne-page-container #snakes-title #center {
   margin-top: 1.5em;
 }
 
-/* line 1, ../sass/_snakes.scss */
+/* line 3, ../sass/_snakes.scss */
 #snakes-game-container {
   border: 2px solid black;
-  min-width: 90%;
+  min-width: 100%;
   min-height: 80vh;
   display: flex;
   flex-flow: column nowrap;
   background: white;
 }
-/* line 9, ../sass/_snakes.scss */
+/* line 11, ../sass/_snakes.scss */
 #snakes-game-container #game-options, #snakes-game-container #game-board {
   width: 100%;
   border: 1px solid;
 }
-/* line 14, ../sass/_snakes.scss */
+/* line 16, ../sass/_snakes.scss */
 #snakes-game-container #game-board {
   display: flex;
   flex-flow: column nowrap;
   flex: 10;
 }
-/* line 19, ../sass/_snakes.scss */
+/* line 21, ../sass/_snakes.scss */
 #snakes-game-container #game-board .game-row {
   display: flex;
   flex-flow: row nowrap;
   flex: 1;
 }
-/* line 24, ../sass/_snakes.scss */
+/* line 26, ../sass/_snakes.scss */
 #snakes-game-container #game-board .game-row .game-cell {
   border: 1px solid lightgrey;
   flex: 1;
 }
-/* line 28, ../sass/_snakes.scss */
+/* line 30, ../sass/_snakes.scss */
 #snakes-game-container #game-board .game-row .game-cell.black {
   background: black;
 }
-/* line 31, ../sass/_snakes.scss */
+/* line 33, ../sass/_snakes.scss */
 #snakes-game-container #game-board .game-row .game-cell.red {
   background: red;
 }
-/* line 34, ../sass/_snakes.scss */
+/* line 36, ../sass/_snakes.scss */
 #snakes-game-container #game-board .game-row .game-cell.blue {
   background: blue;
 }
-/* line 37, ../sass/_snakes.scss */
+/* line 39, ../sass/_snakes.scss */
 #snakes-game-container #game-board .game-row .game-cell.green {
   background: green;
 }
-/* line 40, ../sass/_snakes.scss */
+/* line 42, ../sass/_snakes.scss */
 #snakes-game-container #game-board .game-row .game-cell.snake {
   background: #f34848;
 }
-/* line 46, ../sass/_snakes.scss */
+/* line 48, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu {
   display: none;
   position: absolute;
@@ -1105,54 +1100,55 @@ form label {
   padding: 2em;
   flex-flow: column nowrap;
   min-width: 50%;
+  border: 2px solid black;
 }
-/* line 56, ../sass/_snakes.scss */
+/* line 59, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu .menu-title {
   text-align: center;
   font-weight: bold;
   margin-bottom: 0.5em;
 }
-/* line 62, ../sass/_snakes.scss */
+/* line 65, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu .menu-help {
   text-align: center;
   font-size: 0.5em;
   color: grey;
 }
-/* line 68, ../sass/_snakes.scss */
+/* line 71, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu .btn-container {
   display: flex;
   justify-content: space-between;
   margin-top: 1.5em;
 }
-/* line 74, ../sass/_snakes.scss */
+/* line 77, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu #game-score {
   text-align: center;
   font-size: 0.9em;
   margin-bottom: 1em;
 }
-/* line 80, ../sass/_snakes.scss */
+/* line 83, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu form {
   display: flex;
   justify-content: space-between;
 }
-/* line 85, ../sass/_snakes.scss */
+/* line 88, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu #leaderboard-toggle {
   font-size: 0.7em;
   text-align: center;
   margin-top: 2em;
   color: #5151d2;
 }
-/* line 91, ../sass/_snakes.scss */
+/* line 94, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu #leaderboard-toggle:hover {
   cursor: pointer;
   text-decoration: underline;
 }
-/* line 97, ../sass/_snakes.scss */
+/* line 100, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu #leaderboard {
   font-size: 0.7em;
   text-align: center;
 }
-/* line 104, ../sass/_snakes.scss */
+/* line 107, ../sass/_snakes.scss */
 #snakes-game-container #game-options {
   display: flex;
   flex-flow: row nowrap;
@@ -1160,21 +1156,37 @@ form label {
   padding: 0.2em;
   flex: 1;
 }
-/* line 111, ../sass/_snakes.scss */
+/* line 114, ../sass/_snakes.scss */
 #snakes-game-container #game-options #game-difficulty {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
-/* line 115, ../sass/_snakes.scss */
+/* line 118, ../sass/_snakes.scss */
 #snakes-game-container #game-options #game-difficulty > * {
-  margin-right: 1em;
+  margin-left: 1em;
+  text-decoration: overline;
+  color: black;
+  max-height: 1em;
 }
-/* line 120, ../sass/_snakes.scss */
+/* line 124, ../sass/_snakes.scss */
+#snakes-game-container #game-options #game-difficulty > *:hover, #snakes-game-container #game-options #game-difficulty > *.active {
+  text-decoration: underline;
+  color: green;
+}
+/* line 128, ../sass/_snakes.scss */
+#snakes-game-container #game-options #game-difficulty > *:hover {
+  cursor: pointer;
+}
+/* line 133, ../sass/_snakes.scss */
+#snakes-game-container #game-options #game-difficulty #omg {
+  color: white;
+}
+/* line 138, ../sass/_snakes.scss */
 #snakes-game-container #game-options #scoreboard {
   text-align: right;
 }
-/* line 125, ../sass/_snakes.scss */
+/* line 143, ../sass/_snakes.scss */
 #snakes-game-container #game-options #game-btns button {
   margin-right: 1em;
 }

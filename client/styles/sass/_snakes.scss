@@ -1,10 +1,12 @@
+$snakes-bg: white;
+
 #snakes-game-container {
   border: 2px solid black;
-  min-width: 90%;
+  min-width: 100%;
   min-height: 80vh;
   display: flex;
   flex-flow: column nowrap;
-  background: white;
+  background: $snakes-bg;
 
   #game-options, #game-board {
     width: 100%;
@@ -52,6 +54,7 @@
       padding: 2em;
       flex-flow: column nowrap;
       min-width: 50%;
+      border: 2px solid black;
 
       .menu-title {
         text-align: center;
@@ -113,7 +116,22 @@
       flex-flow: row nowrap;
       justify-content: space-between;
       & > * {
-        margin-right: 1em;
+        margin-left: 1em;
+        text-decoration: overline;
+        color: black;
+        max-height: 1em;
+
+        &:hover, &.active {
+          text-decoration: underline;
+          color: green;
+        }
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      #omg {
+        color: $snakes-bg;
       }
     }
 

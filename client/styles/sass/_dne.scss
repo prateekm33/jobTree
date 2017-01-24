@@ -2,11 +2,12 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  max-width: 100%;
 
   #snakes-title {
     font-size: 0.8em;
     color: black;
-    max-width: 90%;
+    min-width: 100%;
     padding: 1em;
     background: white;
     border: 2px solid black;

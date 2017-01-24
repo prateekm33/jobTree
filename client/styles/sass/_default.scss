@@ -133,11 +133,11 @@ nav#header {
       margin-left: 0.5em;
     }
   
-      @media (max-width: $max-width), (max-device-width: $max-device-width) {
-        #login-link {
-          display: none;
-        }
-      }
+      // @media (max-width: $max-width), (max-device-width: $max-device-width) {
+      //   #login-link {
+      //     display: none;
+      //   }
+      // }
   }
   
   #app-logo:hover, #app-logo:hover:active, #app-logo:active {
@@ -166,7 +166,7 @@ nav#header {
         font-size: 0.5em;
         flex-flow: column nowrap;
         top: 35px;
-        right: -1em;
+        left: -1em;
         border: 4px solid #472902;
         padding: 1em;
         min-width: 12em;
