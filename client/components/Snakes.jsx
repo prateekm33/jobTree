@@ -22,6 +22,7 @@ export default class Snakes extends React.Component {
       yourBest: 0,
       leader: {user: '', score: 0},
       length: 31,
+      level: 'easy',
       speed: 900,
       board: new Array(31).fillWithFn(() => new Array(31).fill(2)),
       food: {r: null, c: null},
@@ -48,12 +49,13 @@ export default class Snakes extends React.Component {
     this.gameOver = this.gameOver.bind(this);
     this.endGame = this.endGame.bind(this);
     this.setMove = this.setMove.bind(this);
+    this.submitScore = this.submitScore.bind(this);
+    this.closeMenu = this.closeMenu.bind(this);
+    this.initSnake = this.initSnake.bind(this);
   }
 
   componentDidMount() {
-    window.addEventListener('keydown', this.handleKeyEvent);
-    this.endBtn.disabled = true;
-    this.resetGame();
+    this.initSnake(this.state.board);
   }
 
   componentWillUnmount() {
@@ -67,27 +69,47 @@ export default class Snakes extends React.Component {
 
     switch (target.id) {
       case 'easy':
-        return this.resetGame(31, 900);
+        return this.setState({level: 'easy'}, this.resetGame);
       case 'medium':
-        return this.resetGame(21, 500);
+        return this.setState({level: 'medium'},this.resetGame);
       case 'hard':
-        return this.resetGame(11, 300);
+        return this.setState({level: 'hard'}, this.resetGame);
       default: return;
     }
   }
 
-  resetGame(length = this.state.length, speed = this.state.speed) {
-    const board = new Array(length).fillWithFn(() => new Array(length).fill(2));
+  initSnake(board) {
     const mid = Math.floor(board.length / 2);
     board[mid][mid] = 1;
     this.takenSpots = {};
     this.takenSpots[mid] = this.takenSpots[mid] || {};
     this.takenSpots[mid][mid] = true;
-    this.setState({board});
     this.snake = {head: null, tail: null};
     this.snake.head = {r: mid, c: mid, prev: null, next: null};
     this.snake.tail = this.snake.head;
-    this.setState({ board, length: length, speed: speed}, this.summonFood);
+    this.setState({board});
+  }
+
+  resetGame() {
+    let speed, length;
+    switch (this.state.level) {
+      case 'easy': 
+        speed = 900;
+        length = 31;
+        break;
+      case 'medium':
+        speed = 500;
+        length = 21;
+        break;
+      case 'hard':
+        speed = 300;
+        length = 11;
+        break;
+    }
+    const board = new Array(length).fillWithFn(() => new Array(length).fill(2));
+    this.initSnake(board);
+    this.setState({length, speed})
+    this.dirQueue = new Queue();
   }
 
   handleKeyEvent(evt) {
@@ -101,19 +123,19 @@ export default class Snakes extends React.Component {
       case spaceBar: return this.togglePause(evt);
       case up: 
         evt.preventDefault();
-        if (!this.state.started) this.startGame(evt, 'up');
+        if (!this.state.started) this.startGame(evt);
         return this.setMove('up');
       case right: 
         evt.preventDefault();
-        if (!this.state.started) this.startGame(evt, 'right');
+        if (!this.state.started) this.startGame(evt);
         return this.setMove('right');
       case down: 
         evt.preventDefault();
-        if (!this.state.started) this.startGame(evt, 'down');
+        if (!this.state.started) this.startGame(evt);
         return this.setMove('down');
       case left: 
         evt.preventDefault();
-        if (!this.state.started) this.startGame(evt, 'left');
+        if (!this.state.started) this.startGame(evt);
         return this.setMove('left');
       default: return;
     }
@@ -128,15 +150,16 @@ export default class Snakes extends React.Component {
     this.timer = setInterval(moveFn, this.state.speed);
   }
 
-  startGame(evt, dir) {
-    this.endBtn.disabled = false;
+  startGame(evt) {
+    window.addEventListener('keydown', this.handleKeyEvent);
+    this.resetGame();
+    this.summonFood();
+    this.endBtn.disabled = true;
     evt.preventDefault();
     this.setState({ started: true});
-    const self = this;
-
-    this.setState({dir});
-
     this._moveSnake(this.moveSnake);
+    this.pauseMenu.style.display = 'none';
+    this.gameOverMenu.style.display = 'none';
   }
 
   canIGo(dir) {
@@ -164,10 +187,14 @@ export default class Snakes extends React.Component {
   }
 
   endGame() {
+    console.log('TODO --- COMPLETE END GAME...');
     this.endBtn.disabled = true;
     this.setState({started: false, paused: false});
     clearInterval(this.timer);
-    console.log('TODO --- COMPLETE END GAME...');
+    
+    this.gameOverMenu.style.display = 'flex';
+
+    window.removeEventListener('keydown', this.handleKeyEvent);
   }
 
   moveSnake() {
@@ -274,6 +301,14 @@ export default class Snakes extends React.Component {
 
   togglePause(evt) {
     evt.preventDefault();
+    if (this.state.paused) {
+      this._moveSnake(this.moveSnake);
+      this.pauseMenu.style.display = 'none';
+    }
+    else {
+      clearInterval(this.timer);
+      this.pauseMenu.style.display = 'flex';
+    }
     this.setState({paused: !this.state.paused});
   }
 
@@ -306,7 +341,6 @@ export default class Snakes extends React.Component {
   }
 
   summonFood() {
-    // choose random row from viable rows
     const viableSpots = [];
     this.state.board.forEach((row, r) => {
       row.forEach((col, c) => {
@@ -314,16 +348,21 @@ export default class Snakes extends React.Component {
         viableSpots.push(r * this.state.length + c);
       });
     });
-      // choose random col from viable cols
     const randIdx = Math.floor(Math.random() * viableSpots.length);
     const randCell = viableSpots[randIdx];
     const row = Math.floor(randCell / this.state.length);
     const col = randCell % this.state.length;
     this.setState({food: {r: row, c: col} });
-    // update the board state to mark that cell with a food piece
   }
 
+  submitScore(evt) {
+    evt.preventDefault();
+    console.log('TODO! -- submit score');
+  }
 
+  closeMenu() {
+    this.pauseMenu.style.display = this.gameOverMenu.style.display = 'none';
+  }
 
   render() {
     return (
@@ -353,6 +392,26 @@ export default class Snakes extends React.Component {
         </div>
         <div id="game-board">
           { this.genBoard() }
+          <div className="menu" ref={el => this.pauseMenu = el} id='pause-menu'>
+            <div className="menu-title">Game Paused</div>
+            <div className="menu-help">Press spacebar to continue</div>
+            <div className="btn-container">
+              <button onClick={this.togglePause} className="btn btn-default">Resume</button>
+              <button onClick={this.handleEndBtn} className="btn btn-default">End Game</button>
+            </div>
+          </div>
+          <div className="menu" ref={el => this.gameOverMenu = el} id='game-over-menu'>
+            <div className="menu-title">Game Over!</div>
+            <div id="game-score">Score : ####</div>
+            <form onSubmit={this.submitScore} id="submit-score">
+              <input placeholder="username" />
+              <input className="btn btn-default" type='submit' value="Submit!" />
+            </form>
+            <div className="btn-container">
+              <button onClick={this.startGame} className="btn btn-default">Start Over</button>
+              <button onClick={this.closeMenu} className="btn btn-default">Cancel</button>
+            </div>
+          </div>
         </div>
       </div>
     )

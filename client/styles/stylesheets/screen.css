@@ -1000,7 +1000,16 @@ form label {
 #snakes-game-container #game-board .game-row .game-cell.green {
   background: green;
 }
-/* line 40, ../sass/_snakes.scss */
+/* line 39, ../sass/_snakes.scss */
+#snakes-game-container #game-board .menu {
+  display: none;
+  position: absolute;
+  align-self: center;
+  top: 40%;
+  background: white;
+  padding: 2em;
+}
+/* line 49, ../sass/_snakes.scss */
 #snakes-game-container #game-options {
   min-height: 15%;
   display: flex;
@@ -1008,17 +1017,17 @@ form label {
   justify-content: space-between;
   padding: 0.2em;
 }
-/* line 47, ../sass/_snakes.scss */
+/* line 56, ../sass/_snakes.scss */
 #snakes-game-container #game-options #game-difficulty {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
-/* line 51, ../sass/_snakes.scss */
+/* line 60, ../sass/_snakes.scss */
 #snakes-game-container #game-options #game-difficulty > * {
   margin-right: 1em;
 }
-/* line 56, ../sass/_snakes.scss */
+/* line 65, ../sass/_snakes.scss */
 #snakes-game-container #game-options #scoreboard {
   text-align: right;
 }

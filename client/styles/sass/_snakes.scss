@@ -35,6 +35,15 @@
         }
       }
     }
+
+    .menu {
+      display: none;
+      position: absolute;
+      align-self: center;
+      top: 40%;
+      background: white;
+      padding: 2em;
+    }
   }
 
   #game-options {
