@@ -5,7 +5,10 @@ export const initComponent = (nextState, replace, done) => {
   document.body.scrollTop = 0;
   const path = nextState.location.pathname;
   const user = store.getState().user;
-  if (user) return done();
+  if (user) {
+    if (path === '/') replace('/home');
+    return done();
+  }
   else fetch('/auth/validate', {
           method: 'get',
           credentials: 'include'
