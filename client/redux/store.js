@@ -2,12 +2,13 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import { browserHistory } from 'react-router';
 import { reducer } from './reducers';
-import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 const historyMiddleware = routerMiddleware(browserHistory);
 
+process.env === 'production' ? import logger from 'redux-logger' : null;
+const middleWares = process.env === 'production' ? [thunk, historyMiddleware] : [logger(), thunk, historyMiddleware];
 const finalCreateStore = compose(
-  applyMiddleware(logger(), thunk, historyMiddleware)
+  applyMiddleware(...middleWares)
 )(createStore);
 
 import {jobs} from '../mockData';
