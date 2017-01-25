@@ -25,6 +25,7 @@ export const initComponent = (nextState, replace, done) => {
             }
             else {
               store.dispatch(actions.logInUser(user));
+              if (path === '/') replace('/home');
             }
             done();
           })
