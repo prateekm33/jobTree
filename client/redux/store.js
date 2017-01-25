@@ -5,7 +5,8 @@ import { reducer } from './reducers';
 import thunk from 'redux-thunk';
 const historyMiddleware = routerMiddleware(browserHistory);
 // import logger from 'redux-logger';
-const middleWares = process.env === 'production' ? [thunk, historyMiddleware] : [logger(), thunk, historyMiddleware];
+// const middleWares = [logger(), thunk, historyMiddleware];
+const middleWares = [thunk, historyMiddleware]
 const finalCreateStore = compose(
   applyMiddleware(...middleWares)
 )(createStore);
