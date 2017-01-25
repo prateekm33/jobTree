@@ -10,6 +10,7 @@ import Summary from './Summary';
 
 class LargeView extends React.Component {
   constructor(props) {
+    console.log(props, 'LARGE VIEW')
     super(props);
     this.state = {
       defaultOrder: 'Select order',

@@ -5,7 +5,6 @@ function Summary(props) {
     'APPLIED', 'PHONE SCREEN', 'ON SITE', 'REJECTED', 'OFFER'
   ];
   const jobs = props.data.jobs;
-  console.log('DATA ---', props.data);
   return (
     <div className="company-summary">
       <div className="jobs-count"># of Jobs: {jobs.length}</div>

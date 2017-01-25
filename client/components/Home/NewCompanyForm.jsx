@@ -93,12 +93,11 @@ class NewCompanyForm extends React.Component {
 
       const dd = job.querySelector('#status-dd-job-form');
       newJob.status = dd.querySelector('.dropdown-toggle').innerText;
-
       return newJob;
     });
-    console.log('COMPANY DATA - ', companyData);
     this.props.dispatch(actions.postNewJobs(companyData));
     this.props.dispatch(actions.addNewJobsToState(companyData));
+    this.props.parent.toggleCompanyForm();
   }
 
   dismissPostMsg() {

@@ -8,9 +8,12 @@ const jobsReducers = {
   allJobs(jobs = [], action) {
     switch (action.type) {
       case types.addNewJobsToState:
-        return jobs.concat([action.jobs]);
+        action.jobs.data = {jobs: action.jobs.jobs, recruiter: action.jobs.recruiter};
+        delete action.jobs.jobs;
+        delete action.jobs.recruiter;
+        return sortCompaniesBy(store.getState().companySort, jobs.concat([action.jobs]));
       case types.sortCompaniesBy:
-        if (action.option  === store.getState().companySort) return jobs;
+        if (action.option  === store.getState().companySort) return jobs.map(i=>i).reverse();
         return sortCompaniesBy(action.option, jobs);
       case types.fetchedJobs: 
         return action.jobs;

@@ -81,19 +81,22 @@ class Home extends React.Component {
   }
 
   toggleCompanyForm(evt) {
-    evt.preventDefault();
-    if (evt.target.tagName !== 'BUTTON') return;
+    document.body.scrollTop = 100000000000000;
+    evt && evt.preventDefault();
+    evt = evt || {};
+    const target = evt.target || this.cancelFormBtn;
+    if (target.tagName !== 'BUTTON') return;
     
     this.props.dispatch(actions.toggleCompanyForm());
 
-    if (evt.target.id === 'add-company') {
-      evt.target.style.display = 'none';
-      evt.target.nextElementSibling.style.display = 'flex';
+    if (target.id === 'add-company') {
+      target.style.display = 'none';
+      target.nextElementSibling.style.display = 'flex';
       this.helpForAdd.style.display = 'none';
       this.helpForCancel.style.display = 'flex';
-    } else if (evt.target.id === 'cancel-company') {
-      evt.target.style.display = 'none';
-      evt.target.previousElementSibling.style.display = 'flex';
+    } else if (target.id === 'cancel-company') {
+      target.style.display = 'none';
+      target.previousElementSibling.style.display = 'flex';
       this.helpForAdd.style.display = 'flex';
       this.helpForCancel.style.display = 'none';
     }
@@ -107,7 +110,7 @@ class Home extends React.Component {
           <div id="line-2">
             <div id="form-toggle-options" onClick={this.toggleCompanyForm}> 
               <button id="add-company" className='btn btn-default glyphicon glyphicon-plus'></button>
-              <button id="cancel-company" className='btn btn-default glyphicon glyphicon-remove'></button>
+              <button ref={el => this.cancelFormBtn = el} id="cancel-company" className='btn btn-default glyphicon glyphicon-remove'></button>
               <div id='company-form-btn-help'>
                 <div ref={el => this.helpForAdd = el} id="help-for-add">Click to open new company form</div>
                 <div ref={el => this.helpForCancel = el} id="help-for-cancel">Click to cancel form</div>
@@ -117,7 +120,7 @@ class Home extends React.Component {
           </div>
         </div>
 
-        { this.props.showCompanyForm ? <NewCompanyForm /> : null }
+        { this.props.showCompanyForm ? <NewCompanyForm parent={this}/> : null }
 
         <div id='large-jobs-view-container'>
           {
