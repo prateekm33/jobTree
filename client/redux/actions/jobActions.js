@@ -20,8 +20,7 @@ const jobActions = {
         if (r.status !== 200) dispatch(actions.errorFetchingJobs(r));
         else return r.json();
       }).then(jobs => {
-        console.log('JOBS RECEIVED: ', jobs);
-        dispatch(actions.fetchedJobs(jobs));
+        if (jobs) dispatch(actions.fetchedJobs(jobs));
       })
       .catch(err => dispatch(actions.asyncError(err)));
     }
