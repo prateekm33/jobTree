@@ -216,7 +216,6 @@ export default class Snakes extends React.Component {
   }
 
   endGame() {
-    console.log('TODO --- COMPLETE END GAME...');
     this.endBtn.disabled = true;
     this.setState({started: false, paused: false});
     clearInterval(this.timer);
