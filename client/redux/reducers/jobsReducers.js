@@ -7,9 +7,13 @@ import menuItems from '../../components/Home/companySortItems';
 const jobsReducers = {
   allJobs(jobs = [], action) {
     switch (action.type) {
+      case types.addNewJobsToState:
+        return jobs.concat([action.jobs]);
       case types.sortCompaniesBy:
         if (action.option  === store.getState().companySort) return jobs;
         return sortCompaniesBy(action.option, jobs);
+      case types.fetchedJobs: 
+        return action.jobs;
       default: return jobs;
     }
   },

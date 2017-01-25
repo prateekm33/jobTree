@@ -59,30 +59,31 @@ module.exports = {
 
   getJobs(req, res) {
     const user = req.params.user;
-    if (req.user.email !== user) return res.status(404).end();
+    if (req.user.username !== user) return res.status(404).end();
     
-    User.findOne({email: user})
+    User.findOne({username: user})
       .then(user => {
         if (user) {
-          res.send(utils.formatJobs(user.companies));
+          const jobs = utils.formatJobs(user.jobs);
+          console.log('jobs - ', jobs)
+          res.json(jobs);
         } else {
-          res.send(null);
+          res.json(null);
         }
       })
   },
 
   addJobs(req, res) {
-    if (req.user.email !== req.params.user) return res.status(401).end();
+    if (req.user.username !== req.params.user) return res.status(401).end();
 
-    const jobs = req.body.jobs;
+    const data = req.body.data;
+    const jobs = data.jobs;
     const user = req.params.user;
-    console.log(user, jobs);
-    res.end();
-    // User.update({email: user}, { $pushAll: {companies: jobs} }).
-    //   then((r, e) => {
-    //     !e && res.status(200).end();
-    //     e && res.status(400).end();
-    //   })
+    User.update({username: user}, { $pushAll: {jobs: jobs} }).
+      then((r, e) => {
+        !e && res.status(201).end();
+        e && res.status(400).end();
+      });
   },
 
   updateJobs(req, res) {

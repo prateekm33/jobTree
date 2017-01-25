@@ -4,20 +4,15 @@ mongoose.Promise = require('bluebird');
 const userSchema = mongoose.Schema({
   username: { type: String, unique: true },
   password: { type: String },
-  companies: { type: [
-    {
-      company: String,
-      recruiter: String,
-      jobs: [{
+  jobs: { type: [{
         company: String,
         role: String,
-        status: String,
+        status: { type: String, default: 'APPLIED'},
         location: String,
         recruiter: String,
         date_applied: { type: Date, default: Date.now },
-      }]
-    }
-  ], default: []}
+      }], 
+    default: []}
 });
 
 const User = mongoose.model('User', userSchema);

@@ -1,5 +1,6 @@
 import types from './types';
 import { replace } from 'react-router-redux';
+import { store } from '../store';
 
 const authActions = {
   submitAuthForm(user, id) {
@@ -33,6 +34,7 @@ const authActions = {
   },
 
   logInUser(user) {
+    store.dispatch(this.fetchJobs(user.username));
     return {
       type: types.logInUser,
       user

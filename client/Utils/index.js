@@ -20,7 +20,9 @@ export const initComponent = (nextState, replace, done) => {
                 default: break;
               }
             }
-            else store.dispatch(actions.logInUser(user));
+            else {
+              store.dispatch(actions.logInUser(user));
+            }
             done();
           })
           .catch(err => { store.dispatch(actions.asyncError(err))});

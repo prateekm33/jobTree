@@ -6,6 +6,7 @@ export default class Job extends React.Component {
     super(props);
     this.handleUserEdit = this.handleUserEdit.bind(this);
     this.handleEditBtnClick = this.handleEditBtnClick.bind(this);
+    console.log(props)
   }
 
   handleUserEdit(evt) {
@@ -27,6 +28,7 @@ export default class Job extends React.Component {
   }
 
   formatDate(date) {
+    date = new Date(date);
     return date.toDateString();
   }
 

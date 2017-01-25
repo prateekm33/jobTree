@@ -67,10 +67,11 @@ class NewCompanyForm extends React.Component {
     inputs.forEach(i => {i.style.border = '';});
     companyData.company = this.state.companyName;
     companyData.recruiter = this.state.recruiterName;
-    const newJobs = Array.prototype.slice.call(this.formEl.querySelector('.new-job'));
+    const newJobs = Array.prototype.slice.call(this.formEl.querySelectorAll('.new-job'));
     const self = this;
     companyData.jobs = newJobs.map(job => {
-      const inputs = Array.prototype.slice.call(job.querySelector('input'));
+      const inputs = Array.prototype.slice.call(job.querySelectorAll('input'));
+      console.log('inputs - ', inputs, 'for ', job);
       const newJob = {company: self.state.companyName};
       inputs.forEach(input => {
         switch (input.id) {
@@ -90,10 +91,14 @@ class NewCompanyForm extends React.Component {
         }
       });
 
+      const dd = job.querySelector('#status-dd-job-form');
+      newJob.status = dd.querySelector('.dropdown-toggle').innerText;
+
       return newJob;
     });
-
+    console.log('COMPANY DATA - ', companyData);
     this.props.dispatch(actions.postNewJobs(companyData));
+    this.props.dispatch(actions.addNewJobsToState(companyData));
   }
 
   dismissPostMsg() {
@@ -131,7 +136,7 @@ class NewCompanyForm extends React.Component {
         <div id="jobs-forms-container">
           <div className="form-line">
             <div style={{fontSize: '1.2em', fontWeight: 'bold', height: "50%", alignSelf: "flex-end"}}>New Jobs</div>
-            <input type='submit' className="btn btn-primary" value="Submit" />
+            <input type='submit' className="btn btn-primary" value="Save!" />
             <button onClick={this.handleAddNewJob} className="btn btn-default glyphicon glyphicon-plus"></button>
           </div>
           {

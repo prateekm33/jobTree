@@ -1,6 +1,13 @@
 import types from './types';
 
 const newJobActions = {
+  addNewJobsToState(jobs) {
+    return {
+      type: types.addNewJobsToState,
+      jobs
+    }
+  },
+
   postNewJobs(data) {
     const actions = this;
     return function(dispatch, getState) {

@@ -20,15 +20,22 @@ module.exports = {
     })
   },
 
-  formatJobs(companies) {
-    return companies.map(company => {
-      return {
-        company: company.company,
-        data: {
-          recruiter: company.recruiter,
-          jobs: company.jobs
-        }
-      }
-    });
+  formatJobs(jobs) {
+    const companies = jobs.reduce((obj, job) => {
+      obj[job.company] = obj[job.company] || {};
+      obj[job.company].company = job.company;
+      obj[job.company].data = obj[job.company].data || {}
+      obj[job.company].data.recruiter = job.recruiter;
+      obj[job.company].data.jobs = obj[job.company].data.jobs || [];
+      obj[job.company].data.jobs.push(job);
+      return obj;
+    }, {});
+
+    const arr = [];
+    for (let company in companies) {
+      arr.push(companies[company]);
+    }
+
+    return arr;
   }
 }

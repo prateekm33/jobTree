@@ -108,7 +108,7 @@ class NewJobsForm extends React.Component {
         <div className="form-line"> 
           <div>
             <label htmlFor="date-applied">Date Applied </label>
-            <input onBlur={this.updateJobProps} ref={el => this.dateAppliedEl = el} id="date-applied" className="form-control" placeholder="Date Applied"/>
+            <input onBlur={this.updateJobProps} ref={el => this.dateAppliedEl = el} id="date-applied" className="form-control" type='date' placeholder="Date Applied"/>
           </div>
         </div>
       </div>

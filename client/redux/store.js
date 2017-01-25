@@ -17,7 +17,7 @@ for (let company in jobs) {
 }
 
 const defaultState = {
-  allJobs: allJobs,
+  allJobs: [],
   companySort: '',
   user: null,
 
