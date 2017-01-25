@@ -161,8 +161,8 @@ nav#header #main-nav-options {
   display: flex;
   align-self: flex-end;
   padding-bottom: 0.8em;
-  justify-content: space-around;
   height: 100%;
+  margin-left: 4em;
 }
 @media (max-width: 650px), (max-device-width: 650px) {
   /* line 84, ../sass/_default.scss */
@@ -173,7 +173,7 @@ nav#header #main-nav-options {
 /* line 96, ../sass/_default.scss */
 nav#header #main-nav-options a {
   color: white;
-  margin-right: 0.45em;
+  margin-right: 2em;
   margin-left: 0.45em;
   display: flex;
   align-items: flex-end;

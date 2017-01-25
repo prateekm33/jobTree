@@ -60,7 +60,7 @@ class App extends React.Component {
                   { this.state.menuOptions }
                 </div>
               </div>
-              <Link to="/" id="app-logo">
+              <Link to="/home" id="app-logo">
                 JobTree
               </Link>
             </div>
