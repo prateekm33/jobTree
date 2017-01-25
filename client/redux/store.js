@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 import { reducer } from './reducers';
 import thunk from 'redux-thunk';
 const historyMiddleware = routerMiddleware(browserHistory);
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 const middleWares = process.env === 'production' ? [thunk, historyMiddleware] : [logger(), thunk, historyMiddleware];
 const finalCreateStore = compose(
   applyMiddleware(...middleWares)
