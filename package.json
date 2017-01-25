@@ -11,7 +11,8 @@
     "clean": "rm -rf dist && rm -rf client/dist",
     "rebuild": "npm run clean && npm run build",
     "start": "node server/server.js",
-    "heroku-postbuild": "npm run clean && npm run prod"
+    "heroku-postbuild": "npm run clean && npm run prod",
+    "deploy": "git status && git add . && gcom -m 'deploy to production' && git push heroku master"
   },
   "keywords": [],
   "author": "",
