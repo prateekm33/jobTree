@@ -10,11 +10,11 @@ const finalCreateStore = compose(
   applyMiddleware(...middleWares)
 )(createStore);
 
-import {jobs} from '../mockData';
-const allJobs = [];
-for (let company in jobs) {
-  allJobs.push({company, data: jobs[company]});
-}
+// import {jobs} from '../mockData';
+// const allJobs = [];
+// for (let company in jobs) {
+//   allJobs.push({company, data: jobs[company]});
+// }
 
 const defaultState = {
   allJobs: [],
