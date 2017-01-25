@@ -12,7 +12,6 @@ const jobActions = {
     const actions = this;
     return function(dispatch, getState) {
       dispatch(actions.fetchingJobs());
-      const user = getState().user;
       return fetch('/accounts/jobs/' + user, {
         method: 'get',
         credentials: 'include',
