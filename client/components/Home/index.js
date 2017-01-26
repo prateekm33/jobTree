@@ -40,7 +40,7 @@ class Home extends React.Component {
 
   deleteCompany(idx) {
     document.body.scrollTop = 0;
-    this.props.dispatch(actions.deleteCompanyAt(idx));
+    this.props.dispatch(actions.deleteCompany(idx));
   }
 
   renderLargeView() {

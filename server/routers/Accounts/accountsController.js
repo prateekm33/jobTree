@@ -88,11 +88,11 @@ module.exports = {
 
   updateJobs(req, res) {
     console.log('UPDATE JOBS??')
-    if (req.user.email !== req.params.user) return res.status(401).end();
+    if (req.user.username !== req.params.user) return res.status(401).end();
 
     const jobs = req.body.jobs;
     console.log('JOBS TO UPDATE: ', jobs)
-    User.update({email: req.user.email, password: req.user.password}, {jobs: jobs})
+    User.update({username: req.user.username, password: req.user.password}, {jobs: jobs})
       .then((r,e) => {
         console.log('RESULT? : ', r);
         !e && res.status(200).end();

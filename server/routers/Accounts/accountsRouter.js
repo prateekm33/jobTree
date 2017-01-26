@@ -14,6 +14,6 @@ accountsRouter.route('/:user')
 accountsRouter.route('/jobs/:user')
   .get(validateRequest, accountsController.getJobs)
   .post(validateRequest, accountsController.addJobs)
-  .put(validateRequest, accountsController.updateJobs)
+  .put(validateRequest, accountsController.updateJobs);
 
 module.exports = accountsRouter;

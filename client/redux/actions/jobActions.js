@@ -44,6 +44,29 @@ const jobActions = {
     }
   },
 
+  deleteCompany(idx) {
+    const actions = this;
+    return function(dispatch, getState) {
+      dispatch(actions.deleteCompanyAt(idx));
+      const jobs = getState().allJobs;
+      const user = getState().user;
+      return fetch('/accounts/jobs' + '/' + user, {
+        method: 'put', 
+        credentials: 'include',
+        body: JSON.stringify({jobs}),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(res => {
+        if (res.status !== 200) {}
+        else {
+
+        }
+      })
+        .catch(err => dispatch(actions.asyncError(err)));
+    }
+  },
+
   deleteCompanyAt(idx) {
     return {
       type: types.deleteCompanyAt,
