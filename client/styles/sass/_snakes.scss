@@ -37,11 +37,14 @@ $snakes-bg: white;
         &.blue {
           background: blue;
         }
-        &.green {
-          background: green;
+        &.grey {
+          background: grey;
         }
         &.snake {
-          background: #f34848;
+          background: green;
+        }
+        &.yellow {
+          background: yellow;
         }
       }
     }

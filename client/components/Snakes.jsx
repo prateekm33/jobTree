@@ -29,12 +29,14 @@ export default class Snakes extends React.Component {
       multiplier: 1,
       board: new Array(31).fillWithFn(() => new Array(31).fill(2)),
       food: {r: null, c: null},
+      newFood: {r: null, c: null},
       tailOnPiece: false,
       dir: 'right',
       showLeaderBoard: false
     }
 
     this.takenSpots = {};
+    this.snakeLength = 1;
     this.dirQueue = new Queue();
     this.prevDir = 'right';
     this.snake = {head: {r: -1, c: -1}, tail: {r: -1, c: -1}};
@@ -125,7 +127,7 @@ export default class Snakes extends React.Component {
     board[mid][mid] = 1;
     this.takenSpots = {};
     this.takenSpots[mid] = this.takenSpots[mid] || {};
-    this.takenSpots[mid][mid] = true;
+    this.takenSpots[mid][mid] = 1;
     this.snake = {head: null, tail: null};
     this.snake.head = {r: mid, c: mid, prev: null, next: null};
     this.snake.tail = this.snake.head;
@@ -159,8 +161,9 @@ export default class Snakes extends React.Component {
     }
     const board = new Array(length).fillWithFn(() => new Array(length).fill(2));
     this.initSnake(board);
-    this.setState({length, speed, multiplier, step, currScore: 0}, cb);
+    this.setState({length, speed, multiplier, step, currScore: 0, food: {r: null, c: null}, newFood: {r: null, c: null}}, cb);
     this.dirQueue = new Queue();
+    this.snakeLength = 1;
   }
 
   summonFood() {
@@ -175,7 +178,8 @@ export default class Snakes extends React.Component {
     const randCell = viableSpots[randIdx];
     const row = Math.floor(randCell / this.state.length);
     const col = randCell % this.state.length;
-    this.setState({food: {r: row, c: col} });
+    const oldFood = this.state.newFood.r === null ? {r: row, c: col} : this.state.newFood;
+    this.setState({food: oldFood, newFood: {r: row, c: col} });
   }
 
   handleStartClick(evt) {
@@ -184,11 +188,13 @@ export default class Snakes extends React.Component {
 
   startGame(evt) {
     window.addEventListener('keydown', this.handleKeyEvent);
-    this.summonFood();
     this.endBtn.disabled = false;
     evt.preventDefault();
     this.setState({ started: true});
-    this.resetGame(() => this._moveSnake(this.moveSnake));
+    this.resetGame(() => {
+      this.summonFood();
+      this._moveSnake(this.moveSnake)
+    });
     this.pauseMenu.style.display = 'none';
     this.gameOverMenu.style.display = 'none';
   }
@@ -346,7 +352,7 @@ export default class Snakes extends React.Component {
         board[this.snake.head.r][this.snake.head.c] = 2;
         this.snake.head.r = this.snake.head.r - 1;
         this.takenSpots[this.snake.head.r] = this.takenSpots[this.snake.head.r] || {};
-        this.takenSpots[this.snake.head.r][this.snake.head.c] = true;
+        this.takenSpots[this.snake.head.r][this.snake.head.c] = 1;
         this.isThisFood();
         this.setState({board});
         return;
@@ -359,7 +365,7 @@ export default class Snakes extends React.Component {
         board[this.snake.head.r][this.snake.head.c] = 2;
         this.snake.head.c = this.snake.head.c + 1;
         this.takenSpots[this.snake.head.r] = this.takenSpots[this.snake.head.r] || {};
-        this.takenSpots[this.snake.head.r][this.snake.head.c] = true;
+        this.takenSpots[this.snake.head.r][this.snake.head.c] = 1;
         this.isThisFood();
         this.setState({board});
         return;
@@ -372,7 +378,7 @@ export default class Snakes extends React.Component {
         board[this.snake.head.r][this.snake.head.c] = 2;
         this.snake.head.r = this.snake.head.r + 1;
         this.takenSpots[this.snake.head.r] = this.takenSpots[this.snake.head.r] || {};
-        this.takenSpots[this.snake.head.r][this.snake.head.c] = true;
+        this.takenSpots[this.snake.head.r][this.snake.head.c] = 1;
         this.isThisFood();
         this.setState({board});
         return;
@@ -385,7 +391,7 @@ export default class Snakes extends React.Component {
         board[this.snake.head.r][this.snake.head.c] = 2;
         this.snake.head.c = this.snake.head.c - 1;
         this.takenSpots[this.snake.head.r] = this.takenSpots[this.snake.head.r] || {};
-        this.takenSpots[this.snake.head.r][this.snake.head.c] = true;
+        this.takenSpots[this.snake.head.r][this.snake.head.c] = 1;
         this.isThisFood();
         this.setState({board});
         return;
@@ -399,8 +405,10 @@ export default class Snakes extends React.Component {
     while (node.prev) {
       node.r = node.prev.r;
       node.c = node.prev.c;
+      this.takenSpots[node.r][node.c] += 1;
       node = node.prev;
     }
+    if (this.state.tailOnPiece) this.grow();
   }
 
   incrementScore() {
@@ -409,11 +417,12 @@ export default class Snakes extends React.Component {
   }
 
   isThisFood() {
-    if (this.snake.head.r === this.state.food.r && this.snake.head.c === this.state.food.c) this.eatPiece();
+    if (this.snake.head.r === this.state.newFood.r && this.snake.head.c === this.state.newFood.c) this.eatPiece();
   }
 
   eatPiece() {
     this.incrementScore();
+    this.summonFood();
   }
 
   isTailOnPiece() {
@@ -428,23 +437,23 @@ export default class Snakes extends React.Component {
 
   wasTailOnPiece() {
     if (this.state.tailOnPiece) {
-      this.grow();
+      // this.grow();
     } 
   }
 
   grow() {
+    this.snakeLength += 1;
     this.snake.tail.next = {r: this.state.food.r, c: this.state.food.c, next: null, prev: this.snake.tail};
     this.snake.tail = this.snake.tail.next;
     this.takenSpots[this.state.food.r] = this.takenSpots[this.state.food.r] || {};
-    this.takenSpots[this.state.food.r][this.state.food.c] = true;
+    this.takenSpots[this.state.food.r][this.state.food.c] = this.snakeLength;
     
     let step = this.state.step;
     let newSpeed = this.state.speed - step;
     if (newSpeed <= step) {
       newSpeed = step;
     }
-    this.setState({speed: newSpeed, foodValue: this.state.foodValue + this.state.multiplier, multiplier: this.state.multiplier * this.state.multiplier}, () => this._moveSnake(this.moveSnake));
-    this.summonFood();
+    this.setState({speed: newSpeed, foodValue: this.state.foodValue + this.state.multiplier, multiplier: this.state.multiplier * this.state.multiplier, food: {r: null, c: null}}, () => this._moveSnake(this.moveSnake));
   }
 
   genBoard() {
@@ -453,12 +462,13 @@ export default class Snakes extends React.Component {
       <div key={r} className="game-row">
         {
           row.map((cell, c) => {
+            const opacity = this.takenSpots[r] && String(this.takenSpots[r][c]/(this.snakeLength+1));
             return (
-              <div key={c} className={"game-cell" + " " +
+              <div key={c} style={{opacity: (c === this.state.food.c && r === this.state.food.r && this.takenSpots[r] && this.takenSpots[r][c] ? opacity : 1) }} className={"game-cell" + " " +
                 (
+                  (c === this.snake.head.c && r === this.snake.head.r && c === this.state.food.c && r === this.state.food.r ? 'yellow' : '') ||
                   (c === this.snake.head.c && r === this.snake.head.r ? 'snake' : '') ||
-                  (c === this.state.food.c && r === this.state.food.r && this.takenSpots[r] && this.takenSpots[r][c] ? 'green' : '') ||
-                  (c === this.state.food.c && r === this.state.food.r ? 'blue' : '') ||
+                  (c === this.state.newFood.c && r === this.state.newFood.r ? 'blue' : '') ||
                   (this.takenSpots[r] && this.takenSpots[r][c] ? 'black' : '')
                 )
 

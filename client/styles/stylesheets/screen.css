@@ -74,11 +74,6 @@ body {
   background-color: #cff1cf;
 }
 
-/* line 9, ../sass/_default.scss */
-* {
-  transition: all 1s ease-in-out;
-}
-
 /* line 13, ../sass/_default.scss */
 #react-app {
   position: relative;
@@ -1231,14 +1226,18 @@ form label {
   background: blue;
 }
 /* line 40, ../sass/_snakes.scss */
-#snakes-game-container #game-board .game-row .game-cell.green {
-  background: green;
+#snakes-game-container #game-board .game-row .game-cell.grey {
+  background: grey;
 }
 /* line 43, ../sass/_snakes.scss */
 #snakes-game-container #game-board .game-row .game-cell.snake {
-  background: #f34848;
+  background: green;
 }
-/* line 49, ../sass/_snakes.scss */
+/* line 46, ../sass/_snakes.scss */
+#snakes-game-container #game-board .game-row .game-cell.yellow {
+  background: yellow;
+}
+/* line 52, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu {
   display: none;
   position: absolute;
@@ -1250,53 +1249,53 @@ form label {
   min-width: 50%;
   border: 2px solid black;
 }
-/* line 60, ../sass/_snakes.scss */
+/* line 63, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu .menu-title {
   text-align: center;
   font-weight: bold;
   margin-bottom: 0.5em;
 }
-/* line 66, ../sass/_snakes.scss */
+/* line 69, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu .menu-help {
   text-align: center;
   font-size: 0.5em;
   color: grey;
 }
-/* line 72, ../sass/_snakes.scss */
+/* line 75, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu .btn-container {
   display: flex;
   justify-content: space-between;
   margin-top: 1.5em;
 }
-/* line 78, ../sass/_snakes.scss */
+/* line 81, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu #game-score {
   text-align: center;
   font-size: 0.9em;
   margin-bottom: 1em;
 }
-/* line 84, ../sass/_snakes.scss */
+/* line 87, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu form {
   display: flex;
   justify-content: space-between;
 }
-/* line 89, ../sass/_snakes.scss */
+/* line 92, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu #leaderboard-toggle {
   font-size: 0.7em;
   text-align: center;
   margin-top: 2em;
   color: #5151d2;
 }
-/* line 95, ../sass/_snakes.scss */
+/* line 98, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu #leaderboard-toggle:hover {
   cursor: pointer;
   text-decoration: underline;
 }
-/* line 101, ../sass/_snakes.scss */
+/* line 104, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu #leaderboard {
   font-size: 0.7em;
   text-align: center;
 }
-/* line 108, ../sass/_snakes.scss */
+/* line 111, ../sass/_snakes.scss */
 #snakes-game-container #game-options {
   display: flex;
   flex-flow: row nowrap;
@@ -1304,37 +1303,37 @@ form label {
   padding: 0.2em;
   flex: 1;
 }
-/* line 115, ../sass/_snakes.scss */
+/* line 118, ../sass/_snakes.scss */
 #snakes-game-container #game-options #game-difficulty {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
-/* line 119, ../sass/_snakes.scss */
+/* line 122, ../sass/_snakes.scss */
 #snakes-game-container #game-options #game-difficulty > * {
   margin-left: 1em;
   text-decoration: overline;
   color: black;
   max-height: 1em;
 }
-/* line 125, ../sass/_snakes.scss */
+/* line 128, ../sass/_snakes.scss */
 #snakes-game-container #game-options #game-difficulty > *:hover, #snakes-game-container #game-options #game-difficulty > *.active {
   text-decoration: underline;
   color: green;
 }
-/* line 129, ../sass/_snakes.scss */
+/* line 132, ../sass/_snakes.scss */
 #snakes-game-container #game-options #game-difficulty > *:hover {
   cursor: pointer;
 }
-/* line 134, ../sass/_snakes.scss */
+/* line 137, ../sass/_snakes.scss */
 #snakes-game-container #game-options #game-difficulty #omg {
   color: white;
 }
-/* line 139, ../sass/_snakes.scss */
+/* line 142, ../sass/_snakes.scss */
 #snakes-game-container #game-options #scoreboard {
   text-align: right;
 }
-/* line 144, ../sass/_snakes.scss */
+/* line 147, ../sass/_snakes.scss */
 #snakes-game-container #game-options #game-btns button {
   margin-right: 1em;
 }
