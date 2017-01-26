@@ -4,6 +4,16 @@
   display: flex;
   flex-flow: column nowrap;
 
+  .company-number {
+    position: absolute;
+    left: -2em;
+    top: 2em;
+    font-style: italic;
+    color: rgba(165, 42, 42, 0.68);
+    font-weight: bold;
+  }
+
+
   #line-2 {
     display: flex;
     justify-content: space-between;

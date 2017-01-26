@@ -39,6 +39,7 @@ class LargeView extends React.Component {
     const dropdownStyle = {display: (this.props.activeCompanies[this.props.company] ? "flex" : "none")};
     return (
       <div className="company-container">
+        <div className="company-number">{this.props.idx + 1}</div>
         <div onClick={this.handleCompanyNameClicked}
           ref={el => this.companyContainer = el}
           className="company-name-container">

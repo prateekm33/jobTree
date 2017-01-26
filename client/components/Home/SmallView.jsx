@@ -26,6 +26,7 @@ class SmallView extends React.Component {
   render() {
     return (
       <div ref={this.props.refFn} className="company-container">
+        <div className="company-number">{this.props.idx + 1}</div>
         <button ref={el => this.toggleButton = el} onClick={this.toggleJobs} className={"company-name btn btn-default" + " " + (!!this.props.activeCompanies[this.props.company] ? "active" : "")}>
           {this.props.company}
           <div>{!!this.props.activeCompanies[this.props.company] ? "Close" : "Click to view jobs"}</div>

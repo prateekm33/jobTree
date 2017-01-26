@@ -11,10 +11,10 @@ const jobsReducers = {
         action.jobs.data = {jobs: action.jobs.jobs, recruiter: action.jobs.recruiter};
         delete action.jobs.jobs;
         delete action.jobs.recruiter;
-        return sortCompaniesBy(store.getState().companySort, jobs.concat([action.jobs]));
+        return sort(jobs.concat([action.jobs]), store.getState().companySort);
       case types.sortCompaniesBy:
         if (action.option  === store.getState().companySort) return jobs.map(i=>i).reverse();
-        return sortCompaniesBy(action.option, jobs);
+        return sort(jobs.map(i => i), action.option);
       case types.fetchedJobs: 
         return action.jobs;
       default: return jobs;
@@ -32,37 +32,69 @@ const jobsReducers = {
 
 export default jobsReducers;
 
-
-function sortCompaniesBy(option, jobs) {
-  switch (option) {
-    case menuItems.company:
-      return jobs.map(i => i).sort((a,b) => a.company > b.company)
-    case menuItems.jobApps:
-      return jobs.map(i => i).sort((a,b) => a.data.jobs.length > b.data.jobs.length);
-    case menuItems.numApplied:
-      return jobs.map(i => i).sort((a,b) => (
-        statusCount('applied', a.data.jobs) > statusCount('applied', b.data.jobs)
-      ))
-    case menuItems.numPS:
-      return jobs.map(i => i).sort((a,b) => (
-        statusCount('phone-screen', a.data.jobs) > statusCount('phone-screen', b.data.jobs)
-      ))
-    case menuItems.numOS:
-      return jobs.map(i => i).sort((a,b) => (
-        statusCount('on-site', a.data.jobs) > statusCount('on-site', b.data.jobs)
-      ))
-    case menuItems.numRejected:
-      return jobs.map(i => i).sort((a,b) => (
-        statusCount('rejected', a.data.jobs) > statusCount('rejected', b.data.jobs)
-      ))
-    case menuItems.numOffers:
-      return jobs.map(i => i).sort((a,b) => (
-        statusCount('offer', a.data.jobs) > statusCount('offer', b.data.jobs)
-      ))
-    default: return jobs;
-  }
+function sort(arr, option?) {
+  if (arr.length > 30) return quickSort(arr, option);
+  else return insertionSort(arr, option);
 }
 
 function statusCount(status, jobs) {
   return jobs.reduce((count,job) => count + (job.status.toUpperCase() === status.toUpperCase()), 0);
+}
+
+function getCompareFn(option) {
+  switch (option) {
+    case menuItems.company:
+      return (a,b) => a.company > b.company;
+    case menuItems.jobApps:
+      return (a,b) => a.data.jobs.length > b.data.jobs.length;
+    case menuItems.numApplied:
+      return (a,b) => statusCount('applied', a.data.jobs) > statusCount('applied', b.data.jobs);
+    case menuItems.numPS:
+      return (a,b) => statusCount('phone-screen', a.data.jobs) > statusCount('phone-screen', b.data.jobs);
+    case menuItems.numOS:
+      return (a,b) => statusCount('on-site', a.data.jobs) > statusCount('on-site', b.data.jobs);
+    case menuItems.numRejected:
+      return (a,b) => statusCount('rejected', a.data.jobs) > statusCount('rejected', b.data.jobs);
+    case menuItems.numOffers:
+      return (a,b) => statusCount('offer', a.data.jobs) > statusCount('offer', b.data.jobs);
+    default: 
+      return (a,b) => a > b;
+  }
+}
+
+function insertionSort(arr, option) {
+  const sorted = [];
+  const compareFn = getCompareFn(option);
+  arr.forEach(val => {
+    for (let i = 0; i < sorted.length; i++) {
+      if (compareFn(sorted[i], val)) {
+        return sorted.splice(i, 0, val);
+      }
+    }
+    return sorted.push(val);
+  });
+
+  return sorted;
+}
+
+function quickSort(arr, option = null, left = 0, right = arr.length - 1) {
+  if (left >= right) return;
+  const end = right;
+  const start = left;
+  const pivot = Math.floor((end + start) / 2);
+  
+  const val = arr[pivot];
+  const compareFn = getCompareFn(option);
+  while (left < right) {
+    while (compareFn(val, arr[left])) left++;
+    while (compareFn(arr[right],val)) right--;
+    let temp = arr[left];
+    arr[left] = arr[right]
+    arr[right] = temp;
+    left++;
+    right--;
+  }
+  quickSort(arr, option, start, left - 1);
+  quickSort(arr, option, left, end);
+  return arr;
 }

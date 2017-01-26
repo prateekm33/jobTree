@@ -1,14 +1,14 @@
 $divider-color: black;
+$section-color-1: $body-color;
+$section-color-2: #946f3e;
 
 #landing-page-container {
   .section {
-    min-height: 80vh;
+    height: 90vh;
     display: flex;
-    border-bottom: 2px solid $divider-color;
     padding: 1em;
-    margin: 2em;
-    border: 2px solid #6d5959;
-    background: white;
+    background: #946f3e;
+    color: white;
 
     .ldg-blurb-container {
       display: flex;
@@ -39,11 +39,13 @@ $divider-color: black;
 
     &#first {
       justify-content: center;
-
+      background: $section-color-1;
       .ldg-blurb-container {
         flex-flow: column nowrap;
         border: 3px solid;
         align-self: center;
+        background: white;
+        color: black;
 
         @media (min-width: $max-width + 1) and (min-device-width: $max-device-width + 1) {
           max-width: 60%;
@@ -58,15 +60,18 @@ $divider-color: black;
         align-self: center;
       }
 
-      button.sign-up {
-        height: 3.5em;
-        width: 100%;
+      .sign-up {
+        align-self: center;
+        min-width: 80%;
+        min-height: 2em;
+        font-size: 0.8em;
+        font-weight: bold;
       }
     }
 
     &#second {
       justify-content: space-between;
-  
+      background: $section-color-2;
       #img-nav {
         width: 60%;
         text-align: center;
@@ -79,6 +84,7 @@ $divider-color: black;
 
     &#third {
       justify-content: space-between;
+      background: $section-color-1;
       @media (max-width: $max-width), ($max-device-width: $max-device-width) {
         flex-flow: column nowrap;
         .ldg-imgs-container {
@@ -112,6 +118,12 @@ $divider-color: black;
     opacity: 0;
     transition: all 0.5s ease-in-out;
 
+    @media (max-width: $max-width), (max-device-width: $max-device-width) {
+      border-radius: 0px;
+      width: 2em;
+      height: 2em;
+      right: 0em;
+    }
 
     &:hover {
       cursor: pointer;

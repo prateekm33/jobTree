@@ -3,7 +3,7 @@
 body {
   font-size: $font-size;
   min-width: $app-min-width;
-  background-color: #76BA76; //rgba(201, 243, 199, 0.3);
+  background-color: $body-color;
 }
 
 #react-app {
@@ -12,11 +12,11 @@ body {
 }
 
 .btn-primary {
-  background-color: #76BA76; //#72cc6c;
-  border-color: #76BA76; // #72cc6c;
+  background-color: #3da945; //#76BA76; //#72cc6c;
+  border-color: #3da945; //#76BA76; // #72cc6c;
   &:hover, &:active, &:hover:active, &:focus, &:active:focus {
-    background-color: #3da945;
-    border-color: #3da945;
+    background-color: #2b8421; //#3d8835; // #3da945
+    border-color: #2b8421; //#3d8835; // #3da945
   }
 }
 

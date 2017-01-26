@@ -32,7 +32,7 @@ class Home extends React.Component {
     const arr = [];
     const jobs = this.props.allJobs;
     for (let i = 0; i < jobs.length; i++) {
-      arr.push(<LargeView key={i} company={jobs[i].company} data={jobs[i].data}/>);
+      arr.push(<LargeView key={i} idx={i} company={jobs[i].company} data={jobs[i].data}/>);
     }
 
     return arr;
@@ -44,7 +44,7 @@ class Home extends React.Component {
     const jobs = this.props.allJobs;
     for (let i = 0; i < jobs.length; i++) {
       arr.push(
-        <SmallView key={i} data={jobs[i].data} company={jobs[i].company} />
+        <SmallView key={i} idx={i} data={jobs[i].data} company={jobs[i].company} />
       );
     }
 
