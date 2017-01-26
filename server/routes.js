@@ -1,7 +1,7 @@
 const { authRouter, accountsRouter, profileRouter } = require('./routers');
 
-const root = __dirname.indexOf('server') > -1 ? '..' : '.'
-
+let root = __dirname.indexOf('server') > -1 ? '..' : '.'
+root = process.env === 'production' ? '.' : root;
 function mountRoutes(app) {
   app.use('/auth', authRouter);
 
