@@ -48,12 +48,12 @@ const jobActions = {
     const actions = this;
     return function(dispatch, getState) {
       dispatch(actions.deleteCompanyAt(idx));
-      const jobs = getState().allJobs;
+      const companies = getState().allJobs;
       const user = getState().user;
       return fetch('/accounts/jobs' + '/' + user, {
         method: 'put', 
         credentials: 'include',
-        body: JSON.stringify({jobs}),
+        body: JSON.stringify({companies}),
         headers: {
           'Content-Type': 'application/json'
         }

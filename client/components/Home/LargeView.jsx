@@ -41,7 +41,7 @@ class LargeView extends React.Component {
   }
 
   deleteCompany() {
-    this.removeBtn.style.display = '';
+    this.removeBtn.style.display = 'none';
     this.props.deleteCompany();
   }
 

@@ -87,11 +87,9 @@ module.exports = {
   },
 
   updateJobs(req, res) {
-    console.log('UPDATE JOBS??')
     if (req.user.username !== req.params.user) return res.status(401).end();
 
-    const jobs = req.body.jobs;
-    console.log('JOBS TO UPDATE: ', jobs)
+    const jobs = utils.undoFormatting(req.body.companies);
     User.update({username: req.user.username, password: req.user.password}, {jobs: jobs})
       .then((r,e) => {
         console.log('RESULT? : ', r);

@@ -37,5 +37,14 @@ module.exports = {
     }
 
     return arr;
+  },
+
+  undoFormatting(companies) {
+    const jobs = [];
+    companies.forEach(company => {
+      jobs.push(...company.data.jobs)
+    });
+
+    return jobs;
   }
 }
