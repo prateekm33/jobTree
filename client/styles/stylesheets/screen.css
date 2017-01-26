@@ -481,29 +481,30 @@ form label {
 #landing-page-container .section .ldg-imgs-container * {
   margin-bottom: 0.4em;
 }
-/* line 34, ../sass/_landing.scss */
+/* line 33, ../sass/_landing.scss */
+#landing-page-container .section .ldg-img {
+  width: 80%;
+}
+/* line 35, ../sass/_landing.scss */
 #landing-page-container .section .ldg-img img {
   width: 100%;
 }
-/* line 40, ../sass/_landing.scss */
+/* line 41, ../sass/_landing.scss */
 #landing-page-container .section#first {
   justify-content: center;
   background: #cff1cf;
 }
-/* line 43, ../sass/_landing.scss */
+/* line 44, ../sass/_landing.scss */
 #landing-page-container .section#first .ldg-blurb-container {
   flex-flow: column nowrap;
   border: 3px solid;
   align-self: center;
   background: white;
   color: black;
-  min-height: 50vh;
-}
-@media (min-width: 651px) and (min-device-width: 651px) {
-  /* line 43, ../sass/_landing.scss */
-  #landing-page-container .section#first .ldg-blurb-container {
-    max-width: 60%;
-  }
+  max-height: 99%;
+  font-size: 1.8em;
+  min-width: 40%;
+  max-width: 300px;
 }
 /* line 57, ../sass/_landing.scss */
 #landing-page-container .section#first .ldg-blurb {

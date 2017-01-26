@@ -29,13 +29,15 @@ class Home extends React.Component {
     this.deleteCompany = this.deleteCompany.bind(this);
   }
 
-  componentDidMount() {
-    if (!this.props.allJobs.length) this.helpForAdd.style.visibility = 'visible';
-    else this.helpForAdd.style.visibility = 'hidden';
-  }
-
   componentDidUpdate() {
-    this.helpForAdd.style.visibility = 'hidden';
+    if (!this.props.allJobs.length) {
+      this.helpForAdd.style.visibility = 'visible';
+      this.helpForAdd.parentElement.style.visibility = 'visible';
+    }
+    else {
+      this.helpForAdd.style.visibility = '';
+      this.helpForAdd.parentElement.style.visibility = '';
+    }
   }
 
   deleteCompany(idx) {

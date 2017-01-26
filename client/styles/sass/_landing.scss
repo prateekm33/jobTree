@@ -31,6 +31,7 @@ $section-color-2: #946f3e;
     }
   
     .ldg-img {
+      width: 80%;
       img {
         width: 100%;
       }
@@ -46,11 +47,10 @@ $section-color-2: #946f3e;
         align-self: center;
         background: white;
         color: black;
-
-        @media (min-width: $max-width + 1) and (min-device-width: $max-device-width + 1) {
-          max-width: 60%;
-        }
-        min-height: 50vh;
+        max-height: 99%;
+        font-size: 1.8em;
+        min-width: 40%;
+        max-width: 300px;
       }
 
 

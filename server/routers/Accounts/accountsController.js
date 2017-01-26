@@ -17,20 +17,21 @@ module.exports = {
         })
       }
     }).catch(e => {
+      console.log('ERROR CODE', e);
       res.status(400).json(e.code);
     });
   },
 
   getAccount(req, res) {
-    if (req.user.email !== req.params.user) return res.status(401).end();
+    if (req.user.username !== req.params.user) return res.status(401).end();
 
     res.json(req.user);
   },
 
   deleteAccount(req, res) {
-    if (req.user.email !== req.params.user) return res.status(401).end();
+    if (req.user.username !== req.params.user) return res.status(401).end();
 
-    User.remove({email: req.user.email, password: req.user.password})
+    User.remove({username: req.user.username, password: req.user.password})
       .then(result => {
         console.log('REMOVED RESULT: ', result);
         res.status(200).end();
@@ -38,10 +39,10 @@ module.exports = {
   },
 
   updateAccount(req, res) {
-    if (req.user.email !== req.params.user) return res.status(401).end();
+    if (req.user.username !== req.params.user) return res.status(401).end();
 
     // TODO -- UPDATE ACCOUNT DETAILS
-    User.findOne({email: req.user.email, password: req.user.password})
+    User.findOne({username: req.user.username, password: req.user.password})
       .then(user => {
         if (!user) return res.status(404).end();
         console.log('UPDATING USER : ', user);
