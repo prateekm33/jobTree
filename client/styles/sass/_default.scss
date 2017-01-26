@@ -197,7 +197,7 @@ nav#footer {
   bottom: -4.5em;
   width: 100%;
   border-top: 2px solid #472902;
-  background-color: #e4eae4;
+  background-color: #fbfbfb;
 
   #nav-options {
     display: flex;
@@ -223,6 +223,11 @@ nav#footer {
         flex-flow: column nowrap;
         & > * {
           margin-top: 2em;
+        }
+
+        & > a {
+          color: #848484;
+          font-size: 0.9em;
         }
       }
     }
