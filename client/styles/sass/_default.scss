@@ -207,16 +207,16 @@ nav#footer {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
-    padding-top: 2em;
-    height: $footer-height;
+    height: 70vh;
     margin-top: 2em;
+    padding: 2em 1em;
+    margin-left: 2em;
 
     .footer-component {
       max-height: 80%;
       min-width: 33%;
       display: flex;
       flex-flow: column nowrap;
-      align-items: center;
 
       .footer-component-title {
         color: #65461e;

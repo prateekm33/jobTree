@@ -4,7 +4,7 @@ $section-color-2: #946f3e;
 
 #landing-page-container {
   .section {
-    height: 90vh;
+    min-height: 90vh;
     display: flex;
     padding: 1em;
     background: #946f3e;
@@ -77,7 +77,7 @@ $section-color-2: #946f3e;
         text-align: center;
       }
 
-      @media (max-width: $max-width), ($max-device-width: $max-device-width) {
+      @media (max-width: 900px), ($max-device-width: $max-device-width) {
         flex-flow: column nowrap;
       }
     }
@@ -85,7 +85,8 @@ $section-color-2: #946f3e;
     &#third {
       justify-content: space-between;
       background: $section-color-1;
-      @media (max-width: $max-width), ($max-device-width: $max-device-width) {
+      color: black;
+      @media (max-width: 900px), ($max-device-width: $max-device-width) {
         flex-flow: column nowrap;
         .ldg-imgs-container {
           order: 1;

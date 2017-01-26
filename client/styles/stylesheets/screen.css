@@ -283,17 +283,17 @@ nav#footer #nav-options {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
-  padding-top: 2em;
   height: 70vh;
   margin-top: 2em;
+  padding: 2em 1em;
+  margin-left: 2em;
 }
-/* line 214, ../sass/_default.scss */
+/* line 215, ../sass/_default.scss */
 nav#footer #nav-options .footer-component {
   max-height: 80%;
   min-width: 33%;
   display: flex;
   flex-flow: column nowrap;
-  align-items: center;
 }
 /* line 221, ../sass/_default.scss */
 nav#footer #nav-options .footer-component .footer-component-title {
@@ -455,7 +455,7 @@ form label {
 }
 /* line 6, ../sass/_landing.scss */
 #landing-page-container .section {
-  height: 90vh;
+  min-height: 90vh;
   display: flex;
   padding: 1em;
   background: #946f3e;
@@ -530,7 +530,7 @@ form label {
   width: 60%;
   text-align: center;
 }
-@media (max-width: 650px), (650px: 650px) {
+@media (max-width: 900px), (650px: 650px) {
   /* line 72, ../sass/_landing.scss */
   #landing-page-container .section#second {
     flex-flow: column nowrap;
@@ -540,22 +540,23 @@ form label {
 #landing-page-container .section#third {
   justify-content: space-between;
   background: #cff1cf;
+  color: black;
 }
-@media (max-width: 650px), (650px: 650px) {
+@media (max-width: 900px), (650px: 650px) {
   /* line 85, ../sass/_landing.scss */
   #landing-page-container .section#third {
     flex-flow: column nowrap;
   }
-  /* line 90, ../sass/_landing.scss */
+  /* line 91, ../sass/_landing.scss */
   #landing-page-container .section#third .ldg-imgs-container {
     order: 1;
   }
-  /* line 93, ../sass/_landing.scss */
+  /* line 94, ../sass/_landing.scss */
   #landing-page-container .section#third .ldg-blurb-container {
     order: 2;
   }
 }
-/* line 101, ../sass/_landing.scss */
+/* line 102, ../sass/_landing.scss */
 #landing-page-container #scroll-top {
   position: fixed;
   right: 1em;
@@ -577,7 +578,7 @@ form label {
   transition: all 0.5s ease-in-out;
 }
 @media (max-width: 650px), (max-device-width: 650px) {
-  /* line 101, ../sass/_landing.scss */
+  /* line 102, ../sass/_landing.scss */
   #landing-page-container #scroll-top {
     border-radius: 0px;
     width: 2em;
@@ -585,13 +586,13 @@ form label {
     right: 0em;
   }
 }
-/* line 128, ../sass/_landing.scss */
+/* line 129, ../sass/_landing.scss */
 #landing-page-container #scroll-top:hover {
   cursor: pointer;
 }
 
 @media (max-width: 650px), (max-device-width: 650px) {
-  /* line 136, ../sass/_landing.scss */
+  /* line 137, ../sass/_landing.scss */
   #landing-page-container .section {
     justify-content: column nowrap;
   }
