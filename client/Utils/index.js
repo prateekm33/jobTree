@@ -59,4 +59,8 @@ export class Queue {
     return this.end - this.start;
   }
 
+  first() {
+    return this.queue[this.start];
+  }
+
 }

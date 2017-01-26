@@ -17,6 +17,7 @@ $snakes-bg: white;
     display: flex;
     flex-flow: column nowrap;
     flex: 10;
+    position: relative;
 
     .game-row {
       display: flex;
@@ -49,7 +50,7 @@ $snakes-bg: white;
       display: none;
       position: absolute;
       align-self: center;
-      top: 40%;
+      top: 20%;
       background: white;
       padding: 2em;
       flex-flow: column nowrap;

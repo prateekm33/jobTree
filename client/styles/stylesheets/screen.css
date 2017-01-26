@@ -269,137 +269,155 @@ nav#header #hamburger #menu-options {
 
 /* line 195, ../sass/_default.scss */
 nav#footer {
-  min-height: 2.5em;
-  position: absolute;
+  min-height: 70vh;
   bottom: -4.5em;
   width: 100%;
   border-top: 2px solid #472902;
   background-color: #e4eae4;
 }
-/* line 203, ../sass/_default.scss */
+/* line 202, ../sass/_default.scss */
 nav#footer #nav-options {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
-  align-items: center;
-  font-size: 0.7em;
-  height: 2.5em;
+  padding-top: 2em;
+  height: 70vh;
+  margin-top: 2em;
 }
-/* line 211, ../sass/_default.scss */
-nav#footer #nav-options > a {
+/* line 210, ../sass/_default.scss */
+nav#footer #nav-options .footer-component {
+  max-height: 80%;
+  min-width: 33%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+/* line 217, ../sass/_default.scss */
+nav#footer #nav-options .footer-component .footer-component-title {
   color: #65461e;
+  font-weight: bold;
+}
+/* line 221, ../sass/_default.scss */
+nav#footer #nav-options .footer-component .footer-component-body {
+  display: flex;
+  flex-flow: column nowrap;
+}
+/* line 224, ../sass/_default.scss */
+nav#footer #nav-options .footer-component .footer-component-body > * {
+  margin-top: 2em;
 }
 
-/* line 217, ../sass/_default.scss */
+/* line 232, ../sass/_default.scss */
 #content-container {
   padding-top: 60px;
   display: flex;
   justify-content: center;
+  min-height: 85vh;
 }
 
-/* line 224, ../sass/_default.scss */
+/* line 240, ../sass/_default.scss */
 .order-options.dropdown {
   height: 35px;
   margin-left: 1em;
   display: flex;
   flex-flow: row nowrap;
 }
-/* line 230, ../sass/_default.scss */
+/* line 246, ../sass/_default.scss */
 .order-options.dropdown div:first-child {
   width: 5em;
   max-height: 50%;
   align-self: center;
 }
-/* line 236, ../sass/_default.scss */
+/* line 252, ../sass/_default.scss */
 .order-options.dropdown > * {
   font-size: 0.6em;
 }
 
-/* line 241, ../sass/_default.scss */
+/* line 257, ../sass/_default.scss */
 ul.dropdown-menu {
   flex-flow: column nowrap;
 }
-/* line 244, ../sass/_default.scss */
+/* line 260, ../sass/_default.scss */
 ul.dropdown-menu li {
   padding: 1em;
 }
-/* line 246, ../sass/_default.scss */
+/* line 262, ../sass/_default.scss */
 ul.dropdown-menu li:hover {
   background: #B3EFB4;
   cursor: pointer;
 }
 
-/* line 252, ../sass/_default.scss */
+/* line 268, ../sass/_default.scss */
 form .form-line {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
-/* line 257, ../sass/_default.scss */
+/* line 273, ../sass/_default.scss */
 form .form-line > * {
   flex: 1;
 }
 
-/* line 262, ../sass/_default.scss */
+/* line 278, ../sass/_default.scss */
 .btn.btn-default.glyphicon.glyphicon-plus {
   background: lightsalmon;
   color: #ffffff;
   max-width: 2.7em;
 }
-/* line 267, ../sass/_default.scss */
+/* line 283, ../sass/_default.scss */
 .btn.btn-default.glyphicon.glyphicon-plus:hover, .btn.btn-default.glyphicon.glyphicon-plus:active, .btn.btn-default.glyphicon.glyphicon-plus:hover:active {
   background: darksalmon;
 }
-/* line 271, ../sass/_default.scss */
+/* line 287, ../sass/_default.scss */
 .btn.btn-default.glyphicon.glyphicon-plus:focus {
   outline: 5px auto darksalmon;
 }
 
-/* line 277, ../sass/_default.scss */
+/* line 293, ../sass/_default.scss */
 .status-bar.applied {
   background-color: rgba(220, 255, 230, 0.8);
 }
-/* line 281, ../sass/_default.scss */
+/* line 297, ../sass/_default.scss */
 .status-bar.phone-screen {
   background-color: #C9F7D4;
 }
-/* line 285, ../sass/_default.scss */
+/* line 301, ../sass/_default.scss */
 .status-bar.on-site {
   background-color: #85ED9F;
 }
-/* line 289, ../sass/_default.scss */
+/* line 305, ../sass/_default.scss */
 .status-bar.rejected {
   background-color: rgba(253, 106, 106, 0.6);
 }
-/* line 293, ../sass/_default.scss */
+/* line 309, ../sass/_default.scss */
 .status-bar.offer {
   background-color: #5DE77F;
 }
 
-/* line 299, ../sass/_default.scss */
+/* line 315, ../sass/_default.scss */
 .form-title {
   text-align: center;
   font-weight: bolder;
 }
 
-/* line 304, ../sass/_default.scss */
+/* line 320, ../sass/_default.scss */
 form label {
   color: #65461e;
   font-weight: bold;
 }
 
-/* line 309, ../sass/_default.scss */
+/* line 325, ../sass/_default.scss */
 .glyphicon-remove {
   font-weight: bold;
   color: rgba(175, 14, 14, 0.36);
 }
-/* line 312, ../sass/_default.scss */
+/* line 328, ../sass/_default.scss */
 .glyphicon-remove:hover {
   cursor: pointer;
   color: #af0e0e;
 }
 
-/* line 318, ../sass/_default.scss */
+/* line 334, ../sass/_default.scss */
 .quote {
   font-style: italic;
   color: brown;
@@ -1100,97 +1118,98 @@ form label {
   display: flex;
   flex-flow: column nowrap;
   flex: 10;
+  position: relative;
 }
-/* line 21, ../sass/_snakes.scss */
+/* line 22, ../sass/_snakes.scss */
 #snakes-game-container #game-board .game-row {
   display: flex;
   flex-flow: row nowrap;
   flex: 1;
 }
-/* line 26, ../sass/_snakes.scss */
+/* line 27, ../sass/_snakes.scss */
 #snakes-game-container #game-board .game-row .game-cell {
   border: 1px solid lightgrey;
   flex: 1;
 }
-/* line 30, ../sass/_snakes.scss */
+/* line 31, ../sass/_snakes.scss */
 #snakes-game-container #game-board .game-row .game-cell.black {
   background: black;
 }
-/* line 33, ../sass/_snakes.scss */
+/* line 34, ../sass/_snakes.scss */
 #snakes-game-container #game-board .game-row .game-cell.red {
   background: red;
 }
-/* line 36, ../sass/_snakes.scss */
+/* line 37, ../sass/_snakes.scss */
 #snakes-game-container #game-board .game-row .game-cell.blue {
   background: blue;
 }
-/* line 39, ../sass/_snakes.scss */
+/* line 40, ../sass/_snakes.scss */
 #snakes-game-container #game-board .game-row .game-cell.green {
   background: green;
 }
-/* line 42, ../sass/_snakes.scss */
+/* line 43, ../sass/_snakes.scss */
 #snakes-game-container #game-board .game-row .game-cell.snake {
   background: #f34848;
 }
-/* line 48, ../sass/_snakes.scss */
+/* line 49, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu {
   display: none;
   position: absolute;
   align-self: center;
-  top: 40%;
+  top: 20%;
   background: white;
   padding: 2em;
   flex-flow: column nowrap;
   min-width: 50%;
   border: 2px solid black;
 }
-/* line 59, ../sass/_snakes.scss */
+/* line 60, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu .menu-title {
   text-align: center;
   font-weight: bold;
   margin-bottom: 0.5em;
 }
-/* line 65, ../sass/_snakes.scss */
+/* line 66, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu .menu-help {
   text-align: center;
   font-size: 0.5em;
   color: grey;
 }
-/* line 71, ../sass/_snakes.scss */
+/* line 72, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu .btn-container {
   display: flex;
   justify-content: space-between;
   margin-top: 1.5em;
 }
-/* line 77, ../sass/_snakes.scss */
+/* line 78, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu #game-score {
   text-align: center;
   font-size: 0.9em;
   margin-bottom: 1em;
 }
-/* line 83, ../sass/_snakes.scss */
+/* line 84, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu form {
   display: flex;
   justify-content: space-between;
 }
-/* line 88, ../sass/_snakes.scss */
+/* line 89, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu #leaderboard-toggle {
   font-size: 0.7em;
   text-align: center;
   margin-top: 2em;
   color: #5151d2;
 }
-/* line 94, ../sass/_snakes.scss */
+/* line 95, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu #leaderboard-toggle:hover {
   cursor: pointer;
   text-decoration: underline;
 }
-/* line 100, ../sass/_snakes.scss */
+/* line 101, ../sass/_snakes.scss */
 #snakes-game-container #game-board .menu #leaderboard {
   font-size: 0.7em;
   text-align: center;
 }
-/* line 107, ../sass/_snakes.scss */
+/* line 108, ../sass/_snakes.scss */
 #snakes-game-container #game-options {
   display: flex;
   flex-flow: row nowrap;
@@ -1198,37 +1217,37 @@ form label {
   padding: 0.2em;
   flex: 1;
 }
-/* line 114, ../sass/_snakes.scss */
+/* line 115, ../sass/_snakes.scss */
 #snakes-game-container #game-options #game-difficulty {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
-/* line 118, ../sass/_snakes.scss */
+/* line 119, ../sass/_snakes.scss */
 #snakes-game-container #game-options #game-difficulty > * {
   margin-left: 1em;
   text-decoration: overline;
   color: black;
   max-height: 1em;
 }
-/* line 124, ../sass/_snakes.scss */
+/* line 125, ../sass/_snakes.scss */
 #snakes-game-container #game-options #game-difficulty > *:hover, #snakes-game-container #game-options #game-difficulty > *.active {
   text-decoration: underline;
   color: green;
 }
-/* line 128, ../sass/_snakes.scss */
+/* line 129, ../sass/_snakes.scss */
 #snakes-game-container #game-options #game-difficulty > *:hover {
   cursor: pointer;
 }
-/* line 133, ../sass/_snakes.scss */
+/* line 134, ../sass/_snakes.scss */
 #snakes-game-container #game-options #game-difficulty #omg {
   color: white;
 }
-/* line 138, ../sass/_snakes.scss */
+/* line 139, ../sass/_snakes.scss */
 #snakes-game-container #game-options #scoreboard {
   text-align: right;
 }
-/* line 143, ../sass/_snakes.scss */
+/* line 144, ../sass/_snakes.scss */
 #snakes-game-container #game-options #game-btns button {
   margin-right: 1em;
 }

@@ -274,18 +274,22 @@ export default class Snakes extends React.Component {
       case up: 
         evt.preventDefault();
         if (!this.state.started) this.startGame(evt);
+        if (this.dirQueue.first() === 'up') return;
         return this.setMove('up');
       case right: 
         evt.preventDefault();
         if (!this.state.started) this.startGame(evt);
+        if (this.dirQueue.first() === 'right') return;
         return this.setMove('right');
       case down: 
         evt.preventDefault();
         if (!this.state.started) this.startGame(evt);
+        if (this.dirQueue.first() === 'down') return;
         return this.setMove('down');
       case left: 
         evt.preventDefault();
         if (!this.state.started) this.startGame(evt);
+        if (this.dirQueue.first() === 'left') return;
         return this.setMove('left');
       default: return;
     }

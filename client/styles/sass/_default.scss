@@ -194,7 +194,6 @@ nav#header {
 
 nav#footer { 
   min-height: $footer-height;
-  position: absolute;
   bottom: -4.5em;
   width: 100%;
   border-top: 2px solid #472902;
@@ -204,12 +203,28 @@ nav#footer {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
-    align-items: center;
-    font-size: 0.7em;
+    padding-top: 2em;
     height: $footer-height;
+    margin-top: 2em;
 
-    & > a {
-      color: #65461e;
+    .footer-component {
+      max-height: 80%;
+      min-width: 33%;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+
+      .footer-component-title {
+        color: #65461e;
+        font-weight: bold;
+      }
+      .footer-component-body {
+        display: flex;
+        flex-flow: column nowrap;
+        & > * {
+          margin-top: 2em;
+        }
+      }
     }
   }
 }
@@ -218,6 +233,7 @@ nav#footer {
   padding-top: $nav-height + 10px;
   display: flex;
   justify-content: center;
+  min-height: $content-container-height;
 }
 
 
