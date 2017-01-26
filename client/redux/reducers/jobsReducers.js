@@ -46,17 +46,35 @@ function getCompareFn(option) {
     case menuItems.company:
       return (a,b) => a.company > b.company;
     case menuItems.jobApps:
-      return (a,b) => a.data.jobs.length > b.data.jobs.length;
+      return (a,b) => {
+        if (a.data.jobs.length === b.data.jobs.length) return a.company > b.company;
+       return a.data.jobs.length > b.data.jobs.length;
+      }
     case menuItems.numApplied:
-      return (a,b) => statusCount('applied', a.data.jobs) > statusCount('applied', b.data.jobs);
+      return (a,b) => {
+        if (statusCount('applied', a.data.jobs) === statusCount('applied', b.data.jobs)) return a.company > b.company; 
+        return statusCount('applied', a.data.jobs) > statusCount('applied', b.data.jobs);
+      }
     case menuItems.numPS:
-      return (a,b) => statusCount('phone-screen', a.data.jobs) > statusCount('phone-screen', b.data.jobs);
+      return (a,b) => {
+        if (statusCount('phone-screen', a.data.jobs) === statusCount('phone-screen', b.data.jobs)) return a.company > b.company; 
+        return statusCount('phone-screen', a.data.jobs) > statusCount('phone-screen', b.data.jobs);
+      }
     case menuItems.numOS:
-      return (a,b) => statusCount('on-site', a.data.jobs) > statusCount('on-site', b.data.jobs);
+      return (a,b) => {
+        if (statusCount('on-site', a.data.jobs) === statusCount('on-site', b.data.jobs)) return a.company > b.company; 
+        return statusCount('on-site', a.data.jobs) > statusCount('on-site', b.data.jobs);
+      }
     case menuItems.numRejected:
-      return (a,b) => statusCount('rejected', a.data.jobs) > statusCount('rejected', b.data.jobs);
+      return (a,b) => {
+        if (statusCount('rejected', a.data.jobs) === statusCount('rejected', b.data.jobs)) return a.company > b.company; 
+        return statusCount('rejected', a.data.jobs) > statusCount('rejected', b.data.jobs);
+      }
     case menuItems.numOffers:
-      return (a,b) => statusCount('offer', a.data.jobs) > statusCount('offer', b.data.jobs);
+      return (a,b) => {
+        if (statusCount('offer', a.data.jobs) === statusCount('offer', b.data.jobs)) return a.company > b.company; 
+        return statusCount('offer', a.data.jobs) > statusCount('offer', b.data.jobs);
+      }
     default: 
       return (a,b) => a > b;
   }
