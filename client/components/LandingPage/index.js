@@ -31,8 +31,37 @@ export default class LandingPage extends React.Component {
   }
 
   scrollTop() {
-    // document.body.scrollTop = 0;
-    document.body.scrollIntoView();
+    const body = document.body;
+    const initTop = body.scrollTop;
+    const start = Date.now();
+    const end = start + 2000;
+    const distance = -initTop;
+    let prevTop = body.scrollTop;
+
+    const scrollHelper = () => {
+      const currTop = body.scrollTop;
+      if (prevTop !== currTop) return;
+
+
+      const now = Date.now();
+      const next = this.getSmoothStep(start, end, now);
+      const nextTop = Math.round(initTop + (distance * next));
+      console.log(nextTop, next)
+      body.scrollTop = nextTop;
+
+      if (now >= end) return;
+      prevTop = body.scrollTop;
+
+      setTimeout(scrollHelper, 0);
+    }
+    scrollHelper();
+  }
+
+  getSmoothStep(start, end, curr) {
+    if(curr <= start) { return 0; }
+    if(curr >= end) { return 1; }
+    let x = (curr - start) / (end - start);
+    return x*x*(3 - 2*x);
   }
 
   render() {
