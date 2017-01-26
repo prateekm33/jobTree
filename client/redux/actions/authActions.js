@@ -22,7 +22,7 @@ const authActions = {
           dispatch(actions.logInUser(user.username));
           const requestedPath = getState().requestedPath;
           dispatch(replace(requestedPath));
-        } else res.json().then(r => dispatch(actions.invalidCreds(r)));
+        } else dispatch(actions.invalidCreds(true));
       }).catch(err => actions.asyncError(err));
     }
   },
@@ -81,10 +81,10 @@ const authActions = {
     }
   },
 
-  invalidCreds(r) {
-    console.log('TODO --- INVALID CREDS: ', r);
+  invalidCreds(invalid) {
     return {
-      type: types.invalidCreds
+      type: types.invalidCreds,
+      invalid
     }
   }
 }

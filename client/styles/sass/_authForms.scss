@@ -21,6 +21,21 @@
   padding: 2em;
   border: 2px solid brown;
   background: white;
+
+  .invalid-creds {
+    display: flex;
+    flex-flow: column nowrap;
+    color: red;
+    font-size: 0.9em;
+
+    &:hover {
+      cursor: pointer;
+    }
+    #close {
+      font-size: 0.6em;
+      color: black;
+    }
+  }
 }
 
 .form-element {

@@ -10,7 +10,7 @@ class AuthForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-
+    this.dismissMsg = this.dismissMsg.bind(this);
     this.state = {
       formInvalid: false,
       errMsgs: []
@@ -46,6 +46,10 @@ class AuthForm extends React.Component {
 
   }
 
+  dismissMsg(evt) {
+    this.props.dispatch(actions.invalidCreds(false));
+  }
+
   render() {
     return (
       <form id={this.props.id} onSubmit={this.handleSubmit}>
@@ -59,6 +63,13 @@ class AuthForm extends React.Component {
           <div className="form-title">{this.props.title}</div>
           <div><Link to={this.props.otherForm.link}>{this.props.otherForm.name}</Link></div>
         </div>
+        {
+          this.props.invalidCreds ? 
+            <div onClick={this.dismissMsg} className="invalid-creds">
+              <div id="close">Click to close</div>
+              <div>Either the username or password is incorrect</div>
+            </div> : null
+        }
         <div className="form-element">
           <input ref={el => this.usernameInput = el} className="form-control" name="username" placeholder="Username / Email" type="text"/>
         </div>
@@ -78,6 +89,6 @@ class AuthForm extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return {};
+  return {invalidCreds: state.invalidCreds};
 }
 export default connect(mapStateToProps)(AuthForm);

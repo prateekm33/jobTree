@@ -4,23 +4,19 @@ import { browserHistory } from 'react-router';
 import { reducer } from './reducers';
 import thunk from 'redux-thunk';
 const historyMiddleware = routerMiddleware(browserHistory);
-// import logger from 'redux-logger';
-// const middleWares = [logger(), thunk, historyMiddleware];
-const middleWares = [thunk, historyMiddleware]
+import logger from 'redux-logger';
+const middleWares = [logger(), thunk, historyMiddleware];
+// const middleWares = [thunk, historyMiddleware]
 const finalCreateStore = compose(
   applyMiddleware(...middleWares)
 )(createStore);
 
-// import {jobs} from '../mockData';
-// const allJobs = [];
-// for (let company in jobs) {
-//   allJobs.push({company, data: jobs[company]});
-// }
-
 const defaultState = {
   allJobs: [],
   companySort: '',
+
   user: null,
+  invalidCreds: false,
 
   newJobsData: [],
   postedSuccessfully: false,
@@ -30,7 +26,8 @@ const defaultState = {
 
   activeCompanies: {},
 
-  requestedPath: '/home'
+  requestedPath: '/home',
+
 }
 
 

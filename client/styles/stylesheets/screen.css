@@ -576,8 +576,24 @@ form label {
   border: 2px solid brown;
   background: white;
 }
+/* line 25, ../sass/_authForms.scss */
+#signup-form .invalid-creds, #login-form .invalid-creds {
+  display: flex;
+  flex-flow: column nowrap;
+  color: red;
+  font-size: 0.9em;
+}
+/* line 31, ../sass/_authForms.scss */
+#signup-form .invalid-creds:hover, #login-form .invalid-creds:hover {
+  cursor: pointer;
+}
+/* line 34, ../sass/_authForms.scss */
+#signup-form .invalid-creds #close, #login-form .invalid-creds #close {
+  font-size: 0.6em;
+  color: black;
+}
 
-/* line 26, ../sass/_authForms.scss */
+/* line 41, ../sass/_authForms.scss */
 .form-element {
   margin: 0.8em;
   min-width: 70%;
@@ -585,7 +601,7 @@ form label {
   flex-flow: row nowrap;
   justify-content: space-between;
 }
-/* line 33, ../sass/_authForms.scss */
+/* line 48, ../sass/_authForms.scss */
 .form-element input {
   width: 100%;
 }

@@ -8,6 +8,13 @@ const authReducers = {
       case types.userLoggedOut: return null;
       default: return state;
     }
+  },
+
+  invalidCreds(state = false, action) {
+    switch (action.type) {
+      case types.invalidCreds: return action.invalid;
+      default: return state;
+    }
   }
 }
 
