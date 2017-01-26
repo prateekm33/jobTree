@@ -17,7 +17,7 @@ class Footer extends React.Component {
         <div id='nav-options'>
           <FooterComp title="Learn More" links={[{link: '/about', title: 'About'}, {link: '/blog', title: 'Blog'}]}/>
           <FooterComp title="Connect" links={[{link: '/contact', title: 'Contact'}, {link: '/twitter', title: 'Twitter'}, {link: '/facebook', title: 'Facebook'}]}/>
-          <FooterComp title="Links" links={thirdGroup}/>
+          <FooterComp id="last" title="Links" links={thirdGroup}/>
         </div>
       </nav>
     )
@@ -41,7 +41,7 @@ class FooterComp extends React.Component {
 
   render() {
     return (
-      <div onClick={this.toggleDropDown} className="footer-component">
+      <div onClick={this.toggleDropDown} className="footer-component" id={this.props.id || ""}>
         <div className="footer-component-title">{this.props.title}</div>
         <div ref={el => this.body = el } className="footer-component-body">
           {

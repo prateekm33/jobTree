@@ -219,10 +219,14 @@ nav#footer {
 
     .footer-component {
       max-height: 80%;
-      min-width: 33%;
       display: flex;
       flex-flow: column nowrap;
       margin-bottom: 2em;
+      flex: 2;
+
+      &#last {
+        flex: 1;
+      }
       
       @media (max-width: $max-width), (max-device-width: $max-device-width) {
         border-bottom: 2px solid grey;

@@ -305,10 +305,14 @@ nav#footer #nav-options {
 /* line 220, ../sass/_default.scss */
 nav#footer #nav-options .footer-component {
   max-height: 80%;
-  min-width: 33%;
   display: flex;
   flex-flow: column nowrap;
   margin-bottom: 2em;
+  flex: 2;
+}
+/* line 227, ../sass/_default.scss */
+nav#footer #nav-options .footer-component#last {
+  flex: 1;
 }
 @media (max-width: 650px), (max-device-width: 650px) {
   /* line 220, ../sass/_default.scss */
@@ -316,21 +320,21 @@ nav#footer #nav-options .footer-component {
     border-bottom: 2px solid grey;
     padding-bottom: 1em;
   }
-  /* line 230, ../sass/_default.scss */
+  /* line 234, ../sass/_default.scss */
   nav#footer #nav-options .footer-component .footer-component-body {
     display: none;
   }
 }
-/* line 235, ../sass/_default.scss */
+/* line 239, ../sass/_default.scss */
 nav#footer #nav-options .footer-component .footer-component-title {
   color: #65461e;
   font-weight: bold;
 }
-/* line 238, ../sass/_default.scss */
+/* line 242, ../sass/_default.scss */
 nav#footer #nav-options .footer-component .footer-component-title:hover {
   cursor: pointer;
 }
-/* line 242, ../sass/_default.scss */
+/* line 246, ../sass/_default.scss */
 nav#footer #nav-options .footer-component .footer-component-body {
   display: flex;
   flex-flow: column nowrap;
@@ -338,22 +342,22 @@ nav#footer #nav-options .footer-component .footer-component-body {
   opacity: 1;
 }
 @media (max-width: 650px), (max-device-width: 650px) {
-  /* line 242, ../sass/_default.scss */
+  /* line 246, ../sass/_default.scss */
   nav#footer #nav-options .footer-component .footer-component-body {
     display: none;
   }
 }
-/* line 252, ../sass/_default.scss */
+/* line 256, ../sass/_default.scss */
 nav#footer #nav-options .footer-component .footer-component-body > * {
   margin-top: 2em;
 }
-/* line 256, ../sass/_default.scss */
+/* line 260, ../sass/_default.scss */
 nav#footer #nav-options .footer-component .footer-component-body > a {
   color: #848484;
   font-size: 0.9em;
 }
 
-/* line 265, ../sass/_default.scss */
+/* line 269, ../sass/_default.scss */
 #content-container {
   padding-top: 80px;
   display: flex;
@@ -361,109 +365,109 @@ nav#footer #nav-options .footer-component .footer-component-body > a {
   min-height: 85vh;
 }
 
-/* line 273, ../sass/_default.scss */
+/* line 277, ../sass/_default.scss */
 .order-options.dropdown {
   height: 35px;
   margin-left: 1em;
   display: flex;
   flex-flow: row nowrap;
 }
-/* line 279, ../sass/_default.scss */
+/* line 283, ../sass/_default.scss */
 .order-options.dropdown div:first-child {
   width: 5em;
   max-height: 50%;
   align-self: center;
 }
-/* line 285, ../sass/_default.scss */
+/* line 289, ../sass/_default.scss */
 .order-options.dropdown > * {
   font-size: 0.6em;
 }
 
-/* line 290, ../sass/_default.scss */
+/* line 294, ../sass/_default.scss */
 ul.dropdown-menu {
   flex-flow: column nowrap;
 }
-/* line 293, ../sass/_default.scss */
+/* line 297, ../sass/_default.scss */
 ul.dropdown-menu li {
   padding: 1em;
 }
-/* line 295, ../sass/_default.scss */
+/* line 299, ../sass/_default.scss */
 ul.dropdown-menu li:hover {
   background: #B3EFB4;
   cursor: pointer;
 }
 
-/* line 301, ../sass/_default.scss */
+/* line 305, ../sass/_default.scss */
 form .form-line {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
-/* line 306, ../sass/_default.scss */
+/* line 310, ../sass/_default.scss */
 form .form-line > * {
   flex: 1;
 }
 
-/* line 311, ../sass/_default.scss */
+/* line 315, ../sass/_default.scss */
 .btn.btn-default.glyphicon.glyphicon-plus {
   background: lightsalmon;
   color: #ffffff;
   max-width: 2.7em;
 }
-/* line 316, ../sass/_default.scss */
+/* line 320, ../sass/_default.scss */
 .btn.btn-default.glyphicon.glyphicon-plus:hover, .btn.btn-default.glyphicon.glyphicon-plus:active, .btn.btn-default.glyphicon.glyphicon-plus:hover:active {
   background: darksalmon;
 }
-/* line 320, ../sass/_default.scss */
+/* line 324, ../sass/_default.scss */
 .btn.btn-default.glyphicon.glyphicon-plus:focus {
   outline: 5px auto darksalmon;
 }
 
-/* line 326, ../sass/_default.scss */
+/* line 330, ../sass/_default.scss */
 *.applied {
   background-color: rgba(220, 255, 230, 0.8);
 }
-/* line 330, ../sass/_default.scss */
+/* line 334, ../sass/_default.scss */
 *.phone-screen {
   background-color: #C9F7D4;
 }
-/* line 334, ../sass/_default.scss */
+/* line 338, ../sass/_default.scss */
 *.on-site {
   background-color: #85ED9F;
 }
-/* line 338, ../sass/_default.scss */
+/* line 342, ../sass/_default.scss */
 *.rejected {
   background-color: rgba(253, 106, 106, 0.6);
 }
-/* line 342, ../sass/_default.scss */
+/* line 346, ../sass/_default.scss */
 *.offer {
   background-color: #5DE77F;
 }
 
-/* line 348, ../sass/_default.scss */
+/* line 352, ../sass/_default.scss */
 .form-title {
   text-align: center;
   font-weight: bolder;
 }
 
-/* line 353, ../sass/_default.scss */
+/* line 357, ../sass/_default.scss */
 form label {
   color: #65461e;
   font-weight: bold;
 }
 
-/* line 358, ../sass/_default.scss */
+/* line 362, ../sass/_default.scss */
 .glyphicon-remove {
   font-weight: bold;
   color: rgba(175, 14, 14, 0.36);
 }
-/* line 361, ../sass/_default.scss */
+/* line 365, ../sass/_default.scss */
 .glyphicon-remove:hover {
   cursor: pointer;
   color: #af0e0e;
 }
 
-/* line 367, ../sass/_default.scss */
+/* line 371, ../sass/_default.scss */
 .quote {
   font-style: italic;
   color: brown;
@@ -471,7 +475,7 @@ form label {
   margin-bottom: 1em;
 }
 
-/* line 374, ../sass/_default.scss */
+/* line 378, ../sass/_default.scss */
 .bounce {
   position: relative;
   -webkit-animation: bounce 1s infinite;
