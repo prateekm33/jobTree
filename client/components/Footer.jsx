@@ -24,12 +24,15 @@ class Footer extends React.Component {
             <div className="footer-component-title">Connect</div>
             <div className="footer-component-body">
               <Link to='/contact'>Contact</Link>
-              <Link to='/careers'>Careers</Link>
+              <Link to='/contact'>Twitter</Link>
+              <Link to='/contact'>Facebook</Link>
             </div>
           </div>
           <div className="footer-component">
             <div className="footer-component-title">Links</div>
             <div className="footer-component-body">
+              <Link to='/faq'>FAQ</Link>
+              <Link to='/careers'>Careers</Link>
               { !this.props.user ? <Link to='/signup'>Sign Up</Link> : null }
               { !this.props.user ? <Link to='/login'>Log In</Link> : null }
             </div>
