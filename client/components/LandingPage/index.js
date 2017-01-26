@@ -61,7 +61,7 @@ export default class LandingPage extends React.Component {
     if(curr <= start) { return 0; }
     if(curr >= end) { return 1; }
     let x = (curr - start) / (end - start);
-    return x*x*(3 - 2*x);
+    return x*x*(5 - 4*x);
   }
 
   render() {

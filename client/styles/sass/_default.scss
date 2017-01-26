@@ -227,15 +227,28 @@ nav#footer {
       @media (max-width: $max-width), (max-device-width: $max-device-width) {
         border-bottom: 2px solid grey;
         padding-bottom: 1em;
+        .footer-component-body {
+          display: none;
+        }
       }
 
       .footer-component-title {
         color: #65461e;
         font-weight: bold;
+        &:hover {
+          cursor: pointer;
+        }
       }
       .footer-component-body {
         display: flex;
         flex-flow: column nowrap;
+        visibility: visible;
+        opacity: 1;
+        
+        @media (max-width: $max-width), (max-device-width: $max-device-width) {
+          display: none;
+        }
+    
         & > * {
           margin-top: 2em;
         }
