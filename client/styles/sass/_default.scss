@@ -4,7 +4,10 @@ body {
   font-size: $font-size;
   min-width: $app-min-width;
   background-color: $body-color;
-  transition: all 0.2s ease-in-out;
+}
+
+* {
+  transition: all 1s ease-in-out;
 }
 
 #react-app {
@@ -42,10 +45,15 @@ nav#header {
     padding-left: 0.5em;
     padding-right: 0.5em;
     background: #65461e; //rgba(72, 48, 48, 0.8);
+    align-items: flex-end;
 
     & > div:not(#main-nav-options) {
       display: flex;
       flex-flow: row nowrap;
+    }
+
+    div {
+      margin-bottom: 0.2em;
     }
 
     #nav-user-settings {
@@ -118,7 +126,7 @@ nav#header {
 
       .menu-highlight {
         width: 100%;
-        border: 3px solid white;
+        border: 5px solid white;
         margin-bottom: 0.6em;
         visibility: hidden;
         opacity: 0;
@@ -136,12 +144,6 @@ nav#header {
     a {
       margin-left: 0.5em;
     }
-  
-      // @media (max-width: $max-width), (max-device-width: $max-device-width) {
-      //   #login-link {
-      //     display: none;
-      //   }
-      // }
   }
   
   #app-logo:hover, #app-logo:hover:active, #app-logo:active {
@@ -207,16 +209,25 @@ nav#footer {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
-    height: 70vh;
+    // min-height: 70vh;
     margin-top: 2em;
     padding: 2em 1em;
     margin-left: 2em;
+    @media (max-width: $max-width), (max-device-width: $max-device-width) {
+      flex-flow: column nowrap;
+    }
 
     .footer-component {
       max-height: 80%;
       min-width: 33%;
       display: flex;
       flex-flow: column nowrap;
+      margin-bottom: 2em;
+      
+      @media (max-width: $max-width), (max-device-width: $max-device-width) {
+        border-bottom: 2px solid grey;
+        padding-bottom: 1em;
+      }
 
       .footer-component-title {
         color: #65461e;

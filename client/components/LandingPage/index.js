@@ -31,7 +31,8 @@ export default class LandingPage extends React.Component {
   }
 
   scrollTop() {
-    document.body.scrollTop = 0;
+    // document.body.scrollTop = 0;
+    document.body.scrollIntoView();
   }
 
   render() {

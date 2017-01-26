@@ -72,37 +72,41 @@ body {
   font-size: 20px;
   min-width: 300px;
   background-color: #cff1cf;
-  transition: all 0.2s ease-in-out;
 }
 
-/* line 10, ../sass/_default.scss */
+/* line 9, ../sass/_default.scss */
+* {
+  transition: all 1s ease-in-out;
+}
+
+/* line 13, ../sass/_default.scss */
 #react-app {
   position: relative;
   min-height: 90vh;
 }
 
-/* line 15, ../sass/_default.scss */
+/* line 18, ../sass/_default.scss */
 .btn-primary {
   background-color: #3da945;
   border-color: #3da945;
 }
-/* line 18, ../sass/_default.scss */
+/* line 21, ../sass/_default.scss */
 .btn-primary:hover, .btn-primary:active, .btn-primary:hover:active, .btn-primary:focus, .btn-primary:active:focus {
   background-color: #2b8421;
   border-color: #2b8421;
 }
 
-/* line 24, ../sass/_default.scss */
+/* line 27, ../sass/_default.scss */
 nav#header {
   position: fixed;
   z-index: 1000;
   width: 100%;
-  height: 50px;
+  height: 70px;
   border-bottom: 6px solid #472902;
   padding-bottom: 0.1em;
   background: #65461E;
 }
-/* line 33, ../sass/_default.scss */
+/* line 36, ../sass/_default.scss */
 nav#header #inner-nav-div {
   width: 100%;
   display: flex;
@@ -114,13 +118,18 @@ nav#header #inner-nav-div {
   padding-left: 0.5em;
   padding-right: 0.5em;
   background: #65461e;
+  align-items: flex-end;
 }
-/* line 46, ../sass/_default.scss */
+/* line 50, ../sass/_default.scss */
 nav#header #inner-nav-div > div:not(#main-nav-options) {
   display: flex;
   flex-flow: row nowrap;
 }
-/* line 51, ../sass/_default.scss */
+/* line 55, ../sass/_default.scss */
+nav#header #inner-nav-div div {
+  margin-bottom: 0.2em;
+}
+/* line 59, ../sass/_default.scss */
 nav#header #inner-nav-div #nav-user-settings {
   color: white;
   display: flex;
@@ -128,7 +137,7 @@ nav#header #inner-nav-div #nav-user-settings {
   align-items: center;
   font-size: 0.8em;
 }
-/* line 58, ../sass/_default.scss */
+/* line 66, ../sass/_default.scss */
 nav#header #inner-nav-div #nav-user-settings #user-dropdown {
   display: flex;
   border: 1px solid;
@@ -136,13 +145,13 @@ nav#header #inner-nav-div #nav-user-settings #user-dropdown {
   background: #cff1cf;
   color: black;
 }
-/* line 65, ../sass/_default.scss */
+/* line 73, ../sass/_default.scss */
 nav#header #inner-nav-div #nav-user-settings #user-dropdown:hover {
   cursor: pointer;
   background: #6f9a6d;
   color: white;
 }
-/* line 71, ../sass/_default.scss */
+/* line 79, ../sass/_default.scss */
 nav#header #inner-nav-div #nav-user-settings #user-dropdown ul.dropdown-menu {
   right: -0.6em;
   left: initial;
@@ -151,13 +160,13 @@ nav#header #inner-nav-div #nav-user-settings #user-dropdown ul.dropdown-menu {
   font-weight: bolder;
   min-width: 100px;
 }
-/* line 83, ../sass/_default.scss */
+/* line 91, ../sass/_default.scss */
 nav#header #app-logo {
   color: #76BA76;
   flex-grow: 0.5;
   text-decoration: none;
 }
-/* line 88, ../sass/_default.scss */
+/* line 96, ../sass/_default.scss */
 nav#header #main-nav-options {
   flex-grow: 2;
   font-size: 0.45em;
@@ -168,12 +177,12 @@ nav#header #main-nav-options {
   margin-left: 4em;
 }
 @media (max-width: 650px), (max-device-width: 650px) {
-  /* line 88, ../sass/_default.scss */
+  /* line 96, ../sass/_default.scss */
   nav#header #main-nav-options {
     display: none;
   }
 }
-/* line 100, ../sass/_default.scss */
+/* line 108, ../sass/_default.scss */
 nav#header #main-nav-options a {
   color: white;
   margin-right: 2em;
@@ -182,23 +191,23 @@ nav#header #main-nav-options a {
   align-items: flex-end;
   position: relative;
 }
-/* line 107, ../sass/_default.scss */
+/* line 115, ../sass/_default.scss */
 nav#header #main-nav-options a:hover {
   text-decoration: none;
 }
-/* line 109, ../sass/_default.scss */
+/* line 117, ../sass/_default.scss */
 nav#header #main-nav-options a:hover .menu-highlight {
   visibility: visible;
   opacity: 1;
 }
-/* line 115, ../sass/_default.scss */
+/* line 123, ../sass/_default.scss */
 nav#header #main-nav-options a:hover, nav#header #main-nav-options a:active, nav#header #main-nav-options a:hover:active, nav#header #main-nav-options a:focus {
   text-decoration: none;
 }
-/* line 119, ../sass/_default.scss */
+/* line 127, ../sass/_default.scss */
 nav#header #main-nav-options a .menu-highlight {
   width: 100%;
-  border: 3px solid white;
+  border: 5px solid white;
   margin-bottom: 0.6em;
   visibility: hidden;
   opacity: 0;
@@ -206,41 +215,41 @@ nav#header #main-nav-options a .menu-highlight {
   position: absolute;
   top: 0;
 }
-/* line 132, ../sass/_default.scss */
+/* line 140, ../sass/_default.scss */
 nav#header #auth-buttons {
   flex-grow: 2;
   justify-content: flex-end;
   display: flex;
 }
-/* line 136, ../sass/_default.scss */
+/* line 144, ../sass/_default.scss */
 nav#header #auth-buttons a {
   margin-left: 0.5em;
 }
-/* line 147, ../sass/_default.scss */
+/* line 149, ../sass/_default.scss */
 nav#header #app-logo:hover, nav#header #app-logo:hover:active, nav#header #app-logo:active {
   text-decoration: none;
   color: #3da945;
 }
-/* line 152, ../sass/_default.scss */
+/* line 154, ../sass/_default.scss */
 nav#header #hamburger {
   display: none;
 }
-/* line 155, ../sass/_default.scss */
+/* line 157, ../sass/_default.scss */
 nav#header #hamburger #menu-options {
   display: none;
 }
 @media (max-width: 650px), (max-device-width: 650px) {
-  /* line 152, ../sass/_default.scss */
+  /* line 154, ../sass/_default.scss */
   nav#header #hamburger {
     display: flex;
     color: white;
     margin-right: 0.5em;
   }
-  /* line 164, ../sass/_default.scss */
+  /* line 166, ../sass/_default.scss */
   nav#header #hamburger:hover {
     cursor: pointer;
   }
-  /* line 168, ../sass/_default.scss */
+  /* line 170, ../sass/_default.scss */
   nav#header #hamburger #menu-options {
     position: absolute;
     font-size: 0.5em;
@@ -252,7 +261,7 @@ nav#header #hamburger #menu-options {
     min-width: 12em;
     background: white;
   }
-  /* line 179, ../sass/_default.scss */
+  /* line 181, ../sass/_default.scss */
   nav#header #hamburger #menu-options a {
     margin-bottom: 0.5em;
     border-bottom: 2px solid #76ba76;
@@ -260,17 +269,17 @@ nav#header #hamburger #menu-options {
     color: #65461e;
     font-weight: bolder;
   }
-  /* line 186, ../sass/_default.scss */
+  /* line 188, ../sass/_default.scss */
   nav#header #hamburger #menu-options a:hover {
     background: #B3EFB4;
   }
-  /* line 190, ../sass/_default.scss */
+  /* line 192, ../sass/_default.scss */
   nav#header #hamburger #menu-options a:hover, nav#header #hamburger #menu-options a:active, nav#header #hamburger #menu-options a:hover:active, nav#header #hamburger #menu-options a:focus {
     text-decoration: none;
   }
 }
 
-/* line 199, ../sass/_default.scss */
+/* line 201, ../sass/_default.scss */
 nav#footer {
   min-height: 70vh;
   bottom: -4.5em;
@@ -278,154 +287,167 @@ nav#footer {
   border-top: 2px solid #472902;
   background-color: #fbfbfb;
 }
-/* line 206, ../sass/_default.scss */
+/* line 208, ../sass/_default.scss */
 nav#footer #nav-options {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
-  height: 70vh;
   margin-top: 2em;
   padding: 2em 1em;
   margin-left: 2em;
 }
-/* line 215, ../sass/_default.scss */
+@media (max-width: 650px), (max-device-width: 650px) {
+  /* line 208, ../sass/_default.scss */
+  nav#footer #nav-options {
+    flex-flow: column nowrap;
+  }
+}
+/* line 220, ../sass/_default.scss */
 nav#footer #nav-options .footer-component {
   max-height: 80%;
   min-width: 33%;
   display: flex;
   flex-flow: column nowrap;
+  margin-bottom: 2em;
 }
-/* line 221, ../sass/_default.scss */
+@media (max-width: 650px), (max-device-width: 650px) {
+  /* line 220, ../sass/_default.scss */
+  nav#footer #nav-options .footer-component {
+    border-bottom: 2px solid grey;
+    padding-bottom: 1em;
+  }
+}
+/* line 232, ../sass/_default.scss */
 nav#footer #nav-options .footer-component .footer-component-title {
   color: #65461e;
   font-weight: bold;
 }
-/* line 225, ../sass/_default.scss */
+/* line 236, ../sass/_default.scss */
 nav#footer #nav-options .footer-component .footer-component-body {
   display: flex;
   flex-flow: column nowrap;
 }
-/* line 228, ../sass/_default.scss */
+/* line 239, ../sass/_default.scss */
 nav#footer #nav-options .footer-component .footer-component-body > * {
   margin-top: 2em;
 }
-/* line 232, ../sass/_default.scss */
+/* line 243, ../sass/_default.scss */
 nav#footer #nav-options .footer-component .footer-component-body > a {
   color: #848484;
   font-size: 0.9em;
 }
 
-/* line 241, ../sass/_default.scss */
+/* line 252, ../sass/_default.scss */
 #content-container {
-  padding-top: 60px;
+  padding-top: 80px;
   display: flex;
   justify-content: center;
   min-height: 85vh;
 }
 
-/* line 249, ../sass/_default.scss */
+/* line 260, ../sass/_default.scss */
 .order-options.dropdown {
   height: 35px;
   margin-left: 1em;
   display: flex;
   flex-flow: row nowrap;
 }
-/* line 255, ../sass/_default.scss */
+/* line 266, ../sass/_default.scss */
 .order-options.dropdown div:first-child {
   width: 5em;
   max-height: 50%;
   align-self: center;
 }
-/* line 261, ../sass/_default.scss */
+/* line 272, ../sass/_default.scss */
 .order-options.dropdown > * {
   font-size: 0.6em;
 }
 
-/* line 266, ../sass/_default.scss */
+/* line 277, ../sass/_default.scss */
 ul.dropdown-menu {
   flex-flow: column nowrap;
 }
-/* line 269, ../sass/_default.scss */
+/* line 280, ../sass/_default.scss */
 ul.dropdown-menu li {
   padding: 1em;
 }
-/* line 271, ../sass/_default.scss */
+/* line 282, ../sass/_default.scss */
 ul.dropdown-menu li:hover {
   background: #B3EFB4;
   cursor: pointer;
 }
 
-/* line 277, ../sass/_default.scss */
+/* line 288, ../sass/_default.scss */
 form .form-line {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
-/* line 282, ../sass/_default.scss */
+/* line 293, ../sass/_default.scss */
 form .form-line > * {
   flex: 1;
 }
 
-/* line 287, ../sass/_default.scss */
+/* line 298, ../sass/_default.scss */
 .btn.btn-default.glyphicon.glyphicon-plus {
   background: lightsalmon;
   color: #ffffff;
   max-width: 2.7em;
 }
-/* line 292, ../sass/_default.scss */
+/* line 303, ../sass/_default.scss */
 .btn.btn-default.glyphicon.glyphicon-plus:hover, .btn.btn-default.glyphicon.glyphicon-plus:active, .btn.btn-default.glyphicon.glyphicon-plus:hover:active {
   background: darksalmon;
 }
-/* line 296, ../sass/_default.scss */
+/* line 307, ../sass/_default.scss */
 .btn.btn-default.glyphicon.glyphicon-plus:focus {
   outline: 5px auto darksalmon;
 }
 
-/* line 302, ../sass/_default.scss */
+/* line 313, ../sass/_default.scss */
 *.applied {
   background-color: rgba(220, 255, 230, 0.8);
 }
-/* line 306, ../sass/_default.scss */
+/* line 317, ../sass/_default.scss */
 *.phone-screen {
   background-color: #C9F7D4;
 }
-/* line 310, ../sass/_default.scss */
+/* line 321, ../sass/_default.scss */
 *.on-site {
   background-color: #85ED9F;
 }
-/* line 314, ../sass/_default.scss */
+/* line 325, ../sass/_default.scss */
 *.rejected {
   background-color: rgba(253, 106, 106, 0.6);
 }
-/* line 318, ../sass/_default.scss */
+/* line 329, ../sass/_default.scss */
 *.offer {
   background-color: #5DE77F;
 }
 
-/* line 324, ../sass/_default.scss */
+/* line 335, ../sass/_default.scss */
 .form-title {
   text-align: center;
   font-weight: bolder;
 }
 
-/* line 329, ../sass/_default.scss */
+/* line 340, ../sass/_default.scss */
 form label {
   color: #65461e;
   font-weight: bold;
 }
 
-/* line 334, ../sass/_default.scss */
+/* line 345, ../sass/_default.scss */
 .glyphicon-remove {
   font-weight: bold;
   color: rgba(175, 14, 14, 0.36);
 }
-/* line 337, ../sass/_default.scss */
+/* line 348, ../sass/_default.scss */
 .glyphicon-remove:hover {
   cursor: pointer;
   color: #af0e0e;
 }
 
-/* line 343, ../sass/_default.scss */
+/* line 354, ../sass/_default.scss */
 .quote {
   font-style: italic;
   color: brown;
@@ -433,7 +455,7 @@ form label {
   margin-bottom: 1em;
 }
 
-/* line 350, ../sass/_default.scss */
+/* line 361, ../sass/_default.scss */
 .bounce {
   position: relative;
   -webkit-animation: bounce 1s infinite;
