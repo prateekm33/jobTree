@@ -33,6 +33,10 @@ nav#header {
   padding-bottom: 0.1em;
   background: #65461E;
 
+  &.shadow {
+    box-shadow: 0 0px 70px #000000;
+  }
+
   #inner-nav-div {
     // border-bottom: 3px solid #72cc6c;
     width: 100%;

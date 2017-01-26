@@ -18,6 +18,19 @@ class App extends React.Component {
 
     this.displayMenuOptions = this.displayMenuOptions.bind(this);
     this.handleTopLvlClicks = this.handleTopLvlClicks.bind(this);
+    this.addShadow = this.addShadow.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.addShadow);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.addShadow);
+  }
+
+  addShadow() {
+    this.nav.classList.toggle('shadow', document.body.scrollTop > 0);
   }
 
   displayMenuOptions(evt) {
@@ -52,7 +65,7 @@ class App extends React.Component {
   render() {
     return (
       <div onClick={this.handleTopLvlClicks} id='main-app-container'>
-        <nav id='header'>
+        <nav ref={el => this.nav = el} id='header'>
           <div id='inner-nav-div'>
             <div>
               <div id='hamburger' ref={el => this.hamburger = el} onClick={this.displayMenuOptions} className="glyphicon glyphicon-menu-hamburger">
