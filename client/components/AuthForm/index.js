@@ -67,7 +67,11 @@ class AuthForm extends React.Component {
           this.props.invalidCreds ? 
             <div onClick={this.dismissMsg} className="invalid-creds">
               <div id="close">Click to close</div>
-              <div>Either the username or password is incorrect</div>
+              <div>
+                {
+                  this.props.id === 'login-form' ? "Either the username or password is incorrect" : "An account with that username already exists"
+                }
+              </div>
             </div> : null
         }
         <div className="form-element">

@@ -17,6 +17,8 @@ const jobsReducers = {
         return sort(jobs.map(i => i), action.option);
       case types.fetchedJobs: 
         return action.jobs;
+      case types.deleteCompanyAt:
+        return jobs.filter((job, idx) => idx !== action.idx);
       default: return jobs;
     }
   },

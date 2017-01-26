@@ -15,12 +15,27 @@ class SmallView extends React.Component {
     }
 
     this.toggleJobs = this.toggleJobs.bind(this);
+    this.deleteCompany = this.deleteCompany.bind(this);
+  }
+
+  componentDidUpdate() {
+    if (this.props.activeCompanies[this.props.company]) this.removeBtn.style.display = 'flex';
+    else this.removeBtn.style.display = '';
   }
 
   toggleJobs(evt) {
     evt.preventDefault();
+    const currDisplay = window.getComputedStyle(this.removeBtn).display;
+    if (currDisplay === 'none') this.removeBtn.style.display = 'flex';
+    else this.removeBtn.style.display = '';
+
     this.toggleButton.classList.toggle('active');
     this.props.dispatch(actions.toggleActiveCompany(this.props.company));
+  }
+
+  deleteCompany() {
+    this.removeBtn.style.display = '';
+    this.props.deleteCompany();
   }
 
   render() {
@@ -41,6 +56,8 @@ class SmallView extends React.Component {
             }
           </div> : null
         }
+
+        <div onClick={this.deleteCompany} ref={el => this.removeBtn = el} className="delete-company glyphicon glyphicon-remove"></div>
       </div>
     )
   }

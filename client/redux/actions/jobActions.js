@@ -42,6 +42,13 @@ const jobActions = {
       type: types.fetchedJobs,
       jobs
     }
+  },
+
+  deleteCompanyAt(idx) {
+    return {
+      type: types.deleteCompanyAt,
+      idx
+    }
   }
 }
 

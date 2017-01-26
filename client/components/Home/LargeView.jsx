@@ -21,10 +21,15 @@ class LargeView extends React.Component {
 
     this.handleCompanyNameClicked = this.handleCompanyNameClicked.bind(this);
     this.selectSortOption = this.selectSortOption.bind(this);
+    this.deleteCompany = this.deleteCompany.bind(this);
   }
 
   handleCompanyNameClicked(evt) {
     if (evt.target.classList.value.indexOf('dropdown') > -1) return;
+    // if (evt.target === this.table || this.table && this.table.contains(evt.target)) return;
+
+    if (!this.props.activeCompanies[this.props.company]) this.removeBtn.style.display = 'flex';
+    else this.removeBtn.style.display = '';
 
     this.props.dispatch(actions.toggleActiveCompany(this.props.company));
   }
@@ -33,6 +38,11 @@ class LargeView extends React.Component {
     const target = evt.target;
     const sorted = sortJobsBy(target.innerText, this.state.jobs);
     this.setState({defaultOrder: target.innerText, jobs: sorted});
+  }
+
+  deleteCompany() {
+    this.removeBtn.style.display = '';
+    this.props.deleteCompany();
   }
 
   render() {
@@ -82,6 +92,8 @@ class LargeView extends React.Component {
               </tbody>
             </table> : null
         }
+
+        <div onClick={this.props.deleteCompany} ref={el => this.removeBtn = el} className="delete-company glyphicon glyphicon-remove"></div>
       </div>
     )
   }

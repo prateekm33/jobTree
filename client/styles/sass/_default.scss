@@ -4,6 +4,7 @@ body {
   font-size: $font-size;
   min-width: $app-min-width;
   background-color: $body-color;
+  transition: all 0.2s ease-in-out;
 }
 
 #react-app {
@@ -53,15 +54,18 @@ nav#header {
       flex-flow: row nowrap;
       align-items: center;
       font-size: 0.8em;
-      #user-name {
-        margin-right: 0.5em;
-      }
 
       #user-dropdown {
-        font-size: 0.5em;
+        display: flex;
+        border: 1px solid;
+        padding: 0.2em 0.5em;
+        background: #cff1cf;
+        color: black;
 
         &:hover {
           cursor: pointer;
+          background: #6f9a6d;
+          color: white;
         }
 
         ul.dropdown-menu {
@@ -294,7 +298,7 @@ form .form-line {
   }
 }
 
-.status-bar {
+* {
   &.applied {
     background-color: rgba(220, 255, 230, 0.8);
   }
@@ -341,6 +345,18 @@ form label {
   color: brown;
   font-weight: bold;
   margin-bottom: 1em;
+}
+
+.bounce {
+  position:relative;
+  -webkit-animation:bounce 1s infinite;
+}
+
+@-webkit-keyframes bounce {
+  0%       { bottom:5px; }
+  25%, 75% { bottom:15px; }
+  50%      { bottom:20px; }
+  100%     {bottom:0;}
 }
 
 @import "landing";

@@ -18,7 +18,7 @@ export default class Job extends React.Component {
         if (!evt.shiftKey) {
           evt.preventDefault();
           evt.target.blur();
-          this.props.job[evt.target.classList.value] = evt.target.innerTest;
+          this.props.job[evt.target.classList.value] = evt.target.innerText;
         }
         return;
       default:
@@ -55,12 +55,22 @@ export default class Job extends React.Component {
     return (
       <div onKeyDown={this.handleUserEdit} className="job-component">
         <div className="date_applied">{this.formatDate(this.props.job.date_applied)}</div>
-        <div className="rol-loc-div">
-          <div className="role">{this.props.job.role} </div>
-          <div className="location">{this.props.job.location}</div>
+        <div className="role">
+          <div>Role:</div>
+          <div>{this.props.job.role} </div>
         </div>
-        <div className="status">{this.props.job.status}</div>
-        <div className="recruiter">{this.props.job.recruiter}</div>
+        <div className="location">
+          <div>Location:</div>
+          <div>{this.props.job.location}</div>
+        </div>
+        <div className={"status" + " " + this.props.job.status.toLowerCase()}>
+          <div>Status:</div>
+          <div>{this.props.job.status}</div>
+        </div>
+        <div className="recruiter">
+          <div>Recruiter:</div>
+          <div>{this.props.job.recruiter}</div>
+        </div>
         <button onClick={this.handleEditBtnClick} className="edit btn btn-default">Edit</button>
       </div>
     )

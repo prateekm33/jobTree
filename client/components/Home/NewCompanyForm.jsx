@@ -71,7 +71,6 @@ class NewCompanyForm extends React.Component {
     const self = this;
     companyData.jobs = newJobs.map(job => {
       const inputs = Array.prototype.slice.call(job.querySelectorAll('input'));
-      console.log('inputs - ', inputs, 'for ', job);
       const newJob = {company: self.state.companyName};
       inputs.forEach(input => {
         switch (input.id) {

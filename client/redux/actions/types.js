@@ -5,6 +5,7 @@ const types = {
   resetCompanyForm: 'RESET_COMPANY_FORM',
   toggleActiveCompany: 'TOGGLE_ACTIVE_COMPANY',
   sortCompaniesBy: 'SORT_COMPANIES_BY',
+  deleteCompanyAt: 'DELETE_COMPANY_AT',
 
   addNewJobsToState: 'ADD_NEW_JOBS_TO_STATE',
   postingNewJobs: 'POSTING_NEW_JOBS',

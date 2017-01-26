@@ -16,18 +16,19 @@ class UserSettings extends React.Component {
 
   toggleDropDown(evt) {
     const target = evt.target;
-    if (target === this.toggleEl || target.tagName === 'LI') {
-      const currDisplay = window.getComputedStyle(this.menuUL).display;
-      if (currDisplay === 'none') this.menuUL.style.display = 'flex';
-      else this.menuUL.style.display = 'none';
-    }
+    if (target === this.menuUL) return;
+
+    const currDisplay = window.getComputedStyle(this.menuUL).display;
+    if (currDisplay === 'none') this.menuUL.style.display = 'flex';
+    else this.menuUL.style.display = 'none';
   }
 
   render() {
     return (
       <div id='nav-user-settings'>
-        <div id='user-name'>{this.props.user}</div>
-        <div onClick={this.toggleDropDown} ref={el => this.toggleEl = el} id='user-dropdown' className="dropdown glyphicon glyphicon-triangle-bottom">
+        <div onClick={this.toggleDropDown} ref={el => this.toggleEl = el} id='user-dropdown' className="dropdown">
+          <div>{this.props.user}</div>
+          <div style={{left: "0.5em", fontSize: "0.4em", top: "0.8em"}} className="glyphicon glyphicon-menu-down"></div>
           <ul ref={el => this.menuUL = el} className="dropdown-menu">
             <li onClick={this.handleLogOut}>Log Out</li>
           </ul>

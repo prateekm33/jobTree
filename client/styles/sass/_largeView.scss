@@ -2,7 +2,7 @@
   min-height: 80vh;
   padding: 1em;
   margin: 0 auto;
-  max-width: 80%;
+  width: 80%;
   
   @media (max-width: $max-width), (max-device-width: $max-device-width) {
     display: none;
@@ -15,6 +15,21 @@
     padding: 1em;
     border-bottom: 1px dashed;
     position: relative;
+  
+    &:hover {
+      cursor: pointer;
+      .delete-company {
+        display: flex;
+      }
+    }
+
+    .delete-company {
+      position: absolute;
+      right: 1em;
+      display: none;
+    }
+
+
   }
 
   .company-jobs {
@@ -57,18 +72,18 @@
         margin-left: 2em;
       }
     }
-  }
 
-  .company-name-container:hover {
-    cursor: pointer;
-    .company-name {
+     &:hover {
       cursor: pointer;
-      border-color: #72cc6c;
-      border-bottom: 3px solid #1d7117; // 
-      background: #96e891;
-    }
-    .open-close-help {
-      visibility: visible;
+      .company-name {
+        cursor: pointer;
+        border-color: #72cc6c;
+        border-bottom: 3px solid #1d7117; // 
+        background: #96e891;
+      }
+      .open-close-help {
+        visibility: visible;
+      }
     }
   }
 

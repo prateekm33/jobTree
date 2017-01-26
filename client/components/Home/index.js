@@ -26,13 +26,28 @@ class Home extends React.Component {
     this.selectSort = this.selectSort.bind(this);
     this.handleAddBtnClick = this.handleAddBtnClick.bind(this);
     this.toggleCompanyForm = this.toggleCompanyForm.bind(this);
+    this.deleteCompany = this.deleteCompany.bind(this);
+  }
+
+  componentDidMount() {
+    if (!this.props.allJobs.length) this.helpForAdd.style.visibility = 'visible';
+    else this.helpForAdd.style.visibility = 'hidden';
+  }
+
+  componentDidUpdate() {
+    this.helpForAdd.style.visibility = 'hidden';
+  }
+
+  deleteCompany(idx) {
+    document.body.scrollTop = 0;
+    this.props.dispatch(actions.deleteCompanyAt(idx));
   }
 
   renderLargeView() {
     const arr = [];
     const jobs = this.props.allJobs;
     for (let i = 0; i < jobs.length; i++) {
-      arr.push(<LargeView key={i} idx={i} company={jobs[i].company} data={jobs[i].data}/>);
+      arr.push(<LargeView key={i} idx={i} company={jobs[i].company} data={jobs[i].data} deleteCompany={() => this.deleteCompany(i)} />);
     }
 
     return arr;
@@ -44,7 +59,7 @@ class Home extends React.Component {
     const jobs = this.props.allJobs;
     for (let i = 0; i < jobs.length; i++) {
       arr.push(
-        <SmallView key={i} idx={i} data={jobs[i].data} company={jobs[i].company} />
+        <SmallView key={i} idx={i} data={jobs[i].data} company={jobs[i].company} deleteCompany={() => this.deleteCompany(i)}/>
       );
     }
 
@@ -81,10 +96,10 @@ class Home extends React.Component {
   }
 
   toggleCompanyForm(evt) {
-    document.body.scrollTop = 100000000000000;
     evt && evt.preventDefault();
     evt = evt || {};
-    const target = evt.target || this.cancelFormBtn;
+    const target = evt.target || this.cancelFormBtn;    
+    
     if (target.tagName !== 'BUTTON') return;
     
     this.props.dispatch(actions.toggleCompanyForm());
@@ -108,11 +123,11 @@ class Home extends React.Component {
         <div id="jobs-view-header">
           <div onKeyDown={this.handleTitleEdit} contentEditable={true} id="home-title"> {this.state.title} </div>
           <div id="line-2">
-            <div id="form-toggle-options" onClick={this.toggleCompanyForm}> 
+            <div id="form-toggle-options" ref={el => this.toggleFormOptions = el} className={this.props.allJobs.length ? '' : 'bounce'} onClick={this.toggleCompanyForm}> 
               <button id="add-company" className='btn btn-default glyphicon glyphicon-plus'></button>
               <button ref={el => this.cancelFormBtn = el} id="cancel-company" className='btn btn-default glyphicon glyphicon-remove'></button>
               <div id='company-form-btn-help'>
-                <div ref={el => this.helpForAdd = el} id="help-for-add">Click to open new company form</div>
+                <div ref={el => this.helpForAdd = el} id="help-for-add">Click here to add to your pipeline!</div>
                 <div ref={el => this.helpForCancel = el} id="help-for-cancel">Click to cancel form</div>
               </div>
             </div>

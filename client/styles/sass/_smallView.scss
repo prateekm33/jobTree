@@ -8,7 +8,7 @@
   min-height: 80vh;
   padding: 1em;
   margin: 0 auto;
-  min-width: 80%;
+  min-width: 85%;
   top: 1em;
   position: relative;
 
@@ -17,6 +17,15 @@
     border-bottom: 2px dotted;
     margin-top: 1.5em;
     position: relative;
+    width: 100%;
+    
+    .delete-company {
+      position: absolute;
+      top: -0.5em;
+      right: -1.2em;
+      font-size: 2em;
+      display: none;
+    }
   }
 
   .company-name {
@@ -68,6 +77,7 @@
 
   .sv-company-jobs-container {
     flex-flow: column nowrap;
+    font-size: 0.8em;
   }
 
   .jobs-container {
@@ -88,33 +98,26 @@
       margin-top: 0.5em;
       padding: 0.5em;
       border-bottom: 1px dotted grey;
+      font-style: italic;
 
-      &.rol-loc-div {
-        margin-top: 1em;
+      &:nth-of-type(1n + 2) {
+        & div:nth-of-type(1n+2) {
+          font-weight: bold;
+        }
       }
     }
 
     .role {
-      margin-right: 0.5em;
-    }
-
-    .status {
-      font-size: 0.8em;
+      margin-top: 2em;
     }
 
     .date_applied {
       position: absolute;
       top: 1em;
       right: 1em;
-      font-size: 0.5em;
+      font-size: 0.7em;
       color: grey;
       border-bottom: none;
-    }
-
-    .recruiter {
-      font-size: 0.7em;
-      align-self: flex-end;
-      font-style: italic;
     }
 
     button.edit {
