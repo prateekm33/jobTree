@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt-nodejs');
 
 module.exports = {
   validateRequest(req, res, next) {
+    console.log('-------------VALIDATING REQUEST---------------');
     if (!req.user) return res.status(401).json(null);
     console.log('USER REQUEST VALIDATED: ', req.user.username)
     next()

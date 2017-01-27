@@ -7,6 +7,7 @@ function mountRoutes(app) {
   app.use('/accounts', accountsRouter);
 
   app.get('*', (req, res) => {
+    console.log('-------------SENDING INDEX FILE---------------');
     return res.sendFile('/client/index.html', {root});
   });
 }

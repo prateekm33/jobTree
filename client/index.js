@@ -8,6 +8,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import * as _ from 'underscore';
 window._ = _;
 
+window.alert('ALIVE!');
 
 import { store } from './redux/store';
 const history = syncHistoryWithStore(browserHistory, store);
