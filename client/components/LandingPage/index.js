@@ -31,12 +31,12 @@ export default class LandingPage extends React.Component {
   }
 
   scrollTop() {
+    window.alert(setTimeout + ' ---' + window.setTimeout);
     if (window.mobilecheck()) {
       document.body.scrollTop = 0;
       return;
     } 
 
-    window.alert(setTimeout + ' ---' + window.setTimeout);
 
     const body = document.body;
     const initTop = body.scrollTop;
