@@ -149,16 +149,6 @@ class Home extends React.Component {
             this.renderSmallView()
           }
         </div>
-
-        <div ref={el => this.jobsContainer = el} className="jobs-container">
-          <div>{this.state.company}</div>
-          {
-            this.state.jobs.map((job,idx) => (
-              <Job job={job} key={idx} type="small"/>
-            ))
-          }
-        </div>
-
       </div>
     )
   }

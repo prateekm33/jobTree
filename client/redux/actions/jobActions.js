@@ -72,6 +72,15 @@ const jobActions = {
       type: types.deleteCompanyAt,
       idx
     }
+  },
+
+  editJobAt(companyIdx, jobIdx, job) {
+    return {
+      type: types.editJobAt,
+      companyIdx,
+      jobIdx,
+      job
+    }
   }
 }
 

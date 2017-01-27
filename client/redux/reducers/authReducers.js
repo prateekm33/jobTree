@@ -13,6 +13,7 @@ const authReducers = {
   invalidCreds(state = false, action) {
     switch (action.type) {
       case types.invalidCreds: return action.invalid;
+      case types.resetState: return false;
       default: return state;
     }
   }

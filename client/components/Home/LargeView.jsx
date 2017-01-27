@@ -22,11 +22,11 @@ class LargeView extends React.Component {
     this.handleCompanyNameClicked = this.handleCompanyNameClicked.bind(this);
     this.selectSortOption = this.selectSortOption.bind(this);
     this.deleteCompany = this.deleteCompany.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
   }
 
   handleCompanyNameClicked(evt) {
     if (evt.target.classList.value.indexOf('dropdown') > -1) return;
-    // if (evt.target === this.table || this.table && this.table.contains(evt.target)) return;
 
     if (!this.props.activeCompanies[this.props.company]) this.removeBtn.style.display = 'flex';
     else this.removeBtn.style.display = '';
@@ -43,6 +43,11 @@ class LargeView extends React.Component {
   deleteCompany() {
     this.removeBtn.style.display = 'none';
     this.props.deleteCompany();
+  }
+
+  handleEdit(jobIdx, job) {
+    const companyIdx = this.props.idx;
+    this.props.dispatch(actions.editJobAt(companyIdx, jobIdx, job));
   }
 
   render() {
@@ -62,8 +67,9 @@ class LargeView extends React.Component {
             </div>
           </button>
           <div className="company-header-container">
-            <div style={dropdownStyle}>
+            <div id="jobs-sort-dd-container" style={dropdownStyle}>
               <Dropdown menuItems={this.state.menuItems} 
+              message={" "}
               defaultOption={this.state.defaultOrder}
               selectItem={this.selectSortOption} extraClasses={"jobs-order"}/>
             </div>
@@ -86,7 +92,7 @@ class LargeView extends React.Component {
               <tbody>
                 {
                   this.state.jobs.map((job,idx) => (
-                    <Job key={idx} job={job} type={'table'}/>
+                    <Job key={idx} idx={idx} job={job} type={'table'} editJob={this.handleEdit} />
                   ))
                 }
               </tbody>

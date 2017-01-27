@@ -6,6 +6,7 @@ const newJobsReducers = {
     switch (action.type) {
       case types.postedJobs: return true;
       case types.resetJobsPost: return false;
+      case types.resetState: return false;
       default: return state;
     }
   },
@@ -14,6 +15,7 @@ const newJobsReducers = {
     switch(action.type) {
       case types.postedJobs: return !action.err;
       case types.resetJobsPost: return false;
+      case types.resetState: return false;
       default: return state;
     }
   },
@@ -26,6 +28,7 @@ const newJobsReducers = {
         return data.filter((job, idx) => idx !== action.idx);
       case types.resetCompanyForm:
         return [{role: '', location: '', status: '', recruiter: '', date_applied: '', company: '', reqURL: ''}];
+      case types.resetState: return [];
       default: 
         return data;
     }
@@ -35,6 +38,7 @@ const newJobsReducers = {
     switch (action.type) {
       case types.toggleCompanyForm:
         return !show;
+      case types.resetState: return false;
       default: return show;
     }
   }

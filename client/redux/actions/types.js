@@ -6,6 +6,7 @@ const types = {
   toggleActiveCompany: 'TOGGLE_ACTIVE_COMPANY',
   sortCompaniesBy: 'SORT_COMPANIES_BY',
   deleteCompanyAt: 'DELETE_COMPANY_AT',
+  editJobAt: 'EDIT_JOB_AT',
 
   addNewJobsToState: 'ADD_NEW_JOBS_TO_STATE',
   postingNewJobs: 'POSTING_NEW_JOBS',
@@ -25,7 +26,9 @@ const types = {
 
   fetchingJobs: 'FETCHING_JOBS',
   errorFetchingJobs: 'ERROR_FETCHING_JOBS',
-  fetchedJobs: 'FETCHED_JOBS'  
+  fetchedJobs: 'FETCHED_JOBS',
+
+  resetState: 'RESET_STATE'
 
 }
 

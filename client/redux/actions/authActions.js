@@ -56,6 +56,7 @@ const authActions = {
       }).then(r => {
         if (r.status === 200) {
           dispatch(actions.userLoggedOut());
+          dispatch(actions.resetState());
           dispatch(replace('/'));
         } else {
           dispatch(actions.logOutError());

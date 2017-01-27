@@ -20,6 +20,6 @@ export const reducer = combineReducers(Object.assign({},
           return action.path;
         default: return path;
       }
-    }
+    },
   }
 ));

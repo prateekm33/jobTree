@@ -18,7 +18,11 @@ export default class Job extends React.Component {
         if (!evt.shiftKey) {
           evt.preventDefault();
           evt.target.blur();
-          this.props.job[evt.target.classList.value] = evt.target.innerText;
+          // this.props.job[evt.target.classList.value] = evt.target.innerText;
+          const updatedJob = Object.assign({}, this.props.job, {
+            [evt.target.classList.value]: evt.target.innerText
+          });
+          this.props.editJob(this.props.idx, updatedJob);
         }
         return;
       default:

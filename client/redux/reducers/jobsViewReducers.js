@@ -10,6 +10,7 @@ const jobsViewReducers = {
           delete obj[action.company];
           return obj
         } else return Object.assign({}, list, {[action.company]: action.company});
+      case types.resetState: return {};
       default: return list;
     }
   }

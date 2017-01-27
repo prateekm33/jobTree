@@ -12,12 +12,11 @@
     display: flex;
     flex-flow: column nowrap;
     margin-bottom: 1.5em;
-    padding: 1em;
+    padding: 2em;
     border-bottom: 1px dashed;
     position: relative;
   
     &:hover {
-      cursor: pointer;
       .delete-company {
         display: flex;
       }
@@ -61,12 +60,11 @@
     
     .company-summary {
       display: flex;
-      justify-content: flex-end;
-      width: 100%;
       font-size: 0.6em;
       align-items: center;
       font-style: italic;
       color: #afadad;
+      flex: 2;
 
       & > div {
         margin-left: 2em;
@@ -90,13 +88,26 @@
   .company-header-container {
     display: flex;
     flex-flow: row nowrap;
-    width: 100%;
+    flex: 4;
+    justify-content: flex-end;
+
+    & > div {
+      margin-top: 1em;
+    }
+
+    #jobs-sort-dd-container {
+      display: flex;
+      right: 0em;
+      top: 2.8em;
+      font-size: 0.8em;
+    }
   }
 
   .company-name {
     border-bottom: 3px solid;
     border-color:  #1d7117;
     position: relative;
+    flex: 1;
     &:focus {
         outline: none;
         background: white;

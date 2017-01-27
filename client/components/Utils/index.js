@@ -35,7 +35,6 @@ export class Dropdown extends React.Component {
   render() {
     const itemClasses = this.props.itemClasses || {};
     let message = this.props.message || "Order By:";
-    if (message.substr(-1) !== ':') message += ':'
     return (
       <div id={this.props.id || ''} className={"order-options dropdown" + " " + (this.props.extraClasses ||'')}>
         <div>{message}</div>

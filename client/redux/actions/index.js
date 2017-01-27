@@ -16,17 +16,21 @@ const actions = Object.assign({},
       return {
         type: types.asyncError
       }
-    }
-  },
+    },
 
-  {
     requestedPath(path) {
       return {
         type: types.requestedPath,
         path
       }
+    },
+
+    resetState() {
+      return {
+        type: types.resetState
+      }
     }
-  }
+  },
 )
 
 export default actions;

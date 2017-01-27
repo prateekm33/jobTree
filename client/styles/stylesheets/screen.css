@@ -877,25 +877,21 @@ form label {
   display: flex;
   flex-flow: column nowrap;
   margin-bottom: 1.5em;
-  padding: 1em;
+  padding: 2em;
   border-bottom: 1px dashed;
   position: relative;
 }
-/* line 19, ../sass/_largeView.scss */
-#home-container #large-jobs-view-container .company-container:hover {
-  cursor: pointer;
-}
-/* line 21, ../sass/_largeView.scss */
+/* line 20, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .company-container:hover .delete-company {
   display: flex;
 }
-/* line 26, ../sass/_largeView.scss */
+/* line 25, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .company-container .delete-company {
   position: absolute;
   right: 1em;
   display: none;
 }
-/* line 35, ../sass/_largeView.scss */
+/* line 34, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .company-jobs {
   margin-left: 2.5em;
   font-size: 0.75em;
@@ -903,7 +899,7 @@ form label {
   border-collapse: initial;
   border-spacing: 0 2em;
 }
-/* line 42, ../sass/_largeView.scss */
+/* line 41, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .company-jobs thead th {
   position: relative;
   text-align: center;
@@ -911,69 +907,81 @@ form label {
   color: rgba(165, 42, 42, 0.7);
   font-weight: bold;
 }
-/* line 51, ../sass/_largeView.scss */
+/* line 50, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .company-name-container {
   display: flex;
   flex-flow: row nowrap;
 }
-/* line 57, ../sass/_largeView.scss */
+/* line 56, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .company-name-container .jobs-order.dropdown ul.dropdown-menu {
   left: 5em;
 }
-/* line 62, ../sass/_largeView.scss */
+/* line 61, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .company-name-container .company-summary {
   display: flex;
-  justify-content: flex-end;
-  width: 100%;
   font-size: 0.6em;
   align-items: center;
   font-style: italic;
   color: #afadad;
+  flex: 2;
 }
-/* line 71, ../sass/_largeView.scss */
+/* line 69, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .company-name-container .company-summary > div {
   margin-left: 2em;
 }
-/* line 76, ../sass/_largeView.scss */
+/* line 74, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .company-name-container:hover {
   cursor: pointer;
 }
-/* line 78, ../sass/_largeView.scss */
+/* line 76, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .company-name-container:hover .company-name {
   cursor: pointer;
   border-color: #72cc6c;
   border-bottom: 3px solid #1d7117;
   background: #96e891;
 }
-/* line 84, ../sass/_largeView.scss */
+/* line 82, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .company-name-container:hover .open-close-help {
   visibility: visible;
 }
-/* line 90, ../sass/_largeView.scss */
+/* line 88, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .company-header-container {
   display: flex;
   flex-flow: row nowrap;
-  width: 100%;
+  flex: 4;
+  justify-content: flex-end;
 }
-/* line 96, ../sass/_largeView.scss */
+/* line 94, ../sass/_largeView.scss */
+#home-container #large-jobs-view-container .company-header-container > div {
+  margin-top: 1em;
+}
+/* line 98, ../sass/_largeView.scss */
+#home-container #large-jobs-view-container .company-header-container #jobs-sort-dd-container {
+  display: flex;
+  right: 0em;
+  top: 2.8em;
+  font-size: 0.8em;
+}
+/* line 106, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .company-name {
   border-bottom: 3px solid;
   border-color: #1d7117;
   position: relative;
+  flex: 1;
 }
-/* line 100, ../sass/_largeView.scss */
+/* line 111, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .company-name:focus {
   outline: none;
   background: white;
 }
-/* line 104, ../sass/_largeView.scss */
+/* line 115, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .company-name:hover, #home-container #large-jobs-view-container .company-name.active {
   cursor: pointer;
   border-color: #72cc6c;
   border-bottom: 3px solid #1d7117;
   background: #96e891;
 }
-/* line 111, ../sass/_largeView.scss */
+/* line 122, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .company-name .open-close-help {
   font-size: 0.8em;
   color: #1d7117;
@@ -983,11 +991,11 @@ form label {
   width: 100%;
   visibility: hidden;
 }
-/* line 122, ../sass/_largeView.scss */
+/* line 133, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .glyphicon-share-alt {
   transform: scaleY(-1) translateY(50%) translateX(100%);
 }
-/* line 126, ../sass/_largeView.scss */
+/* line 137, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .job-component td:first-child {
   border-bottom: 2px solid;
   width: 1.5em;
@@ -996,7 +1004,7 @@ form label {
   transform: translateY(-45%);
   border-color: lightgrey;
 }
-/* line 135, ../sass/_largeView.scss */
+/* line 146, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .job-component td {
   position: relative;
   text-align: center;
@@ -1004,7 +1012,7 @@ form label {
   padding-left: 1em;
   padding-right: 1em;
 }
-/* line 142, ../sass/_largeView.scss */
+/* line 153, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .job-component td .td-dividers {
   border: 1px solid lightcoral;
   width: 0;

@@ -20,7 +20,7 @@ class AuthForm extends React.Component {
   componentDidMount() {
     this.usernameInput.focus();
   }
-  componentWillUnMount() {
+  componentWillMount() {
     this.props.dispatch(actions.invalidCreds(false));
   }
 

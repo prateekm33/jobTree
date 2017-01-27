@@ -19,6 +19,15 @@ const jobsReducers = {
         return action.jobs;
       case types.deleteCompanyAt:
         return jobs.filter((job, idx) => idx !== action.idx);
+      case types.editJobAt:
+        const newArr = jobs.map((i,companyIdx) => {
+          if (companyIdx !== action.companyIdx) return i;
+          const data = Object.assign({}, i.data);
+          data.jobs[action.jobIdx] = action.job;
+          return i;
+        });
+        return newArr;
+      case types.resetState: return [];
       default: return jobs;
     }
   },
