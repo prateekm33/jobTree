@@ -33,6 +33,13 @@ const authActions = {
     }
   },
 
+  fetchingUser(fetching) {
+    return {
+      type: types.fetchingUser,
+      fetching
+    }
+  },
+
   logInUser(user, cb?) {
     store.dispatch(this.fetchJobs(user));
     return {

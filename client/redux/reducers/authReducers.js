@@ -18,6 +18,13 @@ const authReducers = {
       case types.resetState: return false;
       default: return state;
     }
+  },
+
+  fetchingUser(state = false, action) {
+    switch (action.type) {
+      case types.fetchingUser: return action.fetching;
+      default: return state;
+    }
   }
 }
 

@@ -14,6 +14,8 @@ const types = {
   asyncError: 'ASYNC_ERROR',
   resetJobsPost: 'RESET_JOBS_POST',
 
+
+  fetchingUser: 'FETCHING_USER',
   authorizingUser: 'AUTHORIZING_USER',
   loggingOutUser: 'LOGGING_OUT_USER',
   logInUser: 'LOGIN_USER',
