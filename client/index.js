@@ -8,7 +8,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import * as _ from 'underscore';
 window._ = _;
 
-console.alert(window.innerWidth);
+window.alert(window.innerWidth);
 
 window.mobilecheck = function() {
   var check = false;
