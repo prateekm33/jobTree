@@ -11,7 +11,7 @@ export const initComponent = (nextState, replace, done) => {
     return done();
   }
   else {
-    dispatch(actions.fetchingUser(true));
+    store.dispatch(actions.fetchingUser(true));
     fetch('/auth/validate', {
           method: 'get',
           credentials: 'include'
