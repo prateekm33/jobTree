@@ -46,7 +46,7 @@ export default class LandingPage extends React.Component {
 
     const scrollHelper = () => {
       const currTop = body.scrollTop;
-      window.alert('RUNNING SCROLL TOP = ' + currTop);
+      // window.alert('RUNNING SCROLL TOP = ' + currTop);
       if (prevTop !== currTop) return;
 
 
@@ -67,7 +67,7 @@ export default class LandingPage extends React.Component {
     if(curr <= start) { return 0; }
     if(curr >= end) { return 1; }
     let x = (curr - start) / (end - start);
-    return x*x*(5 + 3*x);
+    return x*x*(3 - 2*x);
   }
 
   render() {
