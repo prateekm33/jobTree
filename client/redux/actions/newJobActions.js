@@ -1,4 +1,5 @@
 import types from './types';
+import { scrollTop } from '../../components/Utils';
 
 const newJobActions = {
   addNewJobsToState(jobs) {
@@ -19,6 +20,7 @@ const newJobActions = {
         data: JSON.stringify({data}),
         success: () => {
           dispatch(actions.postedJobs(true));
+          scrollTop();
         },
         error: (err) => {
           dispatch(actions.postedJobs(false));
@@ -40,10 +42,10 @@ const newJobActions = {
     }
   },
 
-  postedJobs(err) {
+  postedJobs(success) {
     return {
       type: types.postedJobs,
-      err
+      success
     }
   },
 

@@ -4,7 +4,7 @@ import types from '../actions/types';
 const newJobsReducers = {
   postedJobs(state = false, action) {
     switch (action.type) {
-      case types.postedJobs: return true;
+      case types.postedJobs: return action.success;
       case types.resetJobsPost: return false;
       case types.resetState: return false;
       default: return state;
@@ -13,7 +13,7 @@ const newJobsReducers = {
 
   postedSuccessfully(state = false, action) {
     switch(action.type) {
-      case types.postedJobs: return !action.err;
+      case types.postedJobs: return action.success;
       case types.resetJobsPost: return false;
       case types.resetState: return false;
       default: return state;
@@ -36,8 +36,8 @@ const newJobsReducers = {
 
   showCompanyForm(show = false, action) {
     switch (action.type) {
-      case types.toggleCompanyForm:
-        return !show;
+      case types.toggleCompanyForm: return !show;
+      case types.postedJobs: return !action.success;
       case types.resetState: return false;
       default: return show;
     }

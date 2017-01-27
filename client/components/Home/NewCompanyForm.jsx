@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import actions from '../../redux/actions';
 
 import NewJobsForm from './NewJobsForm';
-import { validateForm } from '../Utils';
+import { validateForm, scrollTop } from '../Utils';
 
 class NewCompanyForm extends React.Component {
   constructor(props) {
@@ -24,6 +24,7 @@ class NewCompanyForm extends React.Component {
 
   componentWillMount() {
     this.props.dispatch(actions.resetCompanyForm());
+    this.dismissPostMsg();
   }
   componentDidMount() {
     this.companyNameInput.focus();
@@ -96,7 +97,7 @@ class NewCompanyForm extends React.Component {
     });
     this.props.dispatch(actions.postNewJobs(companyData));
     this.props.dispatch(actions.addNewJobsToState(companyData));
-    this.props.parent.toggleCompanyForm();
+    // this.props.parent.toggleCompanyForm();
   }
 
   dismissPostMsg() {
@@ -109,12 +110,11 @@ class NewCompanyForm extends React.Component {
       <form ref={el => this.formEl = el} onSubmit={this.handleFormSubmit} id='new-company'>
         <div className="form-title">New Company Form</div>
         {
-          this.props.postedJobs ? <div className="post-msg">
-            <div onClick={this.dismissPostMsg} id='dismiss-btn'>Dismiss</div>
-            {
-              this.props.postedSuccessfully ? <div className="success">Saved!</div> : <div className="error">Oops! Something went wrong</div>
-            }
-          </div> :  null
+          this.props.posted && !this.props.postedSuccessfully ? 
+          <div className="post-msg">
+            <div onClick={this.dismissPostMsg} className="error btn btn-default">Oops! Something went wrong. How embarrassing...</div>
+          </div>
+             : null
         }
         <div ref={el => this.errMsg1 = el} className="form-invalid-msg">
           <div>Please fill out the required fields</div>

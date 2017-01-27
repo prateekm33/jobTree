@@ -708,32 +708,52 @@ form label {
   color: rgba(165, 42, 42, 0.68);
   font-weight: bold;
 }
-/* line 17, ../sass/_home.scss */
+/* line 16, ../sass/_home.scss */
+#home-container .post-msg {
+  position: absolute;
+  display: flex;
+  width: 50%;
+  left: 25%;
+}
+/* line 22, ../sass/_home.scss */
+#home-container .post-msg .success, #home-container .post-msg .error {
+  font-size: 1.2em;
+  width: 100%;
+}
+/* line 27, ../sass/_home.scss */
+#home-container .post-msg .success {
+  color: #0d5a13;
+  background-color: #cff1cf;
+  border-color: #3da945;
+}
+/* line 33, ../sass/_home.scss */
+#home-container .post-msg .error {
+  color: #881616;
+  background: rgba(255, 173, 173, 0.35);
+  font-weight: bold;
+}
+/* line 41, ../sass/_home.scss */
 #home-container #line-2 {
   display: flex;
   justify-content: space-between;
 }
-/* line 21, ../sass/_home.scss */
+/* line 45, ../sass/_home.scss */
 #home-container #line-2 button#add-company, #home-container #line-2 button#cancel-company {
   right: -2.7em;
   position: relative;
 }
-/* line 29, ../sass/_home.scss */
+/* line 53, ../sass/_home.scss */
 #home-container #line-2 #form-toggle-options:hover #company-form-btn-help {
   visibility: visible;
 }
-/* line 35, ../sass/_home.scss */
-#home-container #line-2 button#cancel-company {
-  display: none;
-}
-/* line 39, ../sass/_home.scss */
+/* line 59, ../sass/_home.scss */
 #home-container #line-2 #company-form-btn-help {
   visibility: hidden;
   position: relative;
   bottom: -0.2em;
   left: -0.5em;
 }
-/* line 45, ../sass/_home.scss */
+/* line 65, ../sass/_home.scss */
 #home-container #line-2 #company-form-btn-help #help-for-add, #home-container #line-2 #company-form-btn-help #help-for-cancel {
   font-size: 0.6em;
   color: lightgrey;
@@ -741,15 +761,7 @@ form label {
   left: 4.5em;
   bottom: 45%;
 }
-/* line 52, ../sass/_home.scss */
-#home-container #line-2 #company-form-btn-help #help-for-add {
-  display: flex;
-}
-/* line 56, ../sass/_home.scss */
-#home-container #line-2 #company-form-btn-help #help-for-cancel {
-  display: none;
-}
-/* line 62, ../sass/_home.scss */
+/* line 75, ../sass/_home.scss */
 #home-container form#new-company {
   min-width: 80%;
   align-self: center;
@@ -758,21 +770,27 @@ form label {
   border: 2px solid;
   padding: 2.5em;
 }
-/* line 71, ../sass/_home.scss */
+/* line 84, ../sass/_home.scss */
+#home-container form#new-company .post-msg {
+  position: static;
+  width: 100%;
+  margin-bottom: 2em;
+}
+/* line 90, ../sass/_home.scss */
 #home-container form#new-company .form-title {
   font-size: 1.5em;
   padding: 0.5em;
   margin-bottom: 0.5em;
 }
-/* line 77, ../sass/_home.scss */
+/* line 96, ../sass/_home.scss */
 #home-container form#new-company label {
   margin-bottom: 0.5em;
 }
-/* line 81, ../sass/_home.scss */
+/* line 100, ../sass/_home.scss */
 #home-container form#new-company input {
   margin-bottom: 1em;
 }
-/* line 85, ../sass/_home.scss */
+/* line 104, ../sass/_home.scss */
 #home-container form#new-company .form-invalid-msg {
   display: none;
   flex-flow: column nowrap;
@@ -781,24 +799,24 @@ form label {
   text-align: right;
   font-size: 0.9em;
 }
-/* line 95, ../sass/_home.scss */
+/* line 114, ../sass/_home.scss */
 #home-container #jobs-forms-container {
   margin-top: 2em;
 }
-/* line 98, ../sass/_home.scss */
+/* line 117, ../sass/_home.scss */
 #home-container #jobs-forms-container > .form-line:first-child {
   margin-bottom: 2em;
   border-bottom: 2px solid;
   padding: 1em;
 }
-/* line 104, ../sass/_home.scss */
+/* line 123, ../sass/_home.scss */
 #home-container #jobs-forms-container .new-job {
   margin-bottom: 1.5em;
   border-bottom: 2px solid #c35959;
   padding: 1em;
   position: relative;
 }
-/* line 110, ../sass/_home.scss */
+/* line 129, ../sass/_home.scss */
 #home-container #jobs-forms-container .new-job .job-number {
   position: absolute;
   left: -1em;
@@ -808,22 +826,22 @@ form label {
   font-weight: bold;
   color: #a7a2a2;
 }
-/* line 120, ../sass/_home.scss */
+/* line 139, ../sass/_home.scss */
 #home-container #jobs-forms-container .new-job .dropdown {
   font-size: 1.2em;
 }
-/* line 124, ../sass/_home.scss */
+/* line 143, ../sass/_home.scss */
 #home-container #jobs-forms-container .new-job ul.dropdown-menu {
   background: #eefbee;
 }
-/* line 128, ../sass/_home.scss */
+/* line 147, ../sass/_home.scss */
 #home-container #jobs-forms-container .new-job .remove-job {
   right: 0.3em;
   position: absolute;
   top: -0.5em;
   font-size: 2em;
 }
-/* line 135, ../sass/_home.scss */
+/* line 154, ../sass/_home.scss */
 #home-container #jobs-forms-container .new-job #status-dd-job-form {
   height: 35px;
   margin-left: 1em;
@@ -833,7 +851,7 @@ form label {
   justify-content: flex-end;
   align-self: center;
 }
-/* line 151, ../sass/_home.scss */
+/* line 170, ../sass/_home.scss */
 #home-container #home-title {
   text-align: center;
   font-size: 2em;
@@ -842,16 +860,16 @@ form label {
   margin-top: 1em;
   margin-bottom: 0.7em;
 }
-/* line 159, ../sass/_home.scss */
+/* line 178, ../sass/_home.scss */
 #home-container #home-title:focus {
   outline: 2px dotted green;
 }
-/* line 164, ../sass/_home.scss */
+/* line 183, ../sass/_home.scss */
 #home-container #company-sort-dd {
   left: -1em;
   justify-content: flex-end;
 }
-/* line 168, ../sass/_home.scss */
+/* line 187, ../sass/_home.scss */
 #home-container #company-sort-dd ul.dropdown-menu {
   right: 0;
   left: initial;
@@ -1029,6 +1047,12 @@ form label {
   }
 }
 /* line 15, ../sass/_smallView.scss */
+#home-container #small-jobs-view-container .company-number {
+  left: 0.4em;
+  top: 0.3em;
+  z-index: 100;
+}
+/* line 21, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .company-container {
   margin-bottom: 3em;
   border-bottom: 2px dotted;
@@ -1036,7 +1060,7 @@ form label {
   position: relative;
   width: 100%;
 }
-/* line 22, ../sass/_smallView.scss */
+/* line 28, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .company-container .delete-company {
   position: absolute;
   top: -0.3em;
@@ -1044,7 +1068,7 @@ form label {
   font-size: 2em;
   display: none;
 }
-/* line 31, ../sass/_smallView.scss */
+/* line 37, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .company-name {
   width: 100%;
   background-color: white;
@@ -1057,24 +1081,24 @@ form label {
   border-color: #1d7117;
   position: relative;
 }
-/* line 43, ../sass/_smallView.scss */
+/* line 49, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .company-name:focus {
   outline: none;
   background: white;
 }
-/* line 47, ../sass/_smallView.scss */
+/* line 53, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .company-name:hover, #home-container #small-jobs-view-container .company-name.active {
   cursor: pointer;
   border-color: #72cc6c;
   border-bottom: 3px solid #1d7117;
   background: #96e891;
 }
-/* line 54, ../sass/_smallView.scss */
+/* line 60, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .company-name div {
   font-size: 0.6em;
   color: #5d5959;
 }
-/* line 59, ../sass/_smallView.scss */
+/* line 65, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .company-name .company-summary {
   position: absolute;
   top: -1.8em;
@@ -1087,21 +1111,21 @@ form label {
   flex-flow: row wrap;
   font-weight: bolder;
 }
-/* line 71, ../sass/_smallView.scss */
+/* line 77, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .company-name .company-summary > div {
   color: #8e8a8a;
   margin-right: 0.7em;
 }
-/* line 78, ../sass/_smallView.scss */
+/* line 84, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .sv-company-jobs-container {
   flex-flow: column nowrap;
   font-size: 0.8em;
 }
-/* line 83, ../sass/_smallView.scss */
+/* line 89, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .jobs-container {
   display: none;
 }
-/* line 87, ../sass/_smallView.scss */
+/* line 93, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .job-component {
   border: 1px solid black;
   padding: 1em;
@@ -1109,7 +1133,7 @@ form label {
   position: relative;
   border-radius: 0.5em;
 }
-/* line 94, ../sass/_smallView.scss */
+/* line 100, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .job-component > div {
   display: flex;
   flex-flow: row wrap;
@@ -1119,15 +1143,15 @@ form label {
   border-bottom: 1px dotted grey;
   font-style: italic;
 }
-/* line 104, ../sass/_smallView.scss */
+/* line 110, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .job-component > div:nth-of-type(1n + 2) div:nth-of-type(1n+2) {
   font-weight: bold;
 }
-/* line 110, ../sass/_smallView.scss */
+/* line 116, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .job-component .role {
   margin-top: 2em;
 }
-/* line 114, ../sass/_smallView.scss */
+/* line 120, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .job-component .date_applied {
   position: absolute;
   top: 1em;
@@ -1136,7 +1160,7 @@ form label {
   color: grey;
   border-bottom: none;
 }
-/* line 123, ../sass/_smallView.scss */
+/* line 129, ../sass/_smallView.scss */
 #home-container #small-jobs-view-container .job-component button.edit {
   margin-top: 1em;
   position: relative;

@@ -29,6 +29,7 @@ class Home extends React.Component {
     this.toggleCompanyForm = this.toggleCompanyForm.bind(this);
     this.deleteCompany = this.deleteCompany.bind(this);
     this.setWindowWidth = this.setWindowWidth.bind(this);
+    this.dismissPostMsg = this.dismissPostMsg.bind(this);
     window.addEventListener('resize', this.setWindowWidth)
   }
 
@@ -42,18 +43,6 @@ class Home extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.setWindowWidth);
-  }
-
-
-  componentDidUpdate() {
-    if (!this.props.allJobs.length) {
-      this.helpForAdd.style.visibility = 'visible';
-      this.helpForAdd.parentElement.style.visibility = 'visible';
-    }
-    else {
-      this.helpForAdd.style.visibility = '';
-      this.helpForAdd.parentElement.style.visibility = '';
-    }
   }
 
   deleteCompany(idx) {
@@ -90,44 +79,43 @@ class Home extends React.Component {
     this.props.dispatch(actions.toggleCompanyForm());
   }
 
-  toggleCompanyForm(evt) {
-    evt && evt.preventDefault();
-    evt = evt || {};
-    const target = evt.target || this.cancelFormBtn;    
-    
-    if (target.tagName !== 'BUTTON') return;
-    
+  toggleCompanyForm() {
     this.props.dispatch(actions.toggleCompanyForm());
+  }
 
-    if (target.id === 'add-company') {
-      target.style.display = 'none';
-      target.nextElementSibling.style.display = 'flex';
-      this.helpForAdd.style.display = 'none';
-      this.helpForCancel.style.display = 'flex';
-    } else if (target.id === 'cancel-company') {
-      target.style.display = 'none';
-      target.previousElementSibling.style.display = 'flex';
-      this.helpForAdd.style.display = 'flex';
-      this.helpForCancel.style.display = 'none';
-    }
+  dismissPostMsg() {
+    this.props.dispatch(actions.resetJobsPost());
   }
 
 
 
   render() {
+
     return (
       <div id='home-container'>
         <div id="jobs-view-header">
           <div id="home-title"> {this.state.title} </div>
           <div id="line-2">
             <div id="form-toggle-options" ref={el => this.toggleFormOptions = el} className={this.props.allJobs.length ? '' : 'bounce'} onClick={this.toggleCompanyForm}> 
-              <button id="add-company" className='btn btn-default glyphicon glyphicon-plus'></button>
-              <button ref={el => this.cancelFormBtn = el} id="cancel-company" className='btn btn-default glyphicon glyphicon-remove'></button>
+              {
+                !this.props.showCompanyForm ? 
+                  <button id="add-company" className='btn btn-default glyphicon glyphicon-plus'></button> :
+                  <button ref={el => this.cancelFormBtn = el} id="cancel-company" className='btn btn-default glyphicon glyphicon-remove'></button>
+              }
               <div id='company-form-btn-help'>
-                <div ref={el => this.helpForAdd = el} id="help-for-add">Click here to add to your pipeline!</div>
-                <div ref={el => this.helpForCancel = el} id="help-for-cancel">Click to cancel form</div>
+                {
+                  !this.props.showCompanyForm ? 
+                    <div ref={el => this.helpForAdd = el} id="help-for-add">Click here to add to your pipeline!</div> :
+                    <div ref={el => this.helpForCancel = el} id="help-for-cancel">Click to cancel form</div>
+                }
               </div>
             </div>
+            {
+              this.props.postedJobs && this.props.postedSuccessfully ? 
+                <div className="post-msg">
+                  <div onClick={this.dismissPostMsg} className="success btn btn-primary">Saved!</div>
+                </div> : null
+            }
             <Dropdown id="company-sort-dd" defaultOption={this.state.defaultOrder} selectItem={this.selectSort} menuItems={this.state.menuItems} />
           </div>
         </div>
@@ -156,7 +144,7 @@ class Home extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { showCompanyForm: state.showCompanyForm, allJobs: state.allJobs };
+  return { showCompanyForm: state.showCompanyForm, allJobs: state.allJobs, postedSuccessfully: state.postedSuccessfully, postedJobs: state.postedJobs };
 }
 
 export default connect(mapStateToProps)(Home);

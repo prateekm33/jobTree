@@ -142,3 +142,46 @@ export const validateAuthForm = (form) => {
   return response;
 }
 
+export const scrollTop = () => {
+  if (window.mobilecheck()) {
+    document.body.scrollTop = 0;
+    return;
+  } 
+
+
+  const body = document.body;
+  const initTop = body.scrollTop;
+  const start = Date.now();
+  const end = start + 2000;
+  const distance = -initTop;
+  let prevTop = body.scrollTop;
+
+  function getSmoothStep(start, end, curr) {
+    if(curr <= start) { return 0; }
+    if(curr >= end) { return 1; }
+    let x = (curr - start) / (end - start);
+    return x*x*(5 - 3*x);
+  }
+
+  const scrollHelper = () => {
+    const currTop = body.scrollTop;
+    if (prevTop !== currTop) {
+      return;
+    }
+
+
+    const now = Date.now();
+    const next = getSmoothStep(start, end, now);
+    const nextTop = Math.round(initTop + (distance * next));
+    body.scrollTop = nextTop;
+
+    if (now >= end) {
+        return;
+    }
+    prevTop = body.scrollTop;
+
+    setTimeout(scrollHelper, 0);
+  }
+  scrollHelper();
+}
+

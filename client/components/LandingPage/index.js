@@ -4,10 +4,11 @@ import SectionOne from './SectionOne';
 import SectionTwo from './SectionTwo';
 import SectionThree from './SectionThree';
 
+import { scrollTop } from '../Utils';
+
 export default class LandingPage extends React.Component {
   constructor() {
     super();
-    this.scrollTop = this.scrollTop.bind(this);
     this.displayScrollTop = this.displayScrollTop.bind(this)
   }
 
@@ -30,56 +31,13 @@ export default class LandingPage extends React.Component {
     }
   }
 
-  scrollTop() {
-    if (window.mobilecheck()) {
-      document.body.scrollTop = 0;
-      return;
-    } 
-
-
-    const body = document.body;
-    const initTop = body.scrollTop;
-    const start = Date.now();
-    const end = start + 2000;
-    const distance = -initTop;
-    let prevTop = body.scrollTop;
-
-    const scrollHelper = () => {
-      const currTop = body.scrollTop;
-      if (prevTop !== currTop) {
-        return;
-      }
-
-
-      const now = Date.now();
-      const next = this.getSmoothStep(start, end, now);
-      const nextTop = Math.round(initTop + (distance * next));
-      body.scrollTop = nextTop;
-
-      if (now >= end) {
-          return;
-      }
-      prevTop = body.scrollTop;
-
-      setTimeout(scrollHelper, 0);
-    }
-    scrollHelper();
-  }
-
-  getSmoothStep(start, end, curr) {
-    if(curr <= start) { return 0; }
-    if(curr >= end) { return 1; }
-    let x = (curr - start) / (end - start);
-    return x*x*(3 - 2*x);
-  }
-
   render() {
     return (
       <div id='landing-page-container'>
         <SectionOne />
         <SectionTwo />
         <SectionThree />
-        <div ref={el => this.scrollTopDiv = el} onClick={this.scrollTop} id='scroll-top'>
+        <div ref={el => this.scrollTopDiv = el} onClick={scrollTop} id='scroll-top'>
           <div className="glyphicon glyphicon-chevron-up"></div>
         </div>
       </div>

@@ -75,8 +75,8 @@ const authActions = {
         contentType: 'application/json',
         success: () => {
           dispatch(actions.userLoggedOut());
-          dispatch(actions.resetState());
           dispatch(replace('/'));
+          dispatch(actions.resetState());
         },
         error: (err) => {
           dispatch(actions.logOutError(err));

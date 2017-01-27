@@ -12,6 +12,30 @@
     color: rgba(165, 42, 42, 0.68);
     font-weight: bold;
   }
+  
+  .post-msg {
+    position: absolute;
+    display: flex;
+    width: 50%;
+    left: 25%;
+    
+    .success, .error {
+      font-size: 1.2em;
+      width: 100%
+    }
+
+    .success {
+      color: #0d5a13;
+      background-color: #cff1cf;
+      border-color: #3da945;
+    }
+
+    .error {
+      color: #881616;
+      background: rgba(255, 173, 173, 0.35);
+      font-weight: bold;
+    }
+  }
 
 
   #line-2 {
@@ -32,10 +56,6 @@
       }
     }
 
-    button#cancel-company {
-      display: none;
-    }
-
     #company-form-btn-help {
       visibility: hidden;
       position: relative;
@@ -49,13 +69,6 @@
         left: 4.5em;
         bottom: 45%;
       }
-      #help-for-add {
-        display: flex;
-      }
-
-      #help-for-cancel {
-        display: none;
-      }
     }
   }
 
@@ -67,6 +80,12 @@
 
     border: 2px solid;
     padding: 2.5em;
+
+    .post-msg {
+      position: static;
+      width: 100%;
+      margin-bottom: 2em;
+    }
 
     .form-title {
       font-size: 1.5em;
