@@ -11,8 +11,8 @@ export const initComponent = (nextState, replace, done) => {
   }
   else {
     store.dispatch(actions.fetchingUser(true));
-    window.alert('USER? ' + user);
-    fetch('jobtree.herokuapp.com/auth/validate', {
+    window.alert('FETCH? ', fetch);
+    fetch('/auth/validate', {
           method: 'get',
           credentials: 'include'
         })
@@ -33,7 +33,6 @@ export const initComponent = (nextState, replace, done) => {
             done();
           })
           .catch(err => {
-            window.alert('ERROR FETCHING') 
             done(err)
             store.dispatch(actions.asyncError(err))
           });
