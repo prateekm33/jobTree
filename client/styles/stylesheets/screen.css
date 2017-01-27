@@ -143,14 +143,15 @@ nav#header #inner-nav-div #nav-user-settings #user-dropdown {
   padding: 0.2em 0.5em;
   background: #cff1cf;
   color: black;
+  box-shadow: 7px 5px 25px #271702;
 }
-/* line 77, ../sass/_default.scss */
+/* line 78, ../sass/_default.scss */
 nav#header #inner-nav-div #nav-user-settings #user-dropdown:hover {
   cursor: pointer;
   background: #6f9a6d;
   color: white;
 }
-/* line 83, ../sass/_default.scss */
+/* line 84, ../sass/_default.scss */
 nav#header #inner-nav-div #nav-user-settings #user-dropdown ul.dropdown-menu {
   right: -0.6em;
   left: initial;
@@ -159,13 +160,13 @@ nav#header #inner-nav-div #nav-user-settings #user-dropdown ul.dropdown-menu {
   font-weight: bolder;
   min-width: 100px;
 }
-/* line 95, ../sass/_default.scss */
+/* line 96, ../sass/_default.scss */
 nav#header #app-logo {
   color: #76BA76;
   flex-grow: 0.5;
   text-decoration: none;
 }
-/* line 100, ../sass/_default.scss */
+/* line 101, ../sass/_default.scss */
 nav#header #main-nav-options {
   flex-grow: 2;
   font-size: 0.45em;
@@ -176,12 +177,12 @@ nav#header #main-nav-options {
   margin-left: 4em;
 }
 @media (max-width: 650px), (max-device-width: 650px) {
-  /* line 100, ../sass/_default.scss */
+  /* line 101, ../sass/_default.scss */
   nav#header #main-nav-options {
     display: none;
   }
 }
-/* line 112, ../sass/_default.scss */
+/* line 113, ../sass/_default.scss */
 nav#header #main-nav-options a {
   color: white;
   margin-right: 2em;
@@ -190,20 +191,20 @@ nav#header #main-nav-options a {
   align-items: flex-end;
   position: relative;
 }
-/* line 119, ../sass/_default.scss */
+/* line 120, ../sass/_default.scss */
 nav#header #main-nav-options a:hover {
   text-decoration: none;
 }
-/* line 121, ../sass/_default.scss */
+/* line 122, ../sass/_default.scss */
 nav#header #main-nav-options a:hover .menu-highlight {
   visibility: visible;
   opacity: 1;
 }
-/* line 127, ../sass/_default.scss */
+/* line 128, ../sass/_default.scss */
 nav#header #main-nav-options a:hover, nav#header #main-nav-options a:active, nav#header #main-nav-options a:hover:active, nav#header #main-nav-options a:focus {
   text-decoration: none;
 }
-/* line 131, ../sass/_default.scss */
+/* line 132, ../sass/_default.scss */
 nav#header #main-nav-options a .menu-highlight {
   width: 100%;
   border: 5px solid white;
@@ -214,41 +215,41 @@ nav#header #main-nav-options a .menu-highlight {
   position: absolute;
   top: 0;
 }
-/* line 144, ../sass/_default.scss */
+/* line 145, ../sass/_default.scss */
 nav#header #auth-buttons {
   flex-grow: 2;
   justify-content: flex-end;
   display: flex;
 }
-/* line 148, ../sass/_default.scss */
+/* line 149, ../sass/_default.scss */
 nav#header #auth-buttons a {
   margin-left: 0.5em;
 }
-/* line 153, ../sass/_default.scss */
+/* line 154, ../sass/_default.scss */
 nav#header #app-logo:hover, nav#header #app-logo:hover:active, nav#header #app-logo:active {
   text-decoration: none;
   color: #3da945;
 }
-/* line 158, ../sass/_default.scss */
+/* line 159, ../sass/_default.scss */
 nav#header #hamburger {
   display: none;
 }
-/* line 161, ../sass/_default.scss */
+/* line 162, ../sass/_default.scss */
 nav#header #hamburger #menu-options {
   display: none;
 }
 @media (max-width: 650px), (max-device-width: 650px) {
-  /* line 158, ../sass/_default.scss */
+  /* line 159, ../sass/_default.scss */
   nav#header #hamburger {
     display: flex;
     color: white;
     margin-right: 0.5em;
   }
-  /* line 170, ../sass/_default.scss */
+  /* line 171, ../sass/_default.scss */
   nav#header #hamburger:hover {
     cursor: pointer;
   }
-  /* line 174, ../sass/_default.scss */
+  /* line 175, ../sass/_default.scss */
   nav#header #hamburger #menu-options {
     position: absolute;
     font-size: 0.5em;
@@ -260,7 +261,7 @@ nav#header #hamburger #menu-options {
     min-width: 12em;
     background: white;
   }
-  /* line 185, ../sass/_default.scss */
+  /* line 186, ../sass/_default.scss */
   nav#header #hamburger #menu-options a {
     margin-bottom: 0.5em;
     border-bottom: 2px solid #76ba76;
@@ -268,17 +269,17 @@ nav#header #hamburger #menu-options {
     color: #65461e;
     font-weight: bolder;
   }
-  /* line 192, ../sass/_default.scss */
+  /* line 193, ../sass/_default.scss */
   nav#header #hamburger #menu-options a:hover {
     background: #B3EFB4;
   }
-  /* line 196, ../sass/_default.scss */
+  /* line 197, ../sass/_default.scss */
   nav#header #hamburger #menu-options a:hover, nav#header #hamburger #menu-options a:active, nav#header #hamburger #menu-options a:hover:active, nav#header #hamburger #menu-options a:focus {
     text-decoration: none;
   }
 }
 
-/* line 205, ../sass/_default.scss */
+/* line 206, ../sass/_default.scss */
 nav#footer {
   min-height: 70vh;
   bottom: -4.5em;
@@ -286,7 +287,7 @@ nav#footer {
   border-top: 2px solid #472902;
   background-color: #fbfbfb;
 }
-/* line 212, ../sass/_default.scss */
+/* line 213, ../sass/_default.scss */
 nav#footer #nav-options {
   display: flex;
   flex-flow: row nowrap;
@@ -296,12 +297,12 @@ nav#footer #nav-options {
   margin-left: 2em;
 }
 @media (max-width: 650px), (max-device-width: 650px) {
-  /* line 212, ../sass/_default.scss */
+  /* line 213, ../sass/_default.scss */
   nav#footer #nav-options {
     flex-flow: column nowrap;
   }
 }
-/* line 224, ../sass/_default.scss */
+/* line 225, ../sass/_default.scss */
 nav#footer #nav-options .footer-component {
   max-height: 80%;
   display: flex;
@@ -309,31 +310,31 @@ nav#footer #nav-options .footer-component {
   margin-bottom: 2em;
   flex: 2;
 }
-/* line 231, ../sass/_default.scss */
+/* line 232, ../sass/_default.scss */
 nav#footer #nav-options .footer-component#last {
   flex: 1;
 }
 @media (max-width: 650px), (max-device-width: 650px) {
-  /* line 224, ../sass/_default.scss */
+  /* line 225, ../sass/_default.scss */
   nav#footer #nav-options .footer-component {
     border-bottom: 2px solid grey;
     padding-bottom: 1em;
   }
-  /* line 238, ../sass/_default.scss */
+  /* line 239, ../sass/_default.scss */
   nav#footer #nav-options .footer-component .footer-component-body {
     display: none;
   }
 }
-/* line 243, ../sass/_default.scss */
+/* line 244, ../sass/_default.scss */
 nav#footer #nav-options .footer-component .footer-component-title {
   color: #65461e;
   font-weight: bold;
 }
-/* line 246, ../sass/_default.scss */
+/* line 247, ../sass/_default.scss */
 nav#footer #nav-options .footer-component .footer-component-title:hover {
   cursor: pointer;
 }
-/* line 250, ../sass/_default.scss */
+/* line 251, ../sass/_default.scss */
 nav#footer #nav-options .footer-component .footer-component-body {
   display: flex;
   flex-flow: column nowrap;
@@ -341,22 +342,22 @@ nav#footer #nav-options .footer-component .footer-component-body {
   opacity: 1;
 }
 @media (max-width: 650px), (max-device-width: 650px) {
-  /* line 250, ../sass/_default.scss */
+  /* line 251, ../sass/_default.scss */
   nav#footer #nav-options .footer-component .footer-component-body {
     display: none;
   }
 }
-/* line 260, ../sass/_default.scss */
+/* line 261, ../sass/_default.scss */
 nav#footer #nav-options .footer-component .footer-component-body > * {
   margin-top: 2em;
 }
-/* line 264, ../sass/_default.scss */
+/* line 265, ../sass/_default.scss */
 nav#footer #nav-options .footer-component .footer-component-body > a {
   color: #848484;
   font-size: 0.9em;
 }
 
-/* line 273, ../sass/_default.scss */
+/* line 274, ../sass/_default.scss */
 #content-container {
   padding-top: 80px;
   display: flex;
@@ -364,109 +365,109 @@ nav#footer #nav-options .footer-component .footer-component-body > a {
   min-height: 85vh;
 }
 
-/* line 281, ../sass/_default.scss */
+/* line 282, ../sass/_default.scss */
 .order-options.dropdown {
   height: 35px;
   margin-left: 1em;
   display: flex;
   flex-flow: row nowrap;
 }
-/* line 287, ../sass/_default.scss */
+/* line 288, ../sass/_default.scss */
 .order-options.dropdown div:first-child {
   width: 5em;
   max-height: 50%;
   align-self: center;
 }
-/* line 293, ../sass/_default.scss */
+/* line 294, ../sass/_default.scss */
 .order-options.dropdown > * {
   font-size: 0.6em;
 }
 
-/* line 298, ../sass/_default.scss */
+/* line 299, ../sass/_default.scss */
 ul.dropdown-menu {
   flex-flow: column nowrap;
 }
-/* line 301, ../sass/_default.scss */
+/* line 302, ../sass/_default.scss */
 ul.dropdown-menu li {
   padding: 1em;
 }
-/* line 303, ../sass/_default.scss */
+/* line 304, ../sass/_default.scss */
 ul.dropdown-menu li:hover {
   background: #B3EFB4;
   cursor: pointer;
 }
 
-/* line 309, ../sass/_default.scss */
+/* line 310, ../sass/_default.scss */
 form .form-line {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
-/* line 314, ../sass/_default.scss */
+/* line 315, ../sass/_default.scss */
 form .form-line > * {
   flex: 1;
 }
 
-/* line 319, ../sass/_default.scss */
+/* line 320, ../sass/_default.scss */
 .btn.btn-default.glyphicon.glyphicon-plus {
   background: lightsalmon;
   color: #ffffff;
   max-width: 2.7em;
 }
-/* line 324, ../sass/_default.scss */
+/* line 325, ../sass/_default.scss */
 .btn.btn-default.glyphicon.glyphicon-plus:hover, .btn.btn-default.glyphicon.glyphicon-plus:active, .btn.btn-default.glyphicon.glyphicon-plus:hover:active {
   background: darksalmon;
 }
-/* line 328, ../sass/_default.scss */
+/* line 329, ../sass/_default.scss */
 .btn.btn-default.glyphicon.glyphicon-plus:focus {
   outline: 5px auto darksalmon;
 }
 
-/* line 334, ../sass/_default.scss */
+/* line 335, ../sass/_default.scss */
 *.applied {
   background-color: rgba(220, 255, 230, 0.8);
 }
-/* line 338, ../sass/_default.scss */
+/* line 339, ../sass/_default.scss */
 *.phone-screen {
   background-color: #C9F7D4;
 }
-/* line 342, ../sass/_default.scss */
+/* line 343, ../sass/_default.scss */
 *.on-site {
   background-color: #85ED9F;
 }
-/* line 346, ../sass/_default.scss */
+/* line 347, ../sass/_default.scss */
 *.rejected {
   background-color: rgba(253, 106, 106, 0.6);
 }
-/* line 350, ../sass/_default.scss */
+/* line 351, ../sass/_default.scss */
 *.offer {
   background-color: #5DE77F;
 }
 
-/* line 356, ../sass/_default.scss */
+/* line 357, ../sass/_default.scss */
 .form-title {
   text-align: center;
   font-weight: bolder;
 }
 
-/* line 361, ../sass/_default.scss */
+/* line 362, ../sass/_default.scss */
 form label {
   color: #65461e;
   font-weight: bold;
 }
 
-/* line 366, ../sass/_default.scss */
+/* line 367, ../sass/_default.scss */
 .glyphicon-remove {
   font-weight: bold;
   color: rgba(175, 14, 14, 0.36);
 }
-/* line 369, ../sass/_default.scss */
+/* line 370, ../sass/_default.scss */
 .glyphicon-remove:hover {
   cursor: pointer;
   color: #af0e0e;
 }
 
-/* line 375, ../sass/_default.scss */
+/* line 376, ../sass/_default.scss */
 .quote {
   font-style: italic;
   color: brown;
@@ -474,7 +475,7 @@ form label {
   margin-bottom: 1em;
 }
 
-/* line 382, ../sass/_default.scss */
+/* line 383, ../sass/_default.scss */
 .bounce {
   position: relative;
   -webkit-animation: bounce 1s infinite;
