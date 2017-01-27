@@ -5,7 +5,6 @@ export const initComponent = (nextState, replace, done) => {
   document.body.scrollTop = 0;
   const path = nextState.location.pathname;
   const user = store.getState().user;
-
   if (user) {
     if (path === '/') replace('/home');
     return done();
