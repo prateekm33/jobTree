@@ -1,6 +1,5 @@
 const { authRouter, accountsRouter, profileRouter } = require('./routers');
 
-console.log('ENV: ', process.env);
 let root = process.env.NODE_ENV === 'production' ? '.' : '..';
 function mountRoutes(app) {
   app.use('/auth', authRouter);
