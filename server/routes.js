@@ -8,7 +8,7 @@ function mountRoutes(app) {
   app.use('/accounts', accountsRouter);
 
   app.get('*', (req, res) => {
-    return res.sendFile('./client/index.html', {root});
+    return res.sendFile('./client/index.html', {root: '..'});
   });
 }
 
