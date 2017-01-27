@@ -18,7 +18,7 @@ class Home extends React.Component {
       jobs: [],
       company: null,
       title: 'My Pipeline',
-      defaultOrder: 'Select order',
+      defaultOrder: 'Order',
       menuItems: menuItems,
       windowWidth: 0
     };

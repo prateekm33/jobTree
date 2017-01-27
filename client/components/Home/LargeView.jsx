@@ -12,7 +12,7 @@ class LargeView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      defaultOrder: 'Select order',
+      defaultOrder: 'Order',
       menuItems: ['STATUS', 'ROLE', 'LOCATION', 'RECRUITER', 'DATE APPLIED'],
       open: false
     };
@@ -67,7 +67,6 @@ class LargeView extends React.Component {
           <div className="company-header-container">
             <div id="jobs-sort-dd-container" style={dropdownStyle}>
               <Dropdown menuItems={this.state.menuItems} 
-              message={" "}
               defaultOption={this.state.defaultOrder}
               selectItem={this.selectSortOption} extraClasses={"jobs-order"}/>
             </div>

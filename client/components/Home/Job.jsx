@@ -113,7 +113,7 @@ export default class Job extends React.Component {
           <div>Recruiter:</div>
           <div>{this.props.job.recruiter}</div>
         </div>
-        <button onClick={this.handleEditBtnClick} className="edit btn btn-default">Edit</button>
+        <button onClick={this.handleEditBtnClick} className="edit btn btn-default">EDIT</button>
       </div>
     )
   }
