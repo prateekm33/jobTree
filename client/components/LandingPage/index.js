@@ -47,7 +47,10 @@ export default class LandingPage extends React.Component {
     const scrollHelper = () => {
       const currTop = body.scrollTop;
       // window.alert('RUNNING SCROLL TOP = ' + currTop);
-      if (prevTop !== currTop) return;
+      if (prevTop !== currTop) {
+        window.alert('prevTop != currTop' + prevTop + ' , ' + currTop)
+        return;
+      }
 
 
       const now = Date.now();
@@ -55,7 +58,10 @@ export default class LandingPage extends React.Component {
       const nextTop = Math.round(initTop + (distance * next));
       body.scrollTop = nextTop;
 
-      if (now >= end) return;
+      if (now >= end) {
+        window.alert('time up');
+          return;
+      }
       prevTop = body.scrollTop;
 
       setTimeout(scrollHelper, 0);
