@@ -31,7 +31,6 @@ export default class LandingPage extends React.Component {
   }
 
   scrollTop() {
-    window.alert(setTimeout + ' ---' + window.setTimeout);
     // if (window.mobilecheck()) {
     //   document.body.scrollTop = 0;
     //   return;
@@ -47,7 +46,7 @@ export default class LandingPage extends React.Component {
 
     const scrollHelper = () => {
       const currTop = body.scrollTop;
-      window.alert('RUNNING SCROLL TOP', currTop);
+      window.alert('RUNNING SCROLL TOP = ' + currTop);
       if (prevTop !== currTop) return;
 
 
