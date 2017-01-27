@@ -47,6 +47,7 @@ export default class LandingPage extends React.Component {
 
     const scrollHelper = () => {
       const currTop = body.scrollTop;
+      window.alert('RUNNING SCROLL TOP');
       if (prevTop !== currTop) return;
 
 

@@ -120,9 +120,6 @@ $section-color-2: #946f3e;
     transition: all 0.5s ease-in-out;
 
     @media (max-width: $max-width), (max-device-width: $max-device-width) {
-      border-radius: 0px;
-      width: 2em;
-      height: 2em;
       right: 0em;
     }
 
