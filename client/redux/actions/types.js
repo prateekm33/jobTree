@@ -28,7 +28,8 @@ const types = {
   errorFetchingJobs: 'ERROR_FETCHING_JOBS',
   fetchedJobs: 'FETCHED_JOBS',
 
-  resetState: 'RESET_STATE'
+  resetState: 'RESET_STATE',
+  savingState: 'SAVING_STATE'
 
 }
 

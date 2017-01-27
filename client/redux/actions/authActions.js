@@ -33,11 +33,11 @@ const authActions = {
     }
   },
 
-  logInUser(user) {
+  logInUser(user, cb?) {
     store.dispatch(this.fetchJobs(user));
     return {
       type: types.logInUser,
-      user
+      user,
     }
   },
 

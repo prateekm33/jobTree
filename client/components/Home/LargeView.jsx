@@ -81,7 +81,6 @@ class LargeView extends React.Component {
             <table ref={el => this.table = el} className="company-jobs">
               <thead>
                 <tr>
-                  <th></th>
                   <th>Status</th>
                   <th>Role</th>
                   <th>Location</th>

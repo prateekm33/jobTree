@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import actions from '../redux/actions';
 
 import Footer from './Footer';
 import UserSettings from './UserSettings';
@@ -19,6 +20,11 @@ class App extends React.Component {
     this.displayMenuOptions = this.displayMenuOptions.bind(this);
     this.handleTopLvlClicks = this.handleTopLvlClicks.bind(this);
     this.addShadow = this.addShadow.bind(this);
+    window.onbeforeunload = this.dispatchSaveJobs.bind(this);
+  }
+
+  dispatchSaveJobs() {
+    this.props.dispatch(actions.saveUserState(this.props.user));
   }
 
   componentDidMount() {

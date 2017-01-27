@@ -34,10 +34,10 @@ export class Dropdown extends React.Component {
 
   render() {
     const itemClasses = this.props.itemClasses || {};
-    let message = this.props.message || "Order By:";
+    let message = this.props.message;
     return (
       <div id={this.props.id || ''} className={"order-options dropdown" + " " + (this.props.extraClasses ||'')}>
-        <div>{message}</div>
+        {message ? <div>{message}</div> : null}
         <button onClick={this.toggleDropDownMenu} className={"btn btn-default dropdown-toggle" + " " + (itemClasses[this.props.defaultOption] || "")} >
           {this.props.defaultOption.toUpperCase()}
         </button>

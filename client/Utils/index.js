@@ -15,18 +15,26 @@ export const initComponent = (nextState, replace, done) => {
         })
           .then(r => r.json())
           .then(user => {
-            if (!user) {
-              switch (path) {
-                case '/home':
-                case '/profile':
-                case '/manage': replace('/login');
-                default: break;
-              }
+            let redirect = path;
+            switch (path) {
+              case '/home': 
+                redirect = !!user ? path : '/login';
+                break;
+              case '/profile':
+                redirect = !!user ? path : '/login';
+                break;
+              case '/manage': 
+                redirect = !!user ? path : '/login';
+                break;
+              case '/':
+                redirect = !!user ? '/home' : path;
+              default: 
+                redirect = redirect;
+                break;
             }
-            else {
-              store.dispatch(actions.logInUser(user));
-              if (path === '/') replace('/home');
-            }
+
+            store.dispatch(actions.logInUser(user))
+            replace(redirect);
             done();
           })
           .catch(err => { store.dispatch(actions.asyncError(err))});

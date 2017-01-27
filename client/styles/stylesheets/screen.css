@@ -893,11 +893,11 @@ form label {
 }
 /* line 34, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .company-jobs {
-  margin-left: 2.5em;
+  margin-top: 2em;
   font-size: 0.75em;
-  width: 90%;
+  width: 100%;
   border-collapse: initial;
-  border-spacing: 0 2em;
+  border-spacing: 1em;
 }
 /* line 41, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .company-jobs thead th {
@@ -996,23 +996,13 @@ form label {
   transform: scaleY(-1) translateY(50%) translateX(100%);
 }
 /* line 137, ../sass/_largeView.scss */
-#home-container #large-jobs-view-container .job-component td:first-child {
-  border-bottom: 2px solid;
-  width: 1.5em;
-  border-left: 2px solid;
-  height: 1.5em;
-  transform: translateY(-45%);
-  border-color: lightgrey;
-}
-/* line 146, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .job-component td {
   position: relative;
   text-align: center;
-  border-bottom: 1px dotted lightgrey;
   padding-left: 1em;
   padding-right: 1em;
 }
-/* line 153, ../sass/_largeView.scss */
+/* line 143, ../sass/_largeView.scss */
 #home-container #large-jobs-view-container .job-component td .td-dividers {
   border: 1px solid lightcoral;
   width: 0;
@@ -1152,24 +1142,15 @@ form label {
   position: relative;
   left: 80%;
 }
-/* line 178, ../sass/_home.scss */
-#home-container .job-component td:nth-of-type(1n + 2) {
-  border-right: 2px solid #65461E;
-}
-/* line 181, ../sass/_home.scss */
+/* line 180, ../sass/_home.scss */
 #home-container .job-component td:nth-of-type(1n + 2):focus {
   outline: 2px solid green;
   outline-offset: -1px;
 }
-/* line 186, ../sass/_home.scss */
+/* line 185, ../sass/_home.scss */
 #home-container .job-component td:nth-of-type(1n + 2):hover {
-  box-shadow: 3px -3px 30px #c0ffc0;
   cursor: pointer;
-  transform: scale(1.2);
-  background: white;
-  border-radius: 10px;
-  border-left: 2px solid #65461E;
-  font-size: 0.88em;
+  border-bottom: 2px solid #65461E;
 }
 
 /* line 1, ../sass/_dne.scss */

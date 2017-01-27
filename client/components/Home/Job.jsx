@@ -1,12 +1,34 @@
 import React from 'react';
 
 
+import { Dropdown } from '../Utils';
+
 export default class Job extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      menuItems: [
+        'APPLIED', 
+        'PHONE-SCREEN',
+        'ON-SITE',
+        'OFFER',
+        'REJECTED'
+      ],
+      itemClasses: {
+        'APPLIED': 'applied status-bar',
+        'PHONE-SCREEN': "phone-screen status-bar",
+        'ON-SITE': "on-site status-bar",
+        'REJECTED': "rejected status-bar",
+        'OFFER' : "offer status-bar"
+      },
+
+      status: props.job.status
+    }
+
     this.handleUserEdit = this.handleUserEdit.bind(this);
     this.handleEditBtnClick = this.handleEditBtnClick.bind(this);
-    console.log(props)
+    this.selectStatusLargeView = this.selectStatusLargeView.bind(this);
   }
 
   handleUserEdit(evt) {
@@ -42,11 +64,21 @@ export default class Job extends React.Component {
     console.log('TODO --- ROUTE TO /manage/jobs')
   }
 
+  selectStatusLargeView(evt) {
+    const target = evt.target;
+    const updatedJob = Object.assign({}, this.props.job, {
+      status: target.innerText
+    })
+    this.props.editJob(this.props.idx, updatedJob);
+    this.setState({status: target.innerText});
+  }
+
   renderTable() {
     return (
       <tr onKeyDown={this.handleUserEdit} className="job-component">
-        <td></td>
-        <td contentEditable={true} className="status">{this.props.job.status}</td>
+        <td className="status">
+          <Dropdown defaultOption={this.state.status} selectItem={this.selectStatusLargeView} extraClasses={'status-dropdown'} itemClasses={this.state.itemClasses} menuItems={this.state.menuItems} />
+        </td>
         <td contentEditable={true} className="role">{this.props.job.role}</td>
         <td contentEditable={true} className="location">{this.props.job.location}</td>
         <td contentEditable={true} className="recruiter">{this.props.job.recruiter}</td>

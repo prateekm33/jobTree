@@ -32,7 +32,7 @@ passport.use(new LocalStrategy(
               return done(null, false);
             } 
             else {
-              console.log('USER AUTHENTICATED: ', user);
+              console.log('USER AUTHENTICATED: ', user.username);
               return done(null, user);
             }
           });

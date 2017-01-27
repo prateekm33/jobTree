@@ -6,9 +6,7 @@ module.exports = {
   addAccount(req, res) {
     const userCreds = req.body;
     const newUser = new User(userCreds);
-    console.log('userCreds: ', userCreds)
     newUser.save().then((user,err) => {
-      console.log('errr: ', err);
       if (err) res.status(400).json(null);
       else {
         req.login(user, (err) => {
@@ -32,10 +30,7 @@ module.exports = {
     if (req.user.username !== req.params.user) return res.status(401).end();
 
     User.remove({username: req.user.username, password: req.user.password})
-      .then(result => {
-        console.log('REMOVED RESULT: ', result);
-        res.status(200).end();
-      });
+      .then(result => { res.status(200).end(); });
   },
 
   updateAccount(req, res) {
@@ -45,9 +40,8 @@ module.exports = {
     User.findOne({username: req.user.username, password: req.user.password})
       .then(user => {
         if (!user) return res.status(404).end();
-        console.log('UPDATING USER : ', user);
+        console.log('UPDATING USER : ', user.username);
         user.update(req.body.options).then(result => {
-          console.log('UPDATE RESULT: ', result)
           res.status(200).end();
         })
       })
@@ -66,7 +60,6 @@ module.exports = {
       .then(user => {
         if (user) {
           const jobs = utils.formatJobs(user.jobs);
-          console.log('jobs - ', jobs)
           res.json(jobs);
         } else {
           res.json(null);
@@ -88,12 +81,13 @@ module.exports = {
   },
 
   updateJobs(req, res) {
+    console.log('================ UPDATING JOBS =================')
     if (req.user.username !== req.params.user) return res.status(401).end();
+
 
     const jobs = utils.undoFormatting(req.body.companies);
     User.update({username: req.user.username, password: req.user.password}, {jobs: jobs})
       .then((r,e) => {
-        console.log('RESULT? : ', r);
         !e && res.status(200).end();
         e && res.status(400).end();
       })

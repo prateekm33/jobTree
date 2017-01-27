@@ -8,6 +8,23 @@ const jobActions = {
     }
   },
 
+  saveUserState(user) {
+    const actions = this;
+
+    return function(dispatch, getState) {
+      if (!user) return;
+      dispatch(actions.savingState());
+      const companies = getState().allJobs;
+      return updateCompanies(companies, user, dispatch, actions);
+    }
+  },
+
+  savingState() {
+    return {
+      type: types.savingState
+    }
+  },
+
   fetchJobs(user) {
     const actions = this;
     return function(dispatch, getState) {
@@ -50,20 +67,7 @@ const jobActions = {
       dispatch(actions.deleteCompanyAt(idx));
       const companies = getState().allJobs;
       const user = getState().user;
-      return fetch('/accounts/jobs' + '/' + user, {
-        method: 'put', 
-        credentials: 'include',
-        body: JSON.stringify({companies}),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }).then(res => {
-        if (res.status !== 200) {}
-        else {
-
-        }
-      })
-        .catch(err => dispatch(actions.asyncError(err)));
+      return updateCompanies(companies, user, dispatch, actions);
     }
   },
 
@@ -85,3 +89,22 @@ const jobActions = {
 }
 
 export default jobActions;
+
+
+function updateCompanies(companies, user, dispatch, actions) {
+  console.warn('UPDATING!')
+  return fetch('/accounts/jobs' + '/' + user, {
+        method: 'put', 
+        credentials: 'include',
+        body: JSON.stringify({companies}),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(res => {
+        if (res.status !== 200) {}
+        else {
+
+        }
+      })
+        .catch(err => dispatch(actions.asyncError(err)));
+}
