@@ -23,45 +23,13 @@ export default class Job extends React.Component {
         'OFFER' : "offer status-bar"
       },
 
-      status: props.job.status
+      status: props.job.status,
+      date_applied: props.job.date_applied.split("T")[0]
     }
 
-    this.handleUserEdit = this.handleUserEdit.bind(this);
-    this.handleEditBtnClick = this.handleEditBtnClick.bind(this);
     this.selectStatusLargeView = this.selectStatusLargeView.bind(this);
-  }
-
-  handleUserEdit(evt) {
-    const keyCode = evt.keyCode;
-    const enter = 13;
-
-    switch (keyCode) {
-      case enter:
-        if (!evt.shiftKey) {
-          evt.preventDefault();
-          evt.target.blur();
-          // this.props.job[evt.target.classList.value] = evt.target.innerText;
-          const updatedJob = Object.assign({}, this.props.job, {
-            [evt.target.classList.value]: evt.target.innerText
-          });
-          this.props.editJob(this.props.idx, updatedJob);
-        }
-        return;
-      default:
-        return;
-    }
-
-  }
-
-  formatDate(date) {
-    date = new Date(date);
-    return date.toDateString();
-  }
-
-  handleEditBtnClick(evt) {
-    evt.preventDefault();
-
-    console.log('TODO --- ROUTE TO /manage/jobs')
+    this.handleUserEdit = this.handleUserEdit.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
   }
 
   selectStatusLargeView(evt) {
@@ -73,16 +41,54 @@ export default class Job extends React.Component {
     this.setState({status: target.innerText});
   }
 
+  formatDate(date) {
+    date = new Date(date);
+    date.setDate(date.getDate() + 1);
+    return date.toLocaleDateString();
+  }
+
+  handleUserEdit(evt) {
+    const target = evt.target;
+    const prop = target.classList.value;
+    const enter = 13;
+    switch (evt.keyCode) {
+      case enter:
+        if (evt.shiftKey) return;
+        evt.preventDefault();
+        target.blur();  
+        let val = target.innerText;
+        if (prop === 'date_applied') {
+          val = new Date(target.value).toISOString();
+        }
+        const updatedJob = Object.assign({}, this.props.job, {
+          [prop]: val
+        })
+        this.props.editJob(this.props.idx, updatedJob);
+      default: return;
+    }
+
+  }
+
+  handleBlur(evt) {
+    const target = evt.target;
+    if (target.tagName === 'TD') {
+      evt.keyCode = 13;
+      this.handleUserEdit(evt);
+    }
+  }
+
   renderTable() {
     return (
-      <tr onKeyDown={this.handleUserEdit} className="job-component">
+      <tr onKeyDown={this.handleUserEdit} onBlur={this.handleBlur} className="job-component">
         <td className="status">
           <Dropdown defaultOption={this.state.status} selectItem={this.selectStatusLargeView} extraClasses={'status-dropdown'} itemClasses={this.state.itemClasses} menuItems={this.state.menuItems} />
         </td>
         <td contentEditable={true} className="role">{this.props.job.role}</td>
         <td contentEditable={true} className="location">{this.props.job.location}</td>
         <td contentEditable={true} className="recruiter">{this.props.job.recruiter}</td>
-        <td contentEditable={true} className="date_applied">{this.formatDate(this.props.job.date_applied)}</td>
+        <td>
+          <input className="date_applied" defaultValue={this.state.date_applied} type='date'/>
+        </td>
       </tr>
     )
   }

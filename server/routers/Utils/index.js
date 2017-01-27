@@ -2,9 +2,8 @@ const bcrypt = require('bcrypt-nodejs');
 
 module.exports = {
   validateRequest(req, res, next) {
-    console.log('VALIDATING USER: ', req.user.username);
     if (!req.user) return res.status(401).json(null);
-    console.log('REQUEST VALIDATED')
+    console.log('USER REQUEST VALIDATED: ', req.user.username)
     next()
   },
 
@@ -38,6 +37,8 @@ module.exports = {
   },
 
   undoFormatting(companies) {
+    console.log('PREFORMATTING ------', companies);
+    console.log('--------', companies[0].data.jobs)
     const jobs = [];
     companies.forEach(company => {
       jobs.push(...company.data.jobs)

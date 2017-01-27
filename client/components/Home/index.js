@@ -19,7 +19,8 @@ class Home extends React.Component {
       company: null,
       title: 'My Pipeline',
       defaultOrder: 'Select order',
-      menuItems: menuItems
+      menuItems: menuItems,
+      windowWidth: 0
     };
     
     this.handleTitleEdit = this.handleTitleEdit.bind(this);
@@ -27,7 +28,22 @@ class Home extends React.Component {
     this.handleAddBtnClick = this.handleAddBtnClick.bind(this);
     this.toggleCompanyForm = this.toggleCompanyForm.bind(this);
     this.deleteCompany = this.deleteCompany.bind(this);
+    this.setWindowWidth = this.setWindowWidth.bind(this);
+    window.addEventListener('resize', this.setWindowWidth)
   }
+
+  setWindowWidth() {
+    this.setState({windowWidth: window.innerWidth });
+  }
+
+  componentWillMount() {
+    this.setWindowWidth();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.setWindowWidth);
+  }
+
 
   componentDidUpdate() {
     if (!this.props.allJobs.length) {
@@ -43,29 +59,6 @@ class Home extends React.Component {
   deleteCompany(idx) {
     document.body.scrollTop = 0;
     this.props.dispatch(actions.deleteCompany(idx));
-  }
-
-  renderLargeView() {
-    const arr = [];
-    const jobs = this.props.allJobs;
-    for (let i = 0; i < jobs.length; i++) {
-      arr.push(<LargeView key={i} idx={i} company={jobs[i].company} data={jobs[i].data} deleteCompany={() => this.deleteCompany(i)} />);
-    }
-
-    return arr;
-  }
-
-  renderSmallView() {
-    const arr = [];
-
-    const jobs = this.props.allJobs;
-    for (let i = 0; i < jobs.length; i++) {
-      arr.push(
-        <SmallView key={i} idx={i} data={jobs[i].data} company={jobs[i].company} deleteCompany={() => this.deleteCompany(i)}/>
-      );
-    }
-
-    return arr;
   }
 
   handleTitleEdit(evt) {
@@ -119,11 +112,13 @@ class Home extends React.Component {
     }
   }
 
+
+
   render() {
     return (
       <div id='home-container'>
         <div id="jobs-view-header">
-          <div onKeyDown={this.handleTitleEdit} contentEditable={true} id="home-title"> {this.state.title} </div>
+          <div id="home-title"> {this.state.title} </div>
           <div id="line-2">
             <div id="form-toggle-options" ref={el => this.toggleFormOptions = el} className={this.props.allJobs.length ? '' : 'bounce'} onClick={this.toggleCompanyForm}> 
               <button id="add-company" className='btn btn-default glyphicon glyphicon-plus'></button>
@@ -138,20 +133,26 @@ class Home extends React.Component {
         </div>
 
         { this.props.showCompanyForm ? <NewCompanyForm parent={this}/> : null }
-
-        <div id='large-jobs-view-container'>
-          {
-            this.renderLargeView()
-          }
-        </div>
-        <div id='small-jobs-view-container'>
-          {
-            this.renderSmallView()
-          }
-        </div>
+        {
+          this.state.windowWidth >= 651 ? <div id='large-jobs-view-container'>
+            {
+              this.props.allJobs.map((job, i) => (
+                <LargeView key={i} idx={i} company={job.company} data={job.data} deleteCompany={() => this.deleteCompany(i)} />
+              ))
+            }
+          </div> :
+          <div id='small-jobs-view-container'>
+            {
+              this.props.allJobs.map((job, i) => (
+                <SmallView key={i} idx={i} company={job.company} data={job.data} deleteCompany={() => this.deleteCompany(i)} />
+              ))
+            }
+          </div>
+        }
       </div>
     )
   }
+
 }
 
 function mapStateToProps(state) {

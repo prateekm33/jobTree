@@ -24,8 +24,9 @@
 
     .delete-company {
       position: absolute;
-      right: 1em;
+      right: 0.5em;
       display: none;
+      font-size: 1.5em;
     }
 
 
@@ -36,7 +37,7 @@
     font-size: 0.75em;
     width: 100%;
     border-collapse: initial;
-    border-spacing: 1em;
+    border-spacing: 0 1em;
 
     thead th {
       position: relative; 
@@ -64,7 +65,9 @@
       align-items: center;
       font-style: italic;
       color: #afadad;
-      flex: 2;
+      position: absolute;
+      top: 1em;
+      right: 5em;
 
       & > div {
         margin-left: 2em;
@@ -88,7 +91,7 @@
   .company-header-container {
     display: flex;
     flex-flow: row nowrap;
-    flex: 4;
+    flex: 5;
     justify-content: flex-end;
 
     & > div {
@@ -130,23 +133,26 @@
     }
   }
 
-  .glyphicon-share-alt {
-    transform: scaleY(-1) translateY(50%) translateX(100%);
-  }
-
   .job-component td {
     position: relative;
     text-align: center;
     padding-left: 1em;
     padding-right: 1em;
-    
-    .td-dividers {
-      border: 1px solid lightcoral;
-      width: 0;
-      height: 90%;
-      position: absolute;
-      top: 0;
-      right: -5%;
+
+    .btn.status-bar {
+      width: 110px;
+    }
+
+    input.date_applied {
+      text-align: end;
+      border: none;
+    }
+
+  }
+  .job-component td:nth-of-type(1n + 2) {
+
+    &:hover {
+      border-bottom: 2px solid #65461E;
     }
   }
 

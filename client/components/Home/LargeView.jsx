@@ -10,13 +10,11 @@ import Summary from './Summary';
 
 class LargeView extends React.Component {
   constructor(props) {
-    console.log(props, 'LARGE VIEW')
     super(props);
     this.state = {
       defaultOrder: 'Select order',
       menuItems: ['STATUS', 'ROLE', 'LOCATION', 'RECRUITER', 'DATE APPLIED'],
-      open: false,
-      jobs: props.data.jobs
+      open: false
     };
 
     this.handleCompanyNameClicked = this.handleCompanyNameClicked.bind(this);
@@ -36,7 +34,7 @@ class LargeView extends React.Component {
 
   selectSortOption(evt) {
     const target = evt.target;
-    const sorted = sortJobsBy(target.innerText, this.state.jobs);
+    const sorted = sortJobsBy(target.innerText, this.props.data.jobs);
     this.setState({defaultOrder: target.innerText, jobs: sorted});
   }
 
@@ -90,7 +88,7 @@ class LargeView extends React.Component {
               </thead>
               <tbody>
                 {
-                  this.state.jobs.map((job,idx) => (
+                  this.props.data.jobs.map((job,idx) => (
                     <Job key={idx} idx={idx} job={job} type={'table'} editJob={this.handleEdit} />
                   ))
                 }

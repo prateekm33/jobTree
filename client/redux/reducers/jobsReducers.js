@@ -20,13 +20,18 @@ const jobsReducers = {
       case types.deleteCompanyAt:
         return jobs.filter((job, idx) => idx !== action.idx);
       case types.editJobAt:
-        const newArr = jobs.map((i,companyIdx) => {
-          if (companyIdx !== action.companyIdx) return i;
-          const data = Object.assign({}, i.data);
-          data.jobs[action.jobIdx] = action.job;
-          return i;
+        return jobs.map((company, cIdx) => {
+          return Object.assign({}, company, 
+            {
+              data: {
+                jobs: company.data.jobs.map(
+                  (job, jIdx) => (jIdx === action.jobIdx && cIdx === action.companyIdx) ? action.job : Object.assign({}, job)
+                ),
+                recruiter: company.recruiter
+              }
+            }
+          )
         });
-        return newArr;
       case types.resetState: return [];
       default: return jobs;
     }

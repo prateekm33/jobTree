@@ -92,7 +92,6 @@ export default jobActions;
 
 
 function updateCompanies(companies, user, dispatch, actions) {
-  console.warn('UPDATING!')
   return fetch('/accounts/jobs' + '/' + user, {
         method: 'put', 
         credentials: 'include',
