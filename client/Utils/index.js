@@ -11,31 +11,47 @@ export const initComponent = (nextState, replace, done) => {
   }
   else {
     store.dispatch(actions.fetchingUser(true));
-    window.alert('FETCH? ', fetch);
-    fetch('/auth/validate', {
-          method: 'get',
-          credentials: 'include'
-        })
-          .then(r => r.json())
-          .then(user => {
-            if (!user) {
-              switch (path) {
-                case '/home':
-                case '/profile':
-                case '/manage': replace('/login');
-                default: break;
-              }
-            }
-            else {
-              store.dispatch(actions.logInUser(user));
-              if (path === '/') replace('/home');
-            }
-            done();
-          })
-          .catch(err => {
-            done(err)
-            store.dispatch(actions.asyncError(err))
-          });
+    $.ajax('/auth/validate', {
+      contentType: 'application/json',
+      success: (user) => {
+        store.dispatch(actions.logInUser(user));
+        if (path === '/') replace('/home');
+        done();
+      },
+      error: (err) => {
+        switch (path) {
+          case '/home':
+          case '/profile':
+          case '/manage': replace('/login');
+          default: break;
+        }
+        done();
+      }
+    });
+    // fetch('/auth/validate', {
+    //       method: 'get',
+    //       credentials: 'include'
+    //     })
+    //       .then(r => r.json())
+    //       .then(user => {
+    //         if (!user) {
+    //           switch (path) {
+    //             case '/home':
+    //             case '/profile':
+    //             case '/manage': replace('/login');
+    //             default: break;
+    //           }
+    //         }
+    //         else {
+    //           store.dispatch(actions.logInUser(user));
+    //           if (path === '/') replace('/home');
+    //         }
+    //         done();
+    //       })
+    //       .catch(err => {
+    //         done(err)
+    //         store.dispatch(actions.asyncError(err))
+    //       });
   }
 }
 
