@@ -1,15 +1,14 @@
 const { authRouter, accountsRouter, profileRouter } = require('./routers');
 
-let root = __dirname.indexOf('server') > -1 ? '..' : '.';
 console.log('ENV: ', process.env);
-root = process.env === 'production' ? '.' : root;
+let root = process.env.NODE_ENV === 'production' ? '.' : '..';
 function mountRoutes(app) {
   app.use('/auth', authRouter);
 
   app.use('/accounts', accountsRouter);
 
   app.get('*', (req, res) => {
-    return res.sendFile('/client/index.html', {root: '.'});
+    return res.sendFile('/client/index.html', {root});
   });
 }
 
