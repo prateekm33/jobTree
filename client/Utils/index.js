@@ -11,7 +11,8 @@ export const initComponent = (nextState, replace, done) => {
   }
   else {
     store.dispatch(actions.fetchingUser(true));
-    fetch('/auth/validate', {
+    window.alert('USER? ' + user);
+    fetch('jobtree.herokuapp.com/auth/validate', {
           method: 'get',
           credentials: 'include'
         })
@@ -29,10 +30,10 @@ export const initComponent = (nextState, replace, done) => {
               store.dispatch(actions.logInUser(user));
               if (path === '/') replace('/home');
             }
-            window.alert('USER? ' + user);
             done();
           })
-          .catch(err => { 
+          .catch(err => {
+            window.alert('ERROR FETCHING') 
             done(err)
             store.dispatch(actions.asyncError(err))
           });
