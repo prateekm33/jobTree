@@ -31,10 +31,10 @@ export default class LandingPage extends React.Component {
   }
 
   scrollTop() {
-    // if (window.mobilecheck()) {
-    //   document.body.scrollTop = 0;
-    //   return;
-    // } 
+    if (window.mobilecheck()) {
+      document.body.scrollTop = 0;
+      return;
+    } 
 
 
     const body = document.body;
@@ -46,9 +46,7 @@ export default class LandingPage extends React.Component {
 
     const scrollHelper = () => {
       const currTop = body.scrollTop;
-      // window.alert('RUNNING SCROLL TOP = ' + currTop);
       if (prevTop !== currTop) {
-        window.alert('prevTop != currTop' + prevTop + ' , ' + currTop)
         return;
       }
 
@@ -59,7 +57,6 @@ export default class LandingPage extends React.Component {
       body.scrollTop = nextTop;
 
       if (now >= end) {
-        window.alert('time up');
           return;
       }
       prevTop = body.scrollTop;

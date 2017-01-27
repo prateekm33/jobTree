@@ -95,7 +95,7 @@ export default class Job extends React.Component {
 
   renderSmall() {
     return (
-      <div onKeyDown={this.handleUserEdit} className="job-component">
+      <div onKeyDown={this.handleUserEdit} className={"job-component" + " " + this.props.job.status.toLowerCase()}>
         <div className="date_applied">{this.formatDate(this.props.job.date_applied)}</div>
         <div className="role">
           <div>Role:</div>
@@ -105,7 +105,7 @@ export default class Job extends React.Component {
           <div>Location:</div>
           <div>{this.props.job.location}</div>
         </div>
-        <div className={"status" + " " + this.props.job.status.toLowerCase()}>
+        <div className="status">
           <div>Status:</div>
           <div>{this.props.job.status}</div>
         </div>
