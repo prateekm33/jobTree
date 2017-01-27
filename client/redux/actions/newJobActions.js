@@ -13,17 +13,30 @@ const newJobActions = {
     return function(dispatch, getState) {
       dispatch(actions.postingNewJobs());
       const user = getState().user;
-      fetch('/accounts/jobs/' + user, {
-        method: 'POST',
-        credentials: 'include',
-        body: JSON.stringify({data: data}),
-        headers: {
-          'Content-Type': 'application/json'
+      return $.ajax('/accounts/jobs/' + user, {
+        method: 'post', 
+        contentType: 'application/json',
+        data: {data},
+        success: () => {
+          dispatch(actions.postedJobs(true));
+        },
+        error: (err) => {
+          dispatch(actions.postedJobs(false));
+          dispatch(actions.asyncError(err));
         }
-      }).then(response => {
-          dispatch(actions.postedJobs(response.status !== 201));
-        })
-        .catch(err => { actions.asyncError(err); });
+      });
+      
+      // fetch('/accounts/jobs/' + user, {
+      //   method: 'POST',
+      //   credentials: 'include',
+      //   body: JSON.stringify({data: data}),
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   }
+      // }).then(response => {
+      //     dispatch(actions.postedJobs(response.status !== 201));
+      //   })
+      //   .catch(err => { dispatch(actions.asyncError(err)); });
     }
   },
 

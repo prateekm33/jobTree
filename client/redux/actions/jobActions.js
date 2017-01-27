@@ -29,16 +29,27 @@ const jobActions = {
     const actions = this;
     return function(dispatch, getState) {
       dispatch(actions.fetchingJobs());
-      return fetch('/accounts/jobs/' + user, {
+      return $.ajax('/accounts/jobs/' + user, {
         method: 'get',
-        credentials: 'include',
-      }).then(r => {
-        if (r.status !== 200) dispatch(actions.errorFetchingJobs(r));
-        else return r.json();
-      }).then(jobs => {
-        if (jobs) dispatch(actions.fetchedJobs(jobs));
-      })
-      .catch(err => dispatch(actions.asyncError(err)));
+        contentType: 'application/json',
+        success: (jobs) => {
+          dispatch(actions.fetchedJobs(jobs));
+        },
+        error: (err) => {
+          dispatch(actions.asyncError(err));
+        }
+      });
+
+      // return fetch('/accounts/jobs/' + user, {
+      //   method: 'get',
+      //   credentials: 'include',
+      // }).then(r => {
+      //   if (r.status !== 200) dispatch(actions.errorFetchingJobs(r));
+      //   else return r.json();
+      // }).then(jobs => {
+      //   if (jobs) dispatch(actions.fetchedJobs(jobs));
+      // })
+      // .catch(err => dispatch(actions.asyncError(err)));
     }
   },
 
@@ -92,18 +103,28 @@ export default jobActions;
 
 
 function updateCompanies(companies, user, dispatch, actions) {
-  return fetch('/accounts/jobs' + '/' + user, {
-        method: 'put', 
-        credentials: 'include',
-        body: JSON.stringify({companies}),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }).then(res => {
-        if (res.status !== 200) {}
-        else {
 
-        }
-      })
-        .catch(err => dispatch(actions.asyncError(err)));
+  return $.ajax('/accounts/jobs/' + user, {
+    method: 'put',
+    data: {companies},
+    contentType: 'application/json',
+    success: () => {},
+    error: (err) => {
+      dispatch(actions.asyncError(err));
+    }
+  })
+  // return fetch('/accounts/jobs' + '/' + user, {
+  //       method: 'put', 
+  //       credentials: 'include',
+  //       body: JSON.stringify({companies}),
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       }
+  //     }).then(res => {
+  //       if (res.status !== 200) {}
+  //       else {
+
+  //       }
+  //     })
+  //       .catch(err => dispatch(actions.asyncError(err)));
 }

@@ -10,20 +10,35 @@ const authActions = {
       let endpoint;
       if (id.indexOf('signup') > -1) endpoint = '/accounts';
       else endpoint = '/auth/login';
-      return fetch(endpoint, {
-        method: 'POST', 
-        body: JSON.stringify(user),
-        headers: {
-          "Content-Type": "application/json"
-        },
-        credentials: 'include'
-      }).then(res => {
-        if (res.status === 201 || res.status === 200) {
-          dispatch(actions.logInUser(user.username));
+
+      return $.ajax(endpoint, {
+        method: 'post',
+        data: user,
+        contentType: 'application/json',
+        success: (user) => {
+          dispatch(actions.logInUser(user));
           const requestedPath = getState().requestedPath;
           dispatch(replace(requestedPath));
-        } else dispatch(actions.invalidCreds(true));
-      }).catch(err => actions.asyncError(err));
+        },
+        error: (err) => {
+          dispatch(actions.invalidCreds(true));
+        }
+      })
+
+      // return fetch(endpoint, {
+      //   method: 'POST', 
+      //   body: JSON.stringify(user),
+      //   headers: {
+      //     "Content-Type": "application/json"
+      //   },
+      //   credentials: 'include'
+      // }).then(res => {
+      //   if (res.status === 201 || res.status === 200) {
+      //     dispatch(actions.logInUser(user.username));
+      //     const requestedPath = getState().requestedPath;
+      //     dispatch(replace(requestedPath));
+      //   } else dispatch(actions.invalidCreds(true));
+      // }).catch(err => actions.asyncError(err));
     }
   },
 
@@ -53,22 +68,38 @@ const authActions = {
     return function(dispatch, getState) {
       dispatch(actions.loggingOutUser());
       const user = getState().user;
-      fetch('/auth/logout', {
-        method: 'POST',
-        body: JSON.stringify({username: user}),
-        headers: {
-          "Content-Type": "application/json"
-        },
-        credentials: 'include'
-      }).then(r => {
-        if (r.status === 200) {
+
+      return $.ajax('/auth/logout', {
+        method: 'post',
+        data: {username: user},
+        contentType: 'application/json',
+        success: () => {
           dispatch(actions.userLoggedOut());
           dispatch(actions.resetState());
           dispatch(replace('/'));
-        } else {
-          dispatch(actions.logOutError());
+        },
+        error: (err) => {
+          dispatch(actions.logOutError(err));
+          dispatch(actions.asyncError(err));
         }
-      }).catch(err => dispatch(actions.asyncError(err)));
+      });
+
+      // return fetch('/auth/logout', {
+      //   method: 'POST',
+      //   body: JSON.stringify({username: user}),
+      //   headers: {
+      //     "Content-Type": "application/json"
+      //   },
+      //   credentials: 'include'
+      // }).then(r => {
+      //   if (r.status === 200) {
+      //     dispatch(actions.userLoggedOut());
+      //     dispatch(actions.resetState());
+      //     dispatch(replace('/'));
+      //   } else {
+      //     dispatch(actions.logOutError());
+      //   }
+      // }).catch(err => dispatch(actions.asyncError(err)));
     }
   },
 

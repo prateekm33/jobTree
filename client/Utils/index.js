@@ -28,30 +28,6 @@ export const initComponent = (nextState, replace, done) => {
         done();
       }
     });
-    // fetch('/auth/validate', {
-    //       method: 'get',
-    //       credentials: 'include'
-    //     })
-    //       .then(r => r.json())
-    //       .then(user => {
-    //         if (!user) {
-    //           switch (path) {
-    //             case '/home':
-    //             case '/profile':
-    //             case '/manage': replace('/login');
-    //             default: break;
-    //           }
-    //         }
-    //         else {
-    //           store.dispatch(actions.logInUser(user));
-    //           if (path === '/') replace('/home');
-    //         }
-    //         done();
-    //       })
-    //       .catch(err => {
-    //         done(err)
-    //         store.dispatch(actions.asyncError(err))
-    //       });
   }
 }
 
