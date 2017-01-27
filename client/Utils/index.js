@@ -5,7 +5,6 @@ export const initComponent = (nextState, replace, done) => {
   document.body.scrollTop = 0;
   const path = nextState.location.pathname;
   const user = store.getState().user;
-  window.alert('USER? ' + user);
   if (user) {
     if (path === '/') replace('/home');
     return done();
@@ -30,6 +29,7 @@ export const initComponent = (nextState, replace, done) => {
               store.dispatch(actions.logInUser(user));
               if (path === '/') replace('/home');
             }
+            window.alert('USER? ' + user);
             done();
           })
           .catch(err => { 
