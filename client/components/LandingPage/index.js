@@ -31,6 +31,11 @@ export default class LandingPage extends React.Component {
   }
 
   scrollTop() {
+    if (window.mobilecheck()) {
+      document.body.scrollTop = 0;
+      return;
+    } 
+
     const body = document.body;
     const initTop = body.scrollTop;
     const start = Date.now();
