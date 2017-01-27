@@ -96,6 +96,13 @@ const jobActions = {
       jobIdx,
       job
     }
+  },
+
+  showSaveBtn(show) {
+    return {
+      type: types.showSaveBtn,
+      show
+    }
   }
 }
 

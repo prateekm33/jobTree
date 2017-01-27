@@ -30,6 +30,7 @@ class Home extends React.Component {
     this.deleteCompany = this.deleteCompany.bind(this);
     this.setWindowWidth = this.setWindowWidth.bind(this);
     this.dismissPostMsg = this.dismissPostMsg.bind(this);
+    this.removeSaveBtn = this.removeSaveBtn.bind(this);
     window.addEventListener('resize', this.setWindowWidth)
   }
 
@@ -87,6 +88,9 @@ class Home extends React.Component {
     this.props.dispatch(actions.resetJobsPost());
   }
 
+  removeSaveBtn() {
+    this.props.dispatch(actions.showSaveBtn(false));
+  }
 
 
   render() {
@@ -99,7 +103,7 @@ class Home extends React.Component {
             <div id="form-toggle-options" ref={el => this.toggleFormOptions = el} className={this.props.allJobs.length ? '' : 'bounce'} onClick={this.toggleCompanyForm}> 
               {
                 !this.props.showCompanyForm ? 
-                  <button id="add-company" className='btn btn-default glyphicon glyphicon-plus'></button> :
+                  <button onClick={this.removeSaveBtn} id="add-company" className='btn btn-default glyphicon glyphicon-plus'></button> :
                   <button ref={el => this.cancelFormBtn = el} id="cancel-company" className='btn btn-default glyphicon glyphicon-remove'></button>
               }
               <div id='company-form-btn-help'>
@@ -116,7 +120,12 @@ class Home extends React.Component {
                   <div onClick={this.dismissPostMsg} className="success btn btn-primary">Saved!</div>
                 </div> : null
             }
-            <Dropdown id="company-sort-dd" defaultOption={this.state.defaultOrder} selectItem={this.selectSort} menuItems={this.state.menuItems} />
+            <div style={{display: 'flex'}}>
+              {
+                this.props.showSaveBtn ? <button onClick={this.removeSaveBtn} className="save-button btn btn-secondary">SAVE</button> : null
+              }
+              <Dropdown id="company-sort-dd" defaultOption={this.state.defaultOrder} selectItem={this.selectSort} menuItems={this.state.menuItems} />
+            </div>
           </div>
         </div>
 
@@ -144,7 +153,7 @@ class Home extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { showCompanyForm: state.showCompanyForm, allJobs: state.allJobs, postedSuccessfully: state.postedSuccessfully, postedJobs: state.postedJobs };
+  return { showCompanyForm: state.showCompanyForm, allJobs: state.allJobs, postedSuccessfully: state.postedSuccessfully, postedJobs: state.postedJobs, showSaveBtn: state.showSaveBtn };
 }
 
 export default connect(mapStateToProps)(Home);

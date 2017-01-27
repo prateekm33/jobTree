@@ -41,12 +41,8 @@
   #line-2 {
     display: flex;
     justify-content: space-between;
-
-    button#add-company, button#cancel-company {
-      right: -2.7em;
-      position: relative;
-
-    }
+    width: 80%;
+    margin: 0 auto;
 
     #form-toggle-options {
       &:hover {
@@ -54,6 +50,13 @@
           visibility: visible;
         }
       }
+    }
+
+    .save-button {
+      height: 35px;
+      background: #7ce4ff;
+      color: black;
+      font-weight: bold;
     }
 
     #company-form-btn-help {
@@ -66,7 +69,6 @@
         font-size: 0.6em;
         color: lightgrey;
         position: relative;
-        left: 4.5em;
         bottom: 45%;
       }
     }
@@ -181,9 +183,6 @@
   }
 
   #company-sort-dd {
-    left: -1em;
-    justify-content: flex-end;
-
     ul.dropdown-menu {
       right: 0;
       left: initial;

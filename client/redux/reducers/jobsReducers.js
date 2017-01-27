@@ -43,6 +43,13 @@ const jobsReducers = {
         return action.option;
       default: return option;
     }
+  },
+
+  showSaveBtn(state = false, action) {
+    switch (action.type) {
+      case types.showSaveBtn: return action.show;
+      default: return state;
+    }
   }
 }
 

@@ -31,7 +31,8 @@ const types = {
   fetchedJobs: 'FETCHED_JOBS',
 
   resetState: 'RESET_STATE',
-  savingState: 'SAVING_STATE'
+  savingState: 'SAVING_STATE',
+  showSaveBtn: 'SHOW_SAVE_BTN'
 
 }
 

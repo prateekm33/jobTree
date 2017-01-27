@@ -45,6 +45,7 @@ class LargeView extends React.Component {
 
   handleEdit(jobIdx, job) {
     const companyIdx = this.props.idx;
+    this.props.dispatch(actions.showSaveBtn(true));
     this.props.dispatch(actions.editJobAt(companyIdx, jobIdx, job));
   }
 
