@@ -46,7 +46,6 @@ export default class LandingPage extends React.Component {
       const now = Date.now();
       const next = this.getSmoothStep(start, end, now);
       const nextTop = Math.round(initTop + (distance * next));
-      console.log(nextTop, next)
       body.scrollTop = nextTop;
 
       if (now >= end) return;
@@ -61,7 +60,7 @@ export default class LandingPage extends React.Component {
     if(curr <= start) { return 0; }
     if(curr >= end) { return 1; }
     let x = (curr - start) / (end - start);
-    return x*x*(5 - 4*x);
+    return x*x*(3 - 2*x);
   }
 
   render() {

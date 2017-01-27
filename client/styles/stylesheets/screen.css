@@ -571,7 +571,7 @@ form label {
   width: 60%;
   text-align: center;
 }
-@media (max-width: 900px), (650px: 650px) {
+@media (max-width: 900px), (max-device-width: 650px) {
   /* line 72, ../sass/_landing.scss */
   #landing-page-container .section#second {
     flex-flow: column nowrap;
@@ -583,7 +583,7 @@ form label {
   background: #cff1cf;
   color: black;
 }
-@media (max-width: 900px), (650px: 650px) {
+@media (max-width: 900px), (max-device-width: 650px) {
   /* line 85, ../sass/_landing.scss */
   #landing-page-container .section#third {
     flex-flow: column nowrap;
