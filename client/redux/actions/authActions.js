@@ -10,12 +10,12 @@ const authActions = {
       let endpoint;
       if (id.indexOf('signup') > -1) endpoint = '/accounts';
       else endpoint = '/auth/login';
-
       return $.ajax(endpoint, {
         method: 'post',
-        data: user,
+        data: JSON.stringify(user),
         contentType: 'application/json',
         success: (user) => {
+          console.log('USER: ', user);
           dispatch(actions.logInUser(user));
           const requestedPath = getState().requestedPath;
           dispatch(replace(requestedPath));
@@ -71,7 +71,7 @@ const authActions = {
 
       return $.ajax('/auth/logout', {
         method: 'post',
-        data: {username: user},
+        data: JSON.stringify({username: user}),
         contentType: 'application/json',
         success: () => {
           dispatch(actions.userLoggedOut());

@@ -106,7 +106,7 @@ function updateCompanies(companies, user, dispatch, actions) {
 
   return $.ajax('/accounts/jobs/' + user, {
     method: 'put',
-    data: {companies},
+    data: JSON.stringify({companies}),
     contentType: 'application/json',
     success: () => {},
     error: (err) => {

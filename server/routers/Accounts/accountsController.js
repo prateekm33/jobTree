@@ -11,7 +11,7 @@ module.exports = {
       else {
         req.login(user, (err) => {
           if (err) res.status(400).json(null);
-          else res.status(201).json(user);
+          else res.status(201).json(user.username);
         })
       }
     }).catch(e => {

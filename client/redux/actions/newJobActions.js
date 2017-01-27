@@ -16,7 +16,7 @@ const newJobActions = {
       return $.ajax('/accounts/jobs/' + user, {
         method: 'post', 
         contentType: 'application/json',
-        data: {data},
+        data: JSON.stringify({data}),
         success: () => {
           dispatch(actions.postedJobs(true));
         },
@@ -25,7 +25,7 @@ const newJobActions = {
           dispatch(actions.asyncError(err));
         }
       });
-      
+
       // fetch('/accounts/jobs/' + user, {
       //   method: 'POST',
       //   credentials: 'include',
